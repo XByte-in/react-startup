@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import Text from './common-lib/Text';
+import "./App.css";
+import Button from "./common-lib/Button";
 function App() {
   return (
     <div className="App">
-      <Text text="test"/>
+      <Button btnText="test" />
     </div>
   );
 }
