@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import Button from "./common-lib/Button";
 function App() {
   return (
