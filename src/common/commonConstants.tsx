@@ -1,15 +1,27 @@
-export const STRING_CONSTRUCTOR = "".constructor;
-export const ARRAY_CONSTRUCTOR = [].constructor;
-export const OBJECT_CONSTRUCTOR = {}.constructor;
-
-export enum VALUE_TYPE {
-  NONE,
-  NULL,
-  UNDEFINED,
-  BOOL,
-  NUMBER,
-  STRING,
-  ARRAY,
-  OBJECT,
-  FUNCTION,
+export enum ValueType {
+  none,
+  null,
+  undefined,
+  boolean,
+  number,
+  string,
+  array,
+  object,
+  function,
 }
+
+export enum Size {
+  xtraSmall,
+  small,
+  medium,
+  large,
+  xtraLarge
+}
+
+export enum Type {
+  default,
+  primary,
+  secondary,
+  tertiary,
+  danger
+};

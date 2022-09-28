@@ -1,25 +1,23 @@
-import {
-  VALUE_TYPE,
-  ARRAY_CONSTRUCTOR,
-  OBJECT_CONSTRUCTOR,
-  STRING_CONSTRUCTOR,
-} from "./commonConstants";
+const STRING_CONSTRUCTOR = "".constructor;
+const ARRAY_CONSTRUCTOR = [].constructor;
+const OBJECT_CONSTRUCTOR = {}.constructor;
+import { ValueType } from "./commonConstants";
 
 export class CommonUtils {
   static onlyUnique(str: string, value: string, index: number) {
     return str.indexOf(value) === index;
   }
 
-  static jsonValueType(value: any): VALUE_TYPE {
-    if (value === null) return VALUE_TYPE.NULL;
-    if (value === undefined) return VALUE_TYPE.UNDEFINED;
-    if (value.constructor === Boolean) return VALUE_TYPE.BOOL;
-    if (value.constructor === Number) return VALUE_TYPE.NUMBER;
-    if (value.constructor === STRING_CONSTRUCTOR) return VALUE_TYPE.STRING;
-    if (value.constructor === ARRAY_CONSTRUCTOR) return VALUE_TYPE.ARRAY;
-    if (value.constructor === OBJECT_CONSTRUCTOR) return VALUE_TYPE.OBJECT;
-    if (value.constructor === Function) return VALUE_TYPE.FUNCTION;
-    return VALUE_TYPE.NONE;
+  static jsonValueType(value: any): ValueType {
+    if (value === null) return ValueType.null;
+    if (value === undefined) return ValueType.undefined;
+    if (value.constructor === Boolean) return ValueType.boolean;
+    if (value.constructor === Number) return ValueType.number;
+    if (value.constructor === STRING_CONSTRUCTOR) return ValueType.string;
+    if (value.constructor === ARRAY_CONSTRUCTOR) return ValueType.array;
+    if (value.constructor === OBJECT_CONSTRUCTOR) return ValueType.object;
+    if (value.constructor === Function) return ValueType.function;
+    return ValueType.none;
   }
 
   static loadScript(
