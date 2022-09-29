@@ -1,4 +1,4 @@
-export enum ValueType {
+export enum JsonValueType {
   none,
   null,
   undefined,
@@ -8,14 +8,6 @@ export enum ValueType {
   array,
   object,
   function,
-}
-
-export enum Size {
-  xtraSmall,
-  small,
-  medium,
-  large,
-  xtraLarge
 }
 
 export enum Type {

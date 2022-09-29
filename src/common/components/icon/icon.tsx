@@ -1,9 +1,10 @@
-import { Size } from "../../commonConstants";
+import { IconSize } from "../../pictures";
+
 
 interface IIconParams {
+  iconName: string;
+  iconSize: IconSize;
   id?: string;
-  image_name: string;
-  size: Size;
   className?: string;
   styleObj?: object;
   onClick?: () => {};
@@ -18,7 +19,8 @@ const Icon = (props: IIconParams) => {
     <img
       id={props.id}
       className={`${props.className}`}
-      src={props.image_name}
+      height={props.iconSize}
+      src={props.iconName}
       style={props.styleObj}
       onClick={props.onClick}
       onError={props.onError}
