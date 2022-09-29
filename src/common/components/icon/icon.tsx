@@ -7,7 +7,7 @@ interface IIconParams {
   id?: string;
   className?: string;
   styleObj?: object;
-  onClick?: () => {};
+  onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onMouseDown?: () => void;
@@ -18,15 +18,16 @@ const Icon = (props: IIconParams) => {
   return (
     <img
       id={props.id}
-      className={`${props.className}`}
-      height={props.iconSize}
       src={props.iconName}
+      height={props.iconSize}
+      className={`icon ${props.className}`}
       style={props.styleObj}
       onClick={props.onClick}
       onError={props.onError}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onMouseDown={props.onMouseDown}
+      alt={`${props.id}_${props.iconSize}_${props.iconName}`}
     />
   );
 };
