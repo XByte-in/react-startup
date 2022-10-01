@@ -12,7 +12,8 @@ function App() {
   });
   return (
     <div className="app">
-      <Icon iconName={Icons.hibiscus} iconSize={IconSize._16} />
+      <div className="app div1"></div>
+      <div className="app div2"></div>
     </div>
   );
 }

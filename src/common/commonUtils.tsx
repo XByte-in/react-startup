@@ -45,16 +45,8 @@ export class CommonUtils {
 
   static loadColors(colors:any){
     var root = document.querySelector(':root') as HTMLElement;   
-    Object.keys(colors).forEach(color_key => {
-      // console.log(color_key)
-      // console.log(colors[color_key])
-      // root?.style?.setProperty(color_key, colors[color_key]);
-      
-      var root_style = getComputedStyle(root);
-      root_style.getPropertyValue(color_key)
-      console.log(root)
-      console.log(root_style)
-      console.log()
-    });    
+    Object.keys(colors).forEach(color_key => {      
+      root?.style?.setProperty(color_key, colors[color_key]);
+    });
   }
 }
