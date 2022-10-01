@@ -1,4 +1,4 @@
-@import "./common/scss/variables";
+@import "./common/scss";
 
 .app {
   &.div1 {
@@ -9,6 +9,6 @@
   &.div2 {
     height: 100px;
     width: 100px;
-    background-image: $gradient_glass;
+    background-image: $gradient_1;
   }
 }
