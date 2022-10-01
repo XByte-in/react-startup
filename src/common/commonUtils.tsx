@@ -49,4 +49,10 @@ export class CommonUtils {
       root?.style?.setProperty(color_key, colors[color_key]);
     });
   }
+  static loadFonts(fonts:any){
+    var root = document.querySelector(':root') as HTMLElement;   
+    Object.keys(fonts).forEach(font_key => {      
+      root?.style?.setProperty(font_key, fonts[font_key]);
+    });
+  }
 }
