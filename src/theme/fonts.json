@@ -1,138 +1,138 @@
 {
-  "flow_title": {
+  "flow-title": {
     "text-align": "left",
     "font-size": "72px",
     "font-weight": "700",
     "line-height": "108px",
     "letter-spacing": "0px"
   },
-  "title_mega_title": {
+  "title-mega-title": {
     "text-align": "left",
     "font-size": "48px",
     "font-weight": "600",
     "line-height": "58px",
     "letter-spacing": "0px"
   },
-  "title_title": {
+  "title-title": {
     "text-align": "left",
     "font-size": "36px",
     "font-weight": "600",
     "line-height": "54px",
     "letter-spacing": "0px"
   },
-  "title_subtitle": {
+  "title-subtitle": {
     "text-align": "left",
     "font-size": "36px",
     "font-weight": "400",
     "line-height": "54px",
     "letter-spacing": "0px"
   },
-  "title_header": {
+  "title-header": {
     "text-align": "left",
     "font-size": "24px",
     "font-weight": "600",
     "line-height": "34px",
     "letter-spacing": "0px"
   },
-  "title_subhead": {
+  "title-subhead": {
     "text-align": "left",
     "font-size": "24px",
     "font-weight": "400",
     "line-height": "36px",
     "letter-spacing": "0px"
   },
-  "body_body_bold": {
+  "body-body-bold": {
     "text-align": "left",
     "font-size": "18px",
     "font-weight": "700",
     "line-height": "27px",
     "letter-spacing": "0px"
   },
-  "body_body_strong": {
+  "body-body-strong": {
     "text-align": "left",
     "font-size": "18px",
     "font-weight": "600",
     "line-height": "27px",
     "letter-spacing": "0px"
   },
-  "body_body_regular": {
+  "body-body-regular": {
     "text-align": "left",
     "font-size": "18px",
     "font-weight": "400",
     "line-height": "27px",
     "letter-spacing": "0px"
   },
-  "body_medium_regular": {
+  "body-medium-regular": {
     "text-align": "left",
     "font-size": "14px",
     "font-weight": "400",
     "line-height": "21px",
     "letter-spacing": "0px"
   },
-  "body_medium_underlined": {
+  "body-medium-underlined": {
     "text-align": "left",
     "font-size": "14px",
     "font-weight": "400",
     "line-height": "21px",
     "letter-spacing": "0px"
   },
-  "body_medium_strong": {
+  "body-medium-strong": {
     "text-align": "left",
     "font-size": "14px",
     "font-weight": "600",
     "line-height": "21px",
     "letter-spacing": "0px"
   },
-  "body_medium_bold": {
+  "body-medium-bold": {
     "text-align": "left",
     "font-size": "14px",
     "font-weight": "700",
     "line-height": "21px",
     "letter-spacing": "0px"
   },
-  "body_small_regular": {
+  "body-small-regular": {
     "text-align": "left",
     "font-size": "12px",
     "font-weight": "400",
     "line-height": "18px",
     "letter-spacing": "0px"
   },
-  "body_small_regular_underlined": {
+  "body-small-regular-underlined": {
     "text-align": "left",
     "font-size": "12px",
     "font-weight": "400",
     "line-height": "18px",
     "letter-spacing": "0px"
   },
-  "body_small_strong": {
+  "body-small-strong": {
     "text-align": "left",
     "font-size": "12px",
     "font-weight": "600",
     "line-height": "18px",
     "letter-spacing": "0px"
   },
-  "body_small_graph_legend": {
+  "body-small-graph-legend": {
     "text-align": "left",
     "font-size": "12px",
     "font-weight": "400",
     "line-height": "12px",
     "letter-spacing": "0px"
   },
-  "body_label": {
+  "body-label": {
     "text-align": "left",
     "font-size": "12px",
     "font-weight": "600",
     "line-height": "18px",
     "letter-spacing": "0px"
   },
-  "body_overline": {
+  "body-overline": {
     "text-align": "left",
     "font-size": "10px",
     "font-weight": "500",
     "line-height": "15px",
     "letter-spacing": "0.05em"
   },
-  "body_overline_strong": {
+  "body-overline-strong": {
     "text-align": "left",
     "font-size": "10px",
     "font-weight": "600",
