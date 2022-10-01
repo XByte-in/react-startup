@@ -1,8 +1,8 @@
+import { JsonValueType } from "./commonConstants";
+
 const STRING_CONSTRUCTOR = "".constructor;
 const ARRAY_CONSTRUCTOR = [].constructor;
 const OBJECT_CONSTRUCTOR = {}.constructor;
-import { JsonValueType } from "./commonConstants";
-
 export class CommonUtils {
   static onlyUnique(str: string, value: string, index: number) {
     return str.indexOf(value) === index;
@@ -41,5 +41,20 @@ export class CommonUtils {
     if (element && element.parentNode) {
       element.parentNode.removeChild(element);
     }
+  }
+
+  static loadColors(colors:any){
+    var root = document.querySelector(':root') as HTMLElement;   
+    Object.keys(colors).forEach(color_key => {
+      // console.log(color_key)
+      // console.log(colors[color_key])
+      // root?.style?.setProperty(color_key, colors[color_key]);
+      
+      var root_style = getComputedStyle(root);
+      root_style.getPropertyValue(color_key)
+      console.log(root)
+      console.log(root_style)
+      console.log()
+    });    
   }
 }

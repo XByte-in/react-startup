@@ -19,7 +19,7 @@ const Translation = ({ children }) => {
     if (lang == null || lang === "") lang = "en-US";
     if (!messages[lang]) lang = "en-US"
     setLanguage(lang);
-  }, []);
+  }, [language]);
 
   const message = language === "en-US"
       ? translation_english
