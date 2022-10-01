@@ -20,7 +20,7 @@ const Icon = (props: IIconParams) => {
       id={props.id}
       src={props.iconName}
       height={props.iconSize}
-      className={`icon ${props.className}`}
+      className={props.className}
       style={props.styleObj}
       onClick={props.onClick}
       onError={props.onError}

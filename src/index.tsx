@@ -1,16 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import store from "./store/store";
+
 import "./index.scss";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import Translation from "./translations/translation";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Translation>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </Translation>
+    </Provider>
   </React.StrictMode>
 );
 
