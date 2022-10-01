@@ -51,8 +51,10 @@ export class CommonUtils {
   }
   static loadFonts(fonts:any){
     var root = document.querySelector(':root') as HTMLElement;   
-    Object.keys(fonts).forEach(font_key => {      
-      root?.style?.setProperty(font_key, fonts[font_key]);
+    Object.keys(fonts).forEach(font_key => {
+      Object.keys(fonts[font_key]).forEach(font_sub_key => {
+        root?.style?.setProperty(`${font_key}-${font_sub_key}`, fonts[font_key][font_sub_key]);
+      });
     });
   }
 }
