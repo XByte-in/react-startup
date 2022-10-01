@@ -5,7 +5,8 @@
   @include font_common_style();
   line-height: var(--flow-title-line-height);
   letter-spacing: var(--flow-title-letter-spacing);
-  font: var(--flow-title-font);
+  font-size: var(--flow-title-font-size);
+  font-weight: var(--flow-title-font-weight);
 }
 @mixin title_mega_title {
   @include font_common_style();

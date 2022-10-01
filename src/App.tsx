@@ -12,9 +12,8 @@ function App() {
     CommonUtils.loadFonts(fonts);
   });
   return (
-    <div className="app">
-      <div className="app div1"></div>
-      <div className="app div2"></div>
+    <div>
+      <label className="flow-title">test</label>
     </div>
   );
 }
