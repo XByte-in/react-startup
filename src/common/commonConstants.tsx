@@ -17,3 +17,9 @@ export enum Type {
   tertiary,
   danger
 };
+
+export enum Size {
+  small,
+  medium,
+  large
+};
