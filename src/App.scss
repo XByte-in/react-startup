@@ -1,5 +1,11 @@
-@import "./common/scss";
-
-.test {
-    @include setImageSize(20rem, 20rem)
+body {
+  @import "./common/scss";
+  font-family: "Poppins";
+  font-style: normal;
+  .test-image {
+    @include setImageSize(20rem, 20rem);
+  }
+  .test-label {
+    @include setImageSize(20rem, 20rem);
+  }
 }

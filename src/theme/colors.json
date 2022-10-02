@@ -30,6 +30,9 @@
   "--color-additional-caution": "rgba(255, 195, 42, 1)",
   "--color-additional-success": "rgba(103, 195, 187, 1)",
 
+  "--color-overlay-dark": "rgba(11, 2, 35, 0.7)",
+
+
   "--gradient-1-color-1":"rgba(81, 165, 201, 1)",
   "--gradient-1-color-2":"rgba(255, 67, 166, 1)",
 

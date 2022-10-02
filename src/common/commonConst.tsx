@@ -11,15 +11,14 @@ export enum JsonValueType {
 }
 
 export enum Type {
-  default,
-  primary,
-  secondary,
-  tertiary,
-  danger
-};
+  default = "default",
+  primary = "primary",
+  secondary = "secondary",
+  danger = "danger",
+}
 
 export enum Size {
-  small,
-  medium,
-  large
-};
+  small = "small",
+  medium = "medium",
+  large = "large",
+}

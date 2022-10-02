@@ -2,7 +2,7 @@ interface IImageParams {
   imageName: string;
   id?: string;
   className?: string;
-  styleObj?: object;
+  styleObj?: { [key: string]: {} };
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
