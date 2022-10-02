@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.scss";
-import { CommonUtils } from "./common/commonUtils";
+import CommonUtils from "./common/commonUtils";
 import Image from "./common/components/image/image";
 import Icon from "./common/components/icon/icon";
 import Label from "./common/components/label/label";

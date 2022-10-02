@@ -3,7 +3,7 @@ import { JsonValueType } from "./commonConst";
 const STRING_CONSTRUCTOR = "".constructor;
 const ARRAY_CONSTRUCTOR = [].constructor;
 const OBJECT_CONSTRUCTOR = {}.constructor;
-export class CommonUtils {
+class CommonUtils {
   static onlyUnique(str: string, value: string, index: number) {
     return str.indexOf(value) === index;
   }
@@ -58,3 +58,5 @@ export class CommonUtils {
     });
   }
 }
+
+export default  CommonUtils
