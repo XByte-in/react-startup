@@ -1,8 +1,5 @@
-import { IconSize } from "../../pictures";
-
-interface IIconParams {
-  iconName: string;
-  iconSize: IconSize;
+interface IImageParams {
+  imageName: string;
   id?: string;
   className?: string;
   styleObj?: object;
@@ -13,12 +10,11 @@ interface IIconParams {
   onError?: () => void;
 }
 
-const Icon = (props: IIconParams) => {
+const Image = (props: IImageParams) => {
   return (
     <img
       id={props.id}
-      src={props.iconName}
-      height={props.iconSize}
+      src={props.imageName}
       className={props.className}
       style={props.styleObj}
       onClick={props.onClick}
@@ -26,8 +22,9 @@ const Icon = (props: IIconParams) => {
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onMouseDown={props.onMouseDown}
-      alt={`${props.id}_${props.iconSize}_${props.iconName}`}
+      alt={`${props.id}_${props.imageName}`}
     />
   );
 };
-export default Icon;
+
+export default Image;
