@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "typeRoots": ["./node_modules/@types", "./src/common/components/google/types"],
     "lib": [
       "dom",
       "dom.iterable",

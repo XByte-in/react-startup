@@ -25,7 +25,7 @@ class CommonUtils {
     eleId: string,
     jsSrcPath: string,
     onLoad: () => void,
-    onError: () => void
+    onError: (error:any) => void
   ) {
     const script = document.createElement(eleTag) as HTMLScriptElement;
     script.id = eleId;
