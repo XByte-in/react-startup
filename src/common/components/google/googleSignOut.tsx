@@ -1,7 +1,5 @@
-import { AnyArray } from "immer/dist/internal";
-
 interface IGoogleSignOutParams {
-  onSignOut: (param: AnyArray) => void;
+  onSignOut: (param: {}) => void;
 }
 const GoogleSignOut = (props: IGoogleSignOutParams) => {
   const revokeGsi = () => {

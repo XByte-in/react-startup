@@ -6,7 +6,7 @@ interface IGoogleSignInParam {
   client_id: string;
   auto_select: boolean;
   cancel_on_tap_outside: boolean;
-  onSignIn: ({}) => void;
+  onSignIn: (param: {}) => void;
 }
 
 const GoogleSignIn = (props: IGoogleSignInParam) => {
