@@ -11,13 +11,11 @@ export enum IconSize {
   // _16 = 16,
   // _24 = 24,
   // _32 = 32,
+  // _40 = 40,
   // _48 = 48,
   // _64 = 64,
+  // _72 = 72,
+  // _128 = 128,
+  // _180 = 180,
 }
 
-
-export const Images = {
-  // hibiscus: hibiscus,
-  // vines: vines,
-  // waterfall: waterfall,
-};
