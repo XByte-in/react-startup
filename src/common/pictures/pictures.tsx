@@ -227,7 +227,7 @@ export const IconSize = {
   _64: "6.4rem",
   _72: "7.2rem",
   _128: "12.8rem",
-  _180: "18.rem",
+  _180: "18rem",
 };
 export const Icons_16px = {
   info: info_16px,

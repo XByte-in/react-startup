@@ -1,8 +1,7 @@
-import { IconSize } from "../../pictures/pictures";
-
+import { useEffect, useState } from "react";
 interface IIconParams {
   iconName: string;
-  iconSize: IconSize;
+  iconSize: string;
   id?: string;
   className?: string;
   styleObj?: { [key: string]: {} };
@@ -14,19 +13,22 @@ interface IIconParams {
 }
 
 const Icon = (props: IIconParams) => {
+  const [styleObject, setStyleObject] = useState({
+    height: props.iconSize,
+    width: props.iconSize,
+  });
+
   return (
     <img
       id={props.id}
       src={props.iconName}
-      height={props.iconSize}
       className={props.className}
-      style={props.styleObj}
+      style={styleObject}
       onClick={props.onClick}
       onError={props.onError}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onMouseDown={props.onMouseDown}
-      alt={`${props.id}_${props.iconSize}_${props.iconName}`}
     />
   );
 };
