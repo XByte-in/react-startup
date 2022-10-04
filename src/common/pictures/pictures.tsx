@@ -218,17 +218,17 @@ import volume_down_40px from "./icons/icons_40px/volume/volume_down.png";
 import logged_out_40px from "./icons/icons_40px/login/logged_out.png";
 import logged_In_40px from "./icons/icons_40px/login/logged_In.png";
 
-export enum IconSize {
-  _16 = 16,
-  _24 = 24,
-  _32 = 32,
-  _40 = 40,
-  _48 = 48,
-  _64 = 64,
-  _72 = 72,
-  _128 = 128,
-  _180 = 180,
-}
+export const IconSize = {
+  _16: "1.6rem",
+  _24: "2.4rem",
+  _32: "3.2rem",
+  _40: "4.0rem",
+  _48: "4.8rem",
+  _64: "6.4rem",
+  _72: "7.2rem",
+  _128: "12.8rem",
+  _180: "18.rem",
+};
 export const icons_16px = {
   info: info_16px,
   warning: warning_16px,
