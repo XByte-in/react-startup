@@ -229,7 +229,7 @@ export const IconSize = {
   _128: "12.8rem",
   _180: "18.rem",
 };
-export const icons_16px = {
+export const Icons_16px = {
   info: info_16px,
   warning: warning_16px,
   tick: tick_16px,
@@ -291,7 +291,7 @@ export const icons_16px = {
   external_link_3: external_link_3_16px,
   external_link_1: external_link_1_16px,
 };
-export const icons_24px = {
+export const Icons_24px = {
   user_profile: user_profile_24px,
   CPU: CPU_24px,
   global_reach: global_reach_24px,
@@ -371,7 +371,7 @@ export const icons_24px = {
   check_cheked: check_cheked_24px,
   check_uncheked: check_uncheked_24px,
 };
-export const icons_32px = {
+export const Icons_32px = {
   home_hover: home_hover_32px,
   home: home_32px,
   twiiter: twiiter_32px,
@@ -384,7 +384,7 @@ export const icons_32px = {
   snapchat: snapchat_32px,
   linkedin: linkedin_32px,
 };
-export const icons_40px = {
+export const Icons_40px = {
   FAQs: FAQs_40px,
   filters: filters_40px,
   dashboard: dashboard_40px,
@@ -431,7 +431,7 @@ export const icons_40px = {
   logged_out: logged_out_40px,
   logged_In: logged_In_40px,
 };
-export const icons_48px = {
+export const Icons_48px = {
   gear: gear_48px,
   instant_play: instant_play_48px,
   exp_reach: exp_reach_48px,
@@ -443,21 +443,21 @@ export const icons_48px = {
   new_game_everyday: new_game_everyday_48px,
   high_quality: high_quality_48px,
 };
-export const icons_64px = {
+export const Icons_64px = {
   cicular_loader: cicular_loader_64px,
   creator_brush: creator_brush_64px,
   creator_studio_outline: creator_studio_outline_64px,
   MGM: MGM_64px,
 };
-export const icons_72px = {
+export const Icons_72px = {
   cloud: cloud_72px,
 };
-export const icons_128px = {
+export const Icons_128px = {
   state_unpublished: state_unpublished_128px,
   state_waiting: state_waiting_128px,
   state_checked: state_checked_128px,
 };
-export const icons_180px = {
+export const Icons_180px = {
   promote_now: promote_now_180px,
   question: question_180px,
   maintenace: maintenace_180px,
