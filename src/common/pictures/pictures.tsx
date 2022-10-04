@@ -1,6 +1,6 @@
 // import hibiscus from "./pictures/hibiscus.png";
-// import vines from "./pictures/vines.png";
-// import waterfall from "./pictures/waterfall.png";
+import vines from "./pictures/vines.png";
+import waterfall from "./pictures/waterfall.png";
 export const Icons = {
   // hibiscus: hibiscus,
   // vines: vines,
