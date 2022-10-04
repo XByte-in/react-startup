@@ -27,16 +27,15 @@ for path, subdirs, files in os.walk(f"{base_path}/icons"):
                 paths_with_spaces.append(import_path)
 # for file in paths_with_spaces:
 #     print(file)
+# for size_key in result.keys():
+#     for file in result[size_key]:
+#         file_name = ntpath.basename(file).replace(".png","")        
+#         print(f'import {file_name}_{size_key.split("_")[1]} from "{file}";')
 for size_key in result.keys():
+    print(f"export const {size_key} =")
+    print("{")
     for file in result[size_key]:
         file_name = ntpath.basename(file).replace(".png","")
-        # print(f'import {file_name} from "{file}";')
-# for size_key in result.keys():
-#     print(f"export const {size_key}")
-#     print("{")
-#     for file in result[size_key]:
-#         file_name = ntpath.basename(file).replace(".png","")
-#         print(f"{file_name}:{file_name},")
-#     print("}")
-        #  print(f'import {file_name} from "{file}";')
+        print(f'{file_name}:{file_name}_{size_key.split("_")[1]},')
+    print("}")
 # print(json.dumps(result, indent = 3))
