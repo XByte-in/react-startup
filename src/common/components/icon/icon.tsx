@@ -1,4 +1,4 @@
-import { IconSize } from "../../pictures";
+import { IconSize } from "../../pictures/pictures";
 
 interface IIconParams {
   iconName: string;
