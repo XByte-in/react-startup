@@ -20,5 +20,6 @@ export enum Type {
 export enum Size {
   small = "small",
   medium = "medium",
+  default = "default",
   large = "large",
 }
