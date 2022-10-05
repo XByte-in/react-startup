@@ -11,7 +11,6 @@ export enum JsonValueType {
 }
 
 export enum Type {
-  default = "default",
   primary = "primary",
   secondary = "secondary",
   danger = "danger",

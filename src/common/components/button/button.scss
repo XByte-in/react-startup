@@ -1,0 +1,130 @@
+.button {
+  @import "../../scss";
+
+  @mixin baseButton() {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-direction: row;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+    padding: 0rem 2.4rem;
+    &:hover {
+      background-color: var(--color-light-100);
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  @mixin smallButton() {
+    border-radius: 0.4rem;
+    height: 2.4rem;
+    @include body_overline_strong();
+    // .loaderIcon {
+    //   margin-right: 6px;
+    //   @include setImageLayout(12px, 12px);
+    //   @include rotate(spin 1s linear infinite);
+    // }
+    // .btnIcon {
+    //   margin-right: 8px;
+    //   @include setImageLayout(28px, 14px);
+    // }
+  }
+  @mixin mediumButton() {
+    border-radius: 0.6rem;
+    height: 3.6rem;
+    @include body_small_strong();
+    // .loaderIcon {
+    //   margin-right: 7px;
+    //   @include setImageLayout(14px, 14px);
+    //   @include rotate(spin 1s linear infinite);
+    // }
+    // .btnIcon {
+    //   margin-right: 4px;
+    //   @include setImageLayout(28px, 14px);
+    // }
+  }
+  @mixin defaultButton() {
+    border-radius: 0.8rem;
+    height: 4.4rem;
+    @include body_medium_strong();
+    // .loaderIcon {
+    //   margin-right: 7px;
+    //   @include setImageLayout(14px, 14px);
+    //   @include rotate(spin 1s linear infinite);
+    // }
+    // .btnIcon {
+    //   margin-right: 4px;
+    //   @include setImageLayout(28px, 14px);
+    // }
+  }
+  @mixin largeButton() {
+    border-radius: 1rem;
+    height: 5.6rem;
+    @include body_body_strong();
+    // .loaderIcon {
+    //   margin-right: 9px;
+    //   @include setImageLayout(18px, 18px);
+    //   @include rotate(spin 1s linear infinite);
+    // }
+    // .btnIcon {
+    //   margin-right: 4px;
+    //   @include setImageLayout(36px, 18px);
+    // }
+  }
+
+  @mixin primaryButton() {
+    border: none;
+    background: var(--color-accent);
+    color: var(--color-white);
+    box-shadow: 0rem 0.8rem 1.6rem rgba(0, 0, 0, 0.1);
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+    &:disabled {
+      background-color: var(--color-light-400);
+      color: var(--color-light-100);
+    }
+  }
+  @mixin secondaryButton() {
+    border: 1px solid var(--color-accent);
+    background: var(--color-white);
+    color: var(--color-accent);
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+    &:disabled {
+      &:disabled {
+        color: var(--color-light-100);
+        border: 1px solid var(--color-light-100);
+      }
+    }
+  }
+
+  @include baseButton();
+  &.small {
+    @include smallButton();
+  }
+  &.medium {
+    @include mediumButton();
+  }
+  &.default {
+    @include defaultButton();
+  }
+  &.large {
+    @include largeButton();
+  }
+
+  &.primary {
+    @include primaryButton();
+  }
+  &.secondary {
+    @include secondaryButton();
+  }
+}

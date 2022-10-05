@@ -12,6 +12,7 @@ import { Size, Type } from "./common/commonConst";
 import { TypographyConst } from "./common/scss/typographyConst";
 import GoogleSignIn from "./common/components/google/googleSignIn";
 import GoogleSignOut from "./common/components/google/googleSignOut";
+import Button from "./common/components/button/button";
 function App() {
   useEffect(() => {
     CommonUtils.loadColors(colors);
@@ -31,7 +32,153 @@ function App() {
         onSignIn={(params) => console.log(params)}
       />
       <GoogleSignOut onSignOut={() => console.log("signedout")}/> */}
-      <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon>
+      {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
+      <table>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.primary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.primary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.primary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.primary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.primary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.primary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.primary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.primary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.secondary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.secondary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.secondary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.secondary}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.secondary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.secondary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.secondary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.secondary}
+              disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
+      </table>
     </div>
   );
 }
