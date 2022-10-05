@@ -105,7 +105,8 @@ function App() {
               onClick={() => console.log("clicked")}
             ></Button>
           </td>
-        </tr>  
+        </tr>
+
         <tr>
           <td>
             <Button
@@ -139,6 +140,48 @@ function App() {
               size={Size.large}
               type={Type.primary}
               disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.primary}
+              disabled={true}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.primary}
+              disabled={true}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.primary}
+              disabled={true}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.primary}
+              disabled={true}
+              isLoading={true}
               btnText="labelTest"
               onClick={() => console.log("clicked")}
             ></Button>
@@ -179,6 +222,44 @@ function App() {
             ></Button>
           </td>
         </tr>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.secondary}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.secondary}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.secondary}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.secondary}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
 
         <tr>
           <td>
@@ -213,6 +294,48 @@ function App() {
               size={Size.large}
               type={Type.secondary}
               disabled={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button
+              size={Size.small}
+              type={Type.secondary}
+              disabled={true}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.medium}
+              type={Type.secondary}
+              disabled={true}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.default}
+              type={Type.secondary}
+              disabled={true}
+              isLoading={true}
+              btnText="labelTest"
+              onClick={() => console.log("clicked")}
+            ></Button>
+          </td>
+          <td>
+            <Button
+              size={Size.large}
+              type={Type.secondary}
+              disabled={true}
+              isLoading={true}
               btnText="labelTest"
               onClick={() => console.log("clicked")}
             ></Button>

@@ -2,7 +2,7 @@ import Icon from "../icon/icon";
 import FormattedText from "../formattedText/formattedText";
 import { Type, Size } from "../../commonConst";
 import "./button.scss";
-import { Icons_16px } from "../../pictures/pictures";
+import { Icons_64px } from "../../pictures/pictures";
 
 interface IButtonParams {
   btnText: string;
@@ -21,7 +21,7 @@ interface IButtonParams {
 }
 
 const Button = (props: IButtonParams) => {
-  const loader_image = Icons_16px.round_loader_animation_1;
+  const loader_image = Icons_64px.cicular_loader;
   return (
     <button
       id={props.id}
