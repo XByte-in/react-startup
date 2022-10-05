@@ -33,6 +33,7 @@ function App() {
       />
       <GoogleSignOut onSignOut={() => console.log("signedout")}/> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
+      <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon>
       <table>
         <tr>
           <td>

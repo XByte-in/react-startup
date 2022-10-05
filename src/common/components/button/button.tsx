@@ -32,7 +32,7 @@ const Button = (props: IButtonParams) => {
     >
       <>
         {props.isLoading && !(props.disabled ?? false) &&(
-          <Icon className="loader-icon" iconName={loader_image} />
+          <Icon className="btn-icon" iconName={loader_image} />
         )}
         {/* {!isLoading && btnImageClass && (
           <Icon className="btnIcon" imageClass={`${size}-${btnImageClass}`} alt=""/>

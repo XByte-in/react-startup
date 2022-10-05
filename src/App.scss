@@ -3,7 +3,8 @@ body {
   font-family: "Poppins";
   font-style: normal;
   .test-image {
-    @include setImageSize(20rem, 20rem);
+    height: 10rem;
+    // @include setImageSize(20rem, 20rem);
   }
   .test-label {
     @include setImageSize(20rem, 20rem);
