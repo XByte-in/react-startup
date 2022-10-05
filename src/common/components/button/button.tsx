@@ -16,8 +16,7 @@ interface IButtonParams {
   styleObj?: { [key: string]: {} };
   onClick: () => void;
 
-  leftIconName?: string;
-  rightIconName?: string;
+  btnIconName?: string;
 }
 
 const Button = (props: IButtonParams) => {
@@ -31,12 +30,12 @@ const Button = (props: IButtonParams) => {
       onClick={props.onClick}
     >
       <>
-        {props.isLoading && !(props.disabled ?? false) &&(
-          <Icon className="btn-icon" iconName={loader_image} />
+        {props.isLoading && (!props.disabled) &&(
+          <Icon className="btn-icon rotate" iconName={loader_image} />
         )}
-        {/* {!isLoading && btnImageClass && (
-          <Icon className="btnIcon" imageClass={`${size}-${btnImageClass}`} alt=""/>
-        )} */}
+        {!props.isLoading && props.btnIconName && (
+          <Icon className="btn-icon" iconName={props.btnIconName} />
+        )}
         <span>
           <FormattedText text={props.btnText} />
         </span>

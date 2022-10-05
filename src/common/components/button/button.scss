@@ -1,6 +1,8 @@
 .button {
   @import "../../scss";
-
+  .rotate {
+    @include rotate(spin 1s linear infinite);
+  }
   @mixin baseButton() {
     cursor: pointer;
     display: flex;
@@ -22,21 +24,19 @@
   @mixin smallButton() {
     border-radius: 0.4rem;
     height: 2.4rem;
-    @include body_overline_strong();
+    @include body_overline_strong();    
     .btn-icon {
       margin-right: 0.5rem;
       @include setImageSize(1.5rem, 1.5rem);
-      @include rotate(spin 1s linear infinite);
     }
   }
   @mixin mediumButton() {
     border-radius: 0.6rem;
     height: 3.6rem;
-    @include body_small_strong();
+    @include body_small_strong();    
     .btn-icon {
       margin-right: 0.6rem;
       @include setImageSize(1.8rem, 1.8rem);
-      @include rotate(spin 1s linear infinite);
     }
   }
   @mixin defaultButton() {
@@ -46,7 +46,6 @@
     .btn-icon {
       margin-right: 0.7rem;
       @include setImageSize(2.1rem, 2.1rem);
-      @include rotate(spin 1s linear infinite);
     }
   }
   @mixin largeButton() {
@@ -56,7 +55,6 @@
     .btn-icon {
       margin-right: 0.9rem;
       @include setImageSize(2.7rem, 2.7rem);
-      @include rotate(spin 1s linear infinite);
     }
   }
 
