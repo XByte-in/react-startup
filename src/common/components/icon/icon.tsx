@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 interface IIconParams {
   iconName: string;
-  iconSize: string;
+  iconSize?: string;
   id?: string;
   className?: string;
   styleObj?: { [key: string]: {} };
@@ -13,7 +13,7 @@ interface IIconParams {
 }
 
 const Icon = (props: IIconParams) => {
-  const [styleObject, setStyleObject] = useState({
+  const [styleObject] = useState({
     height: props.iconSize,
     width: props.iconSize,
   });
@@ -29,6 +29,7 @@ const Icon = (props: IIconParams) => {
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onMouseDown={props.onMouseDown}
+      alt=""
     />
   );
 };

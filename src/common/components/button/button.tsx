@@ -21,7 +21,7 @@ interface IButtonParams {
 }
 
 const Button = (props: IButtonParams) => {
-  const loader_image = Icons_16px.round_loader_animation_1
+  const loader_image = Icons_16px.round_loader_animation_1;
   return (
     <button
       id={props.id}
@@ -31,10 +31,10 @@ const Button = (props: IButtonParams) => {
       onClick={props.onClick}
     >
       <>
-        {/* {isLoading && (
-          <Icon className="loaderIcon" iconName={`${size}-${loaderImageClass}`}/>
+        {props.isLoading && (
+          <Icon className="loader-icon" iconName={loader_image} />
         )}
-        {!isLoading && btnImageClass && (
+        {/* {!isLoading && btnImageClass && (
           <Icon className="btnIcon" imageClass={`${size}-${btnImageClass}`} alt=""/>
         )} */}
         <span>
