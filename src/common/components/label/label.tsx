@@ -11,13 +11,6 @@ interface ILabelParam {
   id?: string;
   className?: string;
   styleObj?: { [key: string]: {} };
-
-  // id = "",
-  // className = "body-body-regular",
-  // styleObj = {},
-  // type = Type.default,
-  // size = Size.medium,
-  // labelText = "appName",
 }
 const Label = (props: ILabelParam) => {
   return (
