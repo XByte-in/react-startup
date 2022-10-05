@@ -31,7 +31,7 @@ const Button = (props: IButtonParams) => {
       onClick={props.onClick}
     >
       <>
-        {props.isLoading && (
+        {props.isLoading && !(props.disabled ?? false) &&(
           <Icon className="loader-icon" iconName={loader_image} />
         )}
         {/* {!isLoading && btnImageClass && (
