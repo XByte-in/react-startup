@@ -31,10 +31,10 @@ function App() {
         cancel_on_tap_outside={false}
         onSignIn={(params) => console.log(params)}
       />
-      <GoogleSignOut onSignOut={() => console.log("signedout")}/> */}
+      <GoogleSignOut onSignOut={(result) => console.log(result)}/> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
-      <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon>
-      <table>
+      {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
+      {/* <table>
         <tr>
           <td>
             <Button
@@ -342,7 +342,7 @@ function App() {
             ></Button>
           </td>
         </tr>
-      </table>
+      </table> */}
     </div>
   );
 }

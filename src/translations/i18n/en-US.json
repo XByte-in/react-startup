@@ -1,3 +1,5 @@
 {
-    "labelTest":"Label in english US"
+    "labelTest":"Label in english US",
+    "signinWithGoogle":"Sign-in with google",
+    "signoutWithGoogle":"Sign-out"
 }

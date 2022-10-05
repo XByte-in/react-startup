@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import CommonUtils from "../../commonUtils";
+import Button from "../button/button";
+import { Size, Type } from "../../commonConst";
+import { Icons_32px } from "../../pictures/pictures";
 
 interface IGoogleSignInParam {
   client_id: string;
@@ -53,12 +56,13 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
     );
   };
   useEffect(() => signinInit(), []);
-  return gsiInitialized ? (
-    <div className="g_id_signin" onClick={() => signinInit()}>
-      Sign-in with Google
-    </div>
-  ) : (
-    <button>SignIn</button>
-  );
+  return (
+    <Button
+      size={Size.default}
+      type={Type.secondary}
+      btnText="signinWithGoogle" btnIconName={Icons_32px.google_2}
+      onClick={() => gsiInitialized ?window.google.accounts.id.prompt():signinInit()}
+    ></Button>
+  )
 };
 export default GoogleSignIn;

@@ -1,3 +1,7 @@
+import { Size, Type } from "../../commonConst";
+import { Icons_32px } from "../../pictures/pictures";
+import Button from "../button/button";
+
 interface IGoogleSignOutParams {
   onSignOut: (param: {}) => void;
 }
@@ -12,9 +16,15 @@ const GoogleSignOut = (props: IGoogleSignOutParams) => {
     );
   };
   return (
-    <button className="g_id_signout" onClick={() => revokeGsi()}>
-      SignOut
-    </button>
+    <Button
+      size={Size.default}
+      type={Type.secondary}
+      btnText="signoutWithGoogle" btnIconName={Icons_32px.google_2}
+      onClick={() => revokeGsi()}
+    ></Button>
+    // <button className="g_id_signout" onClick={() => revokeGsi()}>
+    //   SignOut
+    // </button>
   );
 };
 
