@@ -1,92 +1,142 @@
 {
-  "apk_source": "upload_file",
+  "apk_source": "google_play_link",
   "app_assets": [],
-  "app_assets_source": "manual",
-  "app_category": {},
+  "app_assets_source": "google_play_store",
+  "app_category": {
+    "en": "Social"
+  },
   "app_description": {},
   "app_developer_info": {
-    "developer_name": "",
-    "official_email_id": "",
+    "developer_name": "TikTok Pte. Ltd.",
+    "official_email_id": "vinay.bajaj@bluestacks.com",
     "official_website": "",
     "privacy_policy": "",
     "terms_of_services": ""
   },
-  "app_id": "6246a940d7db50653f42fcae",
-  "app_pkg_name": "com.automation_test_app_package_125647",
-  "app_playstore_apk_url": "",
-  "app_playstore_url": "",
-  "app_prod_url": "euudgd",
-  "app_published_regions": {},
+  "app_id": "62f111bc4e7bf7cd0ec80d51",
+  "app_pkg_name": "com.zhiliaoapp.musically",
+  "app_playstore_apk_url": "https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically&gl=us",
+  "app_playstore_url": "https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically&gl=us",
+  "app_prod_url": "https://now.gg/play/tiktok/4478/tiktok",
+  "app_published_regions": {
+    "APAC": [],
+    "EasternEurope": [],
+    "India": [],
+    "Japan": [],
+    "MEA": [],
+    "NorthAmerica": ["CA", "US"],
+    "SouthAmerica": [],
+    "SouthEastAsia": [],
+    "SouthKorea": [],
+    "WesternEurope": []
+  },
   "app_sub_category": {},
-  "app_testing_url": "hdbhd",
-  "app_title": {},
+  "app_testing_url": "NA",
+  "app_title": {
+    "en": "TikTok"
+  },
   "app_version": "",
   "app_version_code": null,
   "comments": [
     {
-      "comment_text": "dbd",
+      "comment_text": "App was requested by Ravi sir & Ashish Pathak as part of an experiment.",
       "commented_at": {
-        "$date": 1652077004541
+        "$date": 1665065134320
       },
-      "commented_by": "pranshu.gupta@bluestacks.com",
+      "commented_by": "shubham@bluestacks.com",
+      "from_state": "published",
+      "to_state": "published"
+    },
+    {
+      "comment_text": "App live",
+      "commented_at": {
+        "$date": 1665061087002
+      },
+      "commented_by": "tanvi.rawat@bluestacks.com",
       "from_state": "ready_for_publishing",
       "to_state": "published"
     },
     {
-      "comment_text": " hbd",
+      "comment_text": "App live in US and CA. It was made live with the existing issues. ",
       "commented_at": {
-        "$date": 1652076992296
+        "$date": 1665061004633
       },
-      "commented_by": "pranshu.gupta@bluestacks.com",
+      "commented_by": "tanvi.rawat@bluestacks.com",
       "from_state": "under_testing",
       "to_state": "ready_for_publishing"
     },
     {
-      "comment_text": "hdbdh",
+      "comment_text": "QA: Akshit",
       "commented_at": {
-        "$date": 1652076981752
+        "$date": 1665037438379
       },
-      "commented_by": "pranshu.gupta@bluestacks.com",
+      "commented_by": "tanvi.rawat@bluestacks.com",
       "from_state": "submitted",
       "to_state": "under_testing"
     },
     {
-      "comment_text": "test_automation",
+      "comment_text": "App will get live in US and CA with existing issues. https://bluestacks.atlassian.net/browse/NG-2220  https://bluestacks.atlassian.net/browse/NG-2221\nhttps://bluestacks.atlassian.net/browse/NG-2222",
       "commented_at": {
-        "$date": 1648798121211
+        "$date": 1665037416242
       },
-      "commented_by": "testautomation@bluestacks.com",
+      "commented_by": "tanvi.rawat@bluestacks.com",
+      "from_state": "submitted",
+      "to_state": "submitted"
+    },
+    {
+      "comment_text": "camera support not available as of now",
+      "commented_at": {
+        "$date": 1660648654129
+      },
+      "commented_by": "vinay.bajaj@bluestacks.com",
+      "from_state": "draft",
+      "to_state": "draft"
+    }
+  ],
+  "created_at": 1659965884418,
+  "created_by": "internal-apps@now.gg",
+  "custom_domain_url": "",
+  "dev_apk_link": "",
+  "developer_comments": [
+    {
+      "comment_text": "",
+      "commented_at": {
+        "$date": 1665037199237
+      },
+      "commented_by": "studio-admin@now.gg",
+      "from_state": "draft",
+      "to_state": "submitted"
+    },
+    {
+      "comment_text": "Not picked by QA due to some issue. Will submit it later when QA will pick this app for testing.",
+      "commented_at": {
+        "$date": 1660648033763
+      },
+      "commented_by": "studio-admin@now.gg",
+      "from_state": "submitted",
+      "to_state": "draft"
+    },
+    {
+      "comment_text": "",
+      "commented_at": {
+        "$date": 1659965932791
+      },
+      "commented_by": "internal-apps@now.gg",
       "from_state": "draft",
       "to_state": "submitted"
     }
   ],
-  "created_at": 1648798016086,
-  "created_by": "testAutomation@bluestacks.com",
-  "custom_domain_url": "",
-  "dev_apk_link": "",
-  "developer_comments": [],
   "iap_integration": false,
-  "id": "6246a940d7db50653f42fcaf",
-  "last_updated_by": "pranshu.gupta@bluestacks.com",
+  "id": "62f111bc4e7bf7cd0ec80d52",
+  "last_updated_by": "shubham@bluestacks.com",
   "launch_date_time": null,
   "live_apk_url": "",
   "login_integration": false,
-  "modified_at": 1652077004541,
+  "modified_at": 1665065134320,
   "nft_integration": false,
-  "optimize_cloud_storage": false,
-  "optimize_cloud_storage_path": {},
-  "rewarded_ads_integration": false,
   "ssl_keys": {
-    "domain_mapping": {
-      "domain_type": "t",
-      "name": "t",
-      "value": "t"
-    },
-    "ssl_mapping": {
-      "name": "t",
-      "ssl_type": "t",
-      "value": "t"
-    }
+    "domain_mapping": {},
+    "ssl_mapping": {}
   },
   "submission_state": "published",
   "submission_type": "full",

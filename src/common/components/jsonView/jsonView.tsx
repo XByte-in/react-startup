@@ -35,13 +35,22 @@ const JsonView = (props: IJsonViewParam) => {
     const val = JSON.stringify(stringData);
     if (val.includes("https://") || val.includes("http://"))
       return (
-        <a target="_blank" rel="noreferrer" href={stringData}>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={stringData}
+          className="td-string"
+        >
           {stringData}
         </a>
       );
     if (CommonUtils.jsonValueType(stringData) === JsonValueType.boolean)
       stringData = stringData.toString();
-    return <span key={Math.random().toString()}>{stringData}&emsp;</span>;
+    return (
+      <span key={Math.random().toString()} className="td-string">
+        {stringData}
+      </span>
+    );
   }
 
   function getFormattedArray(arrayData: any) {
