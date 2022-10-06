@@ -17,6 +17,9 @@ import Button from "./common/components/button/button";
 import type { RootState } from "./store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo, removeUseInfo } from "./store/userInfoSlice";
+
+import jsonTest from "./jsonTest.json";
+import JsonView from "./common/components/jsonView/jsonView";
 function App() {
   const userEmail = useSelector((state: RootState) => state.userInfo.email);
   const dispatch = useDispatch();
@@ -26,6 +29,7 @@ function App() {
   });
   return (
     <div>
+      <JsonView jsonObject={jsonTest}></JsonView>
       {/* <Image imageName={Images.hibiscus} className="test"></Image> */}
       {/* <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.default}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.primary}></Label>

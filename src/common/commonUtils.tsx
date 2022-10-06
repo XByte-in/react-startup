@@ -63,19 +63,19 @@ class CommonUtils {
 
   static reorderJsonObject(
     jsonObject: { [key: string]: any },
-    topElements: Array<string>,
-    bottomElements: Array<string>
+    topElements?: Array<string>,
+    bottomElements?: Array<string>
   ) {
     const orderedJsonObject: { [key: string]: any } = {};
-    topElements.forEach((key) => {
+    topElements?.forEach((key) => {
       if (jsonObject.hasOwnProperty(key))
         orderedJsonObject[key] = jsonObject[key];
     });
     Object.keys(jsonObject).forEach((key) => {
-      if (!topElements.includes(key) && !bottomElements.includes(key))
+      if (!topElements?.includes(key) && !bottomElements?.includes(key))
         orderedJsonObject[key] = jsonObject[key];
     });
-    bottomElements.forEach((key) => {
+    bottomElements?.forEach((key) => {
       if (jsonObject.hasOwnProperty(key))
         orderedJsonObject[key] = jsonObject[key];
     });
