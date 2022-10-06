@@ -25,7 +25,7 @@ class CommonUtils {
     eleId: string,
     jsSrcPath: string,
     onLoad: () => void,
-    onError: (error:any) => void
+    onError: (error: any) => void
   ) {
     const script = document.createElement(eleTag) as HTMLScriptElement;
     script.id = eleId;
@@ -53,10 +53,34 @@ class CommonUtils {
     var root = document.querySelector(":root") as HTMLElement;
     Object.keys(fonts).forEach((font_key) => {
       Object.keys(fonts[font_key]).forEach((font_sub_key) => {
-        root?.style?.setProperty(`${font_key}-${font_sub_key}`, fonts[font_key][font_sub_key]);
+        root?.style?.setProperty(
+          `${font_key}-${font_sub_key}`,
+          fonts[font_key][font_sub_key]
+        );
       });
     });
   }
+
+  static reorderJsonObject(
+    jsonObject: { [key: string]: any },
+    topElements: Array<string>,
+    bottomElements: Array<string>
+  ) {
+    const orderedJsonObject: { [key: string]: any } = {};
+    topElements.forEach((key) => {
+      if (jsonObject.hasOwnProperty(key))
+        orderedJsonObject[key] = jsonObject[key];
+    });
+    Object.keys(jsonObject).forEach((key) => {
+      if (!topElements.includes(key) && !bottomElements.includes(key))
+        orderedJsonObject[key] = jsonObject[key];
+    });
+    bottomElements.forEach((key) => {
+      if (jsonObject.hasOwnProperty(key))
+        orderedJsonObject[key] = jsonObject[key];
+    });
+    return orderedJsonObject;
+  }
 }
 
-export default  CommonUtils
+export default CommonUtils;
