@@ -57,7 +57,7 @@ const JsonView = (props: IJsonViewParam) => {
     const divContent: any = arrayData.map((arrayItem: any) =>
       getFormattedData(arrayItem)
     );
-    return <span>{divContent}</span>;
+    return <>{divContent}</>;
   }
 
   function getFormattedObject(jsonData: { [key: string]: any }): JSX.Element {
