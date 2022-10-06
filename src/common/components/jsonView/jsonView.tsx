@@ -39,7 +39,7 @@ const JsonView = (props: IJsonViewParam) => {
     const dataType = CommonUtils.jsonValueType(data);
     let result:JSX.Element;
     if (dataType === JsonValueType.object) result = getFormattedObject(data);
-    else if (dataType === JsonValueType.string)
+    else if (dataType === JsonValueType.array)
       result = getFormattedArray(data);
     else result = getFormattedString(data);
     return result;

@@ -1,5 +1,94 @@
 {
-  "bool": false,
-  "number":15,
-  "string":"string"
+  "apk_source": "upload_file",
+  "app_assets": [],
+  "app_assets_source": "manual",
+  "app_category": {},
+  "app_description": {},
+  "app_developer_info": {
+    "developer_name": "",
+    "official_email_id": "",
+    "official_website": "",
+    "privacy_policy": "",
+    "terms_of_services": ""
+  },
+  "app_id": "6246a940d7db50653f42fcae",
+  "app_pkg_name": "com.automation_test_app_package_125647",
+  "app_playstore_apk_url": "",
+  "app_playstore_url": "",
+  "app_prod_url": "euudgd",
+  "app_published_regions": {},
+  "app_sub_category": {},
+  "app_testing_url": "hdbhd",
+  "app_title": {},
+  "app_version": "",
+  "app_version_code": null,
+  "comments": [
+    {
+      "comment_text": "dbd",
+      "commented_at": {
+        "$date": 1652077004541
+      },
+      "commented_by": "pranshu.gupta@bluestacks.com",
+      "from_state": "ready_for_publishing",
+      "to_state": "published"
+    },
+    {
+      "comment_text": " hbd",
+      "commented_at": {
+        "$date": 1652076992296
+      },
+      "commented_by": "pranshu.gupta@bluestacks.com",
+      "from_state": "under_testing",
+      "to_state": "ready_for_publishing"
+    },
+    {
+      "comment_text": "hdbdh",
+      "commented_at": {
+        "$date": 1652076981752
+      },
+      "commented_by": "pranshu.gupta@bluestacks.com",
+      "from_state": "submitted",
+      "to_state": "under_testing"
+    },
+    {
+      "comment_text": "test_automation",
+      "commented_at": {
+        "$date": 1648798121211
+      },
+      "commented_by": "testautomation@bluestacks.com",
+      "from_state": "draft",
+      "to_state": "submitted"
+    }
+  ],
+  "created_at": 1648798016086,
+  "created_by": "testAutomation@bluestacks.com",
+  "custom_domain_url": "",
+  "dev_apk_link": "",
+  "developer_comments": [],
+  "iap_integration": false,
+  "id": "6246a940d7db50653f42fcaf",
+  "last_updated_by": "pranshu.gupta@bluestacks.com",
+  "launch_date_time": null,
+  "live_apk_url": "",
+  "login_integration": false,
+  "modified_at": 1652077004541,
+  "nft_integration": false,
+  "optimize_cloud_storage": false,
+  "optimize_cloud_storage_path": {},
+  "rewarded_ads_integration": false,
+  "ssl_keys": {
+    "domain_mapping": {
+      "domain_type": "t",
+      "name": "t",
+      "value": "t"
+    },
+    "ssl_mapping": {
+      "name": "t",
+      "ssl_type": "t",
+      "value": "t"
+    }
+  },
+  "submission_state": "published",
+  "submission_type": "full",
+  "uploaded_apk_url": ""
 }
