@@ -35,12 +35,11 @@ const JsonView = (props: IJsonViewParam) => {
     return <span key={Math.random().toString()}>{stringData}&emsp;</span>;
   }
 
-  function getFormattedData(data: any):JSX.Element {
+  function getFormattedData(data: any): JSX.Element {
     const dataType = CommonUtils.jsonValueType(data);
-    let result:JSX.Element;
+    let result: JSX.Element;
     if (dataType === JsonValueType.object) result = getFormattedObject(data);
-    else if (dataType === JsonValueType.array)
-      result = getFormattedArray(data);
+    else if (dataType === JsonValueType.array) result = getFormattedArray(data);
     else result = getFormattedString(data);
     return result;
   }
@@ -52,7 +51,7 @@ const JsonView = (props: IJsonViewParam) => {
     return <span>{divContent}</span>;
   }
 
-  function getFormattedObject(jsonData: { [key: string]: any }):JSX.Element {
+  function getFormattedObject(jsonData: { [key: string]: any }): JSX.Element {
     const keys = Object.keys(jsonData);
     if (keys.length === 0) return <></>;
     const tableContent = keys.map((key) =>
