@@ -22,6 +22,15 @@ const JsonView = (props: IJsonViewParam) => {
     setFormattedJsonObject(getFormattedData(orderedResponse));
   }, [props.jsonObject]);
 
+  function getFormattedData(data: any): JSX.Element {
+    const dataType = CommonUtils.jsonValueType(data);
+    let result: JSX.Element;
+    if (dataType === JsonValueType.object) result = getFormattedObject(data);
+    else if (dataType === JsonValueType.array) result = getFormattedArray(data);
+    else result = getFormattedString(data);
+    return result;
+  }
+
   function getFormattedString(stringData: any) {
     const val = JSON.stringify(stringData);
     if (val.includes("https://") || val.includes("http://"))
@@ -33,15 +42,6 @@ const JsonView = (props: IJsonViewParam) => {
     if (CommonUtils.jsonValueType(stringData) === JsonValueType.boolean)
       stringData = stringData.toString();
     return <span key={Math.random().toString()}>{stringData}&emsp;</span>;
-  }
-
-  function getFormattedData(data: any): JSX.Element {
-    const dataType = CommonUtils.jsonValueType(data);
-    let result: JSX.Element;
-    if (dataType === JsonValueType.object) result = getFormattedObject(data);
-    else if (dataType === JsonValueType.array) result = getFormattedArray(data);
-    else result = getFormattedString(data);
-    return result;
   }
 
   function getFormattedArray(arrayData: any) {
@@ -77,11 +77,11 @@ const JsonView = (props: IJsonViewParam) => {
       CommonUtils.jsonValueType(value) === JsonValueType.boolean ||
       CommonUtils.jsonValueType(value) === JsonValueType.number
     )
-      clsName = `${clsName} Td-String-Cell`;
+      clsName = "td-string";
     const formattedVal = getFormattedData(value);
     return (
       <tr key={field}>
-        <td className="Td-Field Td-String-Cell" aria-label={`${field}`}>
+        <td className="td-field td-string" aria-label={`${field}`}>
           {field}
         </td>
         <td aria-label={`${field} value`}>
@@ -90,6 +90,6 @@ const JsonView = (props: IJsonViewParam) => {
       </tr>
     );
   }
-  return <div>{formattedJsonObject}</div>;
+  return <div className="json-view">{formattedJsonObject}</div>;
 };
 export default JsonView;

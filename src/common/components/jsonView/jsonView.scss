@@ -1,102 +1,39 @@
-.SubmissionDetail {
-  .header-left-panel {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .Submission-Action-Options {
-    width: 170px !important;
-    height: 35px !important;
-  }
-
-  .Submission-Detail {
-    padding: 20px 100px 25px 100px;
-  }
-
+.json-view {
+  @import "../../scss";
   table {
     border-collapse: collapse;
     width: 100%;
   }
   th {
-    font-size: 14px;
-    color: #5b5273;
-    border: 1px solid #dddddd;
-    background-color: #ccc;
-    padding: 5px 10px;
+    @include body_medium_bold();
+    padding: 0.5rem 1rem;
+    background-color: var(--color-base);
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
   }
   td {
-    font-size: 14px;
-    color: #5b5273;
-    height: 25px;
-    border: 1px solid #dddddd;
-    padding: 0px;
+    @include body_medium_regular();
+    color: var(--color-base);
+    border: 1px solid var(--color-base);
+    padding: 0rem;
 
-    .Td-String-Cell {
-      padding: 6px 12px;
+    .td-string {
+      padding: 0.5rem 1rem;
     }
   }
 
-  .Td-String-Cell {
-    padding: 6px 12px;
+  .td-string {
+    padding: 0.5rem 1rem;
   }
 
   .value-cell {
-    padding: 6px;
+    padding: 0rem;
   }
 
   tr:nth-child(odd) {
-    background-color: rgb(245, 245, 245);
+    background-color: var(--color-surface);
   }
   tr:nth-child(even) {
-    background-color: #fff;
-  }
-
-  .Submission-State {
-    color: #ff2aa4;
-  }
-
-  .Submission-URL {
-    display: none;
-    margin: 0px 100px 10px 100px;
-    height: 37px;
-  }
-  .Submission-URL-Show {
-    display: flex;
-  }
-  .Submission-URL-Label {
-    font-weight: 600;
-    padding: 6px 10px 6px 0px;
-  }
-  .Submission-URL-Input {
-    height: 25px;
-    width: calc(100% - 80px);
-  }
-  input:invalid {
-    border-color: #de5a48;
-  }
-  .TextArea-Field {
-    height: 50px;
-    min-height: 30px;
-    max-height: 250px;
-    width: calc(100% - 100px);
-    max-width: calc(100% - 80px);
-    min-width: calc(100% - 125px);
-    margin-right: 25px;
-  }
-
-  .left-buttons {
-    display: flex;
-    gap: 8px;
-  }
-
-  .right-buttons {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .decompilation-results-popup-table {
-    box-shadow: none;
+    background-color: var(--color-background);
   }
 }
