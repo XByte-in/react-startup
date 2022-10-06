@@ -4,11 +4,11 @@ const STRING_CONSTRUCTOR = "".constructor;
 const ARRAY_CONSTRUCTOR = [].constructor;
 const OBJECT_CONSTRUCTOR = {}.constructor;
 class CommonUtils {
-  static onlyUnique(str: string, value: string, index: number) {
+  static onlyUnique = (str: string, value: string, index: number) => {
     return str.indexOf(value) === index;
-  }
+  };
 
-  static jsonValueType(value: any): JsonValueType {
+  static jsonValueType = (value: any): JsonValueType => {
     if (value === null) return JsonValueType.null;
     if (value === undefined) return JsonValueType.undefined;
     if (value.constructor === Boolean) return JsonValueType.boolean;
@@ -18,15 +18,15 @@ class CommonUtils {
     if (value.constructor === OBJECT_CONSTRUCTOR) return JsonValueType.object;
     if (value.constructor === Function) return JsonValueType.function;
     return JsonValueType.none;
-  }
+  };
 
-  static loadScript(
+  static loadScript = (
     eleTag: string,
     eleId: string,
     jsSrcPath: string,
     onLoad: () => void,
     onError: (error: any) => void
-  ) {
+  ) => {
     const script = document.createElement(eleTag) as HTMLScriptElement;
     script.id = eleId;
     script.src = jsSrcPath;
@@ -34,22 +34,23 @@ class CommonUtils {
     script.onload = onLoad;
     script.onerror = onError;
     document.querySelector("body")?.appendChild(script);
-  }
+  };
 
-  static unloadScript(eleId: string) {
+  static unloadScript = (eleId: string) => {
     const element = document.getElementById(eleId) as Node;
     if (element && element.parentNode) {
       element.parentNode.removeChild(element);
     }
-  }
+  };
 
-  static loadColors(colors: any) {
+  static loadColors = (colors: any) => {
     var root = document.querySelector(":root") as HTMLElement;
     Object.keys(colors).forEach((color_key) => {
       root?.style?.setProperty(color_key, colors[color_key]);
     });
-  }
-  static loadFonts(fonts: any) {
+  };
+
+  static loadFonts = (fonts: any) => {
     var root = document.querySelector(":root") as HTMLElement;
     Object.keys(fonts).forEach((font_key) => {
       Object.keys(fonts[font_key]).forEach((font_sub_key) => {
@@ -59,13 +60,13 @@ class CommonUtils {
         );
       });
     });
-  }
+  };
 
-  static reorderJsonObject(
+  static reorderJsonObject = (
     jsonObject: { [key: string]: any },
     topElements?: Array<string>,
     bottomElements?: Array<string>
-  ) {
+  ) => {
     const orderedJsonObject: { [key: string]: any } = {};
     topElements?.forEach((key) => {
       if (jsonObject.hasOwnProperty(key))
@@ -80,10 +81,10 @@ class CommonUtils {
         orderedJsonObject[key] = jsonObject[key];
     });
     return orderedJsonObject;
-  }
-  static jsToDateString(jsDate: Date, showSeconds = false) {
-    if (!jsDate) return "";
+  };
 
+  static jsToDateString = (jsDate: Date, showSeconds = false) => {
+    if (!jsDate) return "";
     return jsDate.toLocaleString("en-IN", {
       year: "numeric",
       month: "short",
@@ -92,7 +93,31 @@ class CommonUtils {
       minute: "numeric",
       second: showSeconds ? "numeric" : undefined,
     });
-  }
+  };
+
+  static isValidURL = (text: string) => {
+    const urlRegex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+    return text.match(urlRegex);
+  };
+
+  static convertUrlInString = (words: Array<string>) => {
+    const encodeHTML = (text: string) => {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#x27;");
+    };
+    return words.map((word) => {
+      const encodedWord = encodeHTML(word);
+      if (CommonUtils.isValidURL(encodedWord)) {
+        return `<a href="${encodedWord}" target="_blank">${encodedWord}</a>`;
+      }
+      return encodedWord;
+    });
+  };
 }
 
 export default CommonUtils;

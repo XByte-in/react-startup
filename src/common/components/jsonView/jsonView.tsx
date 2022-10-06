@@ -11,7 +11,7 @@ interface IJsonViewParam {
 }
 
 const JsonView = (props: IJsonViewParam) => {
-  const [formattedJsonObject, setFormattedJsonObject] = useState(<div></div>);
+  const [formattedJsonObject, setFormattedJsonObject] = useState(<></>);
 
   useEffect(() => {
     const orderedResponse = CommonUtils.reorderJsonObject(
@@ -70,91 +70,6 @@ const JsonView = (props: IJsonViewParam) => {
     );
   }
 
-  function insertCommentText(text: string) {
-    return { __html: text };
-  }
-
-  function isValidURL(text: string) {
-    const urlRegex =
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
-    return text.match(urlRegex);
-  }
-
-  function encodeHTML(text: string) {
-    return text
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#x27;");
-  }
-
-  function addLinkstoWords(words: Array<string>) {
-    return words.map((word) => {
-      const encodedWord = encodeHTML(word);
-      if (isValidURL(encodedWord)) {
-        return `<a href="${encodedWord}" target="_blank">${encodedWord}</a>`;
-      }
-      return encodedWord;
-    });
-  }
-
-  function getCommentsTable(value: Array<any>) {
-    const comments = value.map((comment) => {
-      const commentWords = comment.comment_text
-        .split("\n")
-        .join(" ")
-        .split(" ");
-      const commentWordsWithLinks = addLinkstoWords(commentWords);
-      const commentText = commentWordsWithLinks.join(" ");
-
-      return (
-        <tr key={Math.random().toString()}>
-          <td>
-            <span className="Td-String-Cell">{comment.from_state}</span>
-          </td>
-          <td>
-            <span className="Td-String-Cell">{comment.to_state}</span>
-          </td>
-          <td>
-            <span className="Td-String-Cell">
-              <span
-                dangerouslySetInnerHTML={insertCommentText(commentText)}
-              ></span>
-            </span>
-          </td>
-          <td>
-            <span className="Td-String-Cell">{comment.commented_by}</span>
-          </td>
-          <td>
-            <span className="Td-String-Cell">
-              {comment.commented_at &&
-                comment.commented_at.$date &&
-                CommonUtils.jsToDateString(
-                  new Date(comment.commented_at.$date)
-                )}
-            </span>
-          </td>
-        </tr>
-      );
-    });
-
-    return (
-      <table key={Math.random().toString()}>
-        <thead>
-          <tr>
-            <th>FROM STATE</th>
-            <th>TO STATE</th>
-            <th>COMMENT</th>
-            <th>COMMENTED BY</th>
-            <th>COMMENTED AT</th>
-          </tr>
-        </thead>
-        <tbody>{comments}</tbody>
-      </table>
-    );
-  }
-
   function getFormattedTableRow(field: string, value: any) {
     let clsName = "";
     if (
@@ -163,16 +78,7 @@ const JsonView = (props: IJsonViewParam) => {
       CommonUtils.jsonValueType(value) === JsonValueType.number
     )
       clsName = `${clsName} Td-String-Cell`;
-    let formattedVal;
-    if (field === "comments" || field === "developer_comments") {
-      if (value.length > 0) formattedVal = getCommentsTable(value);
-      else formattedVal = "";
-    } else if (field === "created_at" || field === "modified_at") {
-      formattedVal = CommonUtils.jsToDateString(new Date(value));
-    } else if (field === "launch_date_time")
-      if (!value) formattedVal = "";
-      else formattedVal = CommonUtils.jsToDateString(new Date(value));
-    else formattedVal = getFormattedData(value);
+    const formattedVal = getFormattedData(value);
     return (
       <tr key={field}>
         <td className="Td-Field Td-String-Cell" aria-label={`${field}`}>
