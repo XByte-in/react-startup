@@ -13,7 +13,13 @@ import { TypographyConst } from "./common/scss/typographyConst";
 import GoogleSignIn from "./common/components/google/googleSignIn";
 import GoogleSignOut from "./common/components/google/googleSignOut";
 import Button from "./common/components/button/button";
+
+import type { RootState } from "./store/store";
+import { useSelector, useDispatch } from "react-redux";
+import { setUserInfo, removeUseInfo } from "./store/userInfoSlice";
 function App() {
+  const userEmail = useSelector((state: RootState) => state.userInfo.email);
+  const dispatch = useDispatch();
   useEffect(() => {
     CommonUtils.loadColors(colors);
     CommonUtils.loadFonts(fonts);
@@ -25,13 +31,25 @@ function App() {
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.primary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.secondary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.danger}></Label> */}
-      {/* <GoogleSignIn
+      {/* {!userEmail &&
+      <GoogleSignIn
         client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
         auto_select={false}
         cancel_on_tap_outside={false}
-        onSignIn={(params) => console.log(params)}
+        onSignIn={(params) => {
+          console.log(params);
+          dispatch(setUserInfo(params));
+        }}
       />
-      <GoogleSignOut onSignOut={(result) => console.log(result)}/> */}
+      }
+      {userEmail &&
+        <GoogleSignOut
+        onSignOut={(result) => {
+          console.log(result);
+          dispatch(removeUseInfo());
+        }}
+      />
+      } */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
       {/* <table>
