@@ -32,24 +32,15 @@ const JsonView = (props: IJsonViewParam) => {
   }
 
   function getFormattedString(stringData: any) {
-    const val = JSON.stringify(stringData);
-    if (val.includes("https://") || val.includes("http://"))
-      return (
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href={stringData}
-          className="td-string"
-        >
-          {stringData}
-        </a>
-      );
     if (CommonUtils.jsonValueType(stringData) === JsonValueType.boolean)
       stringData = stringData.toString();
+    else stringData = CommonUtils.convertUrlInString(stringData);
     return (
-      <span key={Math.random().toString()} className="td-string">
-        {stringData}
-      </span>
+      <span
+        key={Math.random().toString()}
+        className="td-string"
+        dangerouslySetInnerHTML={{ __html: stringData }}
+      ></span>
     );
   }
 

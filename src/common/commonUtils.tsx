@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import { JsonValueType } from "./commonConst";
 
 const STRING_CONSTRUCTOR = "".constructor;
@@ -101,7 +102,8 @@ class CommonUtils {
     return text.match(urlRegex);
   };
 
-  static convertUrlInString = (words: Array<string>) => {
+  static convertUrlInString = (stringData: string) => {
+    const words = stringData.split("\n").join(" ").split(" ");
     const encodeHTML = (text: string) => {
       return text
         .replaceAll("&", "&amp;")
@@ -115,8 +117,8 @@ class CommonUtils {
       if (CommonUtils.isValidURL(encodedWord)) {
         return `<a href="${encodedWord}" target="_blank">${encodedWord}</a>`;
       }
-      return encodedWord;
-    });
+      return word;
+    }).join(" ");
   };
 }
 
