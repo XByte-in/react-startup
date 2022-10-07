@@ -8,6 +8,7 @@ interface IJsonViewParam {
   topElements?: Array<string>;
   bottomElements?: Array<string>;
   ignoreElements?: Array<string>;
+  customFormatter?: any;
 }
 
 const JsonView = (props: IJsonViewParam) => {
@@ -20,14 +21,18 @@ const JsonView = (props: IJsonViewParam) => {
       props.topElements,
       props.bottomElements
     );
-    setFormattedJsonObject(getFormattedData(orderedResponse));
+    setFormattedJsonObject(getFormattedData("", orderedResponse));
   }, [props.jsonObject]);
 
-  function getFormattedData(data: any): JSX.Element {
+  function getFormattedData(parentKey: string, data: any) {
+    console.log(parentKey);
+    // console.log(Object.keys(props.customFormatter));
     const dataType = CommonUtils.jsonValueType(data);
-    let result: JSX.Element;
-    if (dataType === JsonValueType.object) result = getFormattedObject(data);
-    else if (dataType === JsonValueType.array) result = getFormattedArray(data);
+    let result;
+    if (dataType === JsonValueType.object)
+      result = getFormattedObject(parentKey, data);
+    else if (dataType === JsonValueType.array)
+      result = getFormattedArray(parentKey, data);
     else result = getFormattedString(data);
     return result;
   }
@@ -54,21 +59,27 @@ const JsonView = (props: IJsonViewParam) => {
     );
   }
 
-  function getFormattedArray(arrayData: any) {
+  function getFormattedArray(parentKey: string, arrayData: any) {
     const divContent: any = arrayData.map((arrayItem: any) =>
-      getFormattedData(arrayItem)
+      getFormattedData(parentKey, arrayItem)
     );
     return <>{divContent}</>;
   }
 
-  function getFormattedObject(jsonData: { [key: string]: any }): JSX.Element {
+  function getFormattedObject(
+    parentKey: string,
+    jsonData: { [key: string]: any }
+  ) {
     const keys = Object.keys(jsonData);
     if (keys.length === 0) return <></>;
+
+    let tableId = `${Math.random()}`;
+    if (parentKey !== "") tableId = `${parentKey}.${tableId}`;
     const tableContent = keys.map((key) =>
-      getFormattedTableRow(key, jsonData[key])
+      getFormattedTableRow(parentKey, key, jsonData[key])
     );
     return (
-      <table key={Math.random().toString()}>
+      <table key={`${parentKey}.${Math.random()}`} id={tableId}>
         <thead>
           <tr>
             <th style={{ width: 175 }}>FIELD</th>
@@ -80,7 +91,7 @@ const JsonView = (props: IJsonViewParam) => {
     );
   }
 
-  function getFormattedTableRow(field: string, value: any) {
+  function getFormattedTableRow(parentKey: string, field: string, value: any) {
     let clsName = "";
     if (
       CommonUtils.jsonValueType(value) === JsonValueType.string ||
@@ -88,7 +99,9 @@ const JsonView = (props: IJsonViewParam) => {
       CommonUtils.jsonValueType(value) === JsonValueType.number
     )
       clsName = "td-string";
-    const formattedVal = getFormattedData(value);
+    let fieldKey = field;
+    if (parentKey !== "") fieldKey = `${parentKey}.${field}`;
+    const formattedVal = getFormattedData(fieldKey, value);
     return (
       <tr key={field}>
         <td className="td-field td-string" aria-label={`${field}`}>
