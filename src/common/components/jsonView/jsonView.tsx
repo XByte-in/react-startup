@@ -64,7 +64,7 @@ const getFormattedObject = (
   const tableContent = keys.map((key) =>
     getFormattedTableRow(props, parentKey, key, jsonData[key])
   );
-  console.log(parentKey)
+  console.log(parentKey);
   return (
     <table key={`${parentKey}.${Math.random()}`}>
       <thead>
@@ -88,8 +88,14 @@ const getFormattedTableRow = (
   if (parentKey !== "") fieldKey = `${parentKey}.${field}`;
   return (
     <tr key={Math.random()}>
-      <td><span className="flex-wrap">{getFormattedString(field)}</span></td>
-      <td><span className="flex-wrap">{getFormattedData(props, fieldKey, value)}</span></td>
+      <td>
+        <span className="flex-wrap">{getFormattedString(field)}</span>
+      </td>
+      <td>
+        <span className="flex-wrap">
+          {getFormattedData(props, fieldKey, value)}
+        </span>
+      </td>
     </tr>
   );
 };
