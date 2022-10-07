@@ -29,7 +29,7 @@ function App() {
   });
 
   const customFormatter = {
-    app_assets: function (params:Array<any>) {      
+    app_assets2: function (params:Array<any>) {      
       const columns = Object.keys(params[0])
       if (columns.length > 0)
         return createFormattedTable(columns, params)

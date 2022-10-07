@@ -17,13 +17,12 @@
     border: 1px solid var(--color-dark-700);
     padding: 0rem;
   }
-
-  .td-string {
-    padding: 0.5rem 1rem;
+  .flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
   }
-
-  .value-cell {
-    padding: 0rem;
+  .td-string {
+    margin: 0.5rem 1rem !important;
     display: flex;
     flex-wrap: wrap;
   }

@@ -83,27 +83,17 @@ const getFormattedTableRow = (
   field: string,
   value: any
 ) => {
-  let clsName = "";
-  if (
-    CommonUtils.jsonValueType(value) === JsonValueType.string ||
-    CommonUtils.jsonValueType(value) === JsonValueType.boolean ||
-    CommonUtils.jsonValueType(value) === JsonValueType.number
-  )
-    clsName = "td-string";
   let fieldKey = field;
   if (parentKey !== "") fieldKey = `${parentKey}.${field}`;
-  const formattedVal = getFormattedData(props, fieldKey, value);
   return (
     <tr key={Math.random()}>
-      <td className="td-field td-string">{field}</td>
-      <td>
-        <span className={`value-cell ${clsName}`}>{formattedVal}</span>
-      </td>
+      <td><span className="flex-wrap">{getFormattedString(field)}</span></td>
+      <td><span className="flex-wrap">{getFormattedData(props, fieldKey, value)}</span></td>
     </tr>
   );
 };
 
-export const createFormattedTable = (  
+export const createFormattedTable = (
   columns: Array<string>,
   jsonData: Array<any>
 ) => {
@@ -111,10 +101,8 @@ export const createFormattedTable = (
   const tableData = jsonData.map((rowData: { [key: string]: any }) => {
     const rowsData = columns.map((col) => {
       return (
-        <td key={Math.random()} className="td-string">
-          <span className="td-string">
-            {getFormattedString(rowData[col])}
-          </span>
+        <td key={Math.random()}>
+          <span className="flex-wrap">{getFormattedString(rowData[col])}</span>
         </td>
       );
     });
