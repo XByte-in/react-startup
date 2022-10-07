@@ -69,7 +69,7 @@ const getFormattedObject = (
     <table key={`${parentKey}.${Math.random()}`}>
       <thead>
         <tr key={Math.random()}>
-          <th style={{ width: 175 }}>FIELD</th>
+          <th style={{ width: 175 }}>KEY</th>
           <th>VALUE</th>
         </tr>
       </thead>
