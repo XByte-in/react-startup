@@ -1,4 +1,36 @@
 {
+  "app_assets": [
+    {
+      "asset_category": "general_game_assets",
+      "asset_type": "desktop-banner-video",
+      "asset_url": "https://cdn.now.gg/now-gg-store/83/com.Infinity.Heya/61ee5373a2be78e08b61d0ef/assets/en/desktop-banner-video.mp4"
+    },
+    {
+      "asset_category": "general_game_assets",
+      "asset_type": "game-logo",
+      "asset_url": "https://cdn.now.gg/now-gg-store/83/com.Infinity.Heya/61ee5373a2be78e08b61d0ef/assets/en/game-logo.png"
+    },
+    {
+      "asset_category": "mobile_app_page_banner",
+      "asset_type": "mobile-banner-image",
+      "asset_url": "https://cdn.now.gg/now-gg-store/83/com.Infinity.Heya/61ee5373a2be78e08b61d0ef/assets/en/mobile-banner-image.jpeg"
+    },
+    {
+      "asset_category": "mobile_app_page_banner",
+      "asset_type": "mobile-banner-video",
+      "asset_url": "https://cdn.now.gg/now-gg-store/83/com.Infinity.Heya/61ee5373a2be78e08b61d0ef/assets/en/mobile-banner-video.mp4"
+    },
+    {
+      "asset_category": "general_game_assets",
+      "asset_type": "og-image",
+      "asset_url": "https://cdn.now.gg/now-gg-store/83/com.Infinity.Heya/61ee5373a2be78e08b61d0ef/assets/en/og-image.jpeg"
+    },
+    {
+      "asset_category": "general_game_assets",
+      "asset_type": "game-icon",
+      "asset_url": "https://cdn.now.gg/now-gg-store/83/com.Infinity.Heya/61efca14e756fda7b8764173/assets/en/game-icon.jpeg"
+    }
+  ],
   "app_assets2": [
     {
       "data": [
