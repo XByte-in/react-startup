@@ -24,6 +24,8 @@
 
   .value-cell {
     padding: 0rem;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   tr:nth-child(odd) {
