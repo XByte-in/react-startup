@@ -11,6 +11,31 @@ interface IJsonViewParam {
   customFormatter?: any;
 }
 
+export const createFormattedTable = (
+  columns: Array<string>,
+  jsonData: Array<any>
+) => {
+  const tableColumns = columns.map((col) => <th key={Math.random()}>{col}</th>);
+  const tableData = jsonData.map((rowData: { [key: string]: string }) => {    
+    const rowsData = columns.map((col) => {
+      return (
+        <td key={Math.random()}>
+          <span className="td-string">{rowData[col]}</span>
+        </td>
+      );
+    });
+    return <tr key={Math.random()}>{rowsData}</tr>;
+  });
+  return (
+    <table key={Math.random()}>
+      <thead>
+        <tr key={Math.random()}>{tableColumns}</tr>
+      </thead>
+      <tbody>{tableData}</tbody>
+    </table>
+  );
+};
+
 const JsonView = (props: IJsonViewParam) => {
   const [formattedJsonObject, setFormattedJsonObject] = useState(<></>);
 
@@ -25,8 +50,8 @@ const JsonView = (props: IJsonViewParam) => {
   }, [props.jsonObject]);
 
   function getFormattedData(parentKey: string, data: any) {
-    console.log(parentKey);
-    // console.log(Object.keys(props.customFormatter));
+    if (Object.keys(props.customFormatter).includes(parentKey))
+      return props.customFormatter[parentKey](data);
     const dataType = CommonUtils.jsonValueType(data);
     let result;
     if (dataType === JsonValueType.object)
@@ -73,15 +98,13 @@ const JsonView = (props: IJsonViewParam) => {
     const keys = Object.keys(jsonData);
     if (keys.length === 0) return <></>;
 
-    let tableId = `${Math.random()}`;
-    if (parentKey !== "") tableId = `${parentKey}.${tableId}`;
     const tableContent = keys.map((key) =>
       getFormattedTableRow(parentKey, key, jsonData[key])
     );
     return (
-      <table key={`${parentKey}.${Math.random()}`} id={tableId}>
+      <table key={`${parentKey}.${Math.random()}`}>
         <thead>
-          <tr>
+          <tr key={Math.random()}>
             <th style={{ width: 175 }}>FIELD</th>
             <th>VALUE</th>
           </tr>
@@ -103,11 +126,9 @@ const JsonView = (props: IJsonViewParam) => {
     if (parentKey !== "") fieldKey = `${parentKey}.${field}`;
     const formattedVal = getFormattedData(fieldKey, value);
     return (
-      <tr key={field}>
-        <td className="td-field td-string" aria-label={`${field}`}>
-          {field}
-        </td>
-        <td aria-label={`${field} value`}>
+      <tr key={Math.random()}>
+        <td className="td-field td-string">{field}</td>
+        <td>
           <span className={`value-cell ${clsName}`}>{formattedVal}</span>
         </td>
       </tr>
@@ -115,4 +136,5 @@ const JsonView = (props: IJsonViewParam) => {
   }
   return <div className="json-view">{formattedJsonObject}</div>;
 };
+
 export default JsonView;
