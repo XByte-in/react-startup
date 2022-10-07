@@ -48,7 +48,7 @@ const getFormattedData = (props: any, parentKey: string, data: any) => {
 
 const getFormattedArray = (props: any, parentKey: string, arrayData: any) => {
   const divContent: any = arrayData.map((arrayItem: any) =>
-    getFormattedData(props, parentKey, arrayItem)
+    getFormattedData(props, `${parentKey}.[*]`, arrayItem)
   );
   return <>{divContent}</>;
 };
@@ -64,6 +64,7 @@ const getFormattedObject = (
   const tableContent = keys.map((key) =>
     getFormattedTableRow(props, parentKey, key, jsonData[key])
   );
+  console.log(parentKey)
   return (
     <table key={`${parentKey}.${Math.random()}`}>
       <thead>
