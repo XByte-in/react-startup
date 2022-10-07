@@ -19,7 +19,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo, removeUseInfo } from "./store/userInfoSlice";
 
 import jsonTest from "./jsonTest.json";
-import JsonView, {createFormattedTable} from "./common/components/jsonView/jsonView";
+import JsonView, {
+  createFormattedTable,
+} from "./common/components/jsonView/jsonView";
 function App() {
   const userEmail = useSelector((state: RootState) => state.userInfo.email);
   const dispatch = useDispatch();
@@ -29,11 +31,15 @@ function App() {
   });
 
   const customFormatter = {
-    "app_assets.[*].data": function (params:Array<any>) {      
-      const columns = Object.keys(params[0])
+    "app_assets.[*].data": function (
+      viewJsonProps: any,
+      parentKey: string,
+      params: Array<any>
+    ) {
+      const columns = Object.keys(params[0]);
       if (columns.length > 0)
-        return createFormattedTable(columns, params)
-      else <></>
+        return createFormattedTable(viewJsonProps, parentKey, columns, params);
+      else <></>;
     },
   };
 

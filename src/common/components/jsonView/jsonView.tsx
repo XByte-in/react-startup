@@ -33,24 +33,33 @@ const getFormattedString = (stringData: any) => {
   );
 };
 
-const getFormattedData = (props: any, parentKey: string, data: any) => {
-  if (Object.keys(props.customFormatter).includes(parentKey))
-    return props.customFormatter[parentKey](data);
-  const dataType = CommonUtils.jsonValueType(data);
-  let result;
-  if (dataType === JsonValueType.object)
-    result = getFormattedObject(props, parentKey, data);
-  else if (dataType === JsonValueType.array)
-    result = getFormattedArray(props, parentKey, data);
-  else result = getFormattedString(data);
-  return result;
-};
-
 const getFormattedArray = (props: any, parentKey: string, arrayData: any) => {
   const divContent: any = arrayData.map((arrayItem: any) =>
     getFormattedData(props, `${parentKey}.[*]`, arrayItem)
   );
   return <>{divContent}</>;
+};
+
+const getFormattedTableRow = (
+  props: any,
+  parentKey: string,
+  field: string,
+  value: any
+) => {
+  let fieldKey = field;
+  if (parentKey !== "") fieldKey = `${parentKey}.${field}`;
+  return (
+    <tr key={Math.random()}>
+      <td>
+        <span className="flex-wrap">{getFormattedString(field)}</span>
+      </td>
+      <td>
+        <span className="flex-wrap">
+          {getFormattedData(props, fieldKey, value)}
+        </span>
+      </td>
+    </tr>
+  );
 };
 
 const getFormattedObject = (
@@ -78,38 +87,34 @@ const getFormattedObject = (
   );
 };
 
-const getFormattedTableRow = (
-  props: any,
-  parentKey: string,
-  field: string,
-  value: any
-) => {
-  let fieldKey = field;
-  if (parentKey !== "") fieldKey = `${parentKey}.${field}`;
-  return (
-    <tr key={Math.random()}>
-      <td>
-        <span className="flex-wrap">{getFormattedString(field)}</span>
-      </td>
-      <td>
-        <span className="flex-wrap">
-          {getFormattedData(props, fieldKey, value)}
-        </span>
-      </td>
-    </tr>
-  );
+const getFormattedData = (props: any, parentKey: string, data: any) => {
+  if (Object.keys(props.customFormatter).includes(parentKey))
+    return props.customFormatter[parentKey](props, parentKey, data);
+  const dataType = CommonUtils.jsonValueType(data);
+  let result;
+  if (dataType === JsonValueType.object)
+    result = getFormattedObject(props, parentKey, data);
+  else if (dataType === JsonValueType.array)
+    result = getFormattedArray(props, parentKey, data);
+  else result = getFormattedString(data);
+  return result;
 };
 
 export const createFormattedTable = (
+  viewJsonProps: any,
+  parentKey: string,
   columns: Array<string>,
   jsonData: Array<any>
 ) => {
   const tableColumns = columns.map((col) => <th key={Math.random()}>{col}</th>);
   const tableData = jsonData.map((rowData: { [key: string]: any }) => {
     const rowsData = columns.map((col) => {
+      const subParentKey = `${parentKey}.[*]`;
       return (
         <td key={Math.random()}>
-          <span className="flex-wrap">{getFormattedString(rowData[col])}</span>
+          <span className="flex-wrap">
+            {getFormattedData(viewJsonProps, subParentKey, rowData[col])}
+          </span>
         </td>
       );
     });
