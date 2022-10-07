@@ -16,6 +16,7 @@ const JsonView = (props: IJsonViewParam) => {
   useEffect(() => {
     const orderedResponse = CommonUtils.reorderJsonObject(
       props.jsonObject,
+      props.ignoreElements,
       props.topElements,
       props.bottomElements
     );

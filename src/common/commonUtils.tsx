@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import { JsonValueType } from "./commonConst";
 
 const STRING_CONSTRUCTOR = "".constructor;
@@ -65,9 +64,13 @@ class CommonUtils {
 
   static reorderJsonObject = (
     jsonObject: { [key: string]: any },
+    ignoreElements?: Array<string>,
     topElements?: Array<string>,
     bottomElements?: Array<string>
   ) => {
+    ignoreElements?.forEach((key) => {
+      delete jsonObject[key]
+    });
     const orderedJsonObject: { [key: string]: any } = {};
     topElements?.forEach((key) => {
       if (jsonObject.hasOwnProperty(key))
