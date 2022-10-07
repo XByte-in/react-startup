@@ -101,8 +101,12 @@ class CommonUtils {
       /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
     return text.match(urlRegex);
   };
+  static isValidEmail = (text: string) => {
+    const urlRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return text.match(urlRegex);
+  };
 
-  static convertUrlInString = (stringData: string) => {
+  static convertUrlInString = (stringData: string) => {    
     const words = stringData.split("\n").join(" ").split(" ");
     const encodeHTML = (text: string) => {
       return text
@@ -112,13 +116,16 @@ class CommonUtils {
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#x27;");
     };
-    return words.map((word) => {
-      const encodedWord = encodeHTML(word);
-      if (CommonUtils.isValidURL(encodedWord)) {
-        return `<a href="${encodedWord}" target="_blank">${encodedWord}</a>`;
-      }
-      return word;
-    }).join(" ");
+    return words
+      .map((word) => {
+        const encodedWord = encodeHTML(word);
+        if (CommonUtils.isValidURL(encodedWord)) {
+          return `<a href="${encodedWord}" target="_blank">${encodedWord}</a>`;
+        } else if (CommonUtils.isValidEmail(word))
+          return `<a href="mailto:${word}">${word}</a>`;
+        return word;
+      })
+      .join(" ");
   };
 }
 

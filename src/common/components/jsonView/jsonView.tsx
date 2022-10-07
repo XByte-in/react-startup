@@ -32,7 +32,16 @@ const JsonView = (props: IJsonViewParam) => {
   }
 
   function getFormattedString(stringData: any) {
-    if (CommonUtils.jsonValueType(stringData) === JsonValueType.boolean)
+    const jsonValueType = CommonUtils.jsonValueType(stringData);
+    if (
+      jsonValueType === JsonValueType.null ||
+      jsonValueType === JsonValueType.undefined
+    )
+      return <></>;
+    else if (
+      jsonValueType === JsonValueType.boolean ||
+      jsonValueType === JsonValueType.number
+    )
       stringData = stringData.toString();
     else stringData = CommonUtils.convertUrlInString(stringData);
     return (
