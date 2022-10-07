@@ -20,7 +20,8 @@ import { setUserInfo, removeUseInfo } from "./store/userInfoSlice";
 
 import jsonTest from "./jsonTest.json";
 import JsonView, {
-  createFormattedTable,
+  getFormattedString,
+  arrayToFormattedTable,
 } from "./common/components/jsonView/jsonView";
 function App() {
   const userEmail = useSelector((state: RootState) => state.userInfo.email);
@@ -38,8 +39,24 @@ function App() {
     ) {
       const columns = Object.keys(params[0]);
       if (columns.length > 0)
-        return createFormattedTable(viewJsonProps, parentKey, columns, params);
+        return arrayToFormattedTable(viewJsonProps, parentKey, columns, params);
       else <></>;
+    },
+    comments: function (viewJsonProps: any, parentKey: string, params: any) {
+      const columns = Object.keys(params[0]);
+      if (columns.length > 0)
+        return arrayToFormattedTable(viewJsonProps, parentKey, columns, params);
+      else <></>;
+    },
+    "comments.[*].commented_at": function (
+      viewJsonProps: any,
+      parentKey: string,
+      params: any
+    ) {
+      return getFormattedString(
+        parentKey,
+        CommonUtils.jsToDateString(new Date(params.$date))
+      );
     },
   };
 

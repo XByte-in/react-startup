@@ -11,7 +11,7 @@ interface IJsonViewParam {
   customFormatter?: any;
 }
 
-const getFormattedString = (stringData: any) => {
+export const getFormattedString = (parentKey: string, stringData: any) => {
   const jsonValueType = CommonUtils.jsonValueType(stringData);
   if (
     jsonValueType === JsonValueType.null ||
@@ -27,6 +27,7 @@ const getFormattedString = (stringData: any) => {
   return (
     <span
       key={Math.random().toString()}
+      aria-label={parentKey}
       className="td-string"
       dangerouslySetInnerHTML={{ __html: stringData }}
     ></span>
@@ -51,7 +52,7 @@ const getFormattedTableRow = (
   return (
     <tr key={Math.random()}>
       <td>
-        <span className="flex-wrap">{getFormattedString(field)}</span>
+        <span className="flex-wrap">{getFormattedString("", field)}</span>
       </td>
       <td>
         <span className="flex-wrap">
@@ -73,13 +74,12 @@ const getFormattedObject = (
   const tableContent = keys.map((key) =>
     getFormattedTableRow(props, parentKey, key, jsonData[key])
   );
-  console.log(parentKey);
   return (
-    <table key={`${parentKey}.${Math.random()}`}>
+    <table key={`${parentKey}.${Math.random()}`} aria-label={parentKey}>
       <thead>
         <tr key={Math.random()}>
-          <th style={{ width: 175 }}>KEY</th>
-          <th>VALUE</th>
+          <th style={{ width: 175 }}>Key</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>{tableContent}</tbody>
@@ -96,11 +96,11 @@ const getFormattedData = (props: any, parentKey: string, data: any) => {
     result = getFormattedObject(props, parentKey, data);
   else if (dataType === JsonValueType.array)
     result = getFormattedArray(props, parentKey, data);
-  else result = getFormattedString(data);
+  else result = getFormattedString(parentKey, data);
   return result;
 };
 
-export const createFormattedTable = (
+export const arrayToFormattedTable = (
   viewJsonProps: any,
   parentKey: string,
   columns: Array<string>,
@@ -109,7 +109,7 @@ export const createFormattedTable = (
   const tableColumns = columns.map((col) => <th key={Math.random()}>{col}</th>);
   const tableData = jsonData.map((rowData: { [key: string]: any }) => {
     const rowsData = columns.map((col) => {
-      const subParentKey = `${parentKey}.[*]`;
+      const subParentKey = `${parentKey}.[*].${col}`;
       return (
         <td key={Math.random()}>
           <span className="flex-wrap">
@@ -121,7 +121,7 @@ export const createFormattedTable = (
     return <tr key={Math.random()}>{rowsData}</tr>;
   });
   return (
-    <table key={Math.random()}>
+    <table key={Math.random()} aria-label={parentKey}>
       <thead>
         <tr key={Math.random()}>{tableColumns}</tr>
       </thead>
