@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import gooleUserInfoReducer from "../common/components/google/googleUserInfoSlice";
+import gooleUserInfoReducer from "../components/google/googleUserInfoSlice";
 
 export const store = configureStore({
   reducer: { gooleUserInfo: gooleUserInfoReducer },

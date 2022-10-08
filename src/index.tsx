@@ -3,13 +3,13 @@ import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
-import store from "./store/store";
+import store from "./common/store/store";
 
 import "./index.scss";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import Translation from "./translations/translation";
+import Translation from "./common/translations/translation";
 
 
 const root = ReactDOM.createRoot(

@@ -5,6 +5,7 @@ import Icon from "../icon/icon";
 
 interface IGoogleSignOutParams {
   showIconOnly?: boolean;
+  className?:string;
   onSignOut: (param: {}) => void;
 }
 const GoogleSignOut = (props: IGoogleSignOutParams) => {
@@ -20,7 +21,7 @@ const GoogleSignOut = (props: IGoogleSignOutParams) => {
   if (props.showIconOnly)
     return (
       <Icon
-        className="btn-icon"
+        className={props.className}
         iconName={Icons_32px.google_2}
         iconSize={IconSize._32}
         onClick={() => revokeGsi()}
@@ -29,6 +30,7 @@ const GoogleSignOut = (props: IGoogleSignOutParams) => {
   else
     return (
       <Button
+        className={props.className}
         size={Size.default}
         type={Type.secondary}
         btnText="signoutWithGoogle"

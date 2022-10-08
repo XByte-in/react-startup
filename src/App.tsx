@@ -6,15 +6,15 @@ import Icon from "./common/components/icon/icon";
 import Label from "./common/components/label/label";
 import { IconSize, Icons_16px, Icons_180px } from "./common/pictures/pictures";
 
-import colors from "./theme/colors.json";
-import fonts from "./theme/fonts.json";
+import colors from "./common/theme/colors.json";
+import fonts from "./common/theme/fonts.json";
 import { Size, Type } from "./common/commonConst";
 import { TypographyConst } from "./common/scss/typographyConst";
 import GoogleSignIn from "./common/components/google/googleSignIn";
 import GoogleSignOut from "./common/components/google/googleSignOut";
 import Button from "./common/components/button/button";
 
-import type { RootState } from "./store/store";
+import type { RootState } from "./common/store/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setGoogleUserInfo,
@@ -27,6 +27,7 @@ import JsonView, {
   arrayToFormattedTable,
   ICustomFormatterParam,
 } from "./common/components/jsonView/jsonView";
+import GoogleProfile from "./common/components/google/googleProfile/googleProfile";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -90,13 +91,14 @@ function App() {
         />
       )}
       {userEmail && (
-        <GoogleSignOut
-          showIconOnly={true}
-          onSignOut={(result) => {
-            console.log(result);
-            dispatch(removeGoogleUserInfo());
-          }}
-        />
+        // <GoogleSignOut
+        //   showIconOnly={true}
+        //   onSignOut={(result) => {
+        //     console.log(result);
+        //     dispatch(removeGoogleUserInfo());
+        //   }}
+        // />
+        <GoogleProfile/>
       )}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
