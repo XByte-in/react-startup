@@ -1,0 +1,42 @@
+.JsonDiff {
+  table,
+  th,
+  td {
+    border: 0.1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: white;
+    padding: 5px;
+    font-size: 14px;
+    span {
+      word-break: break-all;
+    }
+  }
+  table {
+    table-layout: auto;
+    width: 100%;
+    th {
+      font-size: 16px;
+    }
+  }
+  .key {
+    font-weight: bold;
+  }
+  .modified {
+    background-color: #ffff0040;
+  }
+  .removed {
+    background-color: #ff000040;
+  }
+  .added {
+    background-color: #0000ff40;
+  }
+  .AppTab-Detail {
+    .JsonDiff-Header {
+      font-size: 16px;
+    }
+    .subheading {
+      font-size: 13px;
+    }
+  }
+}

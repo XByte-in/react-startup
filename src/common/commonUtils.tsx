@@ -4,10 +4,9 @@ const STRING_CONSTRUCTOR = "".constructor;
 const ARRAY_CONSTRUCTOR = [].constructor;
 const OBJECT_CONSTRUCTOR = {}.constructor;
 class CommonUtils {
-  static onlyUnique = (str: string, value: string, index: number) => {
-    return str.indexOf(value) === index;
-  };
-
+  static onlyUnique(value: string, index: number, self: any) {
+    return self.indexOf(value) === index;
+  }
   static jsonValueType = (value: any): JsonValueType => {
     if (value === null) return JsonValueType.null;
     if (value === undefined) return JsonValueType.undefined;
@@ -69,7 +68,7 @@ class CommonUtils {
     bottomElements?: Array<string>
   ) => {
     ignoreElements?.forEach((key) => {
-      delete jsonObject[key]
+      delete jsonObject[key];
     });
     const orderedJsonObject: { [key: string]: any } = {};
     topElements?.forEach((key) => {
@@ -109,7 +108,7 @@ class CommonUtils {
     return text.match(urlRegex);
   };
 
-  static convertUrlInString = (stringData: string) => {    
+  static convertUrlInString = (stringData: string) => {
     const words = stringData.split("\n").join(" ").split(" ");
     const encodeHTML = (text: string) => {
       return text

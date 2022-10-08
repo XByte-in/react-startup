@@ -21,13 +21,14 @@ import {
   removeGoogleUserInfo,
 } from "./common/components/google/googleUserInfoSlice";
 
-import jsonTest from "./jsonTest.json";
+import jsonTest from "./testData/jsonTest.json";
 import JsonView, {
   getFormattedString,
   arrayToFormattedTable,
   ICustomFormatterParam,
 } from "./common/components/jsonView/jsonView";
 import GoogleProfile from "./common/components/google/googleProfile/googleProfile";
+import JsonDiff from "./common/components/jsonDiff/jsonDiff";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -70,6 +71,10 @@ function App() {
 
   return (
     <div>
+      <JsonDiff
+        leftData={{ heading: "", subHeading: "", jsonData: "" }}
+        rightData={{ heading: "", subHeading: "", jsonData: "" }}
+      ></JsonDiff>
       {/* <JsonView
         jsonObject={jsonTest}
         customFormatter={customFormatter}
@@ -79,7 +84,7 @@ function App() {
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.primary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.secondary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.danger}></Label> */}
-      {!userEmail && (
+      {/* {!userEmail && (
         <GoogleSignIn
           client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
           auto_select={true}
@@ -91,15 +96,8 @@ function App() {
         />
       )}
       {userEmail && (
-        // <GoogleSignOut
-        //   showIconOnly={true}
-        //   onSignOut={(result) => {
-        //     console.log(result);
-        //     dispatch(removeGoogleUserInfo());
-        //   }}
-        // />
         <GoogleProfile/>
-      )}
+      )} */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
       {/* <table>
