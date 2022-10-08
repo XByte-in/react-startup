@@ -14,7 +14,7 @@ interface IJsonDiffParams {
 }
 
 function JsonDiff(props: IJsonDiffParams) {
-  const [diffBody, setDiffBody] = useState([<></>]);
+  const [diffBody, setDiffBody] = useState([<tr key={Math.random()}></tr>]);
   useEffect(() => {
     const tableRows: Array<any> = [];
     compareObject(
@@ -26,15 +26,14 @@ function JsonDiff(props: IJsonDiffParams) {
     );
     const rows = tableRows.map((row, index) => {
       const spacing = [];
-
       for (let i = 0; i < row.level; i++) {
         spacing.push(<>&emsp;&emsp;&emsp;&emsp;</>);
       }
       return (
         <tr key={Math.random()}>
-          <td>{index + 1}</td>
+          <td key={Math.random()}>{index + 1}</td>
           {row.leftCol ? (
-            <td
+            <td key={Math.random()}
               aria-label={row.leftCol.className}
               className={row.leftCol.className}
             >
@@ -43,10 +42,10 @@ function JsonDiff(props: IJsonDiffParams) {
               {getCellData(row, "leftCol")}
             </td>
           ) : (
-            <td></td>
+            <td key={Math.random()}></td>
           )}
           {row.rightCol ? (
-            <td
+            <td key={Math.random()}
               aria-label={row.rightCol.className}
               className={row.rightCol.className}
             >
@@ -55,7 +54,7 @@ function JsonDiff(props: IJsonDiffParams) {
               {getCellData(row, "rightCol")}
             </td>
           ) : (
-            <td></td>
+            <td key={Math.random()}></td>
           )}
         </tr>
       );
@@ -426,8 +425,8 @@ function JsonDiff(props: IJsonDiffParams) {
       </div>
       <div className="AppTab-Detail">
         <table>
-          <tbody>
-            <tr>
+          <thead>
+            <tr key={Math.random()}>
               <th></th>
               <th>
                 {props.leftData.heading}
@@ -440,8 +439,8 @@ function JsonDiff(props: IJsonDiffParams) {
                 <span className="subheading">{props.rightData.heading}</span>
               </th>
             </tr>
-            {diffBody}
-          </tbody>
+          </thead>
+          <tbody>{diffBody}</tbody>
         </table>
       </div>
     </div>

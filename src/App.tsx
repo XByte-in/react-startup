@@ -23,7 +23,7 @@ import {
 
 import jsonTest from "./testData/jsonTest.json";
 import leftJson from "./testData/left.json";
-import rightJson from "./testData/left.json";
+import rightJson from "./testData/right.json";
 import JsonView, {
   getFormattedString,
   arrayToFormattedTable,
@@ -74,8 +74,8 @@ function App() {
   return (
     <div>
       <JsonDiff
-        leftData={{ heading: "", subHeading: "", jsonData: leftJson }}
-        rightData={{ heading: "", subHeading: "", jsonData: rightJson }}
+        leftData={{ heading: "Left Heading", subHeading: "Left Sub-Heading", jsonData: leftJson }}
+        rightData={{ heading: "Right Heading", subHeading: "Right Sub-Heading", jsonData: rightJson }}
       ></JsonDiff>
       {/* <JsonView
         jsonObject={jsonTest}
