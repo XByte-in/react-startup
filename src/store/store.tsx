@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userInfoReducer from "./userInfoSlice";
+import gooleUserInfoReducer from "../common/components/google/googleUserInfoSlice";
 
 export const store = configureStore({
-  reducer: { userInfo: userInfoReducer },
+  reducer: { gooleUserInfo: gooleUserInfoReducer },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-export interface UserInfoState {
+export interface GoogleUserInfoState {
   credential: string;
   email: string;
   name: string;
@@ -7,7 +7,7 @@ export interface UserInfoState {
   family_name: string;
   picture: string;
 }
-const initialState: UserInfoState = {
+const initialState: GoogleUserInfoState = {
   credential: "",
   email: "",
   name: "",
@@ -15,11 +15,11 @@ const initialState: UserInfoState = {
   family_name: "",
   picture: "",
 };
-export const userInfoSlice = createSlice({
-  name: "userInfo",
+export const GoogleUserInfoSlice = createSlice({
+  name: "gooleUserInfo",
   initialState,
   reducers: {
-    setUserInfo: (state, action) => {
+    setGoogleUserInfo: (state, action) => {
       state.credential = action.payload.credential;
       state.email = action.payload.email;
       state.name = action.payload.name;
@@ -27,7 +27,7 @@ export const userInfoSlice = createSlice({
       state.family_name = action.payload.family_name;
       state.picture = action.payload.picture;
     },
-    removeUseInfo: (state) => {
+    removeGoogleUserInfo: (state) => {
       state.credential = "";
       state.email = "";
       state.name = "";
@@ -38,8 +38,9 @@ export const userInfoSlice = createSlice({
   },
 });
 
-export const { setUserInfo, removeUseInfo } = userInfoSlice.actions;
+export const { setGoogleUserInfo, removeGoogleUserInfo } =
+  GoogleUserInfoSlice.actions;
 
-export const getUserInfo = (state: any) => state.userInfo;
+export const getGoogleUserInfo = (state: any) => state.googleUserInfo;
 
-export default userInfoSlice.reducer;
+export default GoogleUserInfoSlice.reducer;

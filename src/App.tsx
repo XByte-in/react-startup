@@ -16,7 +16,7 @@ import Button from "./common/components/button/button";
 
 import type { RootState } from "./store/store";
 import { useSelector, useDispatch } from "react-redux";
-import { setUserInfo, removeUseInfo } from "./store/userInfoSlice";
+import { setGoogleUserInfo, removeGoogleUserInfo } from "./common/components/google/googleUserInfoSlice";
 
 import jsonTest from "./jsonTest.json";
 import JsonView, {
@@ -25,7 +25,7 @@ import JsonView, {
   ICustomFormatterParam,
 } from "./common/components/jsonView/jsonView";
 function App() {
-  const userEmail = useSelector((state: RootState) => state.userInfo.email);
+  const userEmail = useSelector((state: RootState) => state.gooleUserInfo.email);
   const dispatch = useDispatch();
   useEffect(() => {
     CommonUtils.loadColors(colors);
@@ -64,23 +64,23 @@ function App() {
 
   return (
     <div>
-      <JsonView
+      {/* <JsonView
         jsonObject={jsonTest}
         customFormatter={customFormatter}
-      ></JsonView>
+      ></JsonView> */}
       {/* <Image imageName={Images.hibiscus} className="test"></Image> */}
       {/* <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.default}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.primary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.secondary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.danger}></Label> */}
-      {/* {!userEmail &&
+      {!userEmail &&
       <GoogleSignIn
         client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
         auto_select={false}
         cancel_on_tap_outside={false}
         onSignIn={(params) => {
           console.log(params);
-          dispatch(setUserInfo(params));
+          dispatch(setGoogleUserInfo(params));
         }}
       />
       }
@@ -88,10 +88,10 @@ function App() {
         <GoogleSignOut
         onSignOut={(result) => {
           console.log(result);
-          dispatch(removeUseInfo());
+          dispatch(removeGoogleUserInfo());
         }}
       />
-      } */}
+      }
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
       {/* <table>
