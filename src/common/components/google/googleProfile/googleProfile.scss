@@ -24,5 +24,7 @@
   .profile-logout {
     cursor: pointer;
     justify-content: center;
+    border-radius: 4rem;
+    border: 1px solid var(--color-base);
   }
 }
