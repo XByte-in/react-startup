@@ -27,7 +27,7 @@ function JsonDiff(props: IJsonDiffParams) {
     const rows = tableRows.map((row, index) => {
       const spacing = [];
       for (let i = 0; i < row.level; i++) {
-        spacing.push(<>&emsp;&emsp;&emsp;&emsp;</>);
+        spacing.push(<>&emsp;</>);
       }
       return (
         <tr key={Math.random()}>
@@ -206,17 +206,17 @@ function JsonDiff(props: IJsonDiffParams) {
               leftValType === JsonValueType.array ||
               rightValType === JsonValueType.array
             )
-              valType = "array";
+              valType = JsonValueType.array;
             else if (
               leftValType === JsonValueType.object ||
               rightValType === JsonValueType.object
             )
-              valType = "object";
-            else valType = "string";
+              valType = JsonValueType.object;
+            else valType = JsonValueType.string;
           }
-          if (valType === "array") {
+          if (valType === JsonValueType.array) {
             compareArray(tableRows, key, leftVal, rightVal, childLevel);
-          } else if (valType === "object") {
+          } else if (valType === JsonValueType.object) {
             compareObject(tableRows, key, leftVal, rightVal, childLevel);
           } else {
             if (leftVal === rightVal) {
