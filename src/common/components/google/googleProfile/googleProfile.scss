@@ -1,33 +1,33 @@
-.Profile {
+.profile {
+  display: flex;
+  flex-direction: row;
+  height: 72px;
+  float: right;
+  .profile-logo {
+    width: 40px;
+    height: 40px;
+    margin: 12px 0px;
+    background: #e3dfec;
+    border-radius: 48px;
+    border: 2px solid #8d84a5;
+  }
+
+  .profile-info {
+    margin: 16px 10px 0px 10px;
     display: flex;
-    flex-direction: row;
-    height: 72px;
-    float: right;
-    .Profile-Logo {
-      width: 40px;
-      height: 40px;
-      margin: 12px 0px;
-      background: #e3dfec;
-      border-radius: 48px;
-      border: 2px solid #8d84a5;
+    flex-direction: column;
+    .User-name {
+      font-size: 16px;
+      color: #0b0223;
     }
-  
-    .Profile-Info {
-      margin: 16px 10px 0px 10px;
-      display: flex;
-      flex-direction: column;
-      .User-Name {
-        font-size: 16px;
-        color: #0b0223;
-      }
-      .User-Email {
-        font-size: 14px;
-        color: #797091;
-      }
-    }
-    .Profile-Logout {
-      width: 45px;
-      height: 45px;
-      margin: 14px 5px 14px 0px;
+    .User-email {
+      font-size: 14px;
+      color: #797091;
     }
   }
+  .profile-logout {
+    width: 45px;
+    height: 45px;
+    margin: 14px 5px 14px 0px;
+  }
+}

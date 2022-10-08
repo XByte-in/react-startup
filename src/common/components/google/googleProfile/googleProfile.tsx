@@ -17,18 +17,18 @@ const GoogleProfile = (props: IGoogleProfileParams) => {
   const dispatch = useDispatch();
   const gooleUserInfo = useSelector((state: RootState) => state.gooleUserInfo);
   return (
-    <div className="Profile">
+    <div className="profile">
       <Icon
-        className="Profile-Logo"
+        className="profile-logo"
         iconName={gooleUserInfo.picture}
         iconSize={IconSize._32}
       />
-      <div className="Profile-Info">
-        <span className="User-Name">{gooleUserInfo.name}</span>
-        <span className="User-Email">{gooleUserInfo.email}</span>
+      <div className="profile-info">
+        <span className="user-name">{gooleUserInfo.name}</span>
+        <span className="user-email">{gooleUserInfo.email}</span>
       </div>
       <GoogleSignOut
-        className="Profile-Logout"
+        className="profile-logout"
         showIconOnly={true}
         onSignOut={(result) => {
           console.log(result);
