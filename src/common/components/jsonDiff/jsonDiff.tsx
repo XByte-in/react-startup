@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 interface IJsonData {
   heading: string;
-  subHeading: string;
   jsonData: any;
 }
 interface IJsonDiffParams {
@@ -33,7 +32,8 @@ function JsonDiff(props: IJsonDiffParams) {
         <tr key={Math.random()}>
           <td key={Math.random()}>{index + 1}</td>
           {row.leftCol ? (
-            <td key={Math.random()}
+            <td
+              key={Math.random()}
               aria-label={row.leftCol.className}
               className={row.leftCol.className}
             >
@@ -45,7 +45,8 @@ function JsonDiff(props: IJsonDiffParams) {
             <td key={Math.random()}></td>
           )}
           {row.rightCol ? (
-            <td key={Math.random()}
+            <td
+              key={Math.random()}
               aria-label={row.rightCol.className}
               className={row.rightCol.className}
             >
@@ -417,32 +418,17 @@ function JsonDiff(props: IJsonDiffParams) {
   }
 
   return (
-    <div className="AppTab-Body JsonDiff">
-      <div className="AppTab-Heading">
-        <span className="AppTab-Title" aria-label="diff text">
-          Diff
-        </span>
-      </div>
-      <div className="AppTab-Detail">
-        <table>
-          <thead>
-            <tr key={Math.random()}>
-              <th></th>
-              <th>
-                {props.leftData.heading}
-                <br />
-                <span className="subheading">{props.leftData.subHeading}</span>
-              </th>
-              <th>
-                {props.rightData.heading}
-                <br />
-                <span className="subheading">{props.rightData.heading}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>{diffBody}</tbody>
-        </table>
-      </div>
+    <div className="json-diff">
+      <table>
+        <thead>
+          <tr key={Math.random()}>
+            <th></th>
+            <th>{props.leftData.heading}</th>
+            <th>{props.rightData.heading}</th>
+          </tr>
+        </thead>
+        <tbody>{diffBody}</tbody>
+      </table>
     </div>
   );
 }

@@ -74,8 +74,8 @@ function App() {
   return (
     <div>
       <JsonDiff
-        leftData={{ heading: "Left Heading", subHeading: "Left Sub-Heading", jsonData: leftJson }}
-        rightData={{ heading: "Right Heading", subHeading: "Right Sub-Heading", jsonData: rightJson }}
+        leftData={{ heading: "Left Heading", jsonData: leftJson }}
+        rightData={{ heading: "Right Heading", jsonData: rightJson }}
       ></JsonDiff>
       {/* <JsonView
         jsonObject={jsonTest}
