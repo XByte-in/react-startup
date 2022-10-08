@@ -169,6 +169,7 @@ import facebook_32px from "./icons/icons_32px/facebook/facebook.png";
 import instagram_32px from "./icons/icons_32px/instagram/instagram.png";
 import snapchat_32px from "./icons/icons_32px/snapchat/snapchat.png";
 import linkedin_32px from "./icons/icons_32px/linkedin/linkedin.png";
+import logout_32px from "./icons/icons_32px/logout.png";
 import state_unpublished_128px from "./icons/icons_128px/state/state_unpublished.png";
 import state_waiting_128px from "./icons/icons_128px/state/state_waiting.png";
 import state_checked_128px from "./icons/icons_128px/state/state_checked.png";
@@ -383,6 +384,7 @@ export const Icons_32px = {
   instagram: instagram_32px,
   snapchat: snapchat_32px,
   linkedin: linkedin_32px,
+  logout_32px:logout_32px
 };
 export const Icons_40px = {
   FAQs: FAQs_40px,

@@ -21,7 +21,7 @@ const GoogleProfile = (props: IGoogleProfileParams) => {
       <Icon
         className="profile-logo"
         iconName={gooleUserInfo.picture}
-        iconSize={IconSize._32}
+        iconSize={IconSize._40}
       />
       <div className="profile-info">
         <span className="user-name">{gooleUserInfo.name}</span>

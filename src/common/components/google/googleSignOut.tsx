@@ -22,8 +22,8 @@ const GoogleSignOut = (props: IGoogleSignOutParams) => {
     return (
       <Icon
         className={props.className}
-        iconName={Icons_32px.google_2}
-        iconSize={IconSize._32}
+        iconName={Icons_32px.logout_32px}
+        iconSize={IconSize._40}
         onClick={() => revokeGsi()}
       />
     );

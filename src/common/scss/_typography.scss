@@ -73,6 +73,7 @@
 }
 @mixin body_medium_underlined {
   @include font_common_style();
+  text-decoration-line: underline;
   line-height: var(--body-medium-underlined-line-height);
   letter-spacing: var(--body-medium-underlined-letter-spacing);
   font-size: var(--body-medium-underlined-font-size);
@@ -101,6 +102,7 @@
 }
 @mixin body_small_regular_underlined {
   @include font_common_style();
+  text-decoration-line: underline;
   line-height: var(--body-small-regular-underlined-line-height);
   letter-spacing: var(--body-small-regular-underlined-letter-spacing);
   font-size: var(--body-small-regular-underlined-font-size);

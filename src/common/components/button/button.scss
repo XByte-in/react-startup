@@ -4,7 +4,7 @@
     @include rotate(spin 1s linear infinite);
   }
   @mixin baseButton() {
-    cursor: pointer;
+    cursor:pointer;
     display: flex;
     justify-content: center;
     align-items: center;

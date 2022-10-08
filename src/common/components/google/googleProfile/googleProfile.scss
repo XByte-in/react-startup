@@ -1,33 +1,28 @@
 .profile {
+  @import "../../../scss";
   display: flex;
   flex-direction: row;
-  height: 72px;
-  float: right;
+  color: var(--color-base);
   .profile-logo {
-    width: 40px;
-    height: 40px;
-    margin: 12px 0px;
-    background: #e3dfec;
-    border-radius: 48px;
-    border: 2px solid #8d84a5;
+    background: var(--color-white);
+    border-radius: 4rem;
+    border: 2px solid var(--color-dark-700);
   }
 
   .profile-info {
-    margin: 16px 10px 0px 10px;
     display: flex;
     flex-direction: column;
-    .User-name {
-      font-size: 16px;
-      color: #0b0223;
+    margin: 0rem 1rem;
+    justify-content: center;
+    .user-name {
+      @include body_medium_strong();
     }
-    .User-email {
-      font-size: 14px;
-      color: #797091;
+    .user-email {
+      @include body_medium_regular();
     }
   }
   .profile-logout {
-    width: 45px;
-    height: 45px;
-    margin: 14px 5px 14px 0px;
+    cursor: pointer;
+    justify-content: center;
   }
 }
