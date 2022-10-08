@@ -63,16 +63,6 @@ function JsonDiff(props: IJsonDiffParams) {
     setDiffBody(rows);
   }, [props]);
 
-  const isDate = (key: string) => {
-    const dateFields = new Set([
-      "created_at",
-      "modified_at",
-      "launch_date_time",
-      "commented_at",
-    ]);
-    return dateFields.has(key);
-  };
-
   function parseObject(
     tableRows: Array<any>,
     parentKey: string,
@@ -412,8 +402,6 @@ function JsonDiff(props: IJsonDiffParams) {
     const data = row[side]?.data;
     if (CommonUtils.jsonValueType(data) === JsonValueType.boolean)
       return data ? "true" : "false";
-    if (isDate(row.key) && data)
-      return CommonUtils.jsToDateString(new Date(data), true);
     return <span>{data}</span>;
   }
 

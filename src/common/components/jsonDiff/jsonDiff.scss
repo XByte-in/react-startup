@@ -1,38 +1,32 @@
 .json-diff {
-  .json-diff-Header {
-    font-size: 16px;
-  }
-
-  table,
-  th,
-  td {
-    border: 0.1px solid black;
-    border-collapse: collapse;
-    text-align: left;
-    background-color: white;
-    padding: 5px;
-    font-size: 14px;
-    span {
-      word-break: break-all;
-    }
-  }
+  @import "../../scss";
   table {
-    table-layout: auto;
+    border-collapse: collapse;
     width: 100%;
-    th {
-      font-size: 16px;
-    }
+  }
+  th {
+    @include body_medium_bold();
+    padding: 0.5rem 1rem;
+    background-color: var(--color-dark-700);
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+  }
+  td {
+    @include body_medium_regular();
+    color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-700);
+    padding: 0.5rem 1rem !important;
   }
   .key {
     font-weight: bold;
   }
   .modified {
-    background-color: #ffff0040;
+    background-color: var(--color-additional-caution);
   }
   .removed {
-    background-color: #ff000040;
+    background-color: var(--color-additional-warning);
   }
   .added {
-    background-color: #0000ff40;
+    background-color: var(--color-additional-link);
   }
 }
