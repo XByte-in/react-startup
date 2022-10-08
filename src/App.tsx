@@ -22,6 +22,8 @@ import {
 } from "./common/components/google/googleUserInfoSlice";
 
 import jsonTest from "./testData/jsonTest.json";
+import leftJson from "./testData/left.json";
+import rightJson from "./testData/left.json";
 import JsonView, {
   getFormattedString,
   arrayToFormattedTable,
@@ -72,8 +74,8 @@ function App() {
   return (
     <div>
       <JsonDiff
-        leftData={{ heading: "", subHeading: "", jsonData: "" }}
-        rightData={{ heading: "", subHeading: "", jsonData: "" }}
+        leftData={{ heading: "", subHeading: "", jsonData: leftJson }}
+        rightData={{ heading: "", subHeading: "", jsonData: rightJson }}
       ></JsonDiff>
       {/* <JsonView
         jsonObject={jsonTest}

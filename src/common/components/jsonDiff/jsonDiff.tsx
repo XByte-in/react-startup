@@ -1,6 +1,7 @@
 import "./jsonDiff.scss";
 import CommonUtils from "../../commonUtils";
 import { JsonValueType } from "../../commonConst";
+import { useState, useEffect } from "react";
 
 interface IJsonData {
   heading: string;
@@ -13,6 +14,55 @@ interface IJsonDiffParams {
 }
 
 function JsonDiff(props: IJsonDiffParams) {
+  const [diffBody, setDiffBody] = useState([<></>]);
+  useEffect(() => {
+    const tableRows: Array<any> = [];
+    compareObject(
+      tableRows,
+      "",
+      props.leftData.jsonData,
+      props.rightData.jsonData,
+      0
+    );
+    const rows = tableRows.map((row, index) => {
+      const spacing = [];
+
+      for (let i = 0; i < row.level; i++) {
+        spacing.push(<>&emsp;&emsp;&emsp;&emsp;</>);
+      }
+      return (
+        <tr key={Math.random()}>
+          <td>{index + 1}</td>
+          {row.leftCol ? (
+            <td
+              aria-label={row.leftCol.className}
+              className={row.leftCol.className}
+            >
+              {spacing}
+              {row.key && <span className="key">{row.key}:</span>}&nbsp;
+              {getCellData(row, "leftCol")}
+            </td>
+          ) : (
+            <td></td>
+          )}
+          {row.rightCol ? (
+            <td
+              aria-label={row.rightCol.className}
+              className={row.rightCol.className}
+            >
+              {spacing}
+              {row.key && <span className="key">{row.key}:</span>}&nbsp;
+              {getCellData(row, "rightCol")}
+            </td>
+          ) : (
+            <td></td>
+          )}
+        </tr>
+      );
+    });
+    setDiffBody(rows);
+  }, [props]);
+
   const isDate = (key: string) => {
     const dateFields = new Set([
       "created_at",
@@ -23,7 +73,6 @@ function JsonDiff(props: IJsonDiffParams) {
     return dateFields.has(key);
   };
 
-  const tableRows: Array<any> = [];
   function parseObject(
     tableRows: Array<any>,
     parentKey: string,
@@ -368,50 +417,6 @@ function JsonDiff(props: IJsonDiffParams) {
     return <span>{data}</span>;
   }
 
-  const rows = tableRows.map((row, index) => {
-    const spacing = [];
-
-    for (let i = 0; i < row.level; i++) {
-      spacing.push(<>&emsp;&emsp;&emsp;&emsp;</>);
-    }
-    return (
-      <tr key={Math.random()}>
-        <td>{index + 1}</td>
-        {row.leftCol ? (
-          <td
-            aria-label={row.leftCol.className}
-            className={row.leftCol.className}
-          >
-            {spacing}
-            {row.key && <span className="key">{row.key}:</span>}&nbsp;
-            {getCellData(row, "leftCol")}
-          </td>
-        ) : (
-          <td></td>
-        )}
-        {row.rightCol ? (
-          <td
-            aria-label={row.rightCol.className}
-            className={row.rightCol.className}
-          >
-            {spacing}
-            {row.key && <span className="key">{row.key}:</span>}&nbsp;
-            {getCellData(row, "rightCol")}
-          </td>
-        ) : (
-          <td></td>
-        )}
-      </tr>
-    );
-  });
-
-  compareObject(
-    tableRows,
-    "",
-    props.leftData.jsonData,
-    props.rightData.jsonData,
-    0
-  );
   return (
     <div className="AppTab-Body JsonDiff">
       <div className="AppTab-Heading">
@@ -435,7 +440,7 @@ function JsonDiff(props: IJsonDiffParams) {
                 <span className="subheading">{props.rightData.heading}</span>
               </th>
             </tr>
-            {rows}
+            {diffBody}
           </tbody>
         </table>
       </div>
