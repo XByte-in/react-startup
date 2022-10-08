@@ -59,6 +59,26 @@ function App() {
         CommonUtils.jsToDateString(new Date(data.$date))
       );
     },
+    "created_at": function (
+      viewJsonProps: any,
+      parentKey: string,
+      data: any
+    ) {
+      return getFormattedString(
+        parentKey,
+        CommonUtils.jsToDateString(new Date(data))
+      );
+    },
+    "modified_at": function (
+      viewJsonProps: any,
+      parentKey: string,
+      data: any
+    ) {
+      return getFormattedString(
+        parentKey,
+        CommonUtils.jsToDateString(new Date(data))
+      );
+    },
   };
 
   return (

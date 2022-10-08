@@ -78,7 +78,7 @@ const getFormattedObject = (
     <table key={`${parentKey}.${Math.random()}`} aria-label={parentKey}>
       <thead>
         <tr key={Math.random()}>
-          <th style={{ width: 175 }}>Key</th>
+          <th>Key</th>
           <th>Value</th>
         </tr>
       </thead>
