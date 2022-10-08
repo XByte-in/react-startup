@@ -22,6 +22,7 @@ import jsonTest from "./jsonTest.json";
 import JsonView, {
   getFormattedString,
   arrayToFormattedTable,
+  ICustomFormatterParam,
 } from "./common/components/jsonView/jsonView";
 function App() {
   const userEmail = useSelector((state: RootState) => state.userInfo.email);
@@ -32,51 +33,31 @@ function App() {
   });
 
   const customFormatter = {
-    "app_assets": function (
-      viewJsonProps: any,
-      parentKey: string,
-      data: Array<any>
-    ) {
-      return arrayToFormattedTable(viewJsonProps, parentKey, data);
+    app_assets: function (params: ICustomFormatterParam) {
+      return arrayToFormattedTable(params);
     },
-    "app_assets.[*].data": function (
-      viewJsonProps: any,
-      parentKey: string,
-      data: Array<any>
-    ) {
-      return arrayToFormattedTable(viewJsonProps, parentKey, data);
+    "app_assets.[*].data": function (params: ICustomFormatterParam) {
+      return arrayToFormattedTable(params);
     },
-    "comments": function (viewJsonProps: any, parentKey: string, data: Array<any>) {
-      return arrayToFormattedTable(viewJsonProps, parentKey, data);      
+    comments: function (params: ICustomFormatterParam) {
+      return arrayToFormattedTable(params);
     },
-    "comments.[*].commented_at": function (
-      viewJsonProps: any,
-      parentKey: string,
-      data: any
-    ) {
+    "comments.[*].commented_at": function (params: ICustomFormatterParam) {
       return getFormattedString(
-        parentKey,
-        CommonUtils.jsToDateString(new Date(data.$date))
+        params.parentKey,
+        CommonUtils.jsToDateString(new Date(params.data.$date))
       );
     },
-    "created_at": function (
-      viewJsonProps: any,
-      parentKey: string,
-      data: any
-    ) {
+    created_at: function (params: ICustomFormatterParam) {
       return getFormattedString(
-        parentKey,
-        CommonUtils.jsToDateString(new Date(data))
+        params.parentKey,
+        CommonUtils.jsToDateString(new Date(params.data))
       );
     },
-    "modified_at": function (
-      viewJsonProps: any,
-      parentKey: string,
-      data: any
-    ) {
+    modified_at: function (params: ICustomFormatterParam) {
       return getFormattedString(
-        parentKey,
-        CommonUtils.jsToDateString(new Date(data))
+        params.parentKey,
+        CommonUtils.jsToDateString(new Date(params.data))
       );
     },
   };

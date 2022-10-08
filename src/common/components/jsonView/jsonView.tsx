@@ -3,12 +3,10 @@ import { JsonValueType } from "../../commonConst";
 import CommonUtils from "../../commonUtils";
 import "./jsonView.scss";
 
-interface IJsonViewParam {
-  jsonObject: { [key: string]: any };
-  topElements?: Array<string>;
-  bottomElements?: Array<string>;
-  ignoreElements?: Array<string>;
-  customFormatter?: any;
+export interface ICustomFormatterParam {
+  props: any;
+  parentKey: string;
+  data: any;
 }
 
 export const getFormattedString = (parentKey: string, stringData: any) => {
@@ -88,8 +86,14 @@ const getFormattedObject = (
 };
 
 const getFormattedData = (props: any, parentKey: string, data: any) => {
-  if (Object.keys(props.customFormatter).includes(parentKey))
-    return props.customFormatter[parentKey](props, parentKey, data);
+  if (Object.keys(props.customFormatter).includes(parentKey)) {
+    var customFormatterParam: ICustomFormatterParam = {
+      props: props,
+      parentKey: parentKey,
+      data: data,
+    };
+    return props.customFormatter[parentKey](customFormatterParam);
+  }
   const dataType = CommonUtils.jsonValueType(data);
   let result;
   if (dataType === JsonValueType.object)
@@ -101,23 +105,21 @@ const getFormattedData = (props: any, parentKey: string, data: any) => {
 };
 
 export const arrayToFormattedTable = (
-  viewJsonProps: any,
-  parentKey: string,
-  jsonArrayData: Array<any>
+  customFormatterParam: ICustomFormatterParam
 ) => {
-  
-  if (jsonArrayData.length == 0) return <></>;
-  const columns = Object.keys(jsonArrayData[0]);
-  if ((columns.length == 0)) return <></>;
+  const { props, parentKey, data } = customFormatterParam;
+  if (data.length == 0) return <></>;
+  const columns = Object.keys(data[0]);
+  if (columns.length == 0) return <></>;
 
   const tableColumns = columns.map((col) => <th key={Math.random()}>{col}</th>);
-  const tableData = jsonArrayData.map((rowData: { [key: string]: any }) => {
+  const tableData = data.map((rowData: { [key: string]: any }) => {
     const rowsData = columns.map((col) => {
       const subParentKey = `${parentKey}.[*].${col}`;
       return (
         <td key={Math.random()}>
           <span className="flex-wrap">
-            {getFormattedData(viewJsonProps, subParentKey, rowData[col])}
+            {getFormattedData(props, subParentKey, rowData[col])}
           </span>
         </td>
       );
@@ -134,6 +136,13 @@ export const arrayToFormattedTable = (
   );
 };
 
+interface IJsonViewParam {
+  jsonObject: { [key: string]: any };
+  topElements?: Array<string>;
+  bottomElements?: Array<string>;
+  ignoreElements?: Array<string>;
+  customFormatter?: any;
+}
 const JsonView = (props: IJsonViewParam) => {
   const [formattedJsonObject, setFormattedJsonObject] = useState(<></>);
 
