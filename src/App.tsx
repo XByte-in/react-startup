@@ -32,30 +32,31 @@ function App() {
   });
 
   const customFormatter = {
+    "app_assets": function (
+      viewJsonProps: any,
+      parentKey: string,
+      data: Array<any>
+    ) {
+      return arrayToFormattedTable(viewJsonProps, parentKey, data);
+    },
     "app_assets.[*].data": function (
       viewJsonProps: any,
       parentKey: string,
-      params: Array<any>
+      data: Array<any>
     ) {
-      const columns = Object.keys(params[0]);
-      if (columns.length > 0)
-        return arrayToFormattedTable(viewJsonProps, parentKey, columns, params);
-      else <></>;
+      return arrayToFormattedTable(viewJsonProps, parentKey, data);
     },
-    comments: function (viewJsonProps: any, parentKey: string, params: any) {
-      const columns = Object.keys(params[0]);
-      if (columns.length > 0)
-        return arrayToFormattedTable(viewJsonProps, parentKey, columns, params);
-      else <></>;
+    "comments": function (viewJsonProps: any, parentKey: string, data: Array<any>) {
+      return arrayToFormattedTable(viewJsonProps, parentKey, data);      
     },
     "comments.[*].commented_at": function (
       viewJsonProps: any,
       parentKey: string,
-      params: any
+      data: any
     ) {
       return getFormattedString(
         parentKey,
-        CommonUtils.jsToDateString(new Date(params.$date))
+        CommonUtils.jsToDateString(new Date(data.$date))
       );
     },
   };

@@ -103,11 +103,15 @@ const getFormattedData = (props: any, parentKey: string, data: any) => {
 export const arrayToFormattedTable = (
   viewJsonProps: any,
   parentKey: string,
-  columns: Array<string>,
-  jsonData: Array<any>
+  jsonArrayData: Array<any>
 ) => {
+  
+  if (jsonArrayData.length == 0) return <></>;
+  const columns = Object.keys(jsonArrayData[0]);
+  if ((columns.length == 0)) return <></>;
+
   const tableColumns = columns.map((col) => <th key={Math.random()}>{col}</th>);
-  const tableData = jsonData.map((rowData: { [key: string]: any }) => {
+  const tableData = jsonArrayData.map((rowData: { [key: string]: any }) => {
     const rowsData = columns.map((col) => {
       const subParentKey = `${parentKey}.[*].${col}`;
       return (
