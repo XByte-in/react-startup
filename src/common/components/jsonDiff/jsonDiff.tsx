@@ -25,9 +25,7 @@ function JsonDiff(props: IJsonDiffParams) {
     );
     const rows = tableRows.map((row, index) => {
       const spacing = [];
-      for (let i = 0; i < row.level; i++) {
-        spacing.push(<>&emsp;</>);
-      }
+      for (let i = 0; i < row.level; i++) spacing.push(<>&emsp;</>);
       return (
         <tr key={Math.random()}>
           <td key={Math.random()}>{index + 1}</td>
