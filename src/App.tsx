@@ -81,7 +81,7 @@ function App() {
       {!userEmail && (
         <GoogleSignIn
           client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
-          auto_select={false}
+          auto_select={true}
           cancel_on_tap_outside={false}
           onSignIn={(params) => {
             console.log(params);
