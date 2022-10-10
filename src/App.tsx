@@ -31,6 +31,7 @@ import JsonView, {
 } from "./common/components/jsonView/jsonView";
 import GoogleProfile from "./common/components/google/googleProfile/googleProfile";
 import JsonDiff from "./common/components/jsonDiff/jsonDiff";
+import SelectField from "./common/components/selectField/selectField";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -70,13 +71,55 @@ function App() {
       );
     },
   };
-
+  const defaultSelectText = "Please select an option";
+  const countryList = [
+    { id: 1, name: "Australia" },
+    { id: 2, name: "Brazil" },
+    { id: 3, name: "China" },
+    { id: 4, name: "Denmark" },
+    { id: 5, name: "Egypt" },
+    { id: 6, name: "Finland" },
+    { id: 7, name: "Ghana" },
+    { id: 8, name: "Hungary" },
+    { id: 9, name: "India" },
+    { id: 10, name: "Japan" },
+  ];
   return (
     <div>
-      <JsonDiff
+      <SelectField
+        className={TypographyConst.body_medium_regular}
+        options={[
+          { label: "label 1", value: "value 1" },
+          { label: "label 2", value: "value 2" },
+          { label: "label 3", value: "value 3" },
+          { label: "label 4", value: "value 4" },
+          { label: "label 5", value: "value 5" },
+          { label: "label 6", value: "value 6" },
+          { label: "label 7", value: "value 7" },
+          { label: "label 8", value: "value 8" },
+          { label: "label 9", value: "value 9" },
+          { label: "label 10", value: "value 10" },
+          { label: "label 11", value: "value 11" },
+          { label: "label 12", value: "value 11" },
+          { label: "label 13", value: "value 12" },
+          { label: "label 14", value: "value 13" },
+          { label: "label 15", value: "value 14" },
+          { label: "label 16", value: "value 15" },
+          { label: "label 17", value: "value 16" },
+          { label: "label 18", value: "value 17" },
+          { label: "label 19", value: "value 18" },
+          { label: "label 20", value: "value 19" },
+          { label: "label 21", value: "value 20" },
+          { label: "label 22", value: "value 21" },
+          { label: "label 23", value: "value 23" },
+          { label: "label 24", value: "value 24" },
+          { label: "label 25", value: "value 25" },
+        ]}
+      />
+      {/* <JsonDiff
         leftData={{ heading: "Left Heading", jsonData: leftJson }}
         rightData={{ heading: "Right Heading", jsonData: rightJson }}
-      ></JsonDiff>
+      ></JsonDiff> */}
       {/* <JsonView
         jsonObject={jsonTest}
         customFormatter={customFormatter}
