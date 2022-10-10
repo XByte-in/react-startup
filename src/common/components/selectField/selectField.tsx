@@ -16,7 +16,7 @@ interface ISelectFieldParams {
   components?: any;
   value?: any;
   maxMenuHeight?: number;
-  formatOptionLabel: (
+  formatOptionLabel?: (
     data: any,
     formatOptionLabelMeta: FormatOptionLabelMeta<any>
   ) => ReactNode;
