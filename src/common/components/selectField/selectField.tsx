@@ -1,4 +1,5 @@
-import Select from "react-select";
+import { ReactNode } from "react";
+import Select, { FormatOptionLabelMeta } from "react-select";
 import FormattedText from "../formattedText/formattedText";
 
 interface ISelectFieldParams {
@@ -14,20 +15,22 @@ interface ISelectFieldParams {
   isSearchable?: boolean;
   components?: any;
   value?: any;
-  maxMenuHeight?:number
-  // theme?: any;
+  maxMenuHeight?: number;
+  formatOptionLabel: (
+    data: any,
+    formatOptionLabelMeta: FormatOptionLabelMeta<any>
+  ) => ReactNode;
   onChange?: () => void;
 }
 function SelectField(props: ISelectFieldParams) {
-  const style = getComputedStyle(document.body)
-  // console.log( style.getPropertyValue('--color-accent') ) 
+  const style = getComputedStyle(document.body);
   const theme = (theme: any) => {
     return {
       ...theme,
       borderRadius: 4,
       colors: {
         ...theme.colors,
-        primary: style.getPropertyValue('--color-accent'),
+        primary: style.getPropertyValue("--color-accent"),
       },
       spacing: {
         ...theme.spacing,
@@ -58,6 +61,7 @@ function SelectField(props: ISelectFieldParams) {
         props.placeholder ? <FormattedText text={props.placeholder} /> : ""
       }
       value={props.value}
+      formatOptionLabel={props.formatOptionLabel}
       theme={theme}
     />
   );
