@@ -33,6 +33,7 @@ import GoogleProfile from "./common/components/google/googleProfile/googleProfil
 import JsonDiff from "./common/components/jsonDiff/jsonDiff";
 import SelectField from "./common/components/selectField/selectField";
 import CheckBox from "./common/components/checkBox/checkBox";
+import RadioButton from "./common/components/radioButton/radioButton";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -76,6 +77,7 @@ function App() {
   return (
     <div>
       <CheckBox labelText="labelTest" isChecked={null} isTriState={true}/>
+      <RadioButton labelText="labelTest" isChecked={null} isTriState={true}/>
       {/* <SelectField
         className={TypographyConst.body_medium_regular}
         options={[

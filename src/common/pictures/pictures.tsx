@@ -44,7 +44,7 @@ import cloudsmily_great_24px from "./icons/icons_24px/cloudSmily/cloudsmily_grea
 import cloudsmily_bad_24px from "./icons/icons_24px/cloudSmily/cloudsmily_bad.png";
 import checkbox_partial_checked_24px from "./icons/icons_24px/checkbox/checkbox_partial_checked.png";
 import checkbox_checked_24px from "./icons/icons_24px/checkbox/checkbox_checked.png";
-import checkbox_unhecked_24px from "./icons/icons_24px/checkbox/checkbox_unhecked.png";
+import checkbox_unchecked_24px from "./icons/icons_24px/checkbox/checkbox_unchecked.png";
 import toggle_off_24px from "./icons/icons_24px/toggle/toggle_off.png";
 import toggle_on_24px from "./icons/icons_24px/toggle/toggle_on.png";
 import gamecontroller_unfilled_24px from "./icons/icons_24px/gamecontroller/gamecontroller_unfilled.png";
@@ -335,7 +335,7 @@ export const Icons_24px = {
   cloudsmily_bad: cloudsmily_bad_24px,
   checkbox_partial_checked: checkbox_partial_checked_24px,
   checkbox_checked: checkbox_checked_24px,
-  checkbox_unhecked: checkbox_unhecked_24px,
+  checkbox_unchecked: checkbox_unchecked_24px,
   toggle_off: toggle_off_24px,
   toggle_on: toggle_on_24px,
   gamecontroller_unfilled: gamecontroller_unfilled_24px,

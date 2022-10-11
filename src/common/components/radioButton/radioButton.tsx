@@ -4,15 +4,15 @@ import { IconSize, Icons_24px } from "../../pictures/pictures";
 import { TypographyConst } from "../../scss/typographyConst";
 import Icon from "../icon/icon";
 import Label from "../label/label";
-import "./checkBox.scss";
-interface ICheckBoxParams {
+import "./radioButton.scss";
+interface IRadioButtonParams {
   labelText: string;
   isChecked: boolean | null;
   isTriState?: boolean;
   onCheckChanged?: (isChecked: boolean) => void;
 }
 
-const CheckBox = (props: ICheckBoxParams) => {
+const RadioButton = (props: IRadioButtonParams) => {
   const [isChecked, setIsChecked] = useState<boolean | null>(false);
   useEffect(() => {
     if (props.isTriState) {
@@ -32,20 +32,20 @@ const CheckBox = (props: ICheckBoxParams) => {
     if (props.onCheckChanged) props.onCheckChanged(checked);
   };
   return (
-    <div className="checkbox" onClick={() => updateCheckedStated()}>
+    <div className="radiobutton" onClick={() => updateCheckedStated()}>
       <Icon
-        className="checkbox-icon"
+        className="radiobutton-icon"
         iconName={
           isChecked === null
-            ? Icons_24px.checkbox_partial_checked
+            ? Icons_24px.radiobutton_partial_checked
             : isChecked
-            ? Icons_24px.checkbox_checked
-            : Icons_24px.checkbox_unchecked
+            ? Icons_24px.radiobutton_checked
+            : Icons_24px.radiobutton_unchecked
         }
         iconSize={IconSize._16}
       />
       <Label
-        className="checkbox-label"
+        className="radiobutton-label"
         labelText={props.labelText}
         typographySize={TypographyConst.body_medium_regular}
         type={Type.default}
@@ -53,4 +53,4 @@ const CheckBox = (props: ICheckBoxParams) => {
     </div>
   );
 };
-export default CheckBox;
+export default RadioButton;
