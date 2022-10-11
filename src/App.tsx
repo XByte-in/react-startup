@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div>
-      <CheckBox labelText="labelTest" isChecked={true}/>
+      <CheckBox labelText="labelTest" isChecked={null} isTriState={true}/>
       {/* <SelectField
         className={TypographyConst.body_medium_regular}
         options={[

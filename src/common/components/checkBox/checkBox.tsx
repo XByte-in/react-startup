@@ -7,13 +7,13 @@ import Label from "../label/label";
 import "./checkBox.scss";
 interface ICheckBoxParams {
   labelText: string;
-  isChecked: boolean;
+  isChecked: boolean | null;
   isTriState?: boolean;
   onCheckChanged?: (isChecked: boolean) => void;
 }
 
 const CheckBox = (props: ICheckBoxParams) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState<boolean | null>(false);
   useEffect(() => {
     if (props.isTriState) {
       setIsChecked(props.isChecked);
@@ -25,11 +25,10 @@ const CheckBox = (props: ICheckBoxParams) => {
 
   const updateCheckedStated = () => {
     var checked = false;
-    if (props.isChecked == null) checked = true;
-    else {
-      checked = !isChecked;
-      setIsChecked(checked);
-    }
+    if (isChecked == null) checked = true;
+    else checked = !isChecked;
+
+    setIsChecked(checked);
     if (props.onCheckChanged) props.onCheckChanged(checked);
   };
   return (
@@ -37,7 +36,11 @@ const CheckBox = (props: ICheckBoxParams) => {
       <Icon
         className="checkbox-icon"
         iconName={
-          isChecked ? Icons_24px.checkbox_checked : Icons_24px.checkbox_unhecked
+          isChecked === null
+            ? Icons_24px.checkbox_partial_checked
+            : isChecked
+            ? Icons_24px.checkbox_checked
+            : Icons_24px.checkbox_unhecked
         }
         iconSize={IconSize._16}
       />
