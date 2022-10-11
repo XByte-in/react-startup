@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import CommonUtils from "./common/commonUtils";
 import Image from "./common/components/image/image";
@@ -74,13 +74,28 @@ function App() {
     },
   };
 
+  enum Test {
+    One,
+    Two,
+    Three,
+    Four,
+  }
+  const [test, setTest] = useState(Test.One);
   return (
     <div>
       {/* <CheckBox labelText="labelTest" checked={true} /> */}
-      <RadioButton labelText="labelTest" isChecked={true} radioGroup="test" />
-      <RadioButton labelText="labelTest" isChecked={false} radioGroup="test" />
-      <RadioButton labelText="labelTest" isChecked={false} radioGroup="test" />
-      <RadioButton labelText="labelTest" isChecked={false} radioGroup="test" />
+      {/* <RadioButton
+        labelText="One"
+        isChecked={test === Test.One}
+        value={Test.One}
+        onChange={(param) => setTest(param)}
+      />
+      <RadioButton
+        labelText="Two"
+        isChecked={test === Test.Two}
+        value={Test.Two}
+        onChange={(param) => setTest(param)}
+      /> */}
       {/* <SelectField
         className={TypographyConst.body_medium_regular}
         options={[
