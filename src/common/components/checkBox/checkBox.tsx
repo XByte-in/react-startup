@@ -48,7 +48,7 @@ const CheckBox = (props: ICheckBoxParams) => {
         className="checkbox-label"
         labelText={props.labelText}
         typographySize={TypographyConst.body_medium_regular}
-        type={Type.secondary}
+        type={Type.default}
       ></Label>
     </div>
   );

@@ -12,7 +12,8 @@ export enum JsonValueType {
 
 export enum Type {
   primary = "primary",
-  secondary = "secondary"
+  secondary = "secondary",
+  default = "default"
 }
 
 export enum Size {
