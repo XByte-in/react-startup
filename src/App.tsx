@@ -76,11 +76,11 @@ function App() {
 
   return (
     <div>
-      <CheckBox labelText="labelTest" checked={true} />
-      {/* <RadioButton labelText="labelTest" isChecked={true} groupName="test" />
-      <RadioButton labelText="labelTest" isChecked={false} groupName="test" />
-      <RadioButton labelText="labelTest" isChecked={false} groupName="test" />
-      <RadioButton labelText="labelTest" isChecked={false} groupName="test" /> */}
+      {/* <CheckBox labelText="labelTest" checked={true} /> */}
+      <RadioButton labelText="labelTest" isChecked={true} radioGroup="test" />
+      <RadioButton labelText="labelTest" isChecked={false} radioGroup="test" />
+      <RadioButton labelText="labelTest" isChecked={false} radioGroup="test" />
+      <RadioButton labelText="labelTest" isChecked={false} radioGroup="test" />
       {/* <SelectField
         className={TypographyConst.body_medium_regular}
         options={[

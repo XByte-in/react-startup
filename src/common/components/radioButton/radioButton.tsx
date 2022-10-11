@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Type } from "../../commonConst";
 import { IconSize, Icons_24px } from "../../pictures/pictures";
 import { TypographyConst } from "../../scss/typographyConst";
@@ -7,38 +7,27 @@ import Label from "../label/label";
 import "./radioButton.scss";
 interface IRadioButtonParams {
   labelText: string;
-  isChecked: boolean | null;
-  isTriState?: boolean;
+  radioGroup: string;
+  isChecked: boolean;
   onCheckChanged?: (isChecked: boolean) => void;
 }
 
 const RadioButton = (props: IRadioButtonParams) => {
-  const [isChecked, setIsChecked] = useState<boolean | null>(false);
-  useEffect(() => {
-    if (props.isTriState) {
-      setIsChecked(props.isChecked);
-    } else {
-      if (props.isChecked) setIsChecked(true);
-      else setIsChecked(false);
-    }
-  }, []);
+  const [isChecked, setIsChecked] = useState(props.isChecked);
 
   const updateCheckedStated = () => {
-    var checked = false;
-    if (isChecked == null) checked = true;
-    else checked = !isChecked;
-
-    setIsChecked(checked);
-    if (props.onCheckChanged) props.onCheckChanged(checked);
+    const isChecked = true;
+    setIsChecked(isChecked);
+    if (props.onCheckChanged) props.onCheckChanged(isChecked);
   };
+
   return (
     <div className="radiobutton" onClick={() => updateCheckedStated()}>
+      <input type="radio" checked={isChecked} name={props.radioGroup} />
       <Icon
         className="radiobutton-icon"
         iconName={
-          isChecked === null
-            ? Icons_24px.radiobutton_partial_checked
-            : isChecked
+          isChecked
             ? Icons_24px.radiobutton_checked
             : Icons_24px.radiobutton_unchecked
         }
