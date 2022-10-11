@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Type } from "../../commonConst";
 import { IconSize, Icons_24px } from "../../pictures/pictures";
 import { TypographyConst } from "../../scss/typographyConst";
@@ -13,8 +13,6 @@ interface ICheckBoxParams {
 
 const CheckBox = (props: ICheckBoxParams) => {
   const [isChecked, setChecked] = useState(props.checked);
-  useEffect(() => {}, []);
-
   const toogleChecked = () => {
     const checked = !isChecked;
     setChecked(checked);
