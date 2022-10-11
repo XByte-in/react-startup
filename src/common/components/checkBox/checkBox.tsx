@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Type } from "../../commonConst";
 import { IconSize, Icons_24px } from "../../pictures/pictures";
 import { TypographyConst } from "../../scss/typographyConst";
@@ -7,38 +7,26 @@ import Label from "../label/label";
 import "./checkBox.scss";
 interface ICheckBoxParams {
   labelText: string;
-  isChecked: boolean | null;
-  isTriState?: boolean;
-  onCheckChanged?: (isChecked: boolean) => void;
+  checked: boolean;
+  onChange?: (checked: boolean) => void;
 }
 
 const CheckBox = (props: ICheckBoxParams) => {
-  const [isChecked, setIsChecked] = useState<boolean | null>(false);
-  useEffect(() => {
-    if (props.isTriState) {
-      setIsChecked(props.isChecked);
-    } else {
-      if (props.isChecked) setIsChecked(true);
-      else setIsChecked(false);
-    }
-  }, []);
+  const [isChecked, setChecked] = useState(props.checked);
+  useEffect(() => {}, []);
 
-  const updateCheckedStated = () => {
-    var checked = false;
-    if (isChecked == null) checked = true;
-    else checked = !isChecked;
-
-    setIsChecked(checked);
-    if (props.onCheckChanged) props.onCheckChanged(checked);
+  const toogleChecked = () => {
+    const checked = !isChecked;
+    setChecked(checked);
+    if (props.onChange) props.onChange(checked);
   };
+
   return (
-    <div className="checkbox" onClick={() => updateCheckedStated()}>
+    <div className="checkbox" onClick={() => toogleChecked()}>
+      <input type="checkbox" checked={isChecked} />
       <Icon
-        className="checkbox-icon"
         iconName={
-          isChecked === null
-            ? Icons_24px.checkbox_partial_checked
-            : isChecked
+          isChecked
             ? Icons_24px.checkbox_checked
             : Icons_24px.checkbox_unchecked
         }
@@ -47,10 +35,20 @@ const CheckBox = (props: ICheckBoxParams) => {
       <Label
         className="checkbox-label"
         labelText={props.labelText}
-        typographySize={TypographyConst.body_medium_regular}
         type={Type.default}
-      ></Label>
+        typographySize={TypographyConst.body_medium_regular}
+      />
     </div>
   );
 };
 export default CheckBox;
+
+{
+  /* <div>
+<label className="container">
+  One
+  <input type="checkbox" />
+  <span className="checkmark"></span>
+</label>
+</div> */
+}

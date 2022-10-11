@@ -76,8 +76,11 @@ function App() {
 
   return (
     <div>
-      <CheckBox labelText="labelTest" isChecked={null} isTriState={true}/>
-      <RadioButton labelText="labelTest" isChecked={null} isTriState={true}/>
+      <CheckBox labelText="labelTest" checked={true} />
+      {/* <RadioButton labelText="labelTest" isChecked={true} groupName="test" />
+      <RadioButton labelText="labelTest" isChecked={false} groupName="test" />
+      <RadioButton labelText="labelTest" isChecked={false} groupName="test" />
+      <RadioButton labelText="labelTest" isChecked={false} groupName="test" /> */}
       {/* <SelectField
         className={TypographyConst.body_medium_regular}
         options={[
