@@ -27,13 +27,21 @@
       -webkit-appearance: none;
       width: 16px;
       height: 16px;
-      background: var(--color-accent);
-      
-      box-shadow: -508px 0 0 500px var(--color-accent),
-        inset 0 0 0 16px var(--color-accent);
       border-radius: 50%;
+      border: 2px solid green;
+      background: green;
+      // margin-top: -0.6rem;
+
+      box-shadow: -508px 0 0 500px var(--color-accent),
+        inset 0 0 0 16px green;
+      
       transition: box-shadow 0.2s ease-in-out;
       position: relative;
+
+
+      
+      
+      
       // top: 1px;
     }
     &:active::-webkit-slider-thumb {
