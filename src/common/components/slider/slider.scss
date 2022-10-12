@@ -13,24 +13,24 @@
     & {
       -webkit-appearance: none;
       overflow: hidden;
-      height: 40px;
+      height: 16px;
       background-color: var(--color-base);
     }
     &::-webkit-slider-runnable-track {
       -webkit-appearance: none;
-      height: 40px;
+      height: 16px;
       color: var(--color-base);
       // margin-top: -1px;
       transition: box-shadow 0.2s ease-in-out;
     }
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 40px;
-      height: 40px;
+      width: 16px;
+      height: 16px;
 
       background: var(--color-base);
-      box-shadow: -520px 0 0 500px var(--color-accent),
-        inset 0 0 0 40px var(--color-accent);
+      box-shadow: -508px 0 0 500px var(--color-accent),
+        inset 0 0 0 16px var(--color-accent);
       border-radius: 50%;
       transition: box-shadow 0.2s ease-in-out;
       position: relative;
