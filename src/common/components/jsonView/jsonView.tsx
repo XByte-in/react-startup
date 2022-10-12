@@ -108,9 +108,9 @@ export const arrayToFormattedTable = (
   customFormatterParam: ICustomFormatterParam
 ) => {
   const { props, parentKey, data } = customFormatterParam;
-  if (data.length == 0) return <></>;
+  if (data.length === 0) return <></>;
   const columns = Object.keys(data[0]);
-  if (columns.length == 0) return <></>;
+  if (columns.length === 0) return <></>;
 
   const tableColumns = columns.map((col) => <th key={Math.random()}>{col}</th>);
   const tableData = data.map((rowData: { [key: string]: any }) => {
