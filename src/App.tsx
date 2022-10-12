@@ -34,6 +34,10 @@ import JsonDiff from "./common/components/jsonDiff/jsonDiff";
 import SelectField from "./common/components/selectField/selectField";
 import CheckBox from "./common/components/checkBox/checkBox";
 import RadioButton from "./common/components/radioButton/radioButton";
+import slider from "./common/components/slider/slider";
+import { formatDateTimeRange } from "@formatjs/intl/src/dateTime";
+import { findByLabelText } from "@testing-library/react";
+import Slider from "./common/components/slider/slider";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -83,6 +87,7 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
+      <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider>
       {/* <CheckBox labelText="labelTest" checked={true} /> */}
       {/* <RadioButton
         labelText="One"
@@ -446,3 +451,12 @@ function App() {
 }
 
 export default App;
+
+// slider
+// Date
+// daterange
+// time
+// timerange
+// textinput (string, amount with decial validation, number, decimal number, regex)
+// textarea
+// flex
