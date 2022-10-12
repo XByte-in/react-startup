@@ -104,7 +104,7 @@ class CommonUtils {
     return text.match(urlRegex);
   };
   static isValidEmail = (text: string) => {
-    const urlRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const urlRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     return text.match(urlRegex);
   };
 

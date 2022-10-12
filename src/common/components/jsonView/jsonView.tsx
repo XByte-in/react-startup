@@ -154,7 +154,7 @@ const JsonView = (props: IJsonViewParam) => {
       props.bottomElements
     );
     setFormattedJsonObject(getFormattedData(props, "", orderedResponse));
-  }, [props.jsonObject]);
+  }, [props]);
 
   return <div className="json-view">{formattedJsonObject}</div>;
 };
