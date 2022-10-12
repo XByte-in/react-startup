@@ -1,53 +1,31 @@
 .slider {
   @import "../../scss";
-  // outline: 0;
-  // border: 0;
-  border-radius: 500px;
-  width: 1000px;
-  max-width: 100%;
-  // margin: 24px 0 16px;
+  width: 100%;
+  border-radius: 0.8rem;
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
+
   // Chrome
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
     & {
       -webkit-appearance: none;
       overflow: hidden;
-      height: 16px;
+      height: 1.6rem;
       background-color: var(--color-base);
-    }
-    &::-webkit-slider-runnable-track {
-      -webkit-appearance: none;
-      height: 16px;
-      color: var(--color-base);
-      // margin-top: -1px;
-      transition: box-shadow 0.2s ease-in-out;
     }
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 1.6rem;
+      height: 1.6rem;
       border-radius: 50%;
-      border: 2px solid green;
-      background: green;
-      // margin-top: -0.6rem;
+      border: 0.2rem solid var(--color-accent);
+      background-color: var(--color-accent);
 
-      box-shadow: -508px 0 0 500px var(--color-accent),
-        inset 0 0 0 16px green;
-      
+      box-shadow: -100.8rem 0 0 100rem var(--color-accent),
+        inset 0 0 0 1.6rem var(--color-accent);
+
       transition: box-shadow 0.2s ease-in-out;
       position: relative;
-
-
-      
-      
-      
-      // top: 1px;
-    }
-    &:active::-webkit-slider-thumb {
-      background: var(--color-accent);
-      box-shadow: -508px 0 0 500px var(--color-accent),
-        inset 0 0 0 3px var(--color-accent);
     }
   }
   // // Firefox
