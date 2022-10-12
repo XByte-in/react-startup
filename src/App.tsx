@@ -87,7 +87,10 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider>
+      {/* <input type="date" id="birthday" name="birthday"/>
+    <input type="time" id="birthday" name="birthday"/>
+    <input type="datetime-local" id="birthday" name="birthday"/> */}
+      {/* <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider> */}
       {/* <CheckBox labelText="labelTest" checked={true} /> */}
       {/* <RadioButton
         labelText="One"
@@ -454,6 +457,8 @@ export default App;
 
 // slider
 // Date
+// Datetime
+// time
 // daterange
 // time
 // timerange
