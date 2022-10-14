@@ -118,10 +118,10 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
     }
   }, [props.dateTimePickerType]);
 
-  const renderDayContents = (dayOfMonth: number, date?: Date | undefined) => {
-    const tooltipText = `Tooltip for date: ${date}`;
-    return <span title={tooltipText}>{dayOfMonth}</span>;
-  };
+  // const renderDayContents = (dayOfMonth: number, date?: Date | undefined) => {
+  //   const tooltipText = `Tooltip for date: ${date}`;
+  //   return <span title={tooltipText}>{dayOfMonth}</span>;
+  // };
   return (
     <DatePicker
       dateFormat={dateFormat}
@@ -148,6 +148,8 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
         switch (props.dateTimePickerType) {
           case DateTimePickerType.time:
           case DateTimePickerType.date:
+          case DateTimePickerType.month:
+          case DateTimePickerType.year:
           case DateTimePickerType.dateTime:
             setSelectedDate(param);
             break;
@@ -163,9 +165,9 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
       onCalendarOpen={() => {
         if (props.onCalendarOpen) props.onCalendarOpen();
       }}
-      renderDayContents={(dayOfMonth: number, date?: Date | undefined) =>
-        renderDayContents(dayOfMonth, date)
-      }
+      // renderDayContents={(dayOfMonth: number, date?: Date | undefined) =>
+      //   renderDayContents(dayOfMonth, date)
+      // }
     />
   );
 };

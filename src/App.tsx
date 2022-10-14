@@ -38,7 +38,9 @@ import slider from "./common/components/slider/slider";
 import { formatDateTimeRange } from "@formatjs/intl/src/dateTime";
 import { findByLabelText } from "@testing-library/react";
 import Slider from "./common/components/slider/slider";
-import DateTimePicker, { DateTimePickerType} from "./common/components/dateTimePicker/dateTimePicker";
+import DateTimePicker, {
+  DateTimePickerType,
+} from "./common/components/dateTimePicker/dateTimePicker";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -88,14 +90,13 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      <DateTimePicker
-      dateTimePickerType={DateTimePickerType.date}
-        // selectedDate={new Date(1665567355000)}
-        // minValue={new Date(1665567355000)}
-        // maxValue={new Date(1665567355000)}
-        placeholderText="Select Date"
-        isClearable={true}
-      />
+      <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.dateRange}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.month}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/>
+
       {/* <input type="date" id="birthday" name="birthday"/>
     <input type="time" id="birthday" name="birthday"/>
     <input type="datetime-local" id="birthday" name="birthday"/> */}
