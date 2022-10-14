@@ -89,7 +89,7 @@ function App() {
   return (
     <div>
       <DateTimePicker
-      dateTimePickerType={DateTimePickerType.dateTime}
+      dateTimePickerType={DateTimePickerType.date}
         // selectedDate={new Date(1665567355000)}
         // minValue={new Date(1665567355000)}
         // maxValue={new Date(1665567355000)}
