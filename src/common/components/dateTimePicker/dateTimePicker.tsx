@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./dateTimePicker.scss";
+
+export const DateTimeFormat = {
+  date: "dd/MMM/yyyy",
+  dateTime: "dd/MMM/yyyy h:mm aa",
+};
 export enum DateTimePickerType {
   date,
   dateRange,
@@ -10,16 +15,19 @@ export enum DateTimePickerType {
 
 interface IDateTimePickerParams {
   dateTimePickerType: DateTimePickerType;
+  dateTimeFormat: string;
   selectedDate?: Date;
 
   selectsRange?: boolean;
   startDate?: Date;
   endDate?: Date;
+  showWeekNumbers?: boolean;
 
   minValue?: Date;
   maxValue?: Date;
-
+  showTimeInput?: boolean;
   showTimeSelect?: boolean;
+  timeIntervalss?: number;
 
   isClearable?: boolean;
   placeholderText?: string;
@@ -32,14 +40,16 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
   const [selectsRange, setSelectsRange] = useState<boolean>();
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
+  const [showWeekNumbers, setShowWeekNumbers] = useState<boolean>();
 
   const [minDate, setMinDate] = useState<Date>();
   const [maxDate, setMaxDate] = useState<Date>();
 
   // const [minTime, setMinTime] = useState<Date>();
   // const [maxTime, setMaxTime] = useState<Date>();
-
+  const [showTimeInput, setShowTimeInput] = useState<boolean>();
   const [showTimeSelect, setShowTimeSelect] = useState<boolean>();
+  const [timeIntervals, setTimeIntervals] = useState<number>();
 
   useEffect(() => {
     switch (props.dateTimePickerType) {
@@ -47,8 +57,15 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
         if (props.selectedDate != null) setSelectedDate(props.selectedDate);
         if (props.minValue != null) setMinDate(props?.minValue);
         if (props.maxValue != null) setMaxDate(props?.maxValue);
-        if (props.showTimeSelect != null)
+        if (props.showWeekNumbers != null)
+          setShowWeekNumbers(props?.showWeekNumbers);
+        if (props.showTimeInput != null) setShowTimeInput(props?.showTimeInput);
+        else if (props.showTimeSelect != null) {
           setShowTimeSelect(props?.showTimeSelect);
+          if (props.timeIntervalss != null)
+            setTimeIntervals(props?.timeIntervalss);
+        }
+
         break;
       case DateTimePickerType.dateRange:
         setSelectsRange(true);
@@ -56,6 +73,8 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
         if (props.endDate != null) setEndDate(props?.endDate);
         if (props.minValue != null) setMinDate(props?.minValue);
         if (props.maxValue != null) setMaxDate(props?.maxValue);
+        if (props.showWeekNumbers != null)
+          setShowWeekNumbers(props?.showWeekNumbers);
         // if (props.showTimeSelect != null) setShowTimeSelect(props?.showTimeSelect);
         break;
       case DateTimePickerType.time:
@@ -72,13 +91,16 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
   };
   return (
     <DatePicker
-      dateFormat="dd/MMM/yyyy"
+      dateFormat={props.dateTimeFormat}
       isClearable={props.isClearable}
       placeholderText={props.placeholderText}
-      selected={selectedDate}
+      showTimeInput={showTimeInput}
       showTimeSelect={showTimeSelect}
+      timeIntervals={timeIntervals}
       minDate={minDate}
       maxDate={maxDate}
+      showWeekNumbers={showWeekNumbers}
+      selected={selectedDate}
       selectsRange={selectsRange}
       startDate={startDate}
       endDate={endDate}

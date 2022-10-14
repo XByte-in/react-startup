@@ -39,6 +39,7 @@ import { formatDateTimeRange } from "@formatjs/intl/src/dateTime";
 import { findByLabelText } from "@testing-library/react";
 import Slider from "./common/components/slider/slider";
 import DateTimePicker, {
+  DateTimeFormat,
   DateTimePickerType,
 } from "./common/components/dateTimePicker/dateTimePicker";
 function App() {
@@ -92,6 +93,7 @@ function App() {
     <div>
       <DateTimePicker
         dateTimePickerType={DateTimePickerType.dateRange}
+        dateTimeFormat={DateTimeFormat.date}
         // selectedDate={new Date(1665567355000)}
         // minValue={new Date(1665567355000)}
         // maxValue={new Date(1665567355000)}
