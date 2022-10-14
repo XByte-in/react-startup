@@ -123,7 +123,7 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
   //   return <span title={tooltipText}>{dayOfMonth}</span>;
   // };
   return (
-    <DatePicker
+    <DatePicker className="dateTimePicker"
       dateFormat={dateFormat}
       isClearable={props.isClearable}
       placeholderText={props.placeholderText}

@@ -1,0 +1,59 @@
+.dateTimePicker {
+  @import "../../scss";
+
+  .datePicker-display {
+    @include body_medium_regular();
+    height: 4rem;
+    border-radius: 0.8rem;
+    margin-top: 0.8rem;
+
+    width: 240px;
+    padding: 0px 10px;
+    border: 1px solid var(--color-base);
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 4%);
+    color: var(--color-dark-900);
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .datePicker-display-icons {
+      margin-left: 0.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .downArrowIcon {
+        margin-top: 0.8rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .react-datePicker__header {
+    background-color: var(--color-white);
+  }
+
+  .react-datePicker__day--highlighted-custom-selected,
+  .react-datePicker__day--in-selecting-range {
+    background-color: #e3dfec !important;
+    border-radius: 100%;
+    color: var(--color-base);
+  }
+
+  .react-datePicker__day--highlighted-custom-current {
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    border-radius: 100%;
+    background-color: transparent;
+  }
+}
