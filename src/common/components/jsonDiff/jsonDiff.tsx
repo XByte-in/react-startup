@@ -3,6 +3,12 @@ import CommonUtils from "../../commonUtils";
 import { JsonValueType } from "../../commonConst";
 import { useState, useEffect } from "react";
 
+const enum ClassNames {
+  same = "same",
+  added = "added",
+  removed = "removed",
+}
+
 interface IJsonData {
   heading: string;
   jsonData: any;
@@ -11,7 +17,16 @@ interface IJsonDiffParams {
   leftData: IJsonData;
   rightData: IJsonData;
 }
-
+interface IDiffColData {
+  className: string;
+  data: string;
+}
+interface IDiffData {
+  level: number;
+  key: string;
+  leftCol?: IDiffColData;
+  rightCol?: IDiffColData;
+}
 function JsonDiff(props: IJsonDiffParams) {
   const [diffBody, setDiffBody] = useState([<tr key={Math.random()}></tr>]);
   useEffect(() => {
@@ -64,7 +79,7 @@ function JsonDiff(props: IJsonDiffParams) {
   function parseObject(
     tableRows: Array<any>,
     parentKey: string,
-    obj: any,
+    jsonObj: any,
     col: string,
     className: string,
     level: number
@@ -73,8 +88,8 @@ function JsonDiff(props: IJsonDiffParams) {
     openRow[col] = { className: className, data: "{" };
     tableRows.push(openRow);
     const childLevel = level + 1;
-    Object.keys(obj).forEach((key) => {
-      const item = obj[key];
+    Object.keys(jsonObj).forEach((key) => {
+      const item = jsonObj[key];
       const itemType = CommonUtils.jsonValueType(item);
       if (itemType === JsonValueType.array) {
         parseArray(tableRows, parentKey, item, col, className, childLevel);
@@ -82,7 +97,7 @@ function JsonDiff(props: IJsonDiffParams) {
         parseObject(tableRows, key, item, col, className, childLevel);
       } else {
         const td: { [key: string]: any } = { level: childLevel, key: key };
-        td[col] = { className: className, data: obj[key] };
+        td[col] = { className: className, data: jsonObj[key] };
         tableRows.push(td);
       }
     });
@@ -93,19 +108,33 @@ function JsonDiff(props: IJsonDiffParams) {
   function compareObject(
     tableRows: Array<any>,
     parentKey: string,
-    leftObj: any,
-    rightObj: any,
+    leftJsonObj: any,
+    rightJsonObj: any,
     level: number
   ) {
     if (
-      (leftObj === null || leftObj === undefined) &&
-      (rightObj === null || rightObj === undefined)
+      (leftJsonObj === null || leftJsonObj === undefined) &&
+      (rightJsonObj === null || rightJsonObj === undefined)
     )
       return;
-    else if (leftObj === null || leftObj === undefined)
-      parseObject(tableRows, parentKey, rightObj, "rightCol", "added", level);
-    else if (rightObj === null || rightObj === undefined)
-      parseObject(tableRows, parentKey, leftObj, "leftCol", "removed", level);
+    else if (leftJsonObj === null || leftJsonObj === undefined)
+      parseObject(
+        tableRows,
+        parentKey,
+        rightJsonObj,
+        "rightCol",
+        ClassNames.added,
+        level
+      );
+    else if (rightJsonObj === null || rightJsonObj === undefined)
+      parseObject(
+        tableRows,
+        parentKey,
+        leftJsonObj,
+        "leftCol",
+        ClassNames.removed,
+        level
+      );
     else {
       const openRow = {
         level: level,
@@ -115,15 +144,15 @@ function JsonDiff(props: IJsonDiffParams) {
       };
       tableRows.push(openRow);
 
-      const leftDataKeys = Object.keys(leftObj);
-      const rightDataKeys = Object.keys(rightObj);
+      const leftDataKeys = Object.keys(leftJsonObj);
+      const rightDataKeys = Object.keys(rightJsonObj);
       const allDataKeys = leftDataKeys
         .concat(rightDataKeys)
         .filter(CommonUtils.onlyUnique);
       const childLevel = level + 1;
       allDataKeys.forEach((key) => {
-        if (!leftObj.hasOwnProperty(key)) {
-          const rightVal = rightObj[key];
+        if (!leftJsonObj.hasOwnProperty(key)) {
+          const rightVal = rightJsonObj[key];
           const rightValType = CommonUtils.jsonValueType(rightVal);
           if (rightValType === JsonValueType.array) {
             parseArray(
@@ -131,7 +160,7 @@ function JsonDiff(props: IJsonDiffParams) {
               key,
               rightVal,
               "rightCol",
-              "added",
+              ClassNames.added,
               childLevel
             );
           } else if (rightValType === JsonValueType.object) {
@@ -140,7 +169,7 @@ function JsonDiff(props: IJsonDiffParams) {
               key,
               rightVal,
               "rightCol",
-              "added",
+              ClassNames.added,
               childLevel
             );
           } else
@@ -148,12 +177,12 @@ function JsonDiff(props: IJsonDiffParams) {
               level: childLevel,
               key: key,
               rightCol: {
-                className: "added",
+                className: ClassNames.added,
                 data: rightVal,
               },
             });
-        } else if (!rightObj.hasOwnProperty(key)) {
-          const leftVal = leftObj[key];
+        } else if (!rightJsonObj.hasOwnProperty(key)) {
+          const leftVal = leftJsonObj[key];
           const leftValType = CommonUtils.jsonValueType(leftVal);
           if (leftValType === JsonValueType.array) {
             parseArray(
@@ -161,7 +190,7 @@ function JsonDiff(props: IJsonDiffParams) {
               key,
               leftVal,
               "leftCol",
-              "removed",
+              ClassNames.removed,
               childLevel
             );
           } else if (leftValType === JsonValueType.object) {
@@ -170,7 +199,7 @@ function JsonDiff(props: IJsonDiffParams) {
               key,
               leftVal,
               "leftCol",
-              "removed",
+              ClassNames.removed,
               childLevel
             );
           } else
@@ -178,13 +207,13 @@ function JsonDiff(props: IJsonDiffParams) {
               level: childLevel,
               key: key,
               leftCol: {
-                className: "removed",
+                className: ClassNames.removed,
                 data: leftVal,
               },
             });
         } else {
-          const leftVal = leftObj[key];
-          const rightVal = rightObj[key];
+          const leftVal = leftJsonObj[key];
+          const rightVal = rightJsonObj[key];
           const leftValType = CommonUtils.jsonValueType(leftVal);
           const rightValType = CommonUtils.jsonValueType(rightVal);
           let valType;
@@ -209,7 +238,7 @@ function JsonDiff(props: IJsonDiffParams) {
             compareObject(tableRows, key, leftVal, rightVal, childLevel);
           } else {
             if (leftVal === rightVal) {
-              const className = "same";
+              const className = ClassNames.same;
               tableRows.push({
                 level: childLevel,
                 key: key,
@@ -289,9 +318,23 @@ function JsonDiff(props: IJsonDiffParams) {
     )
       return;
     else if (leftArr === null || leftArr === undefined)
-      parseArray(tableRows, parentKey, rightArr, "rightCol", "added", level);
+      parseArray(
+        tableRows,
+        parentKey,
+        rightArr,
+        "rightCol",
+        ClassNames.added,
+        level
+      );
     else if (rightArr === null || rightArr === undefined)
-      parseArray(tableRows, parentKey, leftArr, "leftCol", "removed", level);
+      parseArray(
+        tableRows,
+        parentKey,
+        leftArr,
+        "leftCol",
+        ClassNames.removed,
+        level
+      );
     else {
       const openRow = {
         level: level,
@@ -310,7 +353,14 @@ function JsonDiff(props: IJsonDiffParams) {
         const leftItem = leftArrCopy[0];
         const leftItemType = CommonUtils.jsonValueType(leftItem);
         if (leftItemType === JsonValueType.array) {
-          parseArray(tableRows, "", leftItem, "leftCol", "removed", childLevel);
+          parseArray(
+            tableRows,
+            "",
+            leftItem,
+            "leftCol",
+            ClassNames.removed,
+            childLevel
+          );
           leftArrCopy.splice(0, 1);
         } else if (leftItemType === JsonValueType.object) {
           parseObject(
@@ -318,14 +368,14 @@ function JsonDiff(props: IJsonDiffParams) {
             "",
             leftItem,
             "leftCol",
-            "removed",
+            ClassNames.removed,
             childLevel
           );
           leftArrCopy.splice(0, 1);
         } else {
           const rightItemIndex = rightArrCopy.indexOf(leftItem);
           if (rightItemIndex !== -1) {
-            const className = "same";
+            const className = ClassNames.same;
             tableRows.push({
               level: childLevel,
               leftCol: {
@@ -340,7 +390,7 @@ function JsonDiff(props: IJsonDiffParams) {
             leftArrCopy.splice(0, 1);
             rightArrCopy.splice(rightItemIndex, 1);
           } else {
-            const className = "removed";
+            const className = ClassNames.removed;
             tableRows.push({
               level: childLevel,
               leftCol: {
@@ -355,7 +405,7 @@ function JsonDiff(props: IJsonDiffParams) {
       while (rightArrCopy.length > 0) {
         const rigthItem = rightArrCopy[0];
         const rightItemType = CommonUtils.jsonValueType(rigthItem);
-        const className = "added";
+        const className = ClassNames.added;
         if (rightItemType === JsonValueType.array) {
           parseArray(
             tableRows,
