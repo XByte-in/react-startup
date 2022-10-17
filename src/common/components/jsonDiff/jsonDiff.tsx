@@ -41,7 +41,7 @@ function JsonDiff(props: IJsonDiffParams) {
     );
     const rows = tableRows.map((row: IDiffData, index: number) => {
       const spacing = [];
-      for (let i = 0; i < row.level; i++) spacing.push(<>&emsp;</>);
+      for (let i = 0; i < row.level; i++) spacing.push(<>&emsp;&emsp;</>);
       return (
         <tr key={Math.random()}>
           <td key={Math.random()}>{index + 1}</td>
@@ -85,28 +85,30 @@ function JsonDiff(props: IJsonDiffParams) {
     className: ClassNames,
     level: number
   ) {
-    const openRow: IDiffData = { level: level, key: parentKey };
+    const openCloseRowLevel = level + 1;
+    const childLevel = openCloseRowLevel + 1;
+    const openRow: IDiffData = { level: openCloseRowLevel, key: parentKey };
     if (col === "leftCol")
       openRow.leftCol = { className: className, data: "{" };
     else openRow.rightCol = { className: className, data: "{" };
     tableRows.push(openRow);
-    const childLevel = level + 1;
+    const childChildLevel = childLevel + 1;
     Object.keys(jsonObj).forEach((key) => {
       const item = jsonObj[key];
       const itemType = CommonUtils.jsonValueType(item);
       if (itemType === JsonValueType.array) {
-        parseArray(tableRows, parentKey, item, col, className, childLevel);
+        parseArray(tableRows, parentKey, item, col, className, childChildLevel);
       } else if (itemType === JsonValueType.object) {
-        parseObject(tableRows, key, item, col, className, childLevel);
+        parseObject(tableRows, key, item, col, className, childChildLevel);
       } else {
-        const td: IDiffData = { level: childLevel, key: key };
+        const td: IDiffData = { level: childChildLevel, key: key };
         if (col === "leftCol")
           td.leftCol = { className: className, data: jsonObj[key] };
         else td.rightCol = { className: className, data: jsonObj[key] };
         tableRows.push(td);
       }
     });
-    const closeRow: IDiffData = { level: level};
+    const closeRow: IDiffData = { level: openCloseRowLevel };
     if (col === "leftCol")
       closeRow.leftCol = { className: className, data: "}" };
     else closeRow.rightCol = { className: className, data: "}" };
@@ -292,27 +294,29 @@ function JsonDiff(props: IJsonDiffParams) {
     className: ClassNames,
     level: number
   ) {
-    const openRow: IDiffData = { level: level, key: parentKey };
+    const openCloseRowLevel = level;
+    const childLevel = openCloseRowLevel + 1;
+    const openRow: IDiffData = { level: openCloseRowLevel, key: parentKey };
     if (col === "leftCol")
       openRow.leftCol = { className: className, data: "[" };
     else openRow.rightCol = { className: className, data: "[" };
     tableRows.push(openRow);
-    const childLevel = level + 1;
+    const childChildLevel = childLevel + 1;
     arr.forEach((item) => {
       const itemType = CommonUtils.jsonValueType(item);
       if (itemType === JsonValueType.array) {
-        parseArray(tableRows, "", item, col, className, childLevel);
+        parseArray(tableRows, "", item, col, className, childChildLevel);
       } else if (itemType === JsonValueType.object) {
-        parseObject(tableRows, "", item, col, className, childLevel);
+        parseObject(tableRows, "", item, col, className, childChildLevel);
       } else {
-        const td: IDiffData = { level: childLevel };
+        const td: IDiffData = { level: childChildLevel };
         if (col === "leftCol")
           td.leftCol = { className: className, data: item };
         else td.rightCol = { className: className, data: item };
         tableRows.push(td);
       }
     });
-    const closeRow: IDiffData = { level: level };
+    const closeRow: IDiffData = { level: openCloseRowLevel };
     if (col === "leftCol")
       closeRow.leftCol = { className: className, data: "]" };
     else closeRow.rightCol = { className: className, data: "]" };
@@ -325,6 +329,8 @@ function JsonDiff(props: IJsonDiffParams) {
     rightArr: Array<any>,
     level: number
   ) {
+    const openCloseRowLevel = level + 1;
+    const childLevel = openCloseRowLevel + 1;
     if (
       (leftArr === null || leftArr === undefined) &&
       (rightArr === null || rightArr === undefined)
@@ -337,7 +343,7 @@ function JsonDiff(props: IJsonDiffParams) {
         rightArr,
         "rightCol",
         ClassNames.added,
-        level
+        childLevel
       );
     else if (rightArr === null || rightArr === undefined)
       parseArray(
@@ -346,11 +352,11 @@ function JsonDiff(props: IJsonDiffParams) {
         leftArr,
         "leftCol",
         ClassNames.removed,
-        level
+        childLevel
       );
     else {
       const openRow = {
-        level: level,
+        level: openCloseRowLevel,
         key: parentKey,
         leftCol: { data: "[" },
         rightCol: { data: "[" },
@@ -361,7 +367,7 @@ function JsonDiff(props: IJsonDiffParams) {
       rightArr.sort();
       const leftArrCopy = leftArr.slice();
       const rightArrCopy = rightArr.slice();
-      const childLevel = level + 1;
+      const childChildLevel = childLevel + 1;
       while (leftArrCopy.length > 0) {
         const leftItem = leftArrCopy[0];
         const leftItemType = CommonUtils.jsonValueType(leftItem);
@@ -372,7 +378,7 @@ function JsonDiff(props: IJsonDiffParams) {
             leftItem,
             "leftCol",
             ClassNames.removed,
-            childLevel
+            childChildLevel
           );
           leftArrCopy.splice(0, 1);
         } else if (leftItemType === JsonValueType.object) {
@@ -382,7 +388,7 @@ function JsonDiff(props: IJsonDiffParams) {
             leftItem,
             "leftCol",
             ClassNames.removed,
-            childLevel
+            childChildLevel
           );
           leftArrCopy.splice(0, 1);
         } else {
@@ -390,7 +396,7 @@ function JsonDiff(props: IJsonDiffParams) {
           if (rightItemIndex !== -1) {
             const className = ClassNames.same;
             tableRows.push({
-              level: childLevel,
+              level: childChildLevel,
               leftCol: {
                 className: className,
                 data: leftItem,
@@ -405,7 +411,7 @@ function JsonDiff(props: IJsonDiffParams) {
           } else {
             const className = ClassNames.removed;
             tableRows.push({
-              level: childLevel,
+              level: childChildLevel,
               leftCol: {
                 className: className,
                 data: leftItem,
@@ -426,7 +432,7 @@ function JsonDiff(props: IJsonDiffParams) {
             rigthItem,
             "rightCol",
             className,
-            childLevel
+            childChildLevel
           );
           rightArrCopy.splice(0, 1);
         } else if (rightItemType === JsonValueType.object) {
@@ -436,12 +442,12 @@ function JsonDiff(props: IJsonDiffParams) {
             rigthItem,
             "rightCol",
             className,
-            childLevel
+            childChildLevel
           );
           rightArrCopy.splice(0, 1);
         } else {
           tableRows.push({
-            level: childLevel,
+            level: childChildLevel,
             rightCol: {
               className: className,
               data: rigthItem,
@@ -451,7 +457,7 @@ function JsonDiff(props: IJsonDiffParams) {
         }
       }
       const closeRow = {
-        level: level,
+        level: openCloseRowLevel,
         leftCol: { data: "]" },
         rightCol: { data: "]" },
       };
