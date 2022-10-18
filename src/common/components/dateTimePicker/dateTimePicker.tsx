@@ -91,7 +91,7 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
           setShowWeekNumbers(props.showWeekNumbers);
         break;
       case DateTimePickerType.dateRange:
-        setDateFormat("MMM,yyyy");
+        setDateFormat("ddMMM,yyyy");
         setSelectsRange(true);
         setMonthsShown(2);
         if (props.startDate != null) setStartDate(props.startDate);
@@ -123,52 +123,55 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
   //   return <span title={tooltipText}>{dayOfMonth}</span>;
   // };
   return (
-    <DatePicker className="dateTimePicker"
-      dateFormat={dateFormat}
-      isClearable={props.isClearable}
-      placeholderText={props.placeholderText}
-      showTimeInput={showTimeInput}
-      showTimeSelect={showTimeSelect}
-      showMonthYearPicker={showMonthYearPicker}
-      timeIntervals={timeIntervals}
-      minDate={minDate}
-      maxDate={maxDate}
-      showWeekNumbers={showWeekNumbers}
-      selected={selectedDate}
-      selectsRange={selectsRange}
-      startDate={startDate}
-      endDate={endDate}
-      monthsShown={monthsShown}
-      showTimeSelectOnly={showTimeSelectOnly}
-      showYearPicker={showYearPicker}
-      minTime={minTime}
-      maxTime={maxTime}
-      calendarStartDay={1}
-      onChange={(param: any) => {
-        switch (props.dateTimePickerType) {
-          case DateTimePickerType.time:
-          case DateTimePickerType.date:
-          case DateTimePickerType.month:
-          case DateTimePickerType.year:
-          case DateTimePickerType.dateTime:
-            setSelectedDate(param);
-            break;
-          case DateTimePickerType.dateRange:
-            setStartDate(param[0]);
-            setEndDate(param[1]);
-            break;
-        }
-      }}
-      onCalendarClose={() => {
-        if (props.onCalendarClose) props.onCalendarClose();
-      }}
-      onCalendarOpen={() => {
-        if (props.onCalendarOpen) props.onCalendarOpen();
-      }}
-      // renderDayContents={(dayOfMonth: number, date?: Date | undefined) =>
-      //   renderDayContents(dayOfMonth, date)
-      // }
-    />
+    <div className="dateTimePicker">
+      <DatePicker
+      className="datePicker-display datePicker-display-icon"
+        dateFormat={dateFormat}
+        isClearable={props.isClearable}
+        placeholderText={props.placeholderText}
+        showTimeInput={showTimeInput}
+        showTimeSelect={showTimeSelect}
+        showMonthYearPicker={showMonthYearPicker}
+        timeIntervals={timeIntervals}
+        minDate={minDate}
+        maxDate={maxDate}
+        showWeekNumbers={showWeekNumbers}
+        selected={selectedDate}
+        selectsRange={selectsRange}
+        startDate={startDate}
+        endDate={endDate}
+        monthsShown={monthsShown}
+        showTimeSelectOnly={showTimeSelectOnly}
+        showYearPicker={showYearPicker}
+        minTime={minTime}
+        maxTime={maxTime}
+        calendarStartDay={1}
+        onChange={(param: any) => {
+          switch (props.dateTimePickerType) {
+            case DateTimePickerType.time:
+            case DateTimePickerType.date:
+            case DateTimePickerType.month:
+            case DateTimePickerType.year:
+            case DateTimePickerType.dateTime:
+              setSelectedDate(param);
+              break;
+            case DateTimePickerType.dateRange:
+              setStartDate(param[0]);
+              setEndDate(param[1]);
+              break;
+          }
+        }}
+        onCalendarClose={() => {
+          if (props.onCalendarClose) props.onCalendarClose();
+        }}
+        onCalendarOpen={() => {
+          if (props.onCalendarOpen) props.onCalendarOpen();
+        }}
+        // renderDayContents={(dayOfMonth: number, date?: Date | undefined) =>
+        //   renderDayContents(dayOfMonth, date)
+        // }
+      />
+    </div>
   );
 };
 

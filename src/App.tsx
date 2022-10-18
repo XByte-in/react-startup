@@ -90,12 +90,12 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateRange}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.month}/>
-      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/> */}
+      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/>
 
       {/* <input type="date" id="birthday" name="birthday"/>
     <input type="time" id="birthday" name="birthday"/>
@@ -121,10 +121,10 @@ function App() {
           { label: "label 2", value: "value 2" },
         ]}
       /> */}
-      <JsonDiff
+      {/* <JsonDiff
         leftData={{ heading: "Left Heading", jsonData: leftJson }}
         rightData={{ heading: "Right Heading", jsonData: rightJson }}
-      ></JsonDiff>
+      ></JsonDiff> */}
       {/* <JsonView
         jsonObject={jsonTest}
         customFormatter={customFormatter}
