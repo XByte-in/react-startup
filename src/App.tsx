@@ -90,12 +90,12 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
+      {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateRange}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.month}/>
-      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/> */}
 
       {/* <input type="date" id="birthday" name="birthday"/>
     <input type="time" id="birthday" name="birthday"/>
@@ -466,12 +466,6 @@ function App() {
 export default App;
 
 // slider
-// Date
-// Datetime
-// time
-// daterange
-// time
-// timerange
 // textinput (string, amount with decial validation, number, decimal number, regex)
 // textarea
 // flex
