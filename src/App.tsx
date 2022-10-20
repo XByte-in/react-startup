@@ -41,6 +41,7 @@ import Slider from "./common/components/slider/slider";
 import DateTimePicker, {
   DateTimePickerType,
 } from "./common/components/dateTimePicker/dateTimePicker";
+import ToggleButton from "./common/components/toggleButton/toggleButton";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -90,6 +91,7 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
+      <ToggleButton labelText="labelTest" checked={true} />
       {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
