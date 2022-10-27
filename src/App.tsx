@@ -92,7 +92,7 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      <ProgressBar value={10}/>
+      {/* <ProgressBar value={10}/> */}
       {/* <ToggleButton labelText="labelTest" checked={true} /> */}
       {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
@@ -104,7 +104,7 @@ function App() {
       {/* <input type="date" id="birthday" name="birthday"/>
     <input type="time" id="birthday" name="birthday"/>
     <input type="datetime-local" id="birthday" name="birthday"/> */}
-      {/* <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider> */}
+      <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider>
       {/* <CheckBox labelText="labelTest" checked={true} /> */}
       {/* <RadioButton
         labelText="One"
@@ -469,7 +469,7 @@ function App() {
 
 export default App;
 
-// progress bar
+
 // slider
 // textinput (string, number, amount with decial validation,  decimal number, regex, email, password)
 // textarea
