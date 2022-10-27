@@ -42,6 +42,7 @@ import DateTimePicker, {
   DateTimePickerType,
 } from "./common/components/dateTimePicker/dateTimePicker";
 import ToggleButton from "./common/components/toggleButton/toggleButton";
+import ProgressBar from "./common/components/progressBar/progressBar";
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.gooleUserInfo.email
@@ -91,7 +92,8 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      <ToggleButton labelText="labelTest" checked={true} />
+      <ProgressBar value={10}/>
+      {/* <ToggleButton labelText="labelTest" checked={true} /> */}
       {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
@@ -467,7 +469,8 @@ function App() {
 
 export default App;
 
+// progress bar
 // slider
-// textinput (string, amount with decial validation, number, decimal number, regex)
+// textinput (string, number, amount with decial validation,  decimal number, regex, email, password)
 // textarea
 // flex
