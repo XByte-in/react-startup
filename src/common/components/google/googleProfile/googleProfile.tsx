@@ -10,28 +10,29 @@ import Icon from "../../icon/icon";
 interface IGoogleProfileParams {
   id?: string;
   className?: string;
-  styleObj?: { [key: string]: {} };  
+  styleObj?: { [key: string]: {} };
 }
 
 const GoogleProfile = (props: IGoogleProfileParams) => {
   const dispatch = useDispatch();
-  const gooleUserInfo = useSelector((state: RootState) => state.gooleUserInfo);
+  const googleUserInfo = useSelector(
+    (state: RootState) => state.googleUserInfo
+  );
   return (
     <div className="profile">
       <Icon
         className="profile-logo"
-        iconName={gooleUserInfo.picture}
+        iconName={googleUserInfo.picture}
         iconSize={IconSize._40}
       />
       <div className="profile-info">
-        <span className="user-name">{gooleUserInfo.name}</span>
-        <span className="user-email">{gooleUserInfo.email}</span>
+        <span className="user-name">{googleUserInfo.name}</span>
+        <span className="user-email">{googleUserInfo.email}</span>
       </div>
       <GoogleSignOut
         className="profile-logout"
         showIconOnly={true}
         onSignOut={(result) => {
-          console.log(result);
           dispatch(removeGoogleUserInfo());
         }}
       />

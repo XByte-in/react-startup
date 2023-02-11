@@ -45,7 +45,7 @@ import ToggleButton from "./common/components/toggleButton/toggleButton";
 import ProgressBar from "./common/components/progressBar/progressBar";
 function App() {
   const userEmail = useSelector(
-    (state: RootState) => state.gooleUserInfo.email
+    (state: RootState) => state.googleUserInfo.email
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -104,7 +104,7 @@ function App() {
       {/* <input type="date" id="birthday" name="birthday"/>
     <input type="time" id="birthday" name="birthday"/>
     <input type="datetime-local" id="birthday" name="birthday"/> */}
-      <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider>
+      {/* <Slider min={1} max={100} value={50} onChange={(data:number)=> console.log(data)}></Slider> */}
       {/* <CheckBox labelText="labelTest" checked={true} /> */}
       {/* <RadioButton
         labelText="One"
@@ -138,11 +138,12 @@ function App() {
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.primary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.secondary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.danger}></Label> */}
-      {/* {!userEmail && (
+      {!userEmail && (
         <GoogleSignIn
           client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
           auto_select={true}
-          cancel_on_tap_outside={false}
+          cancel_on_tap_outside={true}
+          itp_support = {true}
           onSignIn={(params) => {
             console.log(params);
             dispatch(setGoogleUserInfo(params));
@@ -151,7 +152,7 @@ function App() {
       )}
       {userEmail && (
         <GoogleProfile/>
-      )} */}
+      )}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
       {/* <table>

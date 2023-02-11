@@ -16,7 +16,7 @@ const initialState: GoogleUserInfoState = {
   picture: "",
 };
 export const GoogleUserInfoSlice = createSlice({
-  name: "gooleUserInfo",
+  name: "googleUserInfo",
   initialState,
   reducers: {
     setGoogleUserInfo: (state, action) => {

@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import CommonUtils from "../../commonUtils";
-import Button from "../button/button";
-import { Size, Type } from "../../commonConst";
-import { Icons_32px } from "../../pictures/pictures";
 
 interface IGoogleSignInParam {
   client_id: string;
   auto_select: boolean;
   cancel_on_tap_outside: boolean;
+  itp_support: boolean;
   onSignIn: (param: {}) => void;
 }
 
@@ -41,9 +39,21 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
       client_id: props.client_id,
       auto_select: props.auto_select,
       cancel_on_tap_outside: props.cancel_on_tap_outside,
+      itp_support: props.itp_support,
       context: "signin",
       callback: handleGoogleSignIn,
     });
+    window.google.accounts.id.renderButton(
+      document.getElementById("googleSignInDiv"),
+      {
+        type: "standard",
+        theme: "filled_blue",
+        size: "large",
+        shape: "pill",
+        text: "continue_with",
+      }
+    );
+    window.google.accounts.id.prompt(); // also display the One Tap dialog
   };
   const onScriptError = (error: any) => console.log(error);
   const signinInit = () => {
@@ -56,13 +66,6 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
     );
   };
   useEffect(() => signinInit(), []);
-  return (
-    <Button
-      size={Size.default}
-      type={Type.secondary}
-      btnText="signinWithGoogle" btnIconName={Icons_32px.google_2}
-      onClick={() => gsiInitialized ?window.google.accounts.id.prompt():signinInit()}
-    ></Button>
-  )
+  return <div id="googleSignInDiv" />;
 };
 export default GoogleSignIn;
