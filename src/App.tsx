@@ -1,48 +1,51 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
 import CommonUtils from "./common/commonUtils";
-import Image from "./common/components/image/image";
 import Icon from "./common/components/icon/icon";
+import Image from "./common/components/image/image";
 import Label from "./common/components/label/label";
 import { IconSize, Icons_16px, Icons_180px } from "./common/pictures/pictures";
 
-import colors from "./common/theme/colors.json";
-import fonts from "./common/theme/fonts.json";
 import { Size, Type } from "./common/commonConst";
-import { TypographyConst } from "./common/scss/typographyConst";
+import Button from "./common/components/button/button";
 import GoogleSignIn from "./common/components/google/googleSignIn";
 import GoogleSignOut from "./common/components/google/googleSignOut";
-import Button from "./common/components/button/button";
+import { TypographyConst } from "./common/scss/typographyConst";
+import colors from "./common/theme/colors.json";
+import fonts from "./common/theme/fonts.json";
 
-import type { RootState } from "./common/store/store";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  setGoogleUserInfo,
   removeGoogleUserInfo,
+  setGoogleUserInfo,
 } from "./common/components/google/googleUserInfoSlice";
+import type { RootState } from "./common/store/store";
 
-import jsonTest from "./testData/jsonTest.json";
-import leftJson from "./testData/left.json";
-import rightJson from "./testData/right.json";
-import JsonView, {
-  getFormattedString,
-  arrayToFormattedTable,
-  ICustomFormatterParam,
-} from "./common/components/jsonView/jsonView";
-import GoogleProfile from "./common/components/google/googleProfile/googleProfile";
-import JsonDiff from "./common/components/jsonDiff/jsonDiff";
-import SelectField from "./common/components/selectField/selectField";
-import CheckBox from "./common/components/checkBox/checkBox";
-import RadioButton from "./common/components/radioButton/radioButton";
-import slider from "./common/components/slider/slider";
 import { formatDateTimeRange } from "@formatjs/intl/src/dateTime";
 import { findByLabelText } from "@testing-library/react";
-import Slider from "./common/components/slider/slider";
+import CheckBox from "./common/components/checkBox/checkBox";
 import DateTimePicker, {
   DateTimePickerType,
 } from "./common/components/dateTimePicker/dateTimePicker";
-import ToggleButton from "./common/components/toggleButton/toggleButton";
+import GoogleProfile from "./common/components/google/googleProfile/googleProfile";
+import InputField, {
+  InputFieldType,
+} from "./common/components/inputField/inputField";
+import JsonDiff from "./common/components/jsonDiff/jsonDiff";
+import JsonView, {
+  arrayToFormattedTable,
+  getFormattedString,
+  ICustomFormatterParam,
+} from "./common/components/jsonView/jsonView";
 import ProgressBar from "./common/components/progressBar/progressBar";
+import RadioButton from "./common/components/radioButton/radioButton";
+import SelectField from "./common/components/selectField/selectField";
+import Slider from "./common/components/slider/slider";
+import ToggleButton from "./common/components/toggleButton/toggleButton";
+import jsonTest from "./testData/jsonTest.json";
+import leftJson from "./testData/left.json";
+import rightJson from "./testData/right.json";
+
 function App() {
   const userEmail = useSelector(
     (state: RootState) => state.googleUserInfo.email
@@ -92,6 +95,7 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
+      {/* <InputField type={InputFieldType.text}/> */}
       {/* <ProgressBar value={10}/> */}
       {/* <ToggleButton labelText="labelTest" checked={true} /> */}
       {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
@@ -143,16 +147,14 @@ function App() {
           client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
           auto_select={true}
           cancel_on_tap_outside={true}
-          itp_support = {true}
+          itp_support={true}
           onSignIn={(params) => {
             console.log(params);
             dispatch(setGoogleUserInfo(params));
           }}
         />
       )}
-      {userEmail && (
-        <GoogleProfile/>
-      )}
+      {userEmail && <GoogleProfile />}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
       {/* <table>
@@ -470,8 +472,6 @@ function App() {
 
 export default App;
 
-
-// slider
-// textinput (string, number, amount with decial validation,  decimal number, regex, email, password)
+// textinput (string, number, amount with decial validation,  decimal number, regex, email, password, min-max)
 // textarea
 // flex

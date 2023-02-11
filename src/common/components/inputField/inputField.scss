@@ -1,0 +1,127 @@
+.inputField {
+  @import "../../scss";
+  @include body_medium_regular();
+  width: 100%;
+  background-color: var(--color-white);
+  color: var(--color-base);
+  border: 1px solid var(--color-base);
+
+  &:focus {
+    background-color: yellow;
+    border: 1px solid var(--color-accent);
+  }
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--color-light-400);
+    opacity: 0.4;
+  }
+
+  // // TBR
+  // box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
+  // @extend .shadow-small;
+
+  // &.is__med {
+  //   // Font -  Body/Body - Regular
+
+  //   @include toRem(height, 36);
+  //   @extend .body-medium__regular;
+  //   @extend .px-12;
+  //   @extend .br-6;
+  // }
+
+  // &.is__large {
+  //   @include toRem(height, 48);
+  //   @extend .body-body__regular;
+  //   @extend .pr-12, .pl-16;
+  //   @extend .br-8;
+  // }
+
+  // &.is__small {
+  //   // Font -  Body/Medium - Regular
+
+  //   @include toRem(height, 36);
+  // }
+
+  // &.has__error {
+  //   // error
+  //   border: 1px solid var(--clr-additional-error);
+  // }
+
+  // // Handeling different States
+  // &:focus {
+  //   // accent
+  //   border: 1px solid var(--color-accent);
+  // }
+
+  // &:read-only {
+  //   box-shadow: none;
+  //   color: var(--color-dark-900);
+  //   background: transparent;
+  //   border: 1px solid var(--color-light);
+
+  //   &.is__borderless {
+  //     border: none;
+  //   }
+  // }
+
+  // &:disabled {
+  //   // background
+  //   background-color: var(--color-base);
+  //   border: none;
+  //   color: var(--color-dark-800);
+  //   opacity: 0.4;
+
+  //   // Browsers
+  //   &::placeholder {
+  //     /* Chrome, Firefox, Opera, Safari 10.1+ */
+  //     color: var(--color-dark-800);
+  //     opacity: 0.4;
+  //   }
+
+  //   &:-ms-input-placeholder {
+  //     /* Internet Explorer 10-11 */
+  //     color: var(--color-dark-800);
+  //     opacity: 0.4;
+  //   }
+
+  //   &::-ms-input-placeholder {
+  //     /* Microsoft Edge */
+  //     color: var(--color-dark-800);
+  //     opacity: 0.4;
+  //   }
+  // }
+
+  // // Browsers
+  // &::placeholder {
+  //   /* Chrome, Firefox, Opera, Safari 10.1+ */
+  //   color: var(--color-light-400);
+  //   opacity: 0.4;
+  // }
+
+  // &:-ms-input-placeholder {
+  //   /* Internet Explorer 10-11 */
+  //   color: var(--color-light-400);
+  //   opacity: 0.4;
+  // }
+
+  // &::-ms-input-placeholder {
+  //   /* Microsoft Edge */
+  //   color: var(--color-light-400);
+  //   opacity: 0.4;
+  // }
+
+  // // To be moved from here
+  // &-label {
+  //   color: var(--color-dark-600);
+  //   text-transform: uppercase;
+  //   opacity: 0.8;
+  // }
+
+  // &-required {
+  //   color: var(--clr-additional-error);
+  // }
+
+  // &-error {
+  //   color: var(--clr-additional-error);
+  // }
+}
