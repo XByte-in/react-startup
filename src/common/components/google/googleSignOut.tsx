@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
 import { Size, Type } from "../../commonConst";
 import { IconSize, Icons_32px } from "../../pictures/pictures";
+import type { RootState } from "../../store/store";
 import Button from "../button/button";
 import Icon from "../icon/icon";
-import type { RootState } from "../../store/store";
-import { useSelector } from "react-redux";
 
 interface IGoogleSignOutParams {
   showIconOnly?: boolean;

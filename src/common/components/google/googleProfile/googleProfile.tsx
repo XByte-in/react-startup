@@ -1,11 +1,11 @@
 import "./googleProfile.scss";
 
+import { useDispatch, useSelector } from "react-redux";
+import { IconSize } from "../../../pictures/pictures";
 import type { RootState } from "../../../store/store";
-import { useSelector, useDispatch } from "react-redux";
+import Icon from "../../icon/icon";
 import GoogleSignOut from "../googleSignOut";
 import { removeGoogleUserInfo } from "../googleUserInfoSlice";
-import { IconSize } from "../../../pictures/pictures";
-import Icon from "../../icon/icon";
 
 interface IGoogleProfileParams {
   id?: string;
