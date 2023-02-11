@@ -1,7 +1,7 @@
-import "./jsonDiff.scss";
-import CommonUtils from "../../commonUtils";
+import { useEffect, useState } from "react";
 import { JsonValueType } from "../../commonConst";
-import { useState, useEffect } from "react";
+import CommonUtils from "../../commonUtils";
+import "./jsonDiff.scss";
 
 const enum ClassNames {
   same = "same",

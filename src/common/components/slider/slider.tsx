@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./slider.scss";
+
 interface ISliderParams {
   min: number;
   max: number;

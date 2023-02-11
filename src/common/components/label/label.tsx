@@ -1,8 +1,7 @@
-import React from "react";
-import FormattedText from "../formattedText/formattedText";
 import { Type } from "../../commonConst";
-import "./label.scss";
 import { TypographyConst } from "../../scss/typographyConst";
+import FormattedText from "../formattedText/formattedText";
+import "./label.scss";
 
 interface ILabelParam {
   labelText: string;

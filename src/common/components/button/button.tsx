@@ -1,8 +1,8 @@
-import Icon from "../icon/icon";
-import FormattedText from "../formattedText/formattedText";
-import { Type, Size } from "../../commonConst";
-import "./button.scss";
+import { Size, Type } from "../../commonConst";
 import { Icons_64px } from "../../pictures/pictures";
+import FormattedText from "../formattedText/formattedText";
+import Icon from "../icon/icon";
+import "./button.scss";
 
 interface IButtonParams {
   btnText: string;

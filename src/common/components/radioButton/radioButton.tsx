@@ -5,6 +5,7 @@ import { TypographyConst } from "../../scss/typographyConst";
 import Icon from "../icon/icon";
 import Label from "../label/label";
 import "./radioButton.scss";
+
 interface IRadioButtonParams {
   labelText: string;
   isChecked: boolean;
