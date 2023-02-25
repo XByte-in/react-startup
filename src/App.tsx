@@ -96,11 +96,15 @@ function App() {
   return (
     <div>
       <InputField type={InputFieldType.text}/>
-      {/* <InputField type={InputFieldType.number}/>
-      <InputField type={InputFieldType.email}/> */}
+      <InputField type={InputFieldType.number}/>
+      <InputField type={InputFieldType.email}/>
+      <InputField type={InputFieldType.color}/>
+      <InputField type={InputFieldType.tel}/>
+      <InputField type={InputFieldType.file}/>
+      <InputField type={InputFieldType.password}/>
       {/* <ProgressBar value={10}/> */}
       {/* <ToggleButton labelText="labelTest" checked={true} /> */}
-      <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
+      {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/> */}
       {/* <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateRange}/>
@@ -124,13 +128,13 @@ function App() {
         value={Test.Two}
         onChange={(param) => setTest(param)}
       /> */}
-      <SelectField
+      {/* <SelectField
         className={TypographyConst.body_medium_regular}
         options={[
           { label: "label 1", value: "value 1" },
           { label: "label 2", value: "value 2" },
         ]}
-      />
+      /> */}
       {/* <JsonDiff
         leftData={{ heading: "Left Heading", jsonData: leftJson }}
         rightData={{ heading: "Right Heading", jsonData: rightJson }}
