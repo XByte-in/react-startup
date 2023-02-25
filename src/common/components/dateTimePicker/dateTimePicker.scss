@@ -11,6 +11,9 @@
     color: var(--color-base);
     background-color: var(--color-white);
     text-overflow: ellipsis;    
+    &:focus {
+      border: 0.18rem solid var(--color-accent) !important;
+    }
   }
   .react-datepicker {
     @include body_medium_regular();
