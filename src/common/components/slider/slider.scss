@@ -12,7 +12,7 @@
       overflow: hidden;
       height: 1rem;
       background-color: var(--color-white);
-      box-shadow: 1px 1px 4px var(--color-accent);
+      box-shadow: 0.1rem 0.1rem 0.4rem var(--color-accent);
     }
     &::-webkit-slider-thumb {
       -webkit-appearance: none;

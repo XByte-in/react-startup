@@ -4,9 +4,10 @@
   width: 100%;
   background-color: var(--color-white);
   color: var(--color-base);
-  border: 2px solid var(--color-base);
+  border: 0.1rem solid #cccccc;
+  border-radius: 0.4rem;
   outline: none;
-
+  height: 3.4rem;
   // &.text {
     
   // }
@@ -18,7 +19,7 @@
   // }
 
   &:focus {
-    border: 2px solid var(--color-accent);
+    border: 0.1rem solid var(--color-accent);
   }
   &::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -27,7 +28,7 @@
   }
 
   // // TBR
-  // box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
+  // box-shadow: 0px 0.2rem 0.8rem rgba(0, 0, 0, 0.04);
   // @extend .shadow-small;
 
   // &.is__med {
@@ -54,20 +55,20 @@
 
   // &.has__error {
   //   // error
-  //   border: 1px solid var(--clr-additional-error);
+  //   border: 0.1rem solid var(--clr-additional-error);
   // }
 
   // // Handeling different States
   // &:focus {
   //   // accent
-  //   border: 1px solid var(--color-accent);
+  //   border: 0.1rem solid var(--color-accent);
   // }
 
   // &:read-only {
   //   box-shadow: none;
   //   color: var(--color-dark-900);
   //   background: transparent;
-  //   border: 1px solid var(--color-light);
+  //   border: 0.1rem solid var(--color-light);
 
   //   &.is__borderless {
   //     border: none;

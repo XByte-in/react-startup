@@ -100,12 +100,12 @@ function App() {
       <InputField type={InputFieldType.email}/>
       {/* <ProgressBar value={10}/> */}
       {/* <ToggleButton labelText="labelTest" checked={true} /> */}
-      {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
+      <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.date}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.dateRange}/>
       <DateTimePicker dateTimePickerType={DateTimePickerType.month}/>
-      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/> */}
+      <DateTimePicker dateTimePickerType={DateTimePickerType.year}/>
 
       {/* <input type="date" id="birthday" name="birthday"/>
     <input type="time" id="birthday" name="birthday"/>
@@ -124,13 +124,13 @@ function App() {
         value={Test.Two}
         onChange={(param) => setTest(param)}
       /> */}
-      {/* <SelectField
+      <SelectField
         className={TypographyConst.body_medium_regular}
         options={[
           { label: "label 1", value: "value 1" },
           { label: "label 2", value: "value 2" },
         ]}
-      /> */}
+      />
       {/* <JsonDiff
         leftData={{ heading: "Left Heading", jsonData: leftJson }}
         rightData={{ heading: "Right Heading", jsonData: rightJson }}

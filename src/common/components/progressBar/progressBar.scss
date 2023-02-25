@@ -2,11 +2,11 @@
   @import "../../scss";
   progress {
     border-radius: 0.6rem;
-    border-width: 2px;
+    border-width: 0.2rem;
     width: 100%;
     height: 1.2rem;
     border-color: var(--color-accent);
-    box-shadow: 1px 1px 4px var(--color-accent);
+    box-shadow: 0.1rem 0.1rem 0.4rem var(--color-accent);
     &::-webkit-progress-value {
       background-color: var(--color-accent);
       border-radius: 0.6rem;
