@@ -95,7 +95,9 @@ function App() {
   const [test, setTest] = useState(Test.One);
   return (
     <div>
-      {/* <InputField type={InputFieldType.text}/> */}
+      <InputField type={InputFieldType.text}/>
+      <InputField type={InputFieldType.number}/>
+      <InputField type={InputFieldType.email}/>
       {/* <ProgressBar value={10}/> */}
       {/* <ToggleButton labelText="labelTest" checked={true} /> */}
       {/* <DateTimePicker dateTimePickerType={DateTimePickerType.time}/>
@@ -142,7 +144,7 @@ function App() {
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.primary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.secondary}></Label>
     <Label labelText="labelTest" typographySize={TypographyConst.flow_title} type={Type.danger}></Label> */}
-      {!userEmail && (
+      {/* {!userEmail && (
         <GoogleSignIn
           client_id="769780182132-m6qia6f13297q33tuda2otngdh8eqaik.apps.googleusercontent.com"
           auto_select={true}
@@ -154,7 +156,7 @@ function App() {
           }}
         />
       )}
-      {userEmail && <GoogleProfile />}
+      {userEmail && <GoogleProfile />} */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test" iconSize={IconSize._180}></Icon> */}
       {/* <Icon iconName={Icons_180px.coming_soon} className="test-image" ></Icon> */}
       {/* <table>
@@ -475,3 +477,11 @@ export default App;
 // textinput (string, number, amount with decial validation,  decimal number, regex, email, password, min-max)
 // textarea
 // flex
+
+// <input type="email">
+// <input type="number">
+// <input type="color">
+// <input type="file">
+// <input type="password">
+// <input type="tel">
+

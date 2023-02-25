@@ -1,18 +1,22 @@
 import React from "react";
 import "./inputField.scss";
+
+// <input type="email">
+// <input type="number">
+// <input type="color">
+// <input type="file">
+// <input type="password">
+// <input type="tel">
 export enum InputFieldType {
   text = "text",
   number = "number",
   email = "email",
-  // email
-  // color
-  // file
-  // image
-  // password
+  tel = "tel",
+  color = "color",
+  file = "file",
+  password = "password"
   // regex
-  // decimal number
-  // amount
-  // min-max
+  // amount  
 }
 
 interface IInputFieldParams {
@@ -20,6 +24,7 @@ interface IInputFieldParams {
   className?: string;
   placeholder?: string;
   value?: string;
+  pattern?:string;
 
   onChange?: (e: any) => void;
   onFocus?: (e: any) => void;
@@ -29,7 +34,7 @@ interface IInputFieldParams {
 const InputField = (props: IInputFieldParams) => {
   return (
     <input
-      className="inputField"
+      className={`inputField ${props.type} ${props.className}`}
       placeholder=""
       type={props.type}
       onChange={(e) => props.onChange && props.onChange(e.target.value)}

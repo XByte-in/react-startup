@@ -4,11 +4,21 @@
   width: 100%;
   background-color: var(--color-white);
   color: var(--color-base);
-  border: 1px solid var(--color-base);
+  border: 2px solid var(--color-base);
+  outline: none;
+
+  // &.text {
+    
+  // }
+  // &.number {
+    
+  // }
+  // &.email {
+    
+  // }
 
   &:focus {
-    background-color: yellow;
-    border: 1px solid var(--color-accent);
+    border: 2px solid var(--color-accent);
   }
   &::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
