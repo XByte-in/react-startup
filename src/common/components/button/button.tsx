@@ -14,7 +14,7 @@ interface IButtonParams {
   isLoading?: boolean;
   className?: string;
   styleObj?: { [key: string]: {} };
-  onClick: () => void;
+  onClick?: () => void;
 
   btnIconName?: string;
 }

@@ -1,0 +1,58 @@
+import React from "react";
+import { Size, Type } from "../../commonConst";
+import { IconSize, Icons_40px } from "../../pictures/pictures";
+import Button from "../button/button";
+import Icon from "../icon/icon";
+import "./modal.scss";
+
+interface IModalParams {
+  show: boolean;
+  onClose: () => void;
+  size: Size;
+  title: string;
+  children: React.ReactNode;
+  onYes?: () => void;
+  yesBtnText: string;
+  onNo?: () => void;
+  noBtnText: string;
+  isLoading: boolean;
+}
+
+const Modal = (props: IModalParams) => {
+  if (!props.show) return null;
+  return (
+    <div className={`modal`} onClick={props.onClose}>
+      <div onClick={(e) => e.stopPropagation()}>
+        <div className="header">
+          <span className="title">{props.title}</span>
+          <Icon
+            iconName={Icons_40px.close}
+            className="close"
+            iconSize={IconSize._32}
+            onClick={props.onClose}
+          ></Icon>
+        </div>
+        <div className="body">{props.children}</div>
+        {props.onYes || props.onNo ? (
+          <div className="footer">
+            <Button
+              size={Size.medium}
+              type={Type.primary}
+              btnText={props.yesBtnText || "yes"}
+              onClick={props.onYes}
+              isLoading={props.isLoading}
+            ></Button>
+            <Button
+              size={Size.medium}
+              type={Type.secondary}
+              btnText={props.noBtnText || "no"}
+              onClick={props.onNo}
+            ></Button>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+export default Modal;
