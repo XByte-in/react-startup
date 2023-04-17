@@ -1,8 +1,4 @@
 {
-    "labelTest":"Label in english US",
-    "signinWithGoogle":"Sign-in with google",
-    "signoutWithGoogle":"Sign-out",
-    "One":"One",
-    "Two":"Two",
-    "yes":"Yes"
+    "yes":"Yes",
+    "no":"No"
 }

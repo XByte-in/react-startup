@@ -26,8 +26,8 @@ function App() {
     <div>
       <button onClick={() => setShow(true)}>Show Modal</button>
       <Modal
-        yesBtnText="Yes"
-        noBtnText="No"
+        yesBtnText="yes"
+        noBtnText="no"
         isLoading={false}
         size={Size.medium}
         title="My Modal"
