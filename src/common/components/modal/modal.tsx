@@ -13,9 +13,9 @@ interface IModalParams {
   title: string;
   children: React.ReactNode;
   onYes?: () => void;
-  yesBtnText: string;
+  yesBtnText?: string;
   onNo?: () => void;
-  noBtnText: string;
+  noBtnText?: string;
   isLoading: boolean;
 }
 
@@ -41,21 +41,25 @@ const Modal = (props: IModalParams) => {
         <div className="body">{props.children}</div>
         {props.onYes || props.onNo ? (
           <div className="footer">
-            <Button
-              className="actionBtn"
-              size={Size.medium}
-              type={Type.primary}
-              btnText={props.yesBtnText || "yes"}
-              onClick={props.onYes}
-              isLoading={props.isLoading}
-            ></Button>
-            <Button
-              className="actionBtn"
-              size={Size.medium}
-              type={Type.secondary}
-              btnText={props.noBtnText || "no"}
-              onClick={props.onNo}
-            ></Button>
+            {props.onYes && (
+              <Button
+                className="actionBtn"
+                size={Size.medium}
+                type={Type.primary}
+                btnText={props.yesBtnText || "yes"}
+                onClick={props.onYes}
+                isLoading={props.isLoading}
+              ></Button>
+            )}
+            {props.onNo && (
+              <Button
+                className="actionBtn"
+                size={Size.medium}
+                type={Type.secondary}
+                btnText={props.noBtnText || "no"}
+                onClick={props.onNo}
+              ></Button>
+            )}
           </div>
         ) : null}
       </div>
