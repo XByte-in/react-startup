@@ -21,7 +21,7 @@ function App() {
     CommonUtils.loadFonts(fonts);
   });
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   return (
     <div>
       <button onClick={() => setShow(true)}>Show Modal</button>

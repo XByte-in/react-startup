@@ -23,7 +23,7 @@ const Modal = (props: IModalParams) => {
   if (!props.show) return null;
   return (
     <div className={`modal`} onClick={props.onClose}>
-      <div className={`${props.size}`} onClick={(e) => e.stopPropagation()}>
+      <div className={`size-${props.size}`} onClick={(e) => e.stopPropagation()}>
         <div className="header">
           <span className="title">
             <FormattedText text={props.title} />
@@ -39,6 +39,7 @@ const Modal = (props: IModalParams) => {
         {props.onYes || props.onNo ? (
           <div className="footer">
             <Button
+              className="actionBtn"
               size={Size.medium}
               type={Type.primary}
               btnText={props.yesBtnText || "yes"}
@@ -46,6 +47,7 @@ const Modal = (props: IModalParams) => {
               isLoading={props.isLoading}
             ></Button>
             <Button
+              className="actionBtn"
               size={Size.medium}
               type={Type.secondary}
               btnText={props.noBtnText || "no"}
