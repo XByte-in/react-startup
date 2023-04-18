@@ -21,15 +21,15 @@
   }
   .size-medium {
     @include modal();
-    width: 600px;
+    width: 700px;
   }
   .size-default {
     @include modal();
-    width: 700px;
+    width: 900px;
   }
   .size-large {
     @include modal();
-    width: 1000px;
+    width: 1200px;
   }
 
   .header {
