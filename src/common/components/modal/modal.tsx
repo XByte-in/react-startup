@@ -4,6 +4,7 @@ import { IconSize, Icons_40px } from "../../pictures/pictures";
 import Button from "../button/button";
 import Icon from "../icon/icon";
 import "./modal.scss";
+import FormattedText from "../formattedText/formattedText";
 
 interface IModalParams {
   show: boolean;
@@ -22,9 +23,11 @@ const Modal = (props: IModalParams) => {
   if (!props.show) return null;
   return (
     <div className={`modal`} onClick={props.onClose}>
-      <div onClick={(e) => e.stopPropagation()}>
+      <div className={`${props.size}`} onClick={(e) => e.stopPropagation()}>
         <div className="header">
-          <span className="title">{props.title}</span>
+          <span className="title">
+            <FormattedText text={props.title} />
+          </span>
           <Icon
             iconName={Icons_40px.close}
             className="close"

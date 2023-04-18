@@ -1,21 +1,24 @@
 .modal {
+  @import "../../scss";
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-
-  background: #ffffff;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  .children {
-    width: 100%;
-    color: #473e5f;
-    float: left;
-    margin: 0px;
-  }
+  // opacity: 0;
+  // transition: all 0.3s ease-in-out;
+  // pointer-events: none;
+
+  // .children {
+  //   width: 100%;
+  //   color: #473e5f;
+  //   float: left;
+  //   margin: 0px;
+  // }
   .small {
     width: 500px;
   }
@@ -29,30 +32,32 @@
     width: 1000px;
   }
   .header {
-    padding: 24px 24px 10px 24px;
-    height: 34px;
+    // padding: 24px 24px 10px 24px;
+    height: 32px;
+    .title {
+      font-weight: bold;
+      font-size: 24px;
+      // line-height: 140%;
+      color: #5b5273;
+      float: left;
+    }
+    .close {
+      float: right;
+      cursor: pointer;
+      background-color: var(--color-additional-error);
+    }
   }
 
   .footer {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin: 24px 0;
+    // gap: 1rem;
+    // margin: 24px 0;
+    .button {
+      width: 50%;
+    }
   }
 
-  .title {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 140%;
-    color: #5b5273;
-    float: left;
-  }
-  .close {
-    height: 24;
-    width: 24;
-    float: right;
-    cursor: pointer;
-  }
   .body {
     display: flex;
   }

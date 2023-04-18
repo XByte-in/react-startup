@@ -29,16 +29,15 @@ function App() {
         yesBtnText="yes"
         noBtnText="no"
         isLoading={false}
-        size={Size.medium}
-        title="My Modal"
+        size={Size.small}
+        title="Title"
         onClose={() => setShow(false)}
         show={show}
-        onYes={()=>console.log("Yes")}
-        onNo={()=>console.log("No")}
+        onYes={() => console.log("Yes")}
+        onNo={() => console.log("No")}
       >
         <p>This is modal body</p>
       </Modal>
-      
     </div>
   );
 }
