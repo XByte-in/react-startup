@@ -1,3 +1,3 @@
 interface IModalComponent {
-    modalComponent: React.ReactNode;
+    modalDataRef: any;
  }
