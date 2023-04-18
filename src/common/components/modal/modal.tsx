@@ -8,7 +8,7 @@ import FormattedText from "../formattedText/formattedText";
 
 interface IModalParams {
   show: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   size: Size;
   title: string;
   children: React.ReactNode;
@@ -23,7 +23,10 @@ const Modal = (props: IModalParams) => {
   if (!props.show) return null;
   return (
     <div className={`modal`} onClick={props.onClose}>
-      <div className={`size-${props.size}`} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`size-${props.size}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="header">
           <span className="title">
             <FormattedText text={props.title} />
