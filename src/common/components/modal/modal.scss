@@ -47,14 +47,17 @@
     }
   }
   .body {
-    display: flex;
+    // display: flex;
+    margin: 1rem 0rem;
+    border-top: var(--color-accent) 1px solid;
+    border-bottom: var(--color-accent) 1px solid;
   }
   .footer {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     .actionBtn {
-      width: calc(50% - 1rem);
+      width: calc(50% - 0.5rem);
     }
   }
 }

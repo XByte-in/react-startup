@@ -1,7 +1,7 @@
 .inputField {
   @import "../../scss";
   @include body_medium_regular();
-  width: 100%;
+  width: calc(100% - 0.5rem);
   background-color: var(--color-white);
   color: var(--color-base);
   border: 0.1rem solid var(--color-light-100);
