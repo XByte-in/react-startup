@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "./common/store/store";
 
 import Modal from "./common/components/modal/modal";
+import ModalTest from "./modalTest/modalTest";
 
 function App() {
   const userEmail = useSelector(
@@ -36,7 +37,7 @@ function App() {
         onYes={() => console.log("Yes")}
         onNo={() => console.log("No")}
       >
-        <p>This is modal body</p>
+        <ModalTest></ModalTest>
       </Modal>
     </div>
   );
