@@ -22,7 +22,7 @@ interface IModalParams {
 const Modal = (props: IModalParams) => {
   if (!props.show) return null;
   return (
-    <div className={`modal`} onClick={props.onClose}>
+    <div className={`modal`}>
       <div
         className={`size-${props.size}`}
         onClick={(e) => e.stopPropagation()}

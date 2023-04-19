@@ -10,7 +10,7 @@
   }
   @mixin defaultLabel() {
     border-radius: 0.8em;
-    background: var(--color-white);
+    background: transparent;
     color: var(--color-black);
   }
   @mixin primaryLabel() {
@@ -20,12 +20,12 @@
   }
   @mixin secondaryLabel() {
     border-radius: 0.8em;
-    background: var(--color-white);
+    background: transparent;
     color: var(--color-accent);
   }
   @mixin dangerLabel() {
     border-radius: 0.8em;
-    background: var(--color-white);
+    background: transparent;
     color: var(--color-additional-error);
   }
 
