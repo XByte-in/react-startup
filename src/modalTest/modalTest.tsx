@@ -19,7 +19,7 @@ const ModalTest = (props: IModalTestParams) => {
         <div className="col label">
           <Label
             labelText="Label 1:"
-            typographySize={TypographyConst.body_label}
+            typographySize={TypographyConst.body_medium_regular}
             type={Type.default}
           ></Label>
         </div>
@@ -31,7 +31,7 @@ const ModalTest = (props: IModalTestParams) => {
         <div className="col label">
           <Label
             labelText="Label 2:"
-            typographySize={TypographyConst.body_label}
+            typographySize={TypographyConst.body_medium_regular}
             type={Type.default}
           ></Label>
         </div>

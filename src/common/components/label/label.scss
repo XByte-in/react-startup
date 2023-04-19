@@ -11,7 +11,7 @@
   @mixin defaultLabel() {
     border-radius: 0.8em;
     background: transparent;
-    color: var(--color-black);
+    color: var(--color-base);
   }
   @mixin primaryLabel() {
     border: none;
