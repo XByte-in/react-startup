@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./modalTest.scss";
 import { IModalComponentParams } from "../common/components/modal/interface";
 import Label from "../common/components/label/label";
@@ -13,6 +13,14 @@ import SelectField from "../common/components/selectField/selectField";
 interface IModalTestParams extends IModalComponentParams {}
 
 const ModalTest = (props: IModalTestParams) => {
+  const [hasError, setHasError] = useState({ show: false, errMsg: ""  });
+  useEffect(() => {
+    props.modalComponentRef.updateError = updateError;
+  }, []);
+
+  function updateError(errMsg:string) {
+    setHasError({ show: true, errMsg: errMsg });
+  }
   return (
     <div className="modal-test">
       <div className="row">
@@ -24,25 +32,9 @@ const ModalTest = (props: IModalTestParams) => {
           ></Label>
         </div>
         <div className="col data">
-          <InputField type={InputFieldType.text} />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col label">
-          <Label
-            labelText="Label 2:"
-            typographySize={TypographyConst.body_medium_regular}
-            type={Type.default}
-          ></Label>
-        </div>
-        <div className="col data">
-          <SelectField
-            className={TypographyConst.body_medium_regular}
-            options={[
-              { label: "label 1", value: "value 1" },
-              { label: "label 2", value: "value 2" },
-            ]}
-          />
+          <InputField type={InputFieldType.text} value = {props.modalData["email"]} onChange={(data) =>
+              props.onModalDataChange("email", data)
+            } />
         </div>
       </div>
     </div>

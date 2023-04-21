@@ -23,13 +23,16 @@ function App() {
   });
 
   const [show, setShow] = useState(true);
+  const modalTestData_: { [key: string]: any } = { email: "Pranshu" };
+  const [modalTestData, setModalTestData] = useState(modalTestData_);
+  const modalTestRef = {};
   return (
     <div>
       <button onClick={() => setShow(true)}>Show Modal</button>
       <Modal
         yesBtnText="yes"
         noBtnText="no"
-        isLoading={false}
+        isLoading={true}
         size={Size.small}
         title="Title"
         onClose={() => setShow(false)}
@@ -37,7 +40,14 @@ function App() {
         onYes={() => console.log("Yes")}
         onNo={() => console.log("No")}
       >
-        <ModalTest></ModalTest>
+        <ModalTest
+          modalData={modalTestData}
+          modalComponentRef={modalTestRef}
+          onModalDataChange={(key: string, val: any) => {
+            modalTestData[key] = val;
+            setModalTestData(Object.assign({}, modalTestData));
+          }}
+        ></ModalTest>
       </Modal>
     </div>
   );
