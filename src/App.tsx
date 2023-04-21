@@ -23,8 +23,8 @@ function App() {
   });
 
   const [show, setShow] = useState(true);
-  const modalTestData_: { [key: string]: any } = { email: "Pranshu" };
-  const [modalTestData, setModalTestData] = useState(modalTestData_);
+
+  const [modalTestData, setModalTestData] = useState<{ [key: string]: any }>({ email: "Pranshu" });
   const modalTestRef = {};
   return (
     <div>
