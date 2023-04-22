@@ -31,7 +31,7 @@ interface IInputFieldParams {
   onBlur?: (e: any) => void;
   onClick?: (e: any) => void;
 }
-const InputField = (props: IInputFieldParams) => {
+const InputField = (props: IInputFieldParams) => {  
   return (
     <input
       className={`inputField ${props.type} ${props.className}`}

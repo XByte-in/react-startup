@@ -27,6 +27,7 @@ function App() {
   const modalTestRef = {};
   const modalTestData: { [key: string]: any } = {
     email: "Pranshu",
+    mobile: "1234567890",
   };
   const apiRequest = () => {
     setupTestModal(true, true);

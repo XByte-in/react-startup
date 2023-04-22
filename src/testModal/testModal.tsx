@@ -12,11 +12,16 @@ interface ITestModalParams extends IModalComponentParams {}
 
 const TestModal = (props: ITestModalParams) => {
   const [email, setEmail] = useState(props.modalData["email"]);
-  // useEffect(() => {
-  //   if(props.modalComponentRef)
-  //     props.modalComponentRef.func1 = any_func_in_this_component;
-  // }, []);
-  function updateTestModalData(prop: string, value: any) {
+  const [mobile, setMobile] = useState(props.modalData["mobile"]);
+  useEffect(() => {
+    if (props.modalComponentRef)
+      props.modalComponentRef.validate = validateData;
+  }, []);
+  const validateData = () => {
+    // validate for any value here
+    return true;
+  };
+  const updateTestModalData = (prop: string, value: any) => {
     props.onModalDataChange?.(prop, value);
     switch (prop) {
       case "email":
@@ -26,7 +31,7 @@ const TestModal = (props: ITestModalParams) => {
       default:
         break;
     }
-  }
+  };
 
   return (
     <div className="modal-test">
@@ -44,6 +49,23 @@ const TestModal = (props: ITestModalParams) => {
             type={InputFieldType.text}
             value={email}
             onChange={(data) => updateTestModalData("email", data)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col label">
+          <Label
+            labelText="mobile"
+            className="required"
+            typographySize={TypographyConst.body_medium_regular}
+            type={Type.default}
+          ></Label>
+        </div>
+        <div className="col data">
+          <InputField
+            type={InputFieldType.text}
+            value={mobile}
+            onChange={(data) => updateTestModalData("mobile", data)}
           />
         </div>
       </div>
