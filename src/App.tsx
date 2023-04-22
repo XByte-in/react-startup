@@ -31,37 +31,36 @@ function App() {
     };
     setModalReq({
       show: true,
-      title: "title",
-      size: Size.small,
-      isLoading: false,
-      onYes: () => console.log("Yes"),
-      onNo: () => console.log("No"),
-      children: (
-        <TestModal
-          modalData={modalTestData}
-          modalComponentRef={modalTestRef}
-          onModalDataChange={(key: string, val: any) => {
-            modalTestData[key] = val;
-            console.log(modalTestData);
-          }}
-        ></TestModal>
-      ),
+      modalData: {
+        title: "title",
+        size: Size.small,
+        onClose: () => console.log("Close"),
+        isLoading: false,
+        yesBtn: {
+          btnText: "yes",
+          onClick: () => console.log("Yes"),
+        },
+        noBtn: {
+          btnText: "no",
+          onClick: () => console.log("No"),
+        },
+        children: (
+          <TestModal
+            modalData={modalTestData}
+            modalComponentRef={modalTestRef}
+            onModalDataChange={(key: string, val: any) => {
+              modalTestData[key] = val;
+              console.log(modalTestData);
+            }}
+          ></TestModal>
+        ),
+      },
     });
   }
   return (
     <div>
       <button onClick={() => showTestModalDetail()}>Show Modal</button>
-      <Modal
-        show={modalReq.show}
-        title={modalReq.title}
-        size={modalReq.size}
-        isLoading={modalReq.isLoading}
-        onYes={modalReq.onYes}
-        onNo={modalReq.onNo}
-        onClose={modalReq.onClose}
-      >
-        {modalReq.children}
-      </Modal>
+      <Modal show={modalReq.show} modalData={modalReq.modalData} />
     </div>
   );
 }

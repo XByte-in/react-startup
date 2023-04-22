@@ -6,17 +6,22 @@ import Icon from "../icon/icon";
 import "./modal.scss";
 import FormattedText from "../formattedText/formattedText";
 
+export interface IModalButtonParams {
+  btnText: string;
+  onClick: () => void;
+}
+export interface IModalDataParams {
+  size: Size;
+  title: string;
+  onClose: () => void;
+  yesBtn?: IModalButtonParams;
+  noBtn?: IModalButtonParams;
+  isLoading?: boolean;
+  children: React.ReactNode;
+}
 export interface IModalParams {
   show: boolean;
-  onClose?: () => void;
-  size?: Size;
-  title?: string;
-  children?: React.ReactNode;
-  onYes?: () => void;
-  yesBtnText?: string;
-  onNo?: () => void;
-  noBtnText?: string;
-  isLoading?: boolean;
+  modalData?: IModalDataParams;
 }
 
 const Modal = (props: IModalParams) => {
@@ -24,44 +29,46 @@ const Modal = (props: IModalParams) => {
   return (
     <div className={`modal`}>
       <div
-        className={`size-${props.size}`}
+        className={`size-${props.modalData?.size}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="header">
           <span className="title">
-            <FormattedText text={props.title ? props.title : "Title"} />
+            <FormattedText
+              text={props.modalData ? props.modalData.title : "Title"}
+            />
           </span>
           <Icon
             iconName={Icons_40px.close}
             className="close"
             iconSize={IconSize._32}
-            onClick={props.onClose}
+            onClick={props.modalData?.onClose}
           ></Icon>
         </div>
-        <div className="body">{props.children}</div>
-        {props.onYes || props.onNo ? (
-          <div className="footer">
-            {props.onYes && (
-              <Button
-                className="actionBtn"
-                size={Size.medium}
-                type={Type.primary}
-                btnText={props.yesBtnText || "yes"}
-                onClick={props.onYes}
-                isLoading={props.isLoading}
-              ></Button>
-            )}
-            {props.onNo && (
-              <Button
-                className="actionBtn"
-                size={Size.medium}
-                type={Type.secondary}
-                btnText={props.noBtnText || "no"}
-                onClick={props.onNo}
-              ></Button>
-            )}
-          </div>
-        ) : null}
+        <div className="body">{props.modalData?.children}</div>
+        {props.modalData &&
+          (props.modalData.yesBtn || props.modalData.noBtn) && (
+            <div className="footer">
+              {props.modalData.yesBtn && (
+                <Button
+                  className="actionBtn"
+                  size={Size.medium}
+                  type={Type.primary}
+                  btnText={props.modalData?.yesBtn?.btnText || "yes"}
+                  onClick={props.modalData?.yesBtn?.onClick}
+                ></Button>
+              )}
+              {props.modalData.noBtn && (
+                <Button
+                  className="actionBtn"
+                  size={Size.medium}
+                  type={Type.secondary}
+                  btnText={props.modalData?.noBtn?.btnText || "no"}
+                  onClick={props.modalData?.noBtn?.onClick}
+                ></Button>
+              )}
+            </div>
+          )}
       </div>
     </div>
   );
