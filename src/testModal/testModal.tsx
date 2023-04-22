@@ -34,10 +34,10 @@ const TestModal = (props: ITestModalParams) => {
       props.modalComponentRef.validate = validateData;
   }, []);
   const validateData = (data: { [key: string]: any }) => {
-    return validator.validate(data);
+    return validator.validate(props.modalData);
   };
   const updateTestModalData = (prop: string, value: any) => {
-    props.onModalDataChange?.(prop, value);
+    props.modalData[prop] = value;
     switch (prop) {
       case "email":
         setEmail(value);
@@ -46,8 +46,9 @@ const TestModal = (props: ITestModalParams) => {
         setMobile(value);
         break;
       default:
-        break;
-    }
+        break;   
+    } 
+    props.onModalDataChange?.(props.modalData);
   };
 
   return (

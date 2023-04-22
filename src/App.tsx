@@ -24,23 +24,23 @@ function App() {
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
   const modalTestRef = {
-    validate: (data: { [key: string]: any }) => "",
+    validate: () => "",
   };
-  const testModalData: { [key: string]: any } = {
+  let testModalData: { [key: string]: any } = {
     email: "Pranshu",
     mobile: "1234567890",
   };
   const onYes = () => {
-    const errMsg = modalTestRef.validate(testModalData);
-    console .log(errMsg);
-    if (errMsg && errMsg.trim().length > 0) {      
+    const errMsg = modalTestRef.validate();
+    console.log(errMsg);
+    if (errMsg && errMsg.trim().length > 0) {
       setupTestModal(true, false, errMsg);
-    }
-    else {
-    setupTestModal(true, true); // start showing loader
-      setTimeout(() => { // mimc api call
+    } else {
+      setupTestModal(true, true); // start showing loader
+      setTimeout(() => {
+        // mimc api call
         setupTestModal(true, false, "Something went wrong after api call");
-      }, 5000);
+      }, 100);
     }
   };
   const showTestModalDetail = () => {
@@ -71,8 +71,8 @@ function App() {
           <TestModal
             modalData={testModalData}
             modalComponentRef={modalTestRef}
-            onModalDataChange={(key: string, val: any) => {
-              testModalData[key] = val;
+            onModalDataChange={(data: { [key: string]: any }) => {
+              testModalData = data;
             }}
           ></TestModal>
         ),

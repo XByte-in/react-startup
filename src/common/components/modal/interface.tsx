@@ -1,5 +1,5 @@
 export interface IModalComponentParams {
   modalData: { [key: string]: any };
-  onModalDataChange?: (key: string, val: any) => void;
+  onModalDataChange?: (data: { [key: string]: any }) => void;
   modalComponentRef?: any;
 }
