@@ -28,43 +28,23 @@ function App() {
   const modalTestData: { [key: string]: any } = {
     email: "Pranshu",
   };
-  function showTestModalDetail() {
-    function startLoader() {
-      setModalReq({
-        show: true,
-        modalData: {
-          title: "title",
-          size: Size.small,
-          onClose: () => setModalReq({ show: false }),
-          isLoading: true,
-          yesBtn: {
-            btnText: "yes",
-            onClick: () => startLoader(),
-          },
-          noBtn: {
-            btnText: "no",
-            onClick: () => console.log("No"),
-          },
-          children: (
-            <TestModal
-              modalData={modalTestData}
-              modalComponentRef={modalTestRef}
-              onModalDataChange={(key: string, val: any) => {
-                modalTestData[key] = val;
-                console.log(modalTestData);
-              }}
-            ></TestModal>
-          ),
-        },
-      });
-    }
+  const startLoader = () => {
+    setupTestModal(true, true);
+    setTimeout(() => {
+      setupTestModal(true, false);
+    }, 5000);
+  };
+  const showTestModalDetail = () => {
+    setupTestModal(true, false);
+  };
+  const setupTestModal = (show: boolean, isLoading: boolean) => {
     setModalReq({
-      show: true,
+      show: show,
       modalData: {
         title: "title",
         size: Size.small,
         onClose: () => setModalReq({ show: false }),
-        isLoading: false,
+        isLoading: isLoading,
         yesBtn: {
           btnText: "yes",
           onClick: () => startLoader(),
@@ -85,7 +65,8 @@ function App() {
         ),
       },
     });
-  }
+  };
+
   return (
     <div>
       <button onClick={() => showTestModalDetail()}>Show Modal</button>
