@@ -12,12 +12,12 @@ export class Validator {
         for (const validator of keyValidators) {
           const isValid = validator.validate(data[key]);
           if (!isValid) {
-            errMsgs.push(`<pre>${validator.errMsg}</pre>`);
+            errMsgs.push(validator.errMsg);
             break;
           }
         }
       }
     }
-    return errMsgs.join("");
+    return errMsgs;
   }
 }

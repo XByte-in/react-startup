@@ -19,7 +19,7 @@ export interface IModalDataParams {
   noBtn?: IModalButtonParams;
   isLoading?: boolean;
   children: React.ReactNode;
-  errMsg?: string;
+  errMsg?: Array<string>;
 }
 export interface IModalParams {
   show: boolean;
@@ -28,6 +28,11 @@ export interface IModalParams {
 
 const Modal = (props: IModalParams) => {
   if (!props.show) return null;
+  let errMsg: Array<string> = [];
+
+  props.modalData?.errMsg?.forEach((msg) => {
+    errMsg.push(`<pre>${msg}</pre>`);
+  });
   return (
     <div className={`modal`}>
       {props.modalData?.isLoading && <Mask />}
@@ -51,8 +56,11 @@ const Modal = (props: IModalParams) => {
           ></Icon>
         </div>
         <div className="body">{props.modalData?.children}</div>
-        {props.modalData?.errMsg && (
-           <div className="errMsg" dangerouslySetInnerHTML={{__html: props.modalData?.errMsg}} />
+        {errMsg && errMsg.length > 0 && (
+          <div
+            className="errMsg"
+            dangerouslySetInnerHTML={{ __html: errMsg.join("") }}
+          />
         )}
         {(props.modalData?.yesBtn || props.modalData?.noBtn) && (
           <div className="footer">
@@ -87,6 +95,3 @@ const Modal = (props: IModalParams) => {
 };
 
 export default Modal;
-
-
-

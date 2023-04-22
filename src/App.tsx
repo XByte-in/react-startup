@@ -24,21 +24,21 @@ function App() {
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
   const modalTestRef = {
-    validate: () => "",
+    validate: () => [],
   };
   let testModalData: { [key: string]: any } = {
     email: "Pranshu",
     mobile: "123456789",
   };
   const onYes = () => {
-    const errMsg = modalTestRef.validate();
-    if (errMsg && errMsg.trim().length > 0) {
-      setupTestModal(true, false, errMsg);
+    const errMsgs = modalTestRef.validate();
+    if (errMsgs.length > 0) {
+      setupTestModal(true, false, errMsgs);
     } else {
       setupTestModal(true, true); // start showing loader
       setTimeout(() => {
         // mimic api call
-        setupTestModal(true, false, "Something went wrong after api call");
+        setupTestModal(true, false, ["Something went wrong after api call"]);
       }, 100);
     }
   };
@@ -48,7 +48,7 @@ function App() {
   const setupTestModal = (
     show: boolean,
     isLoading: boolean,
-    errMsg?: string
+    errMsg?: Array<string>
   ) => {
     setModalReq({
       show: show,
