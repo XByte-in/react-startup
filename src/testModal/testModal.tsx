@@ -5,12 +5,13 @@ import InputField, {
 } from "../common/components/inputField/inputField";
 import Label from "../common/components/label/label";
 import { IModalComponentParams } from "../common/components/modal/interface";
+import {
+  RangeValidator,
+  RequiredValidator,
+  Validator,
+} from "../common/components/validator";
 import { TypographyConst } from "../common/scss/typographyConst";
 import "./testModal.scss";
-
-import { Validator } from "../common/components/validator/validator";
-import { RequiredValidator } from "../common/components/validator/validators/required";
-import { RangeValidator } from "../common/components/validator/validators/rangeValidator";
 
 interface ITestModalParams extends IModalComponentParams {}
 
@@ -46,8 +47,8 @@ const TestModal = (props: ITestModalParams) => {
         setMobile(value);
         break;
       default:
-        break;   
-    } 
+        break;
+    }
     props.onModalDataChange?.(props.modalData);
   };
 
