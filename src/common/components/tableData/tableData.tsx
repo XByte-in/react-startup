@@ -1,6 +1,5 @@
 import { ColumnBodyOptions, Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import { Paginator } from "primereact/paginator";
 
 export interface IDataTableColumnsParams {
   field?: string;
