@@ -3,8 +3,8 @@ import { BaseValidator } from "../baseValidator";
 export class RequiredValidator implements BaseValidator {
   errMsg: string;
   validate: (value: any) => boolean;
-  constructor() {
-    this.errMsg = "This field is required";
+  constructor(errMsg: string = "This field is required") {
+    this.errMsg = errMsg;
     this.validate = (value: any) => {
       if (value === undefined || value === null || value === "") {
         return false;

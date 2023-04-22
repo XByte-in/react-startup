@@ -3,8 +3,12 @@ import { BaseValidator } from "../baseValidator";
 export class RangeValidator implements BaseValidator {
   errMsg: string;
   validate: (value: any) => boolean;
-  constructor(min: number, max: number) {
-    this.errMsg = `This field must be between ${min} and ${max}`;
+  constructor(
+    min: number,
+    max: number,
+    errMsg: string = `This field must be between ${min} and ${max}`
+  ) {
+    this.errMsg = errMsg;
     this.validate = (value: any) => {
       if (value === undefined || value === null || value === "") {
         return false;

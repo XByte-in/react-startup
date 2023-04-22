@@ -8,25 +8,42 @@ import { IModalComponentParams } from "../common/components/modal/interface";
 import { TypographyConst } from "../common/scss/typographyConst";
 import "./testModal.scss";
 
+import { Validator } from "../common/components/validator/validator";
+import { RequiredValidator } from "../common/components/validator/validators/required";
+import { RangeValidator } from "../common/components/validator/validators/rangeValidator";
+
 interface ITestModalParams extends IModalComponentParams {}
 
 const TestModal = (props: ITestModalParams) => {
   const [email, setEmail] = useState(props.modalData["email"]);
   const [mobile, setMobile] = useState(props.modalData["mobile"]);
+
+  const validator = new Validator({
+    email: [new RequiredValidator("Email is required")],
+    mobile: [
+      new RequiredValidator("Mobile is required"),
+      new RangeValidator(
+        1000000000,
+        9999999999,
+        "Mobile number should be of 10 digits"
+      ),
+    ],
+  });
   useEffect(() => {
     if (props.modalComponentRef)
       props.modalComponentRef.validate = validateData;
   }, []);
   const validateData = () => {
-    // validate for any value here
-    return true;
+    return validator.validate();
   };
   const updateTestModalData = (prop: string, value: any) => {
     props.onModalDataChange?.(prop, value);
     switch (prop) {
       case "email":
-        // validate for any value here
         setEmail(value);
+        break;
+      case "mobile":
+        setMobile(value);
         break;
       default:
         break;
@@ -63,7 +80,7 @@ const TestModal = (props: ITestModalParams) => {
         </div>
         <div className="col data">
           <InputField
-            type={InputFieldType.text}
+            type={InputFieldType.number}
             value={mobile}
             onChange={(data) => updateTestModalData("mobile", data)}
           />
