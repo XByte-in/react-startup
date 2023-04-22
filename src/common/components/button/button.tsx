@@ -8,7 +8,6 @@ interface IButtonParams {
   btnText: string;
   type: Type;
   size: Size;
-
   id?: string;
   disabled?: boolean;
   isLoading?: boolean;

@@ -1,15 +1,10 @@
 .modal {
   @import "../../scss";
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  @include flexCenter();
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  .disabled-true {
+    opacity: 0.5;
+  }
   @mixin modal {
     background-color: var(--color-surface);
     padding: 1rem;

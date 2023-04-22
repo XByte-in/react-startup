@@ -5,6 +5,7 @@ import Button from "../button/button";
 import Icon from "../icon/icon";
 import "./modal.scss";
 import FormattedText from "../formattedText/formattedText";
+import Mask from "../mask/mask";
 
 export interface IModalButtonParams {
   btnText: string;
@@ -28,6 +29,7 @@ const Modal = (props: IModalParams) => {
   if (!props.show) return null;
   return (
     <div className={`modal`}>
+      {props.modalData?.isLoading && <Mask />}
       <div
         className={`size-${props.modalData?.size}`}
         onClick={(e) => e.stopPropagation()}
@@ -40,7 +42,9 @@ const Modal = (props: IModalParams) => {
           </span>
           <Icon
             iconName={Icons_40px.close}
-            className="close"
+            className={`close disabled-${
+              props.modalData?.isLoading || "false"
+            }`}
             iconSize={IconSize._32}
             onClick={props.modalData?.onClose}
           ></Icon>
@@ -51,7 +55,9 @@ const Modal = (props: IModalParams) => {
             <div className="footer">
               {props.modalData.yesBtn && (
                 <Button
-                  className="actionBtn"
+                  className={`actionBtn disabled-${
+                    props.modalData?.isLoading || "false"
+                  }`}
                   size={Size.medium}
                   type={Type.primary}
                   btnText={props.modalData?.yesBtn?.btnText || "yes"}
@@ -60,11 +66,14 @@ const Modal = (props: IModalParams) => {
               )}
               {props.modalData.noBtn && (
                 <Button
-                  className="actionBtn"
+                  className={`actionBtn disabled-${
+                    props.modalData?.isLoading || "false"
+                  }`}
                   size={Size.medium}
                   type={Type.secondary}
                   btnText={props.modalData?.noBtn?.btnText || "no"}
                   onClick={props.modalData?.noBtn?.onClick}
+                  disabled={props.modalData?.isLoading}
                 ></Button>
               )}
             </div>

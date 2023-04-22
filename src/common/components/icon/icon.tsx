@@ -9,7 +9,7 @@ interface IIconParams {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onMouseDown?: () => void;
-  onError?: () => void;
+  onError?: () => void;  
 }
 
 const Icon = (props: IIconParams) => {

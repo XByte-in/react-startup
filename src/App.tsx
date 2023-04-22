@@ -34,8 +34,8 @@ function App() {
       modalData: {
         title: "title",
         size: Size.small,
-        onClose: () => console.log("Close"),
-        isLoading: false,
+        onClose: () => setModalReq({ show: false }),
+        isLoading: true,
         yesBtn: {
           btnText: "yes",
           onClick: () => console.log("Yes"),
