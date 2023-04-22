@@ -9,7 +9,7 @@
     text-overflow: ellipsis;
   }
   @mixin defaultLabel() {
-    border-radius: 0.8em;
+    // border-radius: 0.8em;
     background: transparent;
     color: var(--color-base);
   }
@@ -19,12 +19,12 @@
     color: var(--color-white);
   }
   @mixin secondaryLabel() {
-    border-radius: 0.8em;
+    // border-radius: 0.8em;
     background: transparent;
     color: var(--color-accent);
   }
   @mixin dangerLabel() {
-    border-radius: 0.8em;
+    // border-radius: 0.8em;
     background: transparent;
     color: var(--color-additional-error);
   }
