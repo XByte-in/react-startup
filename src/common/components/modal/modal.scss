@@ -51,7 +51,7 @@
   }
   .errMsg {
     color: var(--color-additional-error);
-    @include body_body_regular();
+    @include body_small_strong();
     pre { 
       margin: 0rem;
       padding: 0rem;
