@@ -12,20 +12,15 @@ interface ITestModalParams extends IModalComponentParams {}
 
 const TestModal = (props: ITestModalParams) => {
   const [email, setEmail] = useState(props.modalData["email"]);
-
-  const [hasError, setHasError] = useState({ show: false, errMsg: "" });
-  useEffect(() => {
-    props.modalComponentRef.updateError = updateError;
-  }, []);
-
-  function updateError(errMsg: string) {
-    setHasError({ show: true, errMsg: errMsg });
-  }
-
+  // useEffect(() => {
+  //   if(props.modalComponentRef)
+  //     props.modalComponentRef.func1 = any_func_in_this_component;
+  // }, []);
   function updateTestModalData(prop: string, value: any) {
-    props.onModalDataChange(prop, value);
+    props.onModalDataChange?.(prop, value);
     switch (prop) {
       case "email":
+        // validate for any value here
         setEmail(value);
         break;
       default:
@@ -39,6 +34,7 @@ const TestModal = (props: ITestModalParams) => {
         <div className="col label">
           <Label
             labelText="email"
+            className="required"
             typographySize={TypographyConst.body_medium_regular}
             type={Type.default}
           ></Label>

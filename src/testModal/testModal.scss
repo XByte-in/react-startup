@@ -12,9 +12,11 @@
       &.label {
         display: flex;
         justify-content: end;
+        .required {
+          font-weight: bold;
+        }
       }
       &.data {
-        
       }
     }
   }
