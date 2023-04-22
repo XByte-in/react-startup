@@ -9,8 +9,8 @@ import fonts from "./common/theme/fonts.json";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "./common/store/store";
 
-import Modal from "./common/components/modal/modal";
-import ModalTest from "./modalTest/modalTest";
+import Modal, { IModalParams } from "./common/components/modal/modal";
+import TestModal from "./testModal/testModal";
 
 function App() {
   const userEmail = useSelector(
@@ -22,32 +22,45 @@ function App() {
     CommonUtils.loadFonts(fonts);
   });
 
-  const [show, setShow] = useState(true);
-
-  const [modalTestData, setModalTestData] = useState<{ [key: string]: any }>({ email: "Pranshu" });
+  const [email, setEmail] = useState("Pranshu.Gupta@Bluestacks.com");
+  const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
   const modalTestRef = {};
-  return (
-    <div>
-      <button onClick={() => setShow(true)}>Show Modal</button>
-      <Modal
-        yesBtnText="yes"
-        noBtnText="no"
-        isLoading={true}
-        size={Size.small}
-        title="Title"
-        onClose={() => setShow(false)}
-        show={show}
-        onYes={() => console.log("Yes")}
-        onNo={() => console.log("No")}
-      >
-        <ModalTest
+  function showTestModalDetail() {
+    const modalTestData: { [key: string]: any } = {
+      email: "Pranshu",
+    };
+    setModalReq({
+      show: true,
+      title: "title",
+      size: Size.small,
+      isLoading: false,
+      onYes: () => console.log("Yes"),
+      onNo: () => console.log("No"),
+      children: (
+        <TestModal
           modalData={modalTestData}
           modalComponentRef={modalTestRef}
           onModalDataChange={(key: string, val: any) => {
             modalTestData[key] = val;
-            setModalTestData(Object.assign({}, modalTestData));
+            console.log(modalTestData);
           }}
-        ></ModalTest>
+        ></TestModal>
+      ),
+    });
+  }
+  return (
+    <div>
+      <button onClick={() => showTestModalDetail()}>Show Modal</button>
+      <Modal
+        show={modalReq.show}
+        title={modalReq.title}
+        size={modalReq.size}
+        isLoading={modalReq.isLoading}
+        onYes={modalReq.onYes}
+        onNo={modalReq.onNo}
+        onClose={modalReq.onClose}
+      >
+        {modalReq.children}
       </Modal>
     </div>
   );

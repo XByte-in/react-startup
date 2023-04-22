@@ -6,17 +6,17 @@ import Icon from "../icon/icon";
 import "./modal.scss";
 import FormattedText from "../formattedText/formattedText";
 
-interface IModalParams {
+export interface IModalParams {
   show: boolean;
   onClose?: () => void;
-  size: Size;
-  title: string;
-  children: React.ReactNode;
+  size?: Size;
+  title?: string;
+  children?: React.ReactNode;
   onYes?: () => void;
   yesBtnText?: string;
   onNo?: () => void;
   noBtnText?: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 const Modal = (props: IModalParams) => {
@@ -29,7 +29,7 @@ const Modal = (props: IModalParams) => {
       >
         <div className="header">
           <span className="title">
-            <FormattedText text={props.title} />
+            <FormattedText text={props.title ? props.title : "Title"} />
           </span>
           <Icon
             iconName={Icons_40px.close}
