@@ -22,18 +22,26 @@ function App() {
     CommonUtils.loadFonts(fonts);
   });
 
-  const [email, setEmail] = useState("Pranshu.Gupta@Bluestacks.com");
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
-  const modalTestRef = {};
-  const modalTestData: { [key: string]: any } = {
+  const modalTestRef = {
+    validate: (data: { [key: string]: any }) => "",
+  };
+  const testModalData: { [key: string]: any } = {
     email: "Pranshu",
     mobile: "1234567890",
   };
-  const apiRequest = () => {
-    setupTestModal(true, true);
-    setTimeout(() => {
-      setupTestModal(true, false, "Something went wrong after api call");
-    }, 5000);
+  const onYes = () => {
+    const errMsg = modalTestRef.validate(testModalData);
+    console .log(errMsg);
+    if (errMsg && errMsg.trim().length > 0) {      
+      setupTestModal(true, false, errMsg);
+    }
+    else {
+    setupTestModal(true, true); // start showing loader
+      setTimeout(() => { // mimc api call
+        setupTestModal(true, false, "Something went wrong after api call");
+      }, 5000);
+    }
   };
   const showTestModalDetail = () => {
     setupTestModal(true, false);
@@ -53,7 +61,7 @@ function App() {
         errMsg: errMsg,
         yesBtn: {
           btnText: "yes",
-          onClick: () => apiRequest(),
+          onClick: () => onYes(),
         },
         noBtn: {
           btnText: "no",
@@ -61,11 +69,10 @@ function App() {
         },
         children: (
           <TestModal
-            modalData={modalTestData}
+            modalData={testModalData}
             modalComponentRef={modalTestRef}
             onModalDataChange={(key: string, val: any) => {
-              modalTestData[key] = val;
-              console.log(modalTestData);
+              testModalData[key] = val;
             }}
           ></TestModal>
         ),

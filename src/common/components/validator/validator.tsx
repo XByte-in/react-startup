@@ -4,8 +4,9 @@ export class Validator {
   constructor(validators: { [key: string]: Array<BaseValidator> }) {
     this.validators = validators;
   }
-  validate() {
+  validate(data: { [key: string]: any }) {    
     let errMsg = "";
+    console.log("data", data);
     for (const key in this.validators) {
       if (this.validators.hasOwnProperty(key)) {
         const element = this.validators[key];
