@@ -5,19 +5,19 @@ export class Validator {
     this.dataValidators = dataValidators;
   }
   validate(data: { [key: string]: any }) {
-    let errMsg = "";
+    let errMsgs = [];
     for (const key in this.dataValidators) {
       if (data.hasOwnProperty(key)) {
         const keyValidators = this.dataValidators[key];
         for (const validator of keyValidators) {
           const isValid = validator.validate(data[key]);
           if (!isValid) {
-            errMsg = validator.errMsg;
+            errMsgs.push(`<pre>${validator.errMsg}</pre>`);
             break;
           }
         }
       }
     }
-    return errMsg;
+    return errMsgs.join("");
   }
 }

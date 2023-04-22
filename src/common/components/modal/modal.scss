@@ -52,6 +52,10 @@
   .errMsg {
     color: var(--color-additional-error);
     @include body_body_regular();
+    pre { 
+      margin: 0rem;
+      padding: 0rem;
+     }
   }
   .footer {
     display: flex;

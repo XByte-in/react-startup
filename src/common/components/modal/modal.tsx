@@ -52,7 +52,7 @@ const Modal = (props: IModalParams) => {
         </div>
         <div className="body">{props.modalData?.children}</div>
         {props.modalData?.errMsg && (
-          <div className="errMsg">{props.modalData?.errMsg}</div>
+           <div className="errMsg" dangerouslySetInnerHTML={{__html: props.modalData?.errMsg}} />
         )}
         {(props.modalData?.yesBtn || props.modalData?.noBtn) && (
           <div className="footer">
@@ -87,3 +87,6 @@ const Modal = (props: IModalParams) => {
 };
 
 export default Modal;
+
+
+
