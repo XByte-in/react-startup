@@ -25,20 +25,49 @@ function App() {
   const [email, setEmail] = useState("Pranshu.Gupta@Bluestacks.com");
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
   const modalTestRef = {};
+  const modalTestData: { [key: string]: any } = {
+    email: "Pranshu",
+  };
   function showTestModalDetail() {
-    const modalTestData: { [key: string]: any } = {
-      email: "Pranshu",
-    };
+    function startLoader() {
+      setModalReq({
+        show: true,
+        modalData: {
+          title: "title",
+          size: Size.small,
+          onClose: () => setModalReq({ show: false }),
+          isLoading: true,
+          yesBtn: {
+            btnText: "yes",
+            onClick: () => startLoader(),
+          },
+          noBtn: {
+            btnText: "no",
+            onClick: () => console.log("No"),
+          },
+          children: (
+            <TestModal
+              modalData={modalTestData}
+              modalComponentRef={modalTestRef}
+              onModalDataChange={(key: string, val: any) => {
+                modalTestData[key] = val;
+                console.log(modalTestData);
+              }}
+            ></TestModal>
+          ),
+        },
+      });
+    }
     setModalReq({
       show: true,
       modalData: {
         title: "title",
         size: Size.small,
         onClose: () => setModalReq({ show: false }),
-        isLoading: true,
+        isLoading: false,
         yesBtn: {
           btnText: "yes",
-          onClick: () => console.log("Yes"),
+          onClick: () => startLoader(),
         },
         noBtn: {
           btnText: "no",
