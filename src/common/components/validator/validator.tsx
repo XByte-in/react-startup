@@ -1,18 +1,19 @@
 import { BaseValidator } from "./baseValidator";
 export class Validator {
-  private validators: { [key: string]: Array<BaseValidator> } = {};
-  constructor(validators: { [key: string]: Array<BaseValidator> }) {
-    this.validators = validators;
+  private dataValidators: { [key: string]: Array<BaseValidator> } = {};
+  constructor(dataValidators: { [key: string]: Array<BaseValidator> }) {
+    this.dataValidators = dataValidators;
   }
   validate(data: { [key: string]: any }) {
     let errMsg = "";
-    for (const key in this.validators) {
-      if (this.validators.hasOwnProperty(key)) {
-        const validators = this.validators[key];
-        for (const validator of validators) {
+    for (const key in this.dataValidators) {
+      if (data.hasOwnProperty(key)) {
+        const keyValidators = this.dataValidators[key];
+        for (const validator of keyValidators) {
           const isValid = validator.validate(data[key]);
           if (!isValid) {
             errMsg = validator.errMsg;
+            break;
           }
         }
       }
