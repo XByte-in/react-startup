@@ -28,16 +28,20 @@ function App() {
   const modalTestData: { [key: string]: any } = {
     email: "Pranshu",
   };
-  const startLoader = () => {
+  const apiRequest = () => {
     setupTestModal(true, true);
     setTimeout(() => {
-      setupTestModal(true, false);
+      setupTestModal(true, false, "Something went wrong after api call");
     }, 5000);
   };
   const showTestModalDetail = () => {
     setupTestModal(true, false);
   };
-  const setupTestModal = (show: boolean, isLoading: boolean) => {
+  const setupTestModal = (
+    show: boolean,
+    isLoading: boolean,
+    errMsg?: string
+  ) => {
     setModalReq({
       show: show,
       modalData: {
@@ -45,9 +49,10 @@ function App() {
         size: Size.small,
         onClose: () => setModalReq({ show: false }),
         isLoading: isLoading,
+        errMsg: errMsg,
         yesBtn: {
           btnText: "yes",
-          onClick: () => startLoader(),
+          onClick: () => apiRequest(),
         },
         noBtn: {
           btnText: "no",

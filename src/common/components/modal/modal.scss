@@ -49,6 +49,10 @@
     border-top: var(--color-accent) 1px solid;
     border-bottom: var(--color-accent) 1px solid;
   }
+  .errMsg {
+    color: var(--color-additional-error);
+    @include body_body_regular();
+  }
   .footer {
     display: flex;
     justify-content: center;

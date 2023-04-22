@@ -19,6 +19,7 @@ export interface IModalDataParams {
   noBtn?: IModalButtonParams;
   isLoading?: boolean;
   children: React.ReactNode;
+  errMsg?: string;
 }
 export interface IModalParams {
   show: boolean;
@@ -50,34 +51,36 @@ const Modal = (props: IModalParams) => {
           ></Icon>
         </div>
         <div className="body">{props.modalData?.children}</div>
-        {props.modalData &&
-          (props.modalData.yesBtn || props.modalData.noBtn) && (
-            <div className="footer">
-              {props.modalData.yesBtn && (
-                <Button
-                  className={`actionBtn disabled-${
-                    props.modalData?.isLoading || "false"
-                  }`}
-                  size={Size.medium}
-                  type={Type.primary}
-                  btnText={props.modalData?.yesBtn?.btnText || "yes"}
-                  onClick={props.modalData?.yesBtn?.onClick}
-                ></Button>
-              )}
-              {props.modalData.noBtn && (
-                <Button
-                  className={`actionBtn disabled-${
-                    props.modalData?.isLoading || "false"
-                  }`}
-                  size={Size.medium}
-                  type={Type.secondary}
-                  btnText={props.modalData?.noBtn?.btnText || "no"}
-                  onClick={props.modalData?.noBtn?.onClick}
-                  disabled={props.modalData?.isLoading}
-                ></Button>
-              )}
-            </div>
-          )}
+        {props.modalData?.errMsg && (
+          <div className="errMsg">{props.modalData?.errMsg}</div>
+        )}
+        {(props.modalData?.yesBtn || props.modalData?.noBtn) && (
+          <div className="footer">
+            {props.modalData.yesBtn && (
+              <Button
+                className={`actionBtn disabled-${
+                  props.modalData?.isLoading || "false"
+                }`}
+                size={Size.medium}
+                type={Type.primary}
+                btnText={props.modalData?.yesBtn?.btnText || "yes"}
+                onClick={props.modalData?.yesBtn?.onClick}
+              ></Button>
+            )}
+            {props.modalData.noBtn && (
+              <Button
+                className={`actionBtn disabled-${
+                  props.modalData?.isLoading || "false"
+                }`}
+                size={Size.medium}
+                type={Type.secondary}
+                btnText={props.modalData?.noBtn?.btnText || "no"}
+                onClick={props.modalData?.noBtn?.onClick}
+                disabled={props.modalData?.isLoading}
+              ></Button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
