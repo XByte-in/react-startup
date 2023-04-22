@@ -1,31 +1,20 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
-import CommonUtils from "./common/commonUtils";
-
 import { Size } from "./common/commonConst";
+import CommonUtils from "./common/commonUtils";
+import Modal, { IModalParams } from "./common/components/modal/modal";
 import colors from "./common/theme/colors.json";
 import fonts from "./common/theme/fonts.json";
-
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "./common/store/store";
-
-import Modal, { IModalParams } from "./common/components/modal/modal";
 import TestModal from "./testModal/testModal";
 
 function App() {
-  const userEmail = useSelector(
-    (state: RootState) => state.googleUserInfo.email
-  );
-  const dispatch = useDispatch();
   useEffect(() => {
     CommonUtils.loadColors(colors);
     CommonUtils.loadFonts(fonts);
   });
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
-  const modalTestRef = {
-    validate: () => [],
-  };
+  const modalTestRef = { validate: () => [] };
   let testModalData: { [key: string]: any } = {
     email: "Pranshu",
     mobile: "123456789",
