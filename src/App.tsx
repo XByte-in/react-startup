@@ -28,17 +28,16 @@ function App() {
   };
   let testModalData: { [key: string]: any } = {
     email: "Pranshu",
-    mobile: "1234567890",
+    mobile: "123456789",
   };
   const onYes = () => {
     const errMsg = modalTestRef.validate();
-    console.log(errMsg);
     if (errMsg && errMsg.trim().length > 0) {
       setupTestModal(true, false, errMsg);
     } else {
       setupTestModal(true, true); // start showing loader
       setTimeout(() => {
-        // mimc api call
+        // mimic api call
         setupTestModal(true, false, "Something went wrong after api call");
       }, 100);
     }

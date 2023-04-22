@@ -23,7 +23,7 @@ const TestModal = (props: ITestModalParams) => {
     mobile: [
       new RequiredValidator("Mobile is required"),
       new RangeValidator(
-        1000000000,
+        999999999,
         9999999999,
         "Mobile number should be of 10 digits"
       ),

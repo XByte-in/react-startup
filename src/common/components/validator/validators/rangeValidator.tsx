@@ -4,8 +4,8 @@ export class RangeValidator implements BaseValidator {
   errMsg: string;
   validate: (value: any) => boolean;
   constructor(
-    min: number,
-    max: number,
+    min: number = -1,
+    max: number = -1,
     errMsg: string = `This field must be between ${min} and ${max}`
   ) {
     this.errMsg = errMsg;
@@ -13,13 +13,11 @@ export class RangeValidator implements BaseValidator {
       if (value === undefined || value === null || value === "") {
         return false;
       }
-      switch (typeof value) {
-        case "number":
-          if (value < min || value > max) return false;
-          break;
-        default:
-          break;
-      }
+      value = parseInt(value, 10);
+      if (isNaN(value)) return false;
+      if (min !== -1 && max !== -1) return min < value && value < max;
+      if (min !== -1) return min < value;
+      if (max !== -1) return value < max;
       return true;
     };
   }
