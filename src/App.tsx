@@ -28,7 +28,7 @@ function App() {
       setTimeout(() => {
         // mimic api call
         setupTestModal(true, false, ["Something went wrong after api call"]);
-      }, 100);
+      }, 1000);
     }
   };
   const showTestModalDetail = () => {
