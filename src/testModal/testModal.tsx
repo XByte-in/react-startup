@@ -34,7 +34,7 @@ const TestModal = (props: ITestModalParams) => {
     if (props.modalComponentRef)
       props.modalComponentRef.validate = validateData;
   }, []);
-  const validateData = (data: { [key: string]: any }) => {
+  const validateData = () => {
     return validator.validate(props.modalData);
   };
   const updateTestModalData = (prop: string, value: any) => {
