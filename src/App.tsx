@@ -8,7 +8,9 @@ import fonts from "./common/theme/fonts.json";
 import TestModal from "./testModal/testModal";
 import SelectField from "./common/components/selectField/selectField";
 import { TypographyConst } from "./common/scss/typographyConst";
-import DateTimePicker, { DateTimePickerType } from "./common/components/dateTimePicker/dateTimePicker";
+import DateTimePicker, {
+  DateTimePickerType,
+} from "./common/components/dateTimePicker/dateTimePicker";
 
 function App() {
   useEffect(() => {
@@ -21,8 +23,13 @@ function App() {
   let testModalData: { [key: string]: any } = {
     email: "Pranshu",
     mobile: "123456789",
+    trackingIds: {
+      trackingId1: "123",
+      trackingId2: "456",
+    },
   };
   const onYes = () => {
+    console.log(testModalData);
     const errMsgs = modalTestRef.validate();
     if (errMsgs.length > 0) {
       setupTestModal(true, false, errMsgs);
@@ -71,25 +78,27 @@ function App() {
     });
   };
 
-  const options =[
+  const options = [
     { label: "label 1", value: "value 1" },
     { label: "label 2", value: "value 2" },
     { label: "label 3", value: "value 3" },
-  ]
+  ];
 
   const defaultValue = [
     { label: "label 1", value: "value 1" },
-    { label: "label 2", value: "value 2" }]
+    { label: "label 2", value: "value 2" },
+  ];
+
   return (
     <div>
-      <SelectField isMulti={true}
+      {/* <SelectField isMulti={true}
         className={TypographyConst.body_medium_regular}
         options={options}
         defaultValue={defaultValue}
-      />
-      {/* <button onClick={() => showTestModalDetail()}>Show Modal</button>
+      /> */}
+      <button onClick={() => showTestModalDetail()}>Show Modal</button>
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
-      <SelectField
+      {/* <SelectField
         className={TypographyConst.body_medium_regular}
         value={{ label: "label 2", value: "value 2" }}
         options={[

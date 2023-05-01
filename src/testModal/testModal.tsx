@@ -18,6 +18,9 @@ interface ITestModalParams extends IModalComponentParams {}
 const TestModal = (props: ITestModalParams) => {
   const [email, setEmail] = useState(props.modalData["email"]);
   const [mobile, setMobile] = useState(props.modalData["mobile"]);
+  const [trackingIds, setTrackingIds] = useState(
+    props.modalData["trackingIds"]
+  );
 
   const validator = new Validator({
     email: [new RequiredValidator("Email is required")],
@@ -38,20 +41,47 @@ const TestModal = (props: ITestModalParams) => {
     return validator.validate(props.modalData);
   };
   const updateTestModalData = (prop: string, value: any) => {
-    props.modalData[prop] = value;
     switch (prop) {
       case "email":
         setEmail(value);
+        props.modalData[prop] = value;
         break;
       case "mobile":
         setMobile(value);
+        props.modalData[prop] = value;
         break;
       default:
+        if (Object.keys(trackingIds).includes(prop)) {
+          const updatedTrackingIds = { ...trackingIds };
+          updatedTrackingIds[prop] = value;
+          setTrackingIds(updatedTrackingIds);
+          props.modalData["trackingIds"] = updatedTrackingIds;
+        }
         break;
     }
     props.onModalDataChange?.(props.modalData);
   };
 
+  const trackingIds_ = Object.keys(trackingIds).map((id: string) => {
+    return (
+      <div className="row" key={id}>
+        <div className="col label">
+          <Label
+            labelText={id}
+            typographySize={TypographyConst.body_medium_regular}
+            type={Type.default}
+          ></Label>
+        </div>
+        <div className="col data">
+          <InputField
+            type={InputFieldType.text}
+            value={trackingIds[id]}
+            onChange={(data) => updateTestModalData(id, data)}
+          />
+        </div>
+      </div>
+    );
+  });
   return (
     <div className="modal-test">
       <div className="row">
@@ -88,6 +118,7 @@ const TestModal = (props: ITestModalParams) => {
           />
         </div>
       </div>
+      {trackingIds_}
     </div>
   );
 };
