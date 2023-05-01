@@ -8,6 +8,7 @@ import fonts from "./common/theme/fonts.json";
 import TestModal from "./testModal/testModal";
 import SelectField from "./common/components/selectField/selectField";
 import { TypographyConst } from "./common/scss/typographyConst";
+import DateTimePicker, { DateTimePickerType } from "./common/components/dateTimePicker/dateTimePicker";
 
 function App() {
   useEffect(() => {
@@ -70,9 +71,23 @@ function App() {
     });
   };
 
+  const options =[
+    { label: "label 1", value: "value 1" },
+    { label: "label 2", value: "value 2" },
+    { label: "label 3", value: "value 3" },
+  ]
+
+  const defaultValue = [
+    { label: "label 1", value: "value 1" },
+    { label: "label 2", value: "value 2" }]
   return (
     <div>
-      <button onClick={() => showTestModalDetail()}>Show Modal</button>
+      <SelectField isMulti={true}
+        className={TypographyConst.body_medium_regular}
+        options={options}
+        defaultValue={defaultValue}
+      />
+      {/* <button onClick={() => showTestModalDetail()}>Show Modal</button>
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
       <SelectField
         className={TypographyConst.body_medium_regular}
@@ -81,7 +96,7 @@ function App() {
           { label: "label 1", value: "value 1" },
           { label: "label 2", value: "value 2" },
         ]}
-      />
+      /> */}
     </div>
   );
 }

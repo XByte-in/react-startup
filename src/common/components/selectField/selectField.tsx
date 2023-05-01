@@ -16,6 +16,8 @@ interface ISelectFieldParams {
   components?: any;
   value?: any;
   maxMenuHeight?: number;
+  isMulti?: boolean;
+  defaultValue?: any | Array<any>;
   formatOptionLabel?: (
     data: any,
     formatOptionLabelMeta: FormatOptionLabelMeta<any>
@@ -43,12 +45,13 @@ function SelectField(props: ISelectFieldParams) {
 
   return (
     <Select
+      isMulti={props.isMulti}
       maxMenuHeight={props.maxMenuHeight}
       components={props.components}
       options={props.options}
       className={props.className}
       classNamePrefix={props.classNamePrefix || "select"}
-      defaultValue={props.options[0]}
+      defaultValue={props.defaultValue}
       isDisabled={props.isDisabled}
       isLoading={props.isLoading}
       isClearable={props.isClearable}
