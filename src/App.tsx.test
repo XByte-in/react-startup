@@ -93,8 +93,71 @@ function App() {
     Four,
   }
   const [test, setTest] = useState(Test.One);
+
+
+
+  const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
+  const modalTestRef = { validate: () => [] };
+  let testModalData: { [key: string]: any } = {
+    email: "Pranshu",
+    mobile: "123456789",
+    trackingIds: {
+      trackingId1: "123",
+      trackingId2: "456",
+    },
+  };
+  const onYes = () => {
+    console.log(testModalData);
+    const errMsgs = modalTestRef.validate();
+    if (errMsgs.length > 0) {
+      setupTestModal(true, false, errMsgs);
+    } else {
+      setupTestModal(true, true); // start showing loader
+      setTimeout(() => {
+        // mimic api call
+        setupTestModal(true, false, ["Something went wrong after api call"]);
+      }, 1000);
+    }
+  };
+  const showTestModalDetail = () => {
+    setupTestModal(true, false);
+  };
+  const setupTestModal = (
+    show: boolean,
+    isLoading: boolean,
+    errMsg?: Array<string>
+  ) => {
+    setModalReq({
+      show: show,
+      modalData: {
+        title: "title",
+        size: Size.small,
+        onClose: () => setModalReq({ show: false }),
+        isLoading: isLoading,
+        errMsg: errMsg,
+        yesBtn: {
+          btnText: "yes",
+          onClick: () => onYes(),
+        },
+        noBtn: {
+          btnText: "no",
+          onClick: () => console.log("No"),
+        },
+        children: (
+          <TestModal
+            modalData={testModalData}
+            modalComponentRef={modalTestRef}
+            onModalDataChange={(data: { [key: string]: any }) => {
+              testModalData = data;
+            }}
+          ></TestModal>
+        ),
+      },
+    });
+  };
   return (
     <div>
+      <Modal show={modalReq.show} modalData={modalReq.modalData} />
       <InputField type={InputFieldType.text}/>
       <InputField type={InputFieldType.number}/>
       <InputField type={InputFieldType.email}/>
