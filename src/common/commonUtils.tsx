@@ -43,14 +43,14 @@ class CommonUtils {
   };
 
   static loadColors = (colors: any) => {
-    var root = document.querySelector(":root") as HTMLElement;
+    const root = document.querySelector(":root") as HTMLElement;
     Object.keys(colors).forEach((color_key) => {
       root?.style?.setProperty(color_key, colors[color_key]);
     });
   };
 
   static loadFonts = (fonts: any) => {
-    var root = document.querySelector(":root") as HTMLElement;
+    const root = document.querySelector(":root") as HTMLElement;
     Object.keys(fonts).forEach((font_key) => {
       Object.keys(fonts[font_key]).forEach((font_sub_key) => {
         root?.style?.setProperty(
