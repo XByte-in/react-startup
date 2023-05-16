@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./common/store/store";
 
 import "./index.scss";
-import App from "./App";
+import App from "./App.tsx.text";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import Translation from "./common/translations/translation";
