@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/common/components/google/googleTypes"
-    ],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,5 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "build"]
 }

@@ -1,8 +1,0 @@
-.mask {
-  @import "../../scss";
-  @include flexCenter();
-  z-index: 9999;
-  .loading {
-    @include rotate(spin 1s linear infinite);    
-  }
-}
