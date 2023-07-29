@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import Translation from './common/translations/translation.tsx';
+
 import App from './app.tsx';
+import store from './common/store/store';
+import Translation from './common/translations/translation.tsx';
 
 import './main.module.scss';
 
@@ -12,10 +14,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Translation>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </Translation>
+    <Provider store={store}>
+      <Translation>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </Translation>
+    </Provider>
   </React.StrictMode>
 );
