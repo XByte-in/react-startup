@@ -1,5 +1,7 @@
+import TranslatedText from './common/controls/translatedText/translatedText';
+
 const App = () => {
-  return <div>Vite + React</div>;
+  return <TranslatedText id="yes"></TranslatedText>;
 };
 
 export default App;
