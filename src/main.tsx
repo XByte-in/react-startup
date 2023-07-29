@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { HashRouter } from 'react-router-dom';
-import Translation from './translations/translation.tsx';
+import Translation from './common/translations/translation.tsx';
 import App from './app.tsx';
 
 import './main.module.scss';
