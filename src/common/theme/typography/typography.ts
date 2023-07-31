@@ -33,3 +33,21 @@ type TypographyValue = {
 export type Typography = {
   [key in TypographyKeys]: TypographyValue;
 };
+
+export const loadFonts = (typography: Typography) => {
+  const root = document.querySelector(':root') as HTMLElement;
+  const typographyKeys = Object.keys(typography) as Array<TypographyKeys>;
+  for (const typographyKey of typographyKeys) {
+    const typographyValue = typography[typographyKey];
+    const { text_align, font_size, font_weight, line_height, letter_spacing } =
+      typographyValue;
+    root?.style?.setProperty(`${typographyKey}__text_align`, text_align);
+    root?.style?.setProperty(`${typographyKey}__font_size`, font_size);
+    root?.style?.setProperty(`${typographyKey}__font_weight`, font_weight);
+    root?.style?.setProperty(`${typographyKey}__line_height`, line_height);
+    root?.style?.setProperty(
+      `${typographyKey}__letter_spacing`,
+      letter_spacing
+    );
+  }
+};

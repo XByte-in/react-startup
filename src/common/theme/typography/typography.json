@@ -96,5 +96,47 @@
     "font_weight": "400",
     "line_height": "1.8rem",
     "letter_spacing": "0.0rem"
+  },
+  "body_small_regular_underlined": {
+    "text_align": "left",
+    "font_size": "1.2rem",
+    "font_weight": "400",
+    "line_height": "1.8rem",
+    "letter_spacing": "0.0rem"
+  },
+  "body_small_strong": {
+    "text_align": "left",
+    "font_size": "1.2rem",
+    "font_weight": "600",
+    "line_height": "1.8rem",
+    "letter_spacing": "0.0rem"
+  },
+  "body_small_graph_legend": {
+    "text_align": "left",
+    "font_size": "1.2rem",
+    "font_weight": "400",
+    "line_height": "1.2rem",
+    "letter_spacing": "0.0rem"
+  },
+  "body_label": {
+    "text_align": "left",
+    "font_size": "1.2rem",
+    "font_weight": "600",
+    "line_height": "1.8rem",
+    "letter_spacing": "0.0rem"
+  },
+  "body_overline": {
+    "text_align": "left",
+    "font_size": "1.0rem",
+    "font_weight": "500",
+    "line_height": "1.5rem",
+    "letter_spacing": "0.05em"
+  },
+  "body_overline_strong": {
+    "text_align": "left",
+    "font_size": "1.0rem",
+    "font_weight": "600",
+    "line_height": "1.5rem",
+    "letter_spacing": "0.05em"
   }
 }
