@@ -1,5 +1,5 @@
 import { Type } from '../../const';
-import { TypographyConst } from '../../theme/typography/typography';
+import { Typography } from '../../theme/typography/typography';
 import { IBaseControlParam } from '../iControls';
 import TranslatedText from '../translatedText/translatedText';
 import styles from './label.module.scss';
@@ -7,7 +7,7 @@ import styles from './label.module.scss';
 interface ILabelParam extends IBaseControlParam {
   labelText: string;
   type: Type;
-  typographySize: TypographyConst;
+  typographySize: Typography;
 }
 
 const Label = (props: ILabelParam) => {

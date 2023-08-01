@@ -1,4 +1,4 @@
-export enum TypographyConst {
+export enum Typography {
   flow_title = 'flow_title',
   title_mega_title = 'title_mega_title',
   title_title = 'title_title',
@@ -20,7 +20,7 @@ export enum TypographyConst {
   body_overline = 'body_overline',
   body_overline_strong = 'body_overline_strong',
 }
-type TypographyKeys = keyof typeof TypographyConst;
+type TypographyKeys = keyof typeof Typography;
 
 type TypographyValue = {
   text_align: string;
@@ -30,15 +30,15 @@ type TypographyValue = {
   letter_spacing: string;
 };
 
-export type Typography = {
+type TypographyConfig = {
   [key in TypographyKeys]: TypographyValue;
 };
 
-export const loadFonts = (typography: Typography) => {
+export const loadFonts = (typography: TypographyConfig) => {
   const root = document.querySelector(':root') as HTMLElement;
   const typographyKeys = Object.keys(typography) as Array<TypographyKeys>;
   for (const typographyKey of typographyKeys) {
-    const typographyValue = typography[typographyKey];
+    const typographyValue: TypographyValue = typography[typographyKey];
     const { text_align, font_size, font_weight, line_height, letter_spacing } =
       typographyValue;
     root?.style?.setProperty(`${typographyKey}__text_align`, text_align);
