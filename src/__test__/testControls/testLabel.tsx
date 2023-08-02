@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Type } from '../../common/const';
 import Label from '../../common/controls/label/label';
 import { Typography } from '../../common/theme/typography/typography';
