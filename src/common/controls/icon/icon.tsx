@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { IBaseControlParam, IMouseEventParam } from '../iControl';
+import { IMouseEventParam } from '../iControl';
 
-interface IIconParams extends IBaseControlParam, IMouseEventParam {
+interface IIconParams extends IMouseEventParam {
   iconSrc: string;
-  iconDimension: string;
+  iconDimension?: string;
   alt?: string;
   onError?: () => void;
 }
@@ -23,10 +23,10 @@ const Icon = (props: IIconParams) => {
       style={styleObj}
       src={props.iconSrc}
       onClick={props.onClick}
-      onError={props.onError}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onMouseDown={props.onMouseDown}
+      onError={props.onError}
       alt={props.alt}
     />
   );

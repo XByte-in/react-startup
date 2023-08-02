@@ -1,4 +1,5 @@
 .label {
+  @import '../../scss';
   @mixin baseLabel() {
     display: flex;
     justify-content: center;

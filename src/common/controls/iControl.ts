@@ -6,7 +6,7 @@ export interface IBaseControlParam {
   };
 }
 
-export interface IMouseEventParam {
+export interface IMouseEventParam extends IBaseControlParam {
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
