@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import TestLabel from './__test__/testControls/testLabel';
+import TestIcon from './__test__/testControls/testIcon';
 import { loadColors, loadFonts } from './common/theme';
 import defaultColors from './common/theme/colors/colors.json';
 import defaultTypography from './common/theme/typography/typography.json';
@@ -14,7 +14,8 @@ const App = () => {
   }, []);
   return (
     <div className="app">
-      <TestLabel />
+      {/* <TestLabel /> */}
+      <TestIcon />
     </div>
   );
 };

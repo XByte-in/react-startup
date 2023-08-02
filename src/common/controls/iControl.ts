@@ -5,3 +5,10 @@ export interface IBaseControlParam {
     [key: string]: string;
   };
 }
+
+export interface IMouseEventParam {
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onMouseDown?: () => void;
+}
