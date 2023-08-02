@@ -48,6 +48,6 @@ export const loadColors = (colors: ColorsConfig) => {
   const colorsKeys = Object.keys(colors) as Array<ColorsKeys>;
   for (const colorsKey of colorsKeys) {
     const colorValue: string = colors[colorsKey];
-    root?.style?.setProperty(`${colorsKey}`, colorValue);
+    root?.style?.setProperty(`--${colorsKey}`, colorValue);
   }
 };

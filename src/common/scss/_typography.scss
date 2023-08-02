@@ -4,164 +4,164 @@
 
 @mixin flow_title {
   @include font_common_style();
-  line-height: var(flow_title__line_height);
-  letter-spacing: var(flow_title__letter_spacing);
-  font-size: var(flow_title__font_size);
-  font-weight: var(flow_title__font_weight);
+  line-height: var(--flow_title__line_height);
+  letter-spacing: var(--flow_title__letter_spacing);
+  font-size: var(--flow_title__font_size);
+  font-weight: var(--flow_title__font_weight);
 }
 
 @mixin title_mega_title {
   @include font_common_style();
-  line-height: var(title_mega_title__line_height);
-  letter-spacing: var(title_mega_title__letter_spacing);
-  font-size: var(title_mega_title__font_size);
-  font-weight: var(title_mega_title__font_weight);
+  line-height: var(--title_mega_title__line_height);
+  letter-spacing: var(--title_mega_title__letter_spacing);
+  font-size: var(--title_mega_title__font_size);
+  font-weight: var(--title_mega_title__font_weight);
 }
 
 @mixin title_title {
   @include font_common_style();
-  line-height: var(title_title__line_height);
-  letter-spacing: var(title_title__letter_spacing);
-  font-size: var(title_title__font_size);
-  font-weight: var(title_title__font_weight);
+  line-height: var(--title_title__line_height);
+  letter-spacing: var(--title_title__letter_spacing);
+  font-size: var(--title_title__font_size);
+  font-weight: var(--title_title__font_weight);
 }
 
 @mixin title_subtitle {
   @include font_common_style();
-  line-height: var(title_subtitle__line_height);
-  letter-spacing: var(title_subtitle__letter_spacing);
-  font-size: var(title_subtitle__font_size);
-  font-weight: var(title_subtitle__font_weight);
+  line-height: var(--title_subtitle__line_height);
+  letter-spacing: var(--title_subtitle__letter_spacing);
+  font-size: var(--title_subtitle__font_size);
+  font-weight: var(--title_subtitle__font_weight);
 }
 
 @mixin title_header {
   @include font_common_style();
-  line-height: var(title_header__line_height);
-  letter-spacing: var(title_header__letter_spacing);
-  font-size: var(title_header__font_size);
-  font-weight: var(title_header__font_weight);
+  line-height: var(--title_header__line_height);
+  letter-spacing: var(--title_header__letter_spacing);
+  font-size: var(--title_header__font_size);
+  font-weight: var(--title_header__font_weight);
 }
 
 @mixin title_subhead {
   @include font_common_style();
-  line-height: var(title_subhead__line_height);
-  letter-spacing: var(title_subhead__letter_spacing);
-  font-size: var(title_subhead__font_size);
-  font-weight: var(title_subhead__font_weight);
+  line-height: var(--title_subhead__line_height);
+  letter-spacing: var(--title_subhead__letter_spacing);
+  font-size: var(--title_subhead__font_size);
+  font-weight: var(--title_subhead__font_weight);
 }
 
 @mixin body_body_bold {
   @include font_common_style();
-  line-height: var(body_body_bold__line_height);
-  letter-spacing: var(body_body_bold__letter_spacing);
-  font-size: var(body_body_bold__font_size);
-  font-weight: var(body_body_bold__font_weight);
+  line-height: var(--body_body_bold__line_height);
+  letter-spacing: var(--body_body_bold__letter_spacing);
+  font-size: var(--body_body_bold__font_size);
+  font-weight: var(--body_body_bold__font_weight);
 }
 
 @mixin body_body_strong {
   @include font_common_style();
-  line-height: var(body_body_strong__line_height);
-  letter-spacing: var(body_body_strong__letter_spacing);
-  font-size: var(body_body_strong__font_size);
-  font-weight: var(body_body_strong__font_weight);
+  line-height: var(--body_body_strong__line_height);
+  letter-spacing: var(--body_body_strong__letter_spacing);
+  font-size: var(--body_body_strong__font_size);
+  font-weight: var(--body_body_strong__font_weight);
 }
 
 @mixin body_body_regular {
   @include font_common_style();
-  line-height: var(body_body_regular__line_height);
-  letter-spacing: var(body_body_regular__letter_spacing);
-  font-size: var(body_body_regular__font_size);
-  font-weight: var(body_body_regular__font_weight);
+  line-height: var(--body_body_regular__line_height);
+  letter-spacing: var(--body_body_regular__letter_spacing);
+  font-size: var(--body_body_regular__font_size);
+  font-weight: var(--body_body_regular__font_weight);
 }
 
 @mixin body_medium_regular {
   @include font_common_style();
-  line-height: var(body_medium_regular__line_height);
-  letter-spacing: var(body_medium_regular__letter_spacing);
-  font-size: var(body_medium_regular__font_size);
-  font-weight: var(body_medium_regular__font_weight);
+  line-height: var(--body_medium_regular__line_height);
+  letter-spacing: var(--body_medium_regular__letter_spacing);
+  font-size: var(--body_medium_regular__font_size);
+  font-weight: var(--body_medium_regular__font_weight);
 }
 
 @mixin body_medium_underlined {
   @include font_common_style();
   text-decoration-line: underline;
-  line-height: var(body_medium_underlined__line_height);
-  letter-spacing: var(body_medium_underlined__letter_spacing);
-  font-size: var(body_medium_underlined__font_size);
-  font-weight: var(body_medium_underlined__font_weight);
+  line-height: var(--body_medium_underlined__line_height);
+  letter-spacing: var(--body_medium_underlined__letter_spacing);
+  font-size: var(--body_medium_underlined__font_size);
+  font-weight: var(--body_medium_underlined__font_weight);
 }
 
 @mixin body_medium_strong {
   @include font_common_style();
-  line-height: var(body_medium_strong__line_height);
-  letter-spacing: var(body_medium_strong__letter_spacing);
-  font-size: var(body_medium_strong__font_size);
-  font-weight: var(body_medium_strong__font_weight);
+  line-height: var(--body_medium_strong__line_height);
+  letter-spacing: var(--body_medium_strong__letter_spacing);
+  font-size: var(--body_medium_strong__font_size);
+  font-weight: var(--body_medium_strong__font_weight);
 }
 
 @mixin body_medium_bold {
   @include font_common_style();
-  line-height: var(body_medium_bold__line_height);
-  letter-spacing: var(body_medium_bold__letter_spacing);
-  font-size: var(body_medium_bold__font_size);
-  font-weight: var(body_medium_bold__font_weight);
+  line-height: var(--body_medium_bold__line_height);
+  letter-spacing: var(--body_medium_bold__letter_spacing);
+  font-size: var(--body_medium_bold__font_size);
+  font-weight: var(--body_medium_bold__font_weight);
 }
 
 @mixin body_small_regular {
   @include font_common_style();
-  line-height: var(body_small_regular__line_height);
-  letter-spacing: var(body_small_regular__letter_spacing);
-  font-size: var(body_small_regular__font_size);
-  font-weight: var(body_small_regular__font_weight);
+  line-height: var(--body_small_regular__line_height);
+  letter-spacing: var(--body_small_regular__letter_spacing);
+  font-size: var(--body_small_regular__font_size);
+  font-weight: var(--body_small_regular__font_weight);
 }
 
 @mixin body_small_regular_underlined {
   @include font_common_style();
   text-decoration-line: underline;
-  line-height: var(body_small_regular_underlined__line_height);
-  letter-spacing: var(body_small_regular_underlined__letter_spacing);
-  font-size: var(body_small_regular_underlined__font_size);
-  font-weight: var(body_small_regular_underlined__font_weight);
+  line-height: var(--body_small_regular_underlined__line_height);
+  letter-spacing: var(--body_small_regular_underlined__letter_spacing);
+  font-size: var(--body_small_regular_underlined__font_size);
+  font-weight: var(--body_small_regular_underlined__font_weight);
 }
 
 @mixin body_small_strong {
   @include font_common_style();
-  line-height: var(body_small_strong__line_height);
-  letter-spacing: var(body_small_strong__letter_spacing);
-  font-size: var(body_small_strong__font_size);
-  font-weight: var(body_small_strong__font_weight);
+  line-height: var(--body_small_strong__line_height);
+  letter-spacing: var(--body_small_strong__letter_spacing);
+  font-size: var(--body_small_strong__font_size);
+  font-weight: var(--body_small_strong__font_weight);
 }
 
 @mixin body_small_graph_legend {
   @include font_common_style();
-  line-height: var(body_small_graph_legend__line_height);
-  letter-spacing: var(body_small_graph_legend__letter_spacing);
-  font-size: var(body_small_graph_legend__font_size);
-  font-weight: var(body_small_graph_legend__font_weight);
+  line-height: var(--body_small_graph_legend__line_height);
+  letter-spacing: var(--body_small_graph_legend__letter_spacing);
+  font-size: var(--body_small_graph_legend__font_size);
+  font-weight: var(--body_small_graph_legend__font_weight);
 }
 
 @mixin body_label {
   @include font_common_style();
-  line-height: var(body_label__line_height);
-  letter-spacing: var(body_label__letter_spacing);
-  font-size: var(body_label__font_size);
-  font-weight: var(body_label__font_weight);
+  line-height: var(--body_label__line_height);
+  letter-spacing: var(--body_label__letter_spacing);
+  font-size: var(--body_label__font_size);
+  font-weight: var(--body_label__font_weight);
 }
 
 @mixin body_overline {
   @include font_common_style();
-  line-height: var(body_overline__line_height);
-  letter-spacing: var(body_overline__letter_spacing);
-  font-size: var(body_overline__font_size);
-  font-weight: var(body_overline__font_weight);
+  line-height: var(--body_overline__line_height);
+  letter-spacing: var(--body_overline__letter_spacing);
+  font-size: var(--body_overline__font_size);
+  font-weight: var(--body_overline__font_weight);
 }
 
 @mixin body_overline_strong {
   @include font_common_style();
-  line-height: var(body_overline_strong__line_height);
-  letter-spacing: var(body_overline_strong__letter_spacing);
-  font-size: var(body_overline_strong__font_size);
-  font-weight: var(body_overline_strong__font_weight);
+  line-height: var(--body_overline_strong__line_height);
+  letter-spacing: var(--body_overline_strong__letter_spacing);
+  font-size: var(--body_overline_strong__font_size);
+  font-weight: var(--body_overline_strong__font_weight);
 }
 
 .flow_title {
