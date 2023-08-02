@@ -1,6 +1,4 @@
 .label {
-  @import '../../scss';
-
   @mixin baseLabel() {
     display: flex;
     justify-content: center;
@@ -11,27 +9,24 @@
   }
 
   @mixin defaultLabel() {
-    // border-radius: 0.8em;
     background: transparent;
-    color: var(color-base);
+    color: var(--color-base);
   }
 
   @mixin primaryLabel() {
     border: none;
-    background: var(color-accent);
-    color: var(color-white);
+    background: var(--color-accent);
+    color: var(--color-white);
   }
 
   @mixin secondaryLabel() {
-    // border-radius: 0.8em;
     background: transparent;
-    color: var(color-accent);
+    color: var(--color-accent);
   }
 
   @mixin dangerLabel() {
-    // border-radius: 0.8em;
     background: transparent;
-    color: var(color-additional-error);
+    color: var(--color-additional-error);
   }
 
   @include baseLabel();
