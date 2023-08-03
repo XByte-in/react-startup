@@ -7,28 +7,28 @@ const TestLabel = () => {
     <div className="row">
       <div className="col">
         <Label
-          labelText="yes"
+          textId="yes"
           type={Type.primary}
           typography={Typography.body_medium_regular}
         />
       </div>
       <div className="col">
         <Label
-          labelText="yes"
+          textId="yes"
           type={Type.secondary}
           typography={Typography.body_medium_regular}
         />
       </div>
       <div className="col">
         <Label
-          labelText="yes"
+          textId="yes"
           type={Type.default}
           typography={Typography.body_medium_regular}
         />
       </div>
       <div className="col">
         <Label
-          labelText="yes"
+          textId="yes"
           type={Type.danger}
           typography={Typography.body_medium_regular}
         />

@@ -5,7 +5,7 @@ import TranslatedText from '../translatedText/translatedText';
 import './label.scss';
 
 interface ILabelParam extends IBaseControlParam {
-  labelText: string;
+  textId: string;
   type: Type;
   typography: Typography;
 }
@@ -17,7 +17,7 @@ const Label = (props: ILabelParam) => {
       style={props.styleObj}
       className={`label ${props.type} ${props.typography} ${props.className}`}
     >
-      <TranslatedText id={props.labelText} />
+      <TranslatedText id={props.textId} />
     </span>
   );
 };
