@@ -15,7 +15,9 @@ const Label = (props: ILabelParam) => {
     <span
       id={props.id}
       style={props.styleObj}
-      className={`label ${props.type} ${props.typography} ${props.className}`}
+      className={`label ${props.type} ${props.typography} ${
+        props.disabled ? 'disabled' : ''
+      } ${props.className}`}
     >
       <TranslatedText id={props.textId} />
     </span>

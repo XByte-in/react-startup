@@ -4,6 +4,7 @@ export interface IBaseControlParam {
   styleObj?: {
     [key: string]: string;
   };
+  disabled?: boolean;
 }
 
 export interface IMouseEventParam extends IBaseControlParam {

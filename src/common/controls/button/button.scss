@@ -16,6 +16,8 @@
 
     &:disabled {
       cursor: not-allowed;
+
+      opacity: 0.5;
     }
   }
 
@@ -72,11 +74,6 @@
     &:hover {
       background-color: var(--color-accent-hover);
     }
-
-    &:disabled {
-      background-color: var(--color-light-400);
-      color: var(--color-light-100);
-    }
   }
 
   @mixin type_secondary() {
@@ -87,11 +84,6 @@
     &:hover {
       color: var(--color-accent-hover);
     }
-
-    &:disabled {
-      color: var(--color-light-100);
-      border: 0.1rem solid var(--color-light-100);
-    }
   }
   @mixin type_default() {
     border: 0.1rem solid var(--color-base);
@@ -100,11 +92,6 @@
 
     &:hover {
       color: var(--color-color-base);
-    }
-
-    &:disabled {
-      color: var(--color-light-100);
-      border: 0.1rem solid var(--color-light-100);
     }
   }
   @include baseButton();

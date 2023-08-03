@@ -9,7 +9,6 @@ interface IButtonParams extends IMouseEventParam {
   textId: string;
   type: Type;
   size: Size;
-  disabled?: boolean;
   iconSrc?: string;
   iconAlt?: string;
 }

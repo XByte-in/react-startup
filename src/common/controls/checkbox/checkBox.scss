@@ -1,0 +1,25 @@
+.checkbox {
+  @import '../../scss';
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .icon {
+    color: var(--color-accent);
+
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .label {
+    margin-left: 0.5rem;
+  }
+}

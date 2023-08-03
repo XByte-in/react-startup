@@ -1,5 +1,6 @@
 .label {
   @import '../../scss';
+
   @mixin baseLabel() {
     display: flex;
     justify-content: center;
@@ -46,5 +47,9 @@
 
   &.danger {
     @include dangerLabel();
+  }
+
+  &.disabled {
+    opacity: 0.5;
   }
 }

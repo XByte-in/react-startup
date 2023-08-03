@@ -4,36 +4,72 @@ import { Typography } from '../../common/theme/typography/typography';
 
 const TestLabel = () => {
   return (
-    <div className="row">
-      <div className="col">
-        <Label
-          textId="yes"
-          type={Type.primary}
-          typography={Typography.body_medium_regular}
-        />
+    <>
+      <div className="row">
+        <div className="col">
+          <Label
+            textId="yes"
+            type={Type.primary}
+            typography={Typography.body_small_regular}
+          />
+        </div>
+        <div className="col">
+          <Label
+            textId="yes"
+            type={Type.secondary}
+            typography={Typography.body_small_regular}
+          />
+        </div>
+        <div className="col">
+          <Label
+            textId="yes"
+            type={Type.default}
+            typography={Typography.body_small_regular}
+          />
+        </div>
+        <div className="col">
+          <Label
+            textId="yes"
+            type={Type.danger}
+            typography={Typography.body_small_regular}
+          />
+        </div>
       </div>
-      <div className="col">
-        <Label
-          textId="yes"
-          type={Type.secondary}
-          typography={Typography.body_medium_regular}
-        />
+      <div className="row">
+        <div className="col">
+          <Label
+            textId="yes"
+            disabled={true}
+            type={Type.primary}
+            typography={Typography.body_small_regular}
+          />
+        </div>
+        <div className="col">
+          <Label
+            textId="yes"
+            disabled={true}
+            type={Type.secondary}
+            typography={Typography.body_small_regular}
+          />
+        </div>
+        <div className="col">
+          <Label
+            textId="yes"
+            disabled={true}
+            type={Type.default}
+            typography={Typography.body_small_regular}
+          />
+        </div>
+        <div className="col">
+          <Label
+            textId="yes"
+            disabled={true}
+            type={Type.danger}
+            typography={Typography.body_small_regular}
+          />
+        </div>
       </div>
-      <div className="col">
-        <Label
-          textId="yes"
-          type={Type.default}
-          typography={Typography.body_medium_regular}
-        />
-      </div>
-      <div className="col">
-        <Label
-          textId="yes"
-          type={Type.danger}
-          typography={Typography.body_medium_regular}
-        />
-      </div>
-    </div>
+    </>
   );
 };
 

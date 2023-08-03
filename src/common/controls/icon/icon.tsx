@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { IMouseEventParam } from '../iControl';
 
+import './icon.scss';
+
 interface IIconParams extends IMouseEventParam {
   iconSrc: string;
   iconDimension?: string;
@@ -19,7 +21,7 @@ const Icon = (props: IIconParams) => {
   return (
     <img
       id={props.id}
-      className={props.className}
+      className={`icon ${props.disabled ? 'disabled' : ''} ${props.className}`}
       style={styleObj}
       src={props.iconSrc}
       onClick={props.onClick}
