@@ -18,12 +18,14 @@ const TestRadioButton = () => {
             value={Test.yes}
             onChange={param => setTest(param)}
           />
+        </div>
+        <div className="col">
           <RadioButton
             textId="no"
             isChecked={test === Test.no}
             value={Test.no}
             onChange={param => setTest(param)}
-          />{' '}
+          />
         </div>
       </div>
       <div className="row">
@@ -35,13 +37,15 @@ const TestRadioButton = () => {
             value={Test.yes}
             onChange={param => setTest(param)}
           />
+        </div>
+        <div className="col">
           <RadioButton
             textId="no"
             disabled
             isChecked={test === Test.no}
             value={Test.no}
             onChange={param => setTest(param)}
-          />{' '}
+          />
         </div>
       </div>
     </>

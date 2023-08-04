@@ -1,14 +1,8 @@
-import TestCheckBox from '../testCheckBox';
-
-import './test.scss';
-import TestLabel from '../testLabel';
-import TestIcon from '../testIcon';
-
 const Test = () => {
   return (
-    <div className="app">
+    <div>
       {/* <TestLabel /> */}
-      <TestIcon />
+      {/* <TestIcon /> */}
       {/* <TestButton /> */}
       {/* <TestCheckBox /> */}
       {/* <TestRadioButton /> */}
