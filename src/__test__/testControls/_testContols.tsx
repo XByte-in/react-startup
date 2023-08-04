@@ -1,4 +1,6 @@
-const Test = () => {
+import TestImage from './testImage';
+
+const TestControls = () => {
   return (
     <div>
       {/* <TestLabel /> */}
@@ -6,8 +8,9 @@ const Test = () => {
       {/* <TestButton /> */}
       {/* <TestCheckBox /> */}
       {/* <TestRadioButton /> */}
+      <TestImage />
     </div>
   );
 };
 
-export default Test;
+export default TestControls;

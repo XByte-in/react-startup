@@ -1,39 +1,31 @@
-import { useState } from 'react';
-
 import { IMouseEventParam } from '../iControl';
 
-import './icon.scss';
+import './image.scss';
 
-interface IIconParams extends IMouseEventParam {
-  iconSrc: string;
-  iconDimension?: string;
+interface IImageParams extends IMouseEventParam {
+  imageSrc: string;
   alt?: string;
   onError?: () => void;
 }
 
-const Icon = (props: IIconParams) => {
+const Image = (props: IImageParams) => {
   const isClickable = !!props.onClick;
-  const [styleObj] = useState({
-    ...props.styleObj,
-    height: props.iconDimension,
-    width: props.iconDimension,
-  });
-
   return (
     <img
       id={props.id}
-      className={`icon ${isClickable ? 'clickable' : ''} ${
+      src={props.imageSrc}
+      className={`image ${isClickable ? 'clickable' : ''} ${
         props.disabled ? 'disabled' : ''
       } ${props.className}`}
-      style={styleObj}
-      src={props.iconSrc}
+      style={props.styleObj}
       onClick={props.disabled ? undefined : props.onClick}
+      onError={props.disabled ? undefined : props.onError}
       onMouseEnter={props.disabled ? undefined : props.onMouseEnter}
       onMouseLeave={props.disabled ? undefined : props.onMouseLeave}
       onMouseDown={props.disabled ? undefined : props.onMouseDown}
-      onError={props.onError}
       alt={props.alt}
     />
   );
 };
-export default Icon;
+
+export default Image;

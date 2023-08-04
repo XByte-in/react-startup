@@ -1,0 +1,15 @@
+.image {
+  @import '../../scss';
+
+  &.clickable {
+    cursor: pointer;
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}

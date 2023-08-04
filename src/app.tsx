@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import Test from './__test__/testControls/test/test';
+import TestControls from './__test__/testControls/_testContols';
 import { loadColors, loadFonts } from './common/theme';
 import defaultColors from './common/theme/colors/colors.json';
 import defaultTypography from './common/theme/typography/typography.json';
@@ -12,7 +12,7 @@ const App = () => {
     loadFonts(defaultTypography);
     loadColors(defaultColors);
   }, []);
-  return <Test />;
+  return <TestControls />;
 };
 
 export default App;
