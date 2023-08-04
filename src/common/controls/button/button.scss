@@ -12,7 +12,6 @@
     flex: none;
     align-self: stretch;
     flex-grow: 0;
-    padding: 0rem 2.4rem;
 
     &:disabled {
       cursor: not-allowed;
@@ -23,6 +22,7 @@
   @mixin size_small() {
     border: 0rem;
     height: 2.4rem;
+    padding: 0rem 1.5rem;
     @include body_overline_strong();
 
     .btn-icon {
@@ -34,6 +34,7 @@
   @mixin size_medium() {
     border-radius: 0rem;
     height: 3.6rem;
+    padding: 0rem 1.8rem;
     @include body_small_strong();
 
     .btn-icon {
@@ -45,6 +46,7 @@
   @mixin size_default() {
     border-radius: 0rem;
     height: 4.4rem;
+    padding: 0rem 2.1rem;
     @include body_medium_strong();
 
     .btn-icon {
@@ -56,6 +58,7 @@
   @mixin size_large() {
     border-radius: 0rem;
     height: 5.6rem;
+    padding: 0rem 2.7rem;
     @include body_body_strong();
 
     .btn-icon {

@@ -1,14 +1,15 @@
 import TestImage from './testImage';
+import TestButton from './testButton';
 
 const TestControls = () => {
   return (
     <div>
       {/* <TestLabel /> */}
       {/* <TestIcon /> */}
-      {/* <TestButton /> */}
+      <TestButton />
       {/* <TestCheckBox /> */}
       {/* <TestRadioButton /> */}
-      <TestImage />
+      {/* <TestImage /> */}
     </div>
   );
 };

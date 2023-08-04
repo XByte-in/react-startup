@@ -1,5 +1,7 @@
+import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { Size, Type } from '../../const';
-import Icon from '../icon/icon';
 import { IMouseEventParam } from '../iControl';
 import TranslatedText from '../translatedText/translatedText';
 
@@ -9,7 +11,8 @@ interface IButtonParams extends IMouseEventParam {
   textId: string;
   type: Type;
   size: Size;
-  iconSrc?: string;
+  fontAwesomeIcon?: IconProp;
+  fontAwesomeIconSize?: SizeProp;
   iconAlt?: string;
 }
 
@@ -26,11 +29,11 @@ const Button = (props: IButtonParams) => {
       onMouseDown={props.onMouseDown}
     >
       <>
-        {props.iconSrc && (
-          <Icon
+        {props.fontAwesomeIcon && (
+          <FontAwesomeIcon
+            icon={props.fontAwesomeIcon}
+            size={props.fontAwesomeIconSize}
             className="btn-icon"
-            iconSrc={props.iconSrc}
-            alt={props.iconAlt}
           />
         )}
         <TranslatedText id={props.textId} />
