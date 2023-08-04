@@ -25,27 +25,21 @@ const CheckBox = (props: ICheckBoxParams) => {
   };
 
   return (
-    <div className="checkbox" onClick={toggleChecked}>
+    <div
+      className={`checkbox ${props.disabled ? 'disabled' : ''}`}
+      onClick={toggleChecked}
+    >
       <input
         type="checkbox"
         defaultChecked={isChecked}
         disabled={props.disabled}
       />
       {isChecked ? (
-        <FontAwesomeIcon
-          icon={faSquareCheck}
-          className={`icon ${props.disabled ? 'disabled' : ''}`}
-          size="lg"
-        />
+        <FontAwesomeIcon icon={faSquareCheck} className="icon" size="lg" />
       ) : (
-        <FontAwesomeIcon
-          icon={faSquare}
-          className={`icon ${props.disabled ? 'disabled' : ''}`}
-          size="lg"
-        />
+        <FontAwesomeIcon icon={faSquare} className="icon" size="lg" />
       )}
       <Label
-        disabled={props.disabled}
         className="label"
         textId={props.textId}
         type={Type.default}

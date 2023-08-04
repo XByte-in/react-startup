@@ -11,12 +11,13 @@
     width: 0;
   }
 
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   .icon {
     color: var(--color-accent);
-
-    &.disabled {
-      opacity: 0.5;
-    }
   }
 
   .label {

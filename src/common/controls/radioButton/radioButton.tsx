@@ -33,7 +33,10 @@ const RadioButton = (props: IRadioButtonParams) => {
   };
 
   return (
-    <div className="radioButton" onClick={() => toggleChecked()}>
+    <div
+      className={`radioButton  ${props.disabled ? 'disabled' : ''}`}
+      onClick={() => toggleChecked()}
+    >
       <input
         type="radio"
         defaultChecked={isChecked}
@@ -41,20 +44,11 @@ const RadioButton = (props: IRadioButtonParams) => {
         disabled={props.disabled}
       />
       {isChecked ? (
-        <FontAwesomeIcon
-          icon={faSolidCircle}
-          className={`icon ${props.disabled ? 'disabled' : ''}`}
-          size="lg"
-        />
+        <FontAwesomeIcon icon={faSolidCircle} className="icon" size="lg" />
       ) : (
-        <FontAwesomeIcon
-          icon={faCircle}
-          className={`icon ${props.disabled ? 'disabled' : ''}`}
-          size="lg"
-        />
+        <FontAwesomeIcon icon={faCircle} className="icon" size="lg" />
       )}
       <Label
-        disabled={props.disabled}
         className="label"
         textId={props.textId}
         type={Type.default}

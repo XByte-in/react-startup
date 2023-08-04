@@ -12,6 +12,7 @@ interface IIconParams extends IMouseEventParam {
 }
 
 const Icon = (props: IIconParams) => {
+  const isClickable = props.onClick ? true : false;
   const [styleObj] = useState({
     ...props.styleObj,
     height: props.iconDimension,
@@ -21,13 +22,15 @@ const Icon = (props: IIconParams) => {
   return (
     <img
       id={props.id}
-      className={`icon ${props.disabled ? 'disabled' : ''} ${props.className}`}
+      className={`icon ${isClickable ? 'clickable' : ''} ${
+        props.disabled ? 'disabled' : ''
+      } ${props.className}`}
       style={styleObj}
       src={props.iconSrc}
-      onClick={props.onClick}
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}
-      onMouseDown={props.onMouseDown}
+      onClick={props.disabled ? undefined : props.onClick}
+      onMouseEnter={props.disabled ? undefined : props.onMouseEnter}
+      onMouseLeave={props.disabled ? undefined : props.onMouseLeave}
+      onMouseDown={props.disabled ? undefined : props.onMouseDown}
       onError={props.onError}
       alt={props.alt}
     />
