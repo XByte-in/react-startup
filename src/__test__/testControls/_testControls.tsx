@@ -12,8 +12,8 @@ const TestControls = () => {
       {/* <TestIcon /> */}
       {/* <TestButton /> */}
       {/* <TestCheckBox /> */}
-      <TestRadioButton />
-      {/* <TestImage /> */}
+      {/* <TestRadioButton /> */}
+      <TestImage />
     </div>
   );
 };

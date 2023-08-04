@@ -1,7 +1,6 @@
 .button {
   @import '../../scss';
   @mixin baseButton() {
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,8 +13,8 @@
     flex-grow: 0;
     width: 100%;
 
+    @include setCursor();
     &:disabled {
-      cursor: not-allowed;
       opacity: 0.5;
     }
   }

@@ -2,11 +2,7 @@
   @import '../../scss';
 
   &.clickable {
-    cursor: pointer;
-
-    &.disabled {
-      cursor: not-allowed;
-    }
+    @include setCursor();
   }
 
   &.disabled {
