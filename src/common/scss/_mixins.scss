@@ -52,6 +52,14 @@
   justify-content: center;
 }
 
+@mixin setCursor() {
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
 @mixin disableSelection() {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

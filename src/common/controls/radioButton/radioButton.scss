@@ -2,7 +2,6 @@
   @import '../../scss';
   display: flex;
   align-items: center;
-  cursor: pointer;
 
   input {
     position: absolute;
@@ -13,15 +12,15 @@
 
   .icon {
     color: var(--color-accent);
+    @include setCursor();
   }
 
   .label {
     margin-left: 0.5rem;
+    @include setCursor();
   }
 
   &.disabled {
     opacity: 0.5;
-    cursor: not-allowed;
-    @include disableSelection();
   }
 }

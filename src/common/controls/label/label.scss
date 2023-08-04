@@ -49,6 +49,10 @@
     @include dangerLabel();
   }
 
+  &.clickable {
+    @include setCursor();
+  }
+
   &.disabled {
     opacity: 0.5;
     @include disableSelection();

@@ -13,6 +13,8 @@ const TestButton = () => {
             size={Size.small}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.primary}
@@ -27,6 +29,8 @@ const TestButton = () => {
             size={Size.small}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.secondary}
@@ -41,6 +45,8 @@ const TestButton = () => {
             size={Size.small}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.default}
@@ -57,6 +63,8 @@ const TestButton = () => {
             size={Size.medium}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.primary}
@@ -71,6 +79,8 @@ const TestButton = () => {
             size={Size.medium}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.secondary}
@@ -85,6 +95,8 @@ const TestButton = () => {
             size={Size.medium}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.default}
@@ -101,6 +113,8 @@ const TestButton = () => {
             size={Size.default}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.primary}
@@ -115,6 +129,8 @@ const TestButton = () => {
             size={Size.default}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.secondary}
@@ -129,6 +145,8 @@ const TestButton = () => {
             size={Size.default}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.default}
@@ -145,6 +163,8 @@ const TestButton = () => {
             size={Size.large}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.primary}
@@ -159,6 +179,8 @@ const TestButton = () => {
             size={Size.large}
             fontAwesomeIcon={faFileExcel}
           />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.secondary}
@@ -167,7 +189,14 @@ const TestButton = () => {
           />
         </div>
         <div className="col">
-          <Button textId="yes" type={Type.default} size={Size.large} />
+          <Button
+            textId="yes"
+            type={Type.default}
+            size={Size.large}
+            fontAwesomeIcon={faFileExcel}
+          />
+        </div>
+        <div className="col">
           <Button
             textId="yes"
             type={Type.default}
