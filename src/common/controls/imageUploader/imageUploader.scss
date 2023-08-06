@@ -1,0 +1,60 @@
+.image-upload {
+  @import '../../scss';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .preview {
+    height: 0px;
+    width: 0px;
+  }
+
+  .drop-zone {
+    text-align: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px dashed var(--color-accent);
+    transition: transform 0.3s;
+    justify-content: center;
+    align-items: center;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    .image-label {
+      @include body_medium_regular();
+      text-align: center;
+      text-decoration-line: underline;
+      cursor: pointer;
+      background-color: #00000050;
+      color: white;
+    }
+
+    .image-input {
+      position: absolute;
+      height: 0px;
+      width: 0px;
+      opacity: 0;
+      top: 0;
+      left: 0;
+    }
+
+    .draging {
+      transform: scale(1.1);
+    }
+  }
+
+  .image-detail {
+    @include body_small_regular();
+    display: flex;
+    flex-direction: column;
+
+    .action-btns {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
