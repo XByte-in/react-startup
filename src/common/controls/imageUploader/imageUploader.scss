@@ -1,9 +1,21 @@
 .image-upload {
   @import '../../scss';
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  .image-detail {
+    @include body_small_regular();
+    display: flex;
+    flex-direction: column;
+
+    .action-btns {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
   .preview {
     height: 0px;
@@ -25,12 +37,12 @@
     background-position: center;
 
     .image-label {
-      @include body_medium_regular();
+      @include body_small_regular();
       text-align: center;
       text-decoration-line: underline;
       cursor: pointer;
-      background-color: #00000050;
-      color: white;
+      background-color: var(--color-white);
+      color: var(--color-black);
     }
 
     .image-input {
@@ -44,17 +56,6 @@
 
     .draging {
       transform: scale(1.1);
-    }
-  }
-
-  .image-detail {
-    @include body_small_regular();
-    display: flex;
-    flex-direction: column;
-
-    .action-btns {
-      display: flex;
-      justify-content: space-between;
     }
   }
 }

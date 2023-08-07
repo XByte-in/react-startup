@@ -4,6 +4,7 @@ import { ChangeEvent, DragEvent, useEffect, useState } from 'react';
 import { Size, Type } from '../../const';
 import Utils from '../../utils';
 import Button from '../button/button';
+import { IBaseControlParam } from '../iControl';
 
 import './imageUploader.scss';
 
@@ -12,14 +13,12 @@ interface IImageResolution {
   height: number;
 }
 
-interface IImageUploaderParams {
-  id: string;
+interface IImageUploaderParams extends IBaseControlParam {
   imageSrc?: string;
   expectedResolution: IImageResolution;
   expectedMaxFileSizeKB: string;
   maxImagePreviewSize: number;
   onUploadImage: (file: File | null | undefined) => void;
-  isLoading?: boolean;
 }
 
 const ImageUploader = (props: IImageUploaderParams) => {
@@ -55,7 +54,7 @@ const ImageUploader = (props: IImageUploaderParams) => {
         });
       }
     }
-  }, [props.expectedResolution]);
+  }, [props.expectedResolution, props.maxImagePreviewSize]);
   useEffect(() => {
     if (props.imageSrc)
       axios.head(props.imageSrc).then(response => {

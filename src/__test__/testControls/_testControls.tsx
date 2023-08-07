@@ -1,4 +1,4 @@
-import TestImage from './testImage';
+import TestImageUploader from './testImageUploader';
 
 const TestControls = () => {
   return (
@@ -8,7 +8,8 @@ const TestControls = () => {
       {/* <TestButton /> */}
       {/* <TestCheckBox /> */}
       {/* <TestRadioButton /> */}
-      <TestImage />
+      {/* <TestImage /> */}
+      <TestImageUploader />
     </div>
   );
 };
