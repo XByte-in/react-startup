@@ -6,7 +6,7 @@ const TestImageUploader = () => {
       <div className="row">
         <div className="col">
           <ImageUploader
-            enableUpload={false}
+            enableUpload={true}
             imageSrc="https://play-lh.googleusercontent.com/V_P-I-UENK93ahkQgOWel8X8yFxjhOOfMAZjxXrqp311Gm_RBtlDXHLQhwFZN8n4aIQ"
             expectedResolution={{ width: 500, height: 500 }}
             expectedMaxFileSizeKB="100"
