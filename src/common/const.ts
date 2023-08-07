@@ -11,3 +11,12 @@ export enum Size {
   default = 'default',
   large = 'large',
 }
+
+export enum DateTimePickerType {
+  time,
+  dateTime,
+  date,
+  dateRange,
+  month,
+  year,
+}
