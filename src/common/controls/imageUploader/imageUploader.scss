@@ -35,12 +35,11 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-
+    cursor: pointer;
     .image-label {
       @include body_small_regular();
       text-align: center;
       text-decoration-line: underline;
-      cursor: pointer;
       background-color: var(--color-white);
       color: var(--color-black);
     }

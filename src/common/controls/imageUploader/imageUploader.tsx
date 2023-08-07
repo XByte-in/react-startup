@@ -134,6 +134,9 @@ const ImageUploader = (props: IImageUploaderParams) => {
         className="drop-zone"
         onDrop={onImageDrop}
         onDragOver={handleImageDragOver}
+        onClick={() => {
+          document.getElementById(`file-input-${props.id}`)?.click();
+        }}
         style={{
           backgroundImage: `url(${imageSrc})`,
           height: imagePreviewSize.height,
@@ -141,13 +144,12 @@ const ImageUploader = (props: IImageUploaderParams) => {
         }}
       >
         {!imageSrc && (
-          <label className="image-label" htmlFor={`file-input-${props.id}`}>
-            <Label
-              textId="selectImage"
-              type={Type.default}
-              typography={Typography.body_small_regular}
-            />
-          </label>
+          <Label
+            textId="selectImage"
+            className="image-label"
+            type={Type.default}
+            typography={Typography.body_small_regular}
+          />
         )}
       </div>
       {imageSrc && (
