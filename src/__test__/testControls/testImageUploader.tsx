@@ -8,7 +8,7 @@ const TestImageUploader = () => {
           <ImageUploader
             expectedResolution={{ width: 500, height: 500 }}
             expectedMaxFileSizeKB="100"
-            maxImagePreviewSize={500}
+            imagePreviewSize={{ width: 200, height: 500 }}
             onUploadImage={(file: File | null | undefined): void => {
               console.log(file);
             }}

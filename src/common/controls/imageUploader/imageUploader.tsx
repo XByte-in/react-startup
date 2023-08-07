@@ -20,7 +20,7 @@ interface IImageUploaderParams extends IBaseControlParam {
   imageSrc?: string;
   expectedResolution: IImageResolution;
   expectedMaxFileSizeKB: string;
-  maxImagePreviewSize: number;
+  imagePreviewSize: IImageResolution;
   onUploadImage: (file: File | null | undefined) => void;
 }
 
@@ -42,22 +42,12 @@ const ImageUploader = (props: IImageUploaderParams) => {
 
   useEffect(() => {
     if (props.expectedResolution) {
-      const expectedRatio =
-        props.expectedResolution.width / props.expectedResolution.height;
-      if (props.expectedResolution.width > props.maxImagePreviewSize) {
-        setImagePreviewSize({
-          width: props.maxImagePreviewSize,
-          height: props.maxImagePreviewSize / expectedRatio,
-        });
-      }
-      if (props.expectedResolution.height > props.maxImagePreviewSize) {
-        setImagePreviewSize({
-          width: props.maxImagePreviewSize * expectedRatio,
-          height: props.maxImagePreviewSize,
-        });
-      }
+      setImagePreviewSize({
+        width: props.imagePreviewSize.width,
+        height: props.imagePreviewSize.height,
+      });
     }
-  }, [props.expectedResolution, props.maxImagePreviewSize]);
+  }, [props.expectedResolution, props.imagePreviewSize]);
   useEffect(() => {
     if (props.imageSrc)
       axios.head(props.imageSrc).then(response => {
