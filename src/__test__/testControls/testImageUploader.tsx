@@ -12,6 +12,7 @@ const TestImageUploader = () => {
             onUploadImage={(file: File | null | undefined): void => {
               console.log(file);
             }}
+            onClearImage={() => console.log('clear')}
           />
         </div>
         <div className="col"></div>

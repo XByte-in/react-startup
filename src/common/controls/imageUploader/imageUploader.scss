@@ -14,6 +14,18 @@
     .action-btns {
       display: flex;
       justify-content: space-between;
+
+      .upload-btn {
+        width: calc(100% - 3.4rem);
+      }
+
+      .clear-btn {
+        margin-left: 1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        color: var(--color-additional-error);
+        cursor: pointer;
+      }
     }
   }
 
@@ -36,6 +48,7 @@
     background-size: contain;
     background-position: center;
     cursor: pointer;
+
     .image-label {
       @include body_small_regular();
       text-align: center;

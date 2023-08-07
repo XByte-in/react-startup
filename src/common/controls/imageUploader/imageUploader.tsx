@@ -1,3 +1,5 @@
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { ChangeEvent, DragEvent, useEffect, useState } from 'react';
 
@@ -22,6 +24,7 @@ interface IImageUploaderParams extends IBaseControlParam {
   expectedMaxFileSizeKB: string;
   imagePreviewSize: IImageResolution;
   onUploadImage: (file: File | null | undefined) => void;
+  onClearImage: () => void;
 }
 
 const ImageUploader = (props: IImageUploaderParams) => {
@@ -96,6 +99,14 @@ const ImageUploader = (props: IImageUploaderParams) => {
       width: target.target.naturalWidth,
       height: target.target.naturalHeight,
     });
+  };
+
+  const handleImageRemove = () => {
+    setSelectedImage(null);
+    setImageSrc(null);
+    setImageFileSize(null);
+    setImageResolution(null);
+    props.onClearImage();
   };
 
   return (
@@ -177,12 +188,18 @@ const ImageUploader = (props: IImageUploaderParams) => {
             <div className="action-btns">
               <Button
                 textId="upload"
+                className="upload-btn"
                 type={Type.secondary}
                 size={Size.small}
                 onClick={() => {
                   handleImageUpload();
                 }}
               ></Button>
+              <FontAwesomeIcon
+                icon={faXmark}
+                className="clear-btn"
+                onClick={handleImageRemove}
+              />
             </div>
           )}
         </div>
