@@ -20,8 +20,9 @@ interface IImageResolution {
 
 interface IImageUploaderParams extends IBaseControlParam {
   imageSrc?: string;
-  expectedResolution: IImageResolution;
-  expectedMaxFileSizeKB: string;
+  enableUpload?: boolean;
+  expectedResolution?: IImageResolution;
+  expectedMaxFileSizeKB?: string;
   imagePreviewSize: IImageResolution;
   onUploadImage: (file: File | null | undefined) => void;
   onClearImage: () => void;
@@ -36,8 +37,8 @@ const ImageUploader = (props: IImageUploaderParams) => {
   const [imageFileSize, setImageFileSize] = useState<string | null>(null);
 
   const [imagePreviewSize, setImagePreviewSize] = useState({
-    height: props.expectedResolution.height,
-    width: props.expectedResolution.width,
+    height: props.imagePreviewSize.height,
+    width: props.imagePreviewSize.width,
   });
   const [selectedImage, setSelectedImage] = useState<File | null | undefined>(
     null
@@ -95,10 +96,11 @@ const ImageUploader = (props: IImageUploaderParams) => {
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onImageLoad = (target: any) => {
-    setImageResolution({
-      width: target.target.naturalWidth,
-      height: target.target.naturalHeight,
-    });
+    if (props.expectedResolution)
+      setImageResolution({
+        width: target.target.naturalWidth,
+        height: target.target.naturalHeight,
+      });
   };
 
   const handleImageRemove = () => {
@@ -133,11 +135,12 @@ const ImageUploader = (props: IImageUploaderParams) => {
       )}
 
       <div
-        className="drop-zone"
+        className={`drop-zone ${props.enableUpload ? 'upload' : ''}`}
         onDrop={onImageDrop}
         onDragOver={handleImageDragOver}
         onClick={() => {
-          document.getElementById(`file-input-${props.id}`)?.click();
+          if (props.enableUpload)
+            document.getElementById(`file-input-${props.id}`)?.click();
         }}
         style={{
           backgroundImage: `url(${imageSrc})`,

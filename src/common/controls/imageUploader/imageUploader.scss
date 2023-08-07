@@ -47,8 +47,9 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    cursor: pointer;
-
+    &.upload {
+      cursor: pointer;
+    }
     .image-label {
       @include body_small_regular();
       text-align: center;
