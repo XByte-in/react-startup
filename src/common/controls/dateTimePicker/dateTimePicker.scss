@@ -1,6 +1,10 @@
 .dateTimePicker {
   @import '../../scss';
 
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
   .datePicker-display {
     @include body_medium_regular();
     height: 3.6rem;
