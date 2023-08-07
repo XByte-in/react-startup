@@ -2,13 +2,14 @@ import axios from 'axios';
 import { ChangeEvent, DragEvent, useEffect, useState } from 'react';
 
 import { Size, Type } from '../../const';
+import { Typography } from '../../theme';
 import Utils from '../../utils';
 import Button from '../button/button';
 import { IBaseControlParam } from '../iControl';
+import Image from '../image/image';
+import Label from '../label/label';
 
 import './imageUploader.scss';
-import Label from '../label/label';
-import { Typography } from '../../theme';
 
 interface IImageResolution {
   width: number;
@@ -153,9 +154,9 @@ const ImageUploader = (props: IImageUploaderParams) => {
         )}
       </div>
       {imageSrc && (
-        <img
+        <Image
           className="preview"
-          src={imageSrc}
+          imageSrc={imageSrc}
           alt="Preview"
           onLoad={onImageLoad}
         />
