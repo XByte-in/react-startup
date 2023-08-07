@@ -1,16 +1,35 @@
-import DateTimePicker from '../../common/controls/dateTimePicker/dateTimePicker';
 import { DateTimePickerType } from '../../common/const';
-import DatePicker from 'react-datepicker';
+import DateTimePicker from '../../common/controls/dateTimePicker/dateTimePicker';
+
 import 'react-datepicker/dist/react-datepicker.css';
+
 const TestDatePicker = () => {
   return (
     <>
-      <DateTimePicker dateTimePickerType={DateTimePickerType.time} />
-      <DateTimePicker dateTimePickerType={DateTimePickerType.dateTime} />
-      <DateTimePicker dateTimePickerType={DateTimePickerType.date} />
-      <DateTimePicker dateTimePickerType={DateTimePickerType.dateRange} />
-      <DateTimePicker dateTimePickerType={DateTimePickerType.month} />
-      <DateTimePicker dateTimePickerType={DateTimePickerType.year} />
+      <DateTimePicker
+        dateTimePickerType={DateTimePickerType.time}
+        onChange={data => console.log(data)}
+      />
+      <DateTimePicker
+        dateTimePickerType={DateTimePickerType.dateTime}
+        onChange={data => console.log(data)}
+      />
+      <DateTimePicker
+        dateTimePickerType={DateTimePickerType.date}
+        onChange={data => console.log(data)}
+      />
+      <DateTimePicker
+        dateTimePickerType={DateTimePickerType.dateRange}
+        onChange={data => console.log(data)}
+      />
+      <DateTimePicker
+        dateTimePickerType={DateTimePickerType.month}
+        onChange={data => console.log(data)}
+      />
+      <DateTimePicker
+        dateTimePickerType={DateTimePickerType.year}
+        onChange={data => console.log(data)}
+      />
     </>
   );
 };
