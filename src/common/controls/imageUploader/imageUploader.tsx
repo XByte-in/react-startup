@@ -7,6 +7,8 @@ import Button from '../button/button';
 import { IBaseControlParam } from '../iControl';
 
 import './imageUploader.scss';
+import Label from '../label/label';
+import { Typography } from '../../theme';
 
 interface IImageResolution {
   width: number;
@@ -110,13 +112,20 @@ const ImageUploader = (props: IImageUploaderParams) => {
       {(imagePreviewSize || props.expectedMaxFileSizeKB) && (
         <div className="image-detail">
           {props.expectedResolution && (
-            <span>
-              Expected Resolution: {props.expectedResolution.width} x{' '}
-              {props.expectedResolution.height}
-            </span>
+            <Label
+              textId="expectedResolution"
+              text={`${props.expectedResolution.width}x${props.expectedResolution.height}`}
+              type={Type.default}
+              typography={Typography.body_small_regular}
+            />
           )}
           {props.expectedMaxFileSizeKB && (
-            <span>Max File Size: {props.expectedMaxFileSizeKB}</span>
+            <Label
+              textId="maxFileSize"
+              text={props.expectedMaxFileSizeKB}
+              type={Type.default}
+              typography={Typography.body_small_regular}
+            />
           )}
         </div>
       )}
@@ -131,9 +140,15 @@ const ImageUploader = (props: IImageUploaderParams) => {
           width: imagePreviewSize.width,
         }}
       >
-        <label className="image-label" htmlFor={`file-input-${props.id}`}>
-          Drag & Drop or Select Image
-        </label>
+        {!imageSrc && (
+          <label className="image-label" htmlFor={`file-input-${props.id}`}>
+            <Label
+              textId="selectImage"
+              type={Type.default}
+              typography={Typography.body_small_regular}
+            />
+          </label>
+        )}
       </div>
       {imageSrc && (
         <img
@@ -153,15 +168,22 @@ const ImageUploader = (props: IImageUploaderParams) => {
       />
       {imageResolution && (
         <div className="image-detail">
-          <span>
-            Actual Resolution: {imageResolution.width} x{' '}
-            {imageResolution.height}
-          </span>
-          <span>Actual File Size: {imageFileSize}</span>
+          <Label
+            textId="actualResolution"
+            text={`${imageResolution.width} x ${imageResolution.height}`}
+            type={Type.default}
+            typography={Typography.body_small_regular}
+          />
+          <Label
+            textId="actualFileSize"
+            text={imageFileSize}
+            type={Type.default}
+            typography={Typography.body_small_regular}
+          />
           {selectedImage && (
             <div className="action-btns">
               <Button
-                textId="yes"
+                textId="upload"
                 type={Type.secondary}
                 size={Size.small}
                 onClick={() => {

@@ -9,6 +9,7 @@ interface ILabelParam extends IMouseEventParam {
   textId: string;
   type: Type;
   typography: Typography;
+  text?: string | null;
   onClick?: () => void;
 }
 
@@ -24,7 +25,7 @@ const Label = (props: ILabelParam) => {
         props.className
       }`}
     >
-      <TranslatedText id={props.textId} />
+      <TranslatedText id={props.textId} /> {props.text}
     </span>
   );
 };
