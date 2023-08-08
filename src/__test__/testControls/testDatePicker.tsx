@@ -6,30 +6,96 @@ import 'react-datepicker/dist/react-datepicker.css';
 const TestDatePicker = () => {
   return (
     <>
-      <DateTimePicker
-        dateTimePickerType={DateTimePickerType.time}
-        onChange={data => console.log(data)}
-      />
-      <DateTimePicker
-        dateTimePickerType={DateTimePickerType.dateTime}
-        onChange={data => console.log(data)}
-      />
-      <DateTimePicker
-        dateTimePickerType={DateTimePickerType.date}
-        onChange={data => console.log(data)}
-      />
-      <DateTimePicker
-        dateTimePickerType={DateTimePickerType.dateRange}
-        onChange={data => console.log(data)}
-      />
-      <DateTimePicker
-        dateTimePickerType={DateTimePickerType.month}
-        onChange={data => console.log(data)}
-      />
-      <DateTimePicker
-        dateTimePickerType={DateTimePickerType.year}
-        onChange={data => console.log(data)}
-      />
+      <div className="row">
+        <div className="col">
+          <DateTimePicker
+            dateTimePickerType={DateTimePickerType.time}
+            onChange={data => console.log(data)}
+          />
+        </div>
+        <div className="col">
+          <DateTimePicker
+            disabled
+            dateTimePickerType={DateTimePickerType.time}
+            onChange={data => console.log(data)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <DateTimePicker
+            dateTimePickerType={DateTimePickerType.dateTime}
+            onChange={data => console.log(data)}
+          />
+        </div>
+        <div className="col">
+          <DateTimePicker
+            disabled
+            dateTimePickerType={DateTimePickerType.dateTime}
+            onChange={data => console.log(data)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <DateTimePicker
+            dateTimePickerType={DateTimePickerType.date}
+            onChange={data => console.log(data)}
+          />
+        </div>
+        <div className="col">
+          <DateTimePicker
+            disabled
+            dateTimePickerType={DateTimePickerType.date}
+            onChange={data => console.log(data)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <DateTimePicker
+            dateTimePickerType={DateTimePickerType.dateRange}
+            onChange={data => console.log(data)}
+          />
+        </div>
+        <div className="col">
+          <DateTimePicker
+            disabled
+            dateTimePickerType={DateTimePickerType.dateRange}
+            onChange={data => console.log(data)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <DateTimePicker
+            dateTimePickerType={DateTimePickerType.month}
+            onChange={data => console.log(data)}
+          />
+        </div>
+        <div className="col">
+          <DateTimePicker
+            disabled
+            dateTimePickerType={DateTimePickerType.month}
+            onChange={data => console.log(data)}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <DateTimePicker
+            dateTimePickerType={DateTimePickerType.year}
+            onChange={data => console.log(data)}
+          />
+        </div>
+        <div className="col">
+          <DateTimePicker
+            disabled
+            dateTimePickerType={DateTimePickerType.year}
+            onChange={data => console.log(data)}
+          />
+        </div>
+      </div>
     </>
   );
 };

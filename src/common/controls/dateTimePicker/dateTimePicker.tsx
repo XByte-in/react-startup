@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import { DateTimePickerType } from '../../const';
+import { IBaseControlParam } from '../iControl';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './dateTimePicker.scss';
 
-interface IDateTimePickerParams {
+interface IDateTimePickerParams extends IBaseControlParam {
   dateTimePickerType: DateTimePickerType;
   selectedDate?: Date;
 
@@ -136,7 +137,11 @@ const DateTimePicker = (props: IDateTimePickerParams) => {
   return (
     <div className="dateTimePicker">
       <DatePicker
-        className="datePicker-display datePicker-display-icon"
+        id={props.id}
+        disabled={props.disabled}
+        className={`datePicker-display datePicker-display-icon ${
+          props.disabled ? 'disabled' : ''
+        }`}
         dateFormat={dateFormat}
         isClearable={props.isClearable}
         placeholderText={props.placeholderText}

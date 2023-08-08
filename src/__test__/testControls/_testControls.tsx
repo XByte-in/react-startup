@@ -1,4 +1,6 @@
 import TestSlider from './testSlider';
+import TestDatePicker from './testDatePicker';
+import TestProgressBar from './testProgressBar';
 
 const TestControls = () => {
   return (
@@ -11,7 +13,8 @@ const TestControls = () => {
       {/* <TestImage /> */}
       {/* <TestImageUploader /> */}
       {/* <TestDatePicker /> */}
-      <TestSlider />
+      {/* <TestSlider /> */}
+      <TestProgressBar />
     </div>
   );
 };

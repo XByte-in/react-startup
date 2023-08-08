@@ -4,7 +4,9 @@
   .react-datepicker-wrapper {
     width: 100%;
   }
-
+  input:focus {
+    border: 0.18rem solid var(--color-accent) !important;
+  }
   .datePicker-display {
     @include body_medium_regular();
     height: 3.6rem;
@@ -17,9 +19,15 @@
     background-color: var(--color-white);
     text-overflow: ellipsis;
 
-    &:focus {
-      border: 0.18rem solid var(--color-accent) !important;
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--color-base);
+      opacity: 0.5;
     }
+
+    // &:focus {
+    //   border: 0.18rem solid var(--color-accent) !important;
+    // }
   }
 
   .react-datepicker {
@@ -204,16 +212,8 @@
     &::after {
       border-bottom-color: var(--color-white) !important;
     }
-
-    // &::before {
-    //   border-bottom-color: var(--color-light-100) !important;
-    // }
-  }
-
-  .disabled {
-    background-color: transparent;
-    border: none;
-    color: var(--color-dark-800);
-    opacity: 0.4;
+    &::before {
+      border-bottom-color: var(--color-light-100) !important;
+    }
   }
 }
