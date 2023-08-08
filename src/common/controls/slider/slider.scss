@@ -7,6 +7,7 @@
 
   &.disabled {
     cursor: not-allowed;
+    opacity: 0.5;
   }
   // Chrome
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
