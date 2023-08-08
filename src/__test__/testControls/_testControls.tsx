@@ -1,4 +1,4 @@
-import TestDatePicker from './testDatePicker';
+import TestSlider from './testSlider';
 
 const TestControls = () => {
   return (
@@ -10,7 +10,8 @@ const TestControls = () => {
       {/* <TestRadioButton /> */}
       {/* <TestImage /> */}
       {/* <TestImageUploader /> */}
-      <TestDatePicker />
+      {/* <TestDatePicker /> */}
+      <TestSlider />
     </div>
   );
 };
