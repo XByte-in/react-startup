@@ -1,5 +1,3 @@
-import TestSlider from './testSlider';
-import TestDatePicker from './testDatePicker';
 import TestProgressBar from './testProgressBar';
 
 const TestControls = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import ProgressBar from '../../common/controls/progressBar/progressBar';
 
 const TestProgressBar = () => {
