@@ -1,4 +1,4 @@
-import TestProgressBar from './testProgressBar';
+import TestMask from './testMask';
 
 const TestControls = () => {
   return (
@@ -12,9 +12,21 @@ const TestControls = () => {
       {/* <TestImageUploader /> */}
       {/* <TestDatePicker /> */}
       {/* <TestSlider /> */}
-      <TestProgressBar />
+      {/* <TestProgressBar /> */}
+      <TestMask />
     </div>
   );
 };
 
 export default TestControls;
+
+// toggle
+// mask
+// select
+// textarea
+// google
+// private route
+// modal
+// grid
+// input
+// validator

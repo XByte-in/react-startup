@@ -1,0 +1,8 @@
+.mask {
+  @import '../../scss';
+  z-index: 9999;
+  height: 5rem !important;
+  color: var(--color-accent);
+  margin: auto;
+  @include rotate(spin 1s linear infinite);
+}
