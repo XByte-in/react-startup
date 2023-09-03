@@ -20,9 +20,6 @@ const TestControls = () => {
 
 export default TestControls;
 
-// toggle
-// mask
-// select
 // textarea
 // google
 // private route
