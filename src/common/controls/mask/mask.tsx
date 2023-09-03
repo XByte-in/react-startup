@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './mask.scss';
 
 const Mask = () => {
-  return <FontAwesomeIcon icon={faCircleNotch} className="mask" />;
+  return (
+    <div className="mask">
+      <FontAwesomeIcon icon={faCircleNotch} className="loader" />
+    </div>
+  );
 };
 export default Mask;
