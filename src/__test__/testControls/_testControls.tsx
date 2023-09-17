@@ -1,4 +1,4 @@
-import TestMask from './testMask';
+import TestSelectField from './testSelectField';
 
 const TestControls = () => {
   return (
@@ -13,7 +13,8 @@ const TestControls = () => {
       {/* <TestDatePicker /> */}
       {/* <TestSlider /> */}
       {/* <TestProgressBar /> */}
-      <TestMask />
+      {/* <TestMask /> */}
+      <TestSelectField />
     </div>
   );
 };

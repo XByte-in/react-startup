@@ -1,10 +1,11 @@
+import chroma from 'chroma-js';
 import { ReactNode } from 'react';
 import Select, { FormatOptionLabelMeta, StylesConfig } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
 import TranslatedText from '../translatedText/translatedText';
 
-interface ISelectFieldOption {
+export interface ISelectFieldOption {
   label: string;
   value: string;
   isDisabled?: boolean;
@@ -62,15 +63,20 @@ function SelectField(props: ISelectFieldParams) {
       ...styles,
       backgroundColor: style.getPropertyValue('--color-white'),
     }),
-    option: (styles, { isFocused }) => {
+    option: (styles, { isDisabled, isFocused, isSelected }) => {
+      const color = chroma(style.getPropertyValue('--color-accent'));
       return {
         ...styles,
-        color: isFocused
-          ? style.getPropertyValue('--color-white')
-          : style.getPropertyValue('--color-base'),
-        backgroundColor: isFocused
+        backgroundColor: isSelected
           ? style.getPropertyValue('--color-accent')
+          : isFocused
+          ? color.alpha(0.5).css()
           : style.getPropertyValue('--color-white'),
+        color:
+          isSelected || isFocused
+            ? style.getPropertyValue('--color-white')
+            : style.getPropertyValue('--color-base'),
+        cursor: isDisabled ? 'not-allowed' : 'default',
       };
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
