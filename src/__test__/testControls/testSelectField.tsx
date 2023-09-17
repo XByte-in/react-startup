@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import SelectField, {
   ISelectFieldOption,
@@ -6,28 +6,31 @@ import SelectField, {
 import { Typography } from '../../common/theme';
 
 const TestSelectField = () => {
-  const options = [
-    { label: 'test1', value: 'test1' },
-    { label: 'test2', value: 'test2' },
-    { label: 'test3', value: 'test3' },
-    { label: 'test4', value: 'test4' },
-  ];
-  const [val, setVal] = useState<ISelectFieldOption>();
-  const [vals, setVals] = useState<ISelectFieldOption[]>([]);
+  const options = useMemo(
+    () => [
+      { label: 'test1', value: 'test1' },
+      { label: 'test2', value: 'test2' },
+      { label: 'test3', value: 'test3' },
+      { label: 'test4', value: 'test4' },
+    ],
+    []
+  );
+  const [value, setValue] = useState<ISelectFieldOption>();
+  const [values, setValues] = useState<ISelectFieldOption[]>([]);
   useEffect(() => {
-    setVal(options[1]);
-    setVals([options[1], options[2]]);
-  }, []);
+    setValue(options[1]);
+    setValues([options[1], options[2]]);
+  }, [options]);
   return (
     <>
       <div className="row">
         <div className="col">
           <SelectField
             options={options}
-            defaultValue={val}
+            defaultValue={value}
             className={Typography.body_medium_regular}
-            value={val}
-            onChange={data => setVal(data)}
+            value={value}
+            onChange={data => setValue(data)}
           />
         </div>
 
@@ -36,9 +39,9 @@ const TestSelectField = () => {
             isCreatable={true}
             options={options}
             className={Typography.body_medium_regular}
-            value={val}
-            defaultValue={val}
-            onChange={data => setVal(data)}
+            value={value}
+            defaultValue={value}
+            onChange={data => setValue(data)}
           />
         </div>
       </div>
@@ -48,9 +51,9 @@ const TestSelectField = () => {
             isMulti={true}
             options={options}
             className={Typography.body_medium_regular}
-            value={vals}
-            defaultValue={vals}
-            onChange={data => setVals(data)}
+            value={values}
+            defaultValue={values}
+            onChange={data => setValues(data)}
           />
         </div>
 
@@ -60,9 +63,9 @@ const TestSelectField = () => {
             isCreatable={true}
             options={options}
             className={Typography.body_medium_regular}
-            value={vals}
-            defaultValue={vals}
-            onChange={data => setVals(data)}
+            value={values}
+            defaultValue={values}
+            onChange={data => setValues(data)}
           />
         </div>
       </div>

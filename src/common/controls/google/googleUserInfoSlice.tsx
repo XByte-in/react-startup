@@ -1,5 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createSlice } from '@reduxjs/toolkit';
-export interface GoogleUserInfoState {
+export interface IGoogleUserInfoState {
   credential: string;
   email: string;
   name: string;
@@ -7,7 +8,7 @@ export interface GoogleUserInfoState {
   family_name: string;
   picture: string;
 }
-const initialState: GoogleUserInfoState = {
+const initialState: IGoogleUserInfoState = {
   credential: '',
   email: '',
   name: '',
@@ -41,6 +42,7 @@ export const GoogleUserInfoSlice = createSlice({
 export const { setGoogleUserInfo, removeGoogleUserInfo } =
   GoogleUserInfoSlice.actions;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getGoogleUserInfo = (state: any) => state.googleUserInfo;
 
 export default GoogleUserInfoSlice.reducer;

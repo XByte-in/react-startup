@@ -69,7 +69,7 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
       onScriptError
     );
   };
-  useEffect(() => signInInit(), []);
+  useEffect(() => signInInit());
   return <div id="googleSignInDiv" />;
 };
 export default GoogleSignIn;
