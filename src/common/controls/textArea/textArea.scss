@@ -1,0 +1,21 @@
+.textArea {
+  @import '../../scss';
+  @include body_medium_regular();
+  width: calc(100% - 2.3rem);
+  background-color: var(--color-white);
+  color: var(--color-base);
+  border: 0.1rem solid var(--color-light-100);
+  border-radius: 0.4rem;
+  outline: none;
+  padding: 1rem;
+  resize: none;
+  &:focus {
+    border: 0.15rem solid var(--color-accent);
+  }
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--color-light-400);
+    opacity: 0.4;
+  }
+}

@@ -1,4 +1,4 @@
-import TestSelectField from './testSelectField';
+import TestTextArea from './testTextArea';
 
 const TestControls = () => {
   return (
@@ -14,7 +14,8 @@ const TestControls = () => {
       {/* <TestSlider /> */}
       {/* <TestProgressBar /> */}
       {/* <TestMask /> */}
-      <TestSelectField />
+      {/* <TestSelectField /> */}
+      <TestTextArea />
     </div>
   );
 };
