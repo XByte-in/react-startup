@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import SelectField, {
   ISelectFieldOption,
-} from '../../common/controls/SelectField/SelectField';
+} from '../../common/controls/selectField/selectField';
 import { Typography } from '../../common/theme';
 
 const TestSelectField = () => {

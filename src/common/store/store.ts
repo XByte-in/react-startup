@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+import googleUserInfoReducer from '../controls/google/googleUserInfoSlice';
+import privateRouteInfoReducer from '../controls/privateRoute/privateRouteInfoSlice';
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    googleUserInfo: googleUserInfoReducer,
+    privateRouteInfo: privateRouteInfoReducer,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
