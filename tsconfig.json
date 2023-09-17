@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "typeRoots": [
-      "./src/common/components/google/googleTypes"
-    ],
+    "typeRoots": ["./src/common/components/google/googleTypes"],
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -23,6 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/environment.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
