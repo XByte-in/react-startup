@@ -1,5 +1,3 @@
-import TestTextArea from './testTextArea';
-
 const TestControls = () => {
   return (
     <div>
@@ -15,14 +13,12 @@ const TestControls = () => {
       {/* <TestProgressBar /> */}
       {/* <TestMask /> */}
       {/* <TestSelectField /> */}
-      <TestTextArea />
+      {/* <TestTextArea /> */}
     </div>
   );
 };
 
 export default TestControls;
-
-// textarea
 // google
 // private route
 // modal
