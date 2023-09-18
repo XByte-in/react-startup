@@ -6,5 +6,6 @@
   "maxFileSize": "Max File Size (KB): ",
   "actualFileSize": "Actual File Size: ",
   "selectImage": "Drag & Drop or Select Image",
-  "upload": "Upload"
+  "upload": "Upload",
+  "XBytes": "XBytes"
 }

@@ -1,3 +1,5 @@
+import TestSignin from './testSignin';
+
 const TestControls = () => {
   return (
     <div>
@@ -14,13 +16,12 @@ const TestControls = () => {
       {/* <TestMask /> */}
       {/* <TestSelectField /> */}
       {/* <TestTextArea /> */}
+      <TestSignin />
     </div>
   );
 };
 
 export default TestControls;
-// google
-// private route
 // modal
 // grid
 // input

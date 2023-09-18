@@ -68,7 +68,7 @@ const SignIn = () => {
           <div className="Sign-in-card" aria-label="sign-in card">
             <div className="title-header">
               <span className="env">{Environment.ENV}</span>
-              <TranslatedText id="adminDashboard" />
+              <TranslatedText id="XBytes" />
             </div>
             <GoogleSignIn
               client_id={Environment.GOOGLE_CLIENT_ID}
