@@ -1,0 +1,69 @@
+.modal {
+  @import '../../scss';
+  @include flexCenter();
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  .disabled-true {
+    opacity: 0.5;
+  }
+  @mixin modal {
+    background-color: var(--color-surface);
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .size-small {
+    @include modal();
+    width: 50rem;
+  }
+  .size-medium {
+    @include modal();
+    width: 70rem;
+  }
+  .size-default {
+    @include modal();
+    width: 90rem;
+  }
+  .size-large {
+    @include modal();
+    width: 120rem;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    .modal-title {
+      @include body_body_bold();
+      color: var(--color-base);
+    }
+    .modal-close {
+      float: right;
+      cursor: pointer;
+      background-color: var(--color-additional-error);
+      border-radius: 0.25rem;
+    }
+  }
+  .modal-body {
+    // display: flex;
+    margin: 1rem 0rem;
+    border-top: var(--color-accent) 1px solid;
+    border-bottom: var(--color-accent) 1px solid;
+  }
+  .modal-errMsg {
+    color: var(--color-additional-error);
+    @include body_medium_strong();
+    pre {
+      margin: 0rem;
+      padding: 0rem;
+    }
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    .actionBtn {
+      width: calc(50% - 0.5rem);
+    }
+  }
+}
