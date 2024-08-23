@@ -1,5 +1,7 @@
 // import TestSignin from './testSignin';
 
+import TestDataGrid from './testDataGrid';
+
 const TestControls = () => {
   return (
     <div>
@@ -19,6 +21,7 @@ const TestControls = () => {
       {/* <TestSignin /> */}
       {/* <TestSlider /> */}
       {/* <TestTextArea /> */}
+      <TestDataGrid />
     </div>
   );
 };
