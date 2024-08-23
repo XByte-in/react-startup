@@ -23,6 +23,9 @@ export interface ISideBarParams {
 const SideBar = (props: ISideBarParams) => {
   const [isOpen, setIsOpen] = useState(props.isOpen);
   const [navItems, setNavItems] = useState<any[]>([]);
+  const onNavSelect = (eventKey: any, event: any) => {
+    console.log(eventKey, event);
+  };
   useEffect(() => {
     let mainIndex = 0;
     const items = props.items.map(
@@ -42,6 +45,7 @@ const SideBar = (props: ISideBarParams) => {
                     style={{ marginLeft: '1rem' }}
                     icon={subItem.icon}
                     key={`${mainIndex++}-${childIndex++}`}
+                    onSelect={onNavSelect}
                   >
                     {subItem.labelId}
                   </Nav.Item>
@@ -51,7 +55,7 @@ const SideBar = (props: ISideBarParams) => {
           );
         } else
           return (
-            <Nav.Item icon={item.icon} key={mainIndex++}>
+            <Nav.Item icon={item.icon} key={mainIndex++} onSelect={onNavSelect}>
               {item.labelId}
             </Nav.Item>
           );
@@ -61,7 +65,7 @@ const SideBar = (props: ISideBarParams) => {
   }, [props.items]);
   return (
     <>
-      <Sidenav expanded={isOpen}>
+      <Sidenav expanded={isOpen} className="sideBar">
         <Sidenav.Body>
           <Nav>{navItems}</Nav>
         </Sidenav.Body>
