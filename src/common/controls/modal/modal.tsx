@@ -53,17 +53,9 @@ const Modal = (props: IModalParams) => {
               props.modalData?.isLoading ?? 'false'
             }`}
             icon={faSquareXmark}
-            size="2xl"
+            size="4x"
             onClick={props.modalData?.onClose}
           />
-          {/* <Icon
-            iconSrc={Icons_40px.close}
-            className={`modal-close disabled-${
-              props.modalData?.isLoading ?? 'false'
-            }`}
-            iconDimension="32px"
-            onClick={props.modalData?.onClose}
-          ></Icon> */}
         </div>
         <div className="modal-body">{props.modalData?.children}</div>
         {errMsg && errMsg.length > 0 && (

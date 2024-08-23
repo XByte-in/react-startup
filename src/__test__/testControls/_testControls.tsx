@@ -1,6 +1,5 @@
 // import TestSignin from './testSignin';
-
-import TestInputField from './testInputField';
+import TestModal from './testModal';
 
 const TestControls = () => {
   return (
@@ -19,7 +18,8 @@ const TestControls = () => {
       {/* <TestSelectField /> */}
       {/* <TestTextArea /> */}
       {/* <TestSignin /> */}
-      <TestInputField />
+      {/* <TestInputField /> */}
+      <TestModal />
     </div>
   );
 };
@@ -27,5 +27,4 @@ const TestControls = () => {
 export default TestControls;
 // modal
 // grid
-// input
 // validator

@@ -40,7 +40,8 @@
     .modal-close {
       float: right;
       cursor: pointer;
-      background-color: var(--color-additional-error);
+      color: var(--color-additional-error);
+      background-color: var(--color-white);
       border-radius: 0.25rem;
     }
   }
