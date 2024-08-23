@@ -6,7 +6,6 @@ import { HashRouter } from 'react-router-dom';
 import App from './app.tsx';
 import store from './common/store/store';
 import Translation from './common/translations/translation.tsx';
-
 import './main.scss';
 
 const root = ReactDOM.createRoot(
