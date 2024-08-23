@@ -1,4 +1,6 @@
-import TestSignin from './testSignin';
+// import TestSignin from './testSignin';
+
+import TestInputField from './testInputField';
 
 const TestControls = () => {
   return (
@@ -16,7 +18,8 @@ const TestControls = () => {
       {/* <TestMask /> */}
       {/* <TestSelectField /> */}
       {/* <TestTextArea /> */}
-      <TestSignin />
+      {/* <TestSignin /> */}
+      <TestInputField />
     </div>
   );
 };
