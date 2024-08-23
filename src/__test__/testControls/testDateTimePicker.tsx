@@ -3,7 +3,7 @@ import DateTimePicker from '../../common/controls/dateTimePicker/dateTimePicker'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const TestDatePicker = () => {
+const TestDateTimePicker = () => {
   return (
     <>
       <div className="row">
@@ -100,4 +100,4 @@ const TestDatePicker = () => {
   );
 };
 
-export default TestDatePicker;
+export default TestDateTimePicker;
