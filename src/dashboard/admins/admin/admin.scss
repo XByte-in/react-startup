@@ -1,0 +1,25 @@
+.admin {
+    @import "../../../common/scss";
+    width: 100%;
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        .col {
+            width: calc(50% - 0.5rem);
+            padding: 0.5rem 0rem;
+
+            &.label {
+                display: flex;
+                justify-content: flex-end;
+
+                .required {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

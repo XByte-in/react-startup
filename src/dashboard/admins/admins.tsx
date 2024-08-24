@@ -13,7 +13,7 @@ import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
 import ApiService from '../apiService';
 import { RoutePermissionMap, UserPermissionMap } from '../routePermissionMap';
-
+import Admin from './admin/admin';
 import './admins.scss';
 
 const Admins = () => {
@@ -26,7 +26,7 @@ const Admins = () => {
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
   const modalAddAdminRef = { validate: () => [] };
-  let addAdminModalData: { [key: string]: any } = {
+  let addAdminData: { [key: string]: any } = {
     email: '',
   };
 
@@ -60,7 +60,7 @@ const Admins = () => {
     const rowData: { [key: string]: any } = {};
     rowData['email'] = adminData['email'];
     Object.values(RoutePermissionMap).forEach((permissionId: string) => {
-      rowData[permissionId] = adminData[permissionId] || null;
+      rowData[permissionId] = adminData[permissionId] || 0;
     });
     return rowData;
   };
@@ -100,7 +100,7 @@ const Admins = () => {
         }
       })
       .catch(error => {
-        setupAddAdminModal(true, false, [error.message]);
+        setupAddAdmin(true, false, [error.message]);
       });
   };
 
@@ -145,7 +145,7 @@ const Admins = () => {
   };
 
   const addAdmin = (email: string) => {
-    setupAddAdminModal(true, true);
+    setupAddAdmin(true, true);
     ApiService.Admins.add(credential, {
       email: email,
     })
@@ -155,34 +155,34 @@ const Admins = () => {
           const updatedAdmins = [...admins];
           updatedAdmins.push(admin);
           setAdmins(updatedAdmins);
-          setupAddAdminModal(false, false);
+          setupAddAdmin(false, false);
         } else {
-          setupAddAdminModal(true, false, [response.message]);
+          setupAddAdmin(true, false, [response.message]);
         }
       })
       .catch(error => {
-        setupAddAdminModal(true, false, [error.message]);
+        setupAddAdmin(true, false, [error.message]);
       });
   };
 
   const onYes = () => {
     const errMsgs = modalAddAdminRef.validate();
     if (errMsgs.length > 0) {
-      setupAddAdminModal(true, false, errMsgs);
+      setupAddAdmin(true, false, errMsgs);
     } else {
-      addAdmin(addAdminModalData.email);
+      addAdmin(addAdminData.email);
     }
   };
 
-  const showAddAdminModalDetail = () => {
-    setupAddAdminModal(true, false);
+  const showAddAdminModal = () => {
+    setupAddAdmin(true, false);
   };
 
   const showRemoveModalDetail = (email: string) => {
     setupRemoveModal(email, true, false);
   };
 
-  const setupAddAdminModal = (
+  const setupAddAdmin = (
     show: boolean,
     isLoading: boolean,
     errMsg?: Array<string>
@@ -201,16 +201,17 @@ const Admins = () => {
         },
         noBtn: {
           textId: 'no',
-          onClick: () => setupAddAdminModal(false, false),
+          onClick: () => setupAddAdmin(false, false),
         },
         children: (
-          <AdminModal
-            modalData={addAdminModalData}
+          <Admin
+            modalData={addAdminData}
             modalComponentRef={modalAddAdminRef}
             onModalDataChange={(data: { [key: string]: any }) => {
-              addAdminModalData = data;
+              addAdminData = data;
+              console.log(addAdminData);
             }}
-          ></AdminModal>
+          ></Admin>
         ),
       },
     });
@@ -256,7 +257,7 @@ const Admins = () => {
           size={Size.medium}
           type={Type.secondary}
           textId="addAdmin"
-          onClick={() => showAddAdminModalDetail()}
+          onClick={() => showAddAdminModal()}
         />
         <Button
           className="btn"
@@ -269,8 +270,8 @@ const Admins = () => {
       <DataGrid
         rows={admins}
         columns={columns}
-        height="calc(100vh - 12rem)"
         loading={gridDataLoading}
+        height="calc(100vh - 12rem)"
       />
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
     </div>

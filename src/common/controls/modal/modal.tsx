@@ -53,7 +53,7 @@ const Modal = (props: IModalParams) => {
               props.modalData?.isLoading ?? 'false'
             }`}
             icon={faSquareXmark}
-            size="4x"
+            size="2xl"
             onClick={props.modalData?.onClose}
           />
         </div>
