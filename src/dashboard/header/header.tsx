@@ -1,6 +1,6 @@
 import GoogleProfile from '../../common/controls/google/googleProfile/googleProfile';
 import Image from '../../common/controls/image/image';
-import type { AppDispatch, RootState } from '../../common/store/store';
+import type { RootState } from '../../common/store/store';
 import { useSelector } from 'react-redux';
 import './header.scss';
 const Header = () => {

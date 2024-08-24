@@ -63,31 +63,31 @@ const SignIn = () => {
 
   return (
     <div className="signin-page">
-      {
-        <div className="signin-card-container">
-          <div className="Sign-in-card" aria-label="sign-in card">
-            <div className="title-header">
-              <span className="env">{Environment.ENV}</span>
-              <TranslatedText id="XBytes" />
-            </div>
-            <GoogleSignIn
-              client_id={Environment.GOOGLE_CLIENT_ID}
-              auto_select={true}
-              cancel_on_tap_outside={true}
-              itp_support={true}
-              onSignIn={onSignIn}
-            />
-            <span aria-label="error-invalid-email" className="admins-label">
-              *Use Bluestacks or now.gg email id to login
+      <div className="signin-card-container">
+        <div className="signin-card" aria-label="sign-in card">
+          <div className="title-header">
+            <span className="env">{Environment.ENV}</span>
+            <span className="company-name">
+              <TranslatedText id="CompanyName" />
             </span>
-            {accessDenied && (
-              <span aria-label="error-access-denied" className="error-msg">
-                You do not have access for admin portal
-              </span>
-            )}
           </div>
+          <GoogleSignIn
+            client_id={Environment.GOOGLE_CLIENT_ID}
+            auto_select={true}
+            cancel_on_tap_outside={true}
+            itp_support={true}
+            onSignIn={onSignIn}
+          />
+          <span aria-label="error-invalid-email" className="login-info">
+            *Use Bluestacks or now.gg email id to login
+          </span>
+          {accessDenied && (
+            <span aria-label="error-access-denied" className="error-msg">
+              You do not have access for admin portal
+            </span>
+          )}
         </div>
-      }
+      </div>
     </div>
   );
 };

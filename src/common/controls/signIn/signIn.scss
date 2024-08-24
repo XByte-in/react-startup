@@ -1,43 +1,51 @@
 .signin-page {
   @import '../../scss';
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: calc(100vh - 6rem);
+  color: var(--color-base);
 
   .signin-card-container {
     width: 30%;
-  }
+    min-width: 20rem;
+    max-width: 50rem;
 
-  .Sign-in-card {
-    background: #fff;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
-    padding: 16px;
-    transform: translateY(-50%);
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h1 {
-      margin-bottom: 40px;
-    }
-
-    .google-login-bar {
-      width: 100%;
-    }
-
-    .now-gg-logo {
-      width: 200px;
-      height: 100px;
-    }
-    .title-header {
+    .signin-card {
+      background: #fff;
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      .env {
-        margin: auto;
-        color: var(--color-accent);
+      align-items: center;
+
+      h1 {
+        margin-bottom: 40px;
+      }
+
+      .title-header {
+        display: flex;
+        flex-direction: column;
+
+        .env {
+          margin: auto;
+          color: var(--color-accent);
+          @include title_header()
+        }
+
+        .company-name {
+          @include body_body_regular()
+        }
+      }
+
+      .login-info {
+        @include body_medium_regular()
+      }
+
+      .error-msg {
+        color: var(--color-additional-error);
+        @include body_medium_regular()
       }
     }
   }
