@@ -10,7 +10,7 @@ import Label from '../label/label';
 import './checkBox.scss';
 
 interface ICheckBoxParams extends IBaseControlParam {
-  textId: string;
+  textId?: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
 }
@@ -46,13 +46,15 @@ const CheckBox = (props: ICheckBoxParams) => {
           onClick={toggleChecked}
         />
       )}
-      <Label
-        onClick={toggleChecked}
-        className={`label ${props.disabled ? 'disabled' : ''}`}
-        textId={props.textId}
-        type={Type.default}
-        typography={Typography.body_small_regular}
-      />
+      {props.textId && (
+        <Label
+          onClick={toggleChecked}
+          className={`label ${props.disabled ? 'disabled' : ''}`}
+          textId={props.textId}
+          type={Type.default}
+          typography={Typography.body_small_regular}
+        />
+      )}
     </div>
   );
 };

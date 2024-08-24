@@ -1,2 +1,18 @@
-.app {
+.dashboard {
+    @import '../common/scss';
+
+    .content {
+        display: flex;
+    }
+
+    .container>*:not(:last-child) {
+        flex-shrink: 0;
+        /* Adjust width as needed */
+        width: 100px;
+        /* Example: Fixed width for non-last elements */
+    }
+
+    .container> :last-child {
+        flex-grow: 1;
+    }
 }

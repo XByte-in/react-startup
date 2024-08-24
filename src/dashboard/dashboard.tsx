@@ -11,6 +11,7 @@ import './dashboard.scss';
 import Header from './header/header';
 import SignIn from '../common/controls/signIn/signIn';
 import PrivateRoute from '../common/controls/privateRoute/privateRoute';
+import Admins from './admins/admins';
 
 const Dashboard = () => {
   useEffect(() => {
@@ -19,20 +20,24 @@ const Dashboard = () => {
     loadColors(defaultColors);
   }, []);
   return (
-    <>
+    <div className="dashboard">
       <Header />
-      <Routes>
-        <Route path="/signIn" element={<SignIn />} />
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <TestControls />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </>
+      <div className="content">
+        <TestControls />
+        <Admins />
+        {/* <Routes>
+          <Route path="/signIn" element={<SignIn />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Admins />
+              </PrivateRoute>
+            }
+          />
+        </Routes> */}
+      </div>
+    </div>
   );
 };
 
