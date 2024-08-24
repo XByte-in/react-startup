@@ -64,7 +64,7 @@ const SignIn = () => {
   return (
     <div className="signin-page">
       <div className="signin-card-container">
-        <div className="signin-card" aria-label="sign-in card">
+        <div className="signin-card">
           <div className="title-header">
             <span className="env">{Environment.ENV}</span>
             <span className="company-name">
@@ -78,11 +78,11 @@ const SignIn = () => {
             itp_support={true}
             onSignIn={onSignIn}
           />
-          <span aria-label="error-invalid-email" className="login-info">
+          <span className="login-info">
             *Use Bluestacks or now.gg email id to login
           </span>
           {accessDenied && (
-            <span aria-label="error-access-denied" className="error-msg">
+            <span className="error-msg">
               You do not have access for admin portal
             </span>
           )}
