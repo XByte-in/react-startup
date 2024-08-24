@@ -39,7 +39,7 @@ interface ISelectFieldParams {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?: (e: any) => void;
 }
-function SelectField(props: ISelectFieldParams) {
+const SelectField = (props: ISelectFieldParams) => {
   const style = getComputedStyle(document.body);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const theme = (_theme: any) => {
@@ -166,6 +166,6 @@ function SelectField(props: ISelectFieldParams) {
         menuPlacement="auto"
       />
     );
-}
+};
 
 export default SelectField;

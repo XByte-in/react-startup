@@ -1,14 +1,16 @@
-import { FormattedMessage } from 'react-intl';
-import { Size, Type } from '../../common/const';
-import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+
+import { Size, Type } from '../../common/const';
 import Button from '../../common/controls/button/button';
+import Modal, { IModalParams } from '../../common/controls/modal/modal';
+
 const TestModal = () => {
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
-  function closeModal() {
+  const closeModal = () => {
     setModalReq({ show: false });
-  }
-  function showModal() {
+  };
+  const showModal = () => {
     setModalReq({
       show: true,
       modalData: {
@@ -33,7 +35,7 @@ const TestModal = () => {
         },
       },
     });
-  }
+  };
   return (
     <>
       <Button
