@@ -1,4 +1,4 @@
-import App from '../app/app';
+import App from '../dashboard/dashboard';
 import { it, describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 

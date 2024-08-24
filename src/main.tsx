@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 
-import App from './app/app.tsx';
 import store from './common/store/store';
 import Translation from './common/translations/translation.tsx';
+import Dashboard from './dashboard/dashboard.tsx';
+
 import './main.scss';
 
 const root = ReactDOM.createRoot(
@@ -16,7 +17,7 @@ root.render(
     <Provider store={store}>
       <Translation>
         <HashRouter>
-          <App />
+          <Dashboard />
         </HashRouter>
       </Translation>
     </Provider>

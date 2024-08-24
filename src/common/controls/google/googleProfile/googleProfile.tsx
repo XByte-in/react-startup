@@ -20,6 +20,7 @@ const GoogleProfile = () => {
       <Icon
         className="profile-logo"
         iconSrc={googleUserInfo.picture}
+        alt="profile"
         iconDimension="5rem"
       />
       <div className="profile-info">
