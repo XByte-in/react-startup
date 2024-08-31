@@ -32,7 +32,7 @@ export interface IDataGridParams {
 }
 
 const DataGrid = (props: IDataGridParams) => {
-  // const [gridApi, setGridApi] = useState(null);
+  const [gridApi, setGridApi] = useState(null);
   const [colDefs, setColDefs] = useState<ColDef[]>([]);
   useEffect(() => {
     const columns = props.columns.map((column: IColumnSchema) => {
@@ -50,7 +50,7 @@ const DataGrid = (props: IDataGridParams) => {
   }, [props.columns, props.rows]);
 
   const onGridReady = useCallback((params: any) => {
-    // setGridApi(params.api);
+    setGridApi(params.api);
     if (props.onGridReady) {
       props.onGridReady(params.api);
     }
