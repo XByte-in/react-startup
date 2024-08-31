@@ -296,7 +296,7 @@ const Admins = () => {
     });
   };
 
-  const onSelectionChanged = (event: any) => {
+  const onSelectionChanged = () => {
     const selectedRows = gridApi.getSelectedRows();
     setHasSelectedRows(selectedRows.length > 0);
   };
