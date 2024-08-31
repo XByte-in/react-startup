@@ -104,7 +104,6 @@ const Admins = () => {
         setAdminDeleteModal(emails, true, false, [error.message]);
       });
   };
-
   const setAdminDeleteModal = (
     emails: string[],
     show: boolean,
@@ -137,7 +136,6 @@ const Admins = () => {
       },
     });
   };
-
   const showDeleteAdminsModal = () => {
     if (gridApi) {
       const selectedData = gridApi.getSelectedRows();
@@ -300,6 +298,7 @@ const Admins = () => {
     const selectedRows = gridApi.getSelectedRows();
     setHasSelectedRows(selectedRows.length > 0);
   };
+
   return (
     <div className="admins">
       <div className="btns">
@@ -335,7 +334,7 @@ const Admins = () => {
         height="calc(100vh - 12rem)"
         onGridReady={params => setGridApi(params)}
         onRowDoubleClicked={rowData => showUpdatedAdminModal(rowData)}
-        onSelectionChanged={event => onSelectionChanged(event)}
+        onSelectionChanged={() => onSelectionChanged()}
       />
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
     </div>
