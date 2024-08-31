@@ -7,7 +7,7 @@ import TranslatedText from '../translatedText/translatedText';
 
 export interface ISelectFieldOption {
   label: string;
-  value: string;
+  value: string | number;
   isDisabled?: boolean;
 }
 
