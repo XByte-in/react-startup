@@ -1,15 +1,15 @@
 .header {
-    @import '../../common/scss';
+  @import '../../common/scss';
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 6rem;
+  background: var(--color-base);
+  box-shadow: 0px 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
+  .logo {
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    height: 6rem;
-    background: var(--color-base);
-    box-shadow: 0px 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
-    .logo {
-        display: flex;
-        align-items: center;
-        margin-left: 1rem;
-        width: auto;
-    }
+    align-items: center;
+    margin-left: 1rem;
+    width: auto;
+  }
 }

@@ -1,4 +1,4 @@
-import { IBaseValidation } from "./baseValidation";
+import { IBaseValidation } from './baseValidation';
 
 export interface IValidator {
   dataValidators: { [key: string]: Array<IBaseValidation | IValidator> };

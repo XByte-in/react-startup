@@ -15,6 +15,7 @@ import ApiService from '../apiService';
 import { RoutePermissionMap, UserPermissionMap } from '../routePermissionMap';
 import Admin from './admin/admin';
 import './admins.scss';
+import { ModalMode } from '../../common/controls/modal/interface';
 
 const Admins = () => {
   const credential = useSelector(
@@ -25,13 +26,7 @@ const Admins = () => {
   const [admins, setAdmins] = useState<Array<any>>([]);
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
-  const modalAddAdminRef = { validate: () => [] };
-  let addAdminData: { [key: string]: any } = {
-    email: 'pranshu.gupta@bluestacks.com',
-    admins: 2,
-    dockPromotions: 2,
-  };
-
+  const adminModalRef = { validate: (modalData: any) => [] };
   useEffect(() => {
     generateColumns();
     fetchAdmins();
@@ -166,51 +161,59 @@ const Admins = () => {
       });
   };
 
-  const onYes = () => {
-    const errMsgs = modalAddAdminRef.validate();
+  const onYesAdd = (modalCompData: any) => {
+    const errMsgs = adminModalRef.validate(modalCompData);
     if (errMsgs.length > 0) {
-      setupAddAdmin(true, false, errMsgs);
+      setAddAdmin(ModalMode.Add, true, false, errMsgs, modalCompData, onYesAdd);
     } else {
-      addAdmin(addAdminData);
+      addAdmin(modalCompData);
     }
   };
 
   const showAddAdminModal = () => {
-    setupAddAdmin(true, false);
+    const adminData: { [key: string]: any } = {
+      email: 'pranshu.gupta@bluestacks.com',
+      admins: 2,
+      dockPromotions: 2,
+    };
+    setAddAdmin(ModalMode.Add, true, false, undefined, adminData, onYesAdd);
   };
 
   const showRemoveModalDetail = (email: string) => {
     setupRemoveModal(email, true, false);
   };
 
-  const setupAddAdmin = (
+  const setAddAdmin = (
+    mode: ModalMode,
     show: boolean,
-    isLoading: boolean,
-    errMsg?: Array<string>
+    isLoading?: boolean,
+    errMsg?: Array<string>,
+    modalCompData?: any,
+    onYesClbk?: (modalCompData: any) => void
   ) => {
     setModalReq({
       show: show,
       modalData: {
-        title: 'addAdmin',
-        size: Size.small,
+        title: (mode == ModalMode.Add ? 'add' : 'modify') + 'Admin',
+        size: Size.medium,
         onClose: () => setModalReq({ show: false }),
         isLoading: isLoading,
         errMsg: errMsg,
         yesBtn: {
           textId: 'yes',
-          onClick: () => onYes(),
+          onClick: () => onYesClbk && onYesClbk(modalCompData),
         },
         noBtn: {
           textId: 'no',
-          onClick: () => setupAddAdmin(false, false),
+          onClick: () => setAddAdmin(mode, false),
         },
         children: (
           <Admin
-            modalData={addAdminData}
-            modalComponentRef={modalAddAdminRef}
+            modalData={modalCompData}
+            modalComponentRef={adminModalRef}
             onModalDataChange={(data: { [key: string]: any }) => {
-              addAdminData = data;
-              console.log(addAdminData);
+              modalCompData = data;
+              console.log(modalCompData);
             }}
           ></Admin>
         ),
@@ -249,7 +252,18 @@ const Admins = () => {
       },
     });
   };
-
+  const onModify = (rowData: any) => {
+    // const modalCompData: { [key: string]: any } =
+    //   getModifyModalCompData(rowData);
+    // setupAmazonCampaignModal(
+    //   ModalMode.Modify,
+    //   true,
+    //   false,
+    //   undefined,
+    //   modalCompData,
+    //   onYesModify
+    // );
+  };
   return (
     <div className="admins">
       <div className="btns">
@@ -273,6 +287,7 @@ const Admins = () => {
         columns={columns}
         loading={gridDataLoading}
         height="calc(100vh - 12rem)"
+        onRowDoubleClicked={rowData => onModify(rowData)}
       />
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
     </div>

@@ -29,21 +29,21 @@
         .env {
           margin: auto;
           color: var(--color-accent);
-          @include title_header()
+          @include title_header();
         }
 
         .company-name {
-          @include body_body_regular()
+          @include body_body_regular();
         }
       }
 
       .login-info {
-        @include body_medium_regular()
+        @include body_medium_regular();
       }
 
       .error-msg {
         color: var(--color-additional-error);
-        @include body_medium_regular()
+        @include body_medium_regular();
       }
     }
   }

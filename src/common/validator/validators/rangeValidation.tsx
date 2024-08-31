@@ -1,4 +1,4 @@
-import { IBaseValidation } from "../baseValidation";
+import { IBaseValidation } from '../baseValidation';
 
 export class RangeValidation implements IBaseValidation {
   errMsg: string;
@@ -10,7 +10,7 @@ export class RangeValidation implements IBaseValidation {
   ) {
     this.errMsg = errMsg;
     this.validate = (value: any) => {
-      if (value === undefined || value === null || value === "") {
+      if (value === undefined || value === null || value === '') {
         return [this.errMsg];
       }
       value = parseInt(value, 10);

@@ -1,18 +1,18 @@
 .dashboard {
-    @import '../common/scss';
+  @import '../common/scss';
 
-    .content {
-        display: flex;
-    }
+  .content {
+    display: flex;
+  }
 
-    .container>*:not(:last-child) {
-        flex-shrink: 0;
-        /* Adjust width as needed */
-        width: 100px;
-        /* Example: Fixed width for non-last elements */
-    }
+  .container > *:not(:last-child) {
+    flex-shrink: 0;
+    /* Adjust width as needed */
+    width: 100px;
+    /* Example: Fixed width for non-last elements */
+  }
 
-    .container> :last-child {
-        flex-grow: 1;
-    }
+  .container > :last-child {
+    flex-grow: 1;
+  }
 }

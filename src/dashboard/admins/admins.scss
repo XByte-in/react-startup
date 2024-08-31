@@ -1,16 +1,16 @@
 .admins {
-    @import '../../common/scss';    
-    width: -webkit-fill-available;
-    .btns {
-        display: flex;
-        flex-direction: row;
-        .btn {
-            width: 20rem;
-            margin: 1rem;
-        }
+  @import '../../common/scss';
+  width: -webkit-fill-available;
+  .btns {
+    display: flex;
+    flex-direction: row;
+    .btn {
+      width: 20rem;
+      margin: 1rem;
     }
-    .deleteAdmin {
-        @include body-medium-regular();
-        color: var(--color-base);
-    }
+  }
+  .deleteAdmin {
+    @include body-medium-regular();
+    color: var(--color-base);
+  }
 }
