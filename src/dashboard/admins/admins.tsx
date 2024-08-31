@@ -7,9 +7,11 @@ import Button from '../../common/controls/button/button';
 import DataGrid, {
   IColumnSchema,
 } from '../../common/controls/dataGrid/dataGrid';
+import Label from '../../common/controls/label/label';
 import { ModalMode } from '../../common/controls/modal/interface';
 import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
+import { Typography } from '../../common/theme';
 import ApiService from '../apiService';
 import { RoutePermissionMap, UserPermissionMap } from '../routePermissionMap';
 import Admin from './admin/admin';
@@ -38,6 +40,7 @@ const Admins = () => {
     cols.push({
       field: 'email',
       checkboxSelection: true,
+      width: 300,
       headerCheckboxSelection: true,
       headerName: 'Email',
       sortable: true,
@@ -282,11 +285,11 @@ const Admins = () => {
         },
         children: (
           <Admin
+            mode={mode}
             modalData={modalCompData}
             modalComponentRef={adminModalRef}
             onModalDataChange={(data: { [key: string]: any }) => {
               modalCompData = data;
-              console.log(modalCompData);
             }}
           ></Admin>
         ),
@@ -302,6 +305,12 @@ const Admins = () => {
   return (
     <div className="admins">
       <div className="btns">
+        <Label
+          className="dashboard-id"
+          textId="admins"
+          typography={Typography.title_header}
+          type={Type.secondary}
+        ></Label>
         <Button
           className="btn"
           size={Size.medium}
@@ -313,14 +322,14 @@ const Admins = () => {
           className="btn"
           size={Size.medium}
           type={Type.secondary}
-          textId="addAdmin"
+          textId="add"
           onClick={() => showAddAdminModal()}
         />
         <Button
           className="btn"
           size={Size.medium}
           type={Type.secondary}
-          textId="deleteAdmins"
+          textId="delete"
           disabled={!hasSelectedRows}
           onClick={() => showDeleteAdminsModal()}
         />

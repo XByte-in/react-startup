@@ -13,7 +13,7 @@ export interface IColumnSchema {
   headerName?: string;
   checkboxSelection?: boolean;
   headerCheckboxSelection?: boolean;
-
+  width?: number;
   sortable?: boolean;
   filter?: boolean;
   floatingFilter?: boolean;
@@ -44,6 +44,7 @@ const DataGrid = (props: IDataGridParams) => {
         sortable: column.sortable,
         filter: column.filter,
         floatingFilter: column.floatingFilter,
+        width: column.width,
       };
     });
     setColDefs(columns);

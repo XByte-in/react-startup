@@ -4,7 +4,10 @@ import { Type } from '../../../common/const';
 import InputField from '../../../common/controls/inputField/inputField';
 import { InputFieldType } from '../../../common/controls/inputField/inputFieldType';
 import Label from '../../../common/controls/label/label';
-import { IModalComponentParams } from '../../../common/controls/modal/interface';
+import {
+  IModalComponentParams,
+  ModalMode,
+} from '../../../common/controls/modal/interface';
 import SelectField, {
   ISelectFieldOption,
 } from '../../../common/controls/selectField/SelectField';
@@ -120,6 +123,7 @@ const Admin = (props: IAdminParams) => {
         </div>
         <div className="col data">
           <InputField
+            isDisabled={props.mode === ModalMode.Update}
             type={InputFieldType.email}
             value={email}
             onChange={data => updateData('email', data)}

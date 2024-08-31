@@ -4,8 +4,12 @@
   .btns {
     display: flex;
     flex-direction: row;
+    .dashboard-id {
+      color: var(--color-accent);
+      margin: 1rem;
+    }
     .btn {
-      width: 20rem;
+      width: 10rem;
       margin: 1rem;
     }
   }
