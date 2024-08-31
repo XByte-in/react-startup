@@ -15,7 +15,6 @@ import Admins from './admins/admins';
 
 const Dashboard = () => {
   useEffect(() => {
-    console.log(Environment.GOOGLE_CLIENT_ID);
     loadFonts(defaultTypography);
     loadColors(defaultColors);
   }, []);

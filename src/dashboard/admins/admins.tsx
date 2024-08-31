@@ -27,7 +27,9 @@ const Admins = () => {
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
   const modalAddAdminRef = { validate: () => [] };
   let addAdminData: { [key: string]: any } = {
-    email: '',
+    email: 'pranshu.gupta@bluestacks.com',
+    admins: 2,
+    dockPromotions: 2,
   };
 
   useEffect(() => {
@@ -70,18 +72,19 @@ const Admins = () => {
   const fetchAdmins = () => {
     setGridDataLoading(true);
     setAdmins([]);
-    ApiService.Admins.get(credential)
-      .then((response: any) => {
-        if (response.success && response.data)
-          if (Array.isArray(response.data) && response.data.length > 0)
-            setAdmins(parseAdmins(response.data));
-        setGridDataLoading(false);
-      })
-      .catch(error => {
-        setGridDataLoading(false);
-        console.log(error);
-      });
+    // ApiService.Admins.get(credential)
+    //   .then((response: any) => {
+    //     if (response.success && response.data)
+    //       if (Array.isArray(response.data) && response.data.length > 0)
+    //         setAdmins(parseAdmins(response.data));
+    //     setGridDataLoading(false);
+    //   })
+    //   .catch(error => {
+    //     setGridDataLoading(false);
+    //     console.log(error);
+    //   });
     setAdmins(parseAdmins(UserPermissionMap));
+    setGridDataLoading(false);
   };
 
   const updateAdminStatus = (rowData: any) => {
@@ -144,14 +147,12 @@ const Admins = () => {
       });
   };
 
-  const addAdmin = (email: string) => {
+  const addAdmin = (admin_data: { [key: string]: any }) => {
     setupAddAdmin(true, true);
-    ApiService.Admins.add(credential, {
-      email: email,
-    })
+    ApiService.Admins.add(credential, admin_data)
       .then((response: any) => {
         if (response.success && response.data) {
-          const admin: IAdmin = parseAdmin(response.data);
+          const admin = parseAdmin(response.data);
           const updatedAdmins = [...admins];
           updatedAdmins.push(admin);
           setAdmins(updatedAdmins);
@@ -170,7 +171,7 @@ const Admins = () => {
     if (errMsgs.length > 0) {
       setupAddAdmin(true, false, errMsgs);
     } else {
-      addAdmin(addAdminData.email);
+      addAdmin(addAdminData);
     }
   };
 
