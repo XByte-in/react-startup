@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ColDef } from 'ag-grid-community'; // Import the ColDef type definition
 import 'ag-grid-community/styles/ag-grid.css'; // Mandatory CSS required by the Data Grid
 import 'ag-grid-community/styles/ag-theme-alpine.min.css'; // Optional Theme applied to the Data Grid
@@ -19,6 +20,7 @@ export interface IDataGridParams {
   columns: Array<IColumnSchema>;
   height: number | string;
   loading?: boolean;
+  onRowDoubleClicked?: (event: any) => void;
 }
 
 const DataGrid = (props: IDataGridParams) => {
@@ -45,6 +47,7 @@ const DataGrid = (props: IDataGridParams) => {
         rowData={props.rows}
         columnDefs={colDefs}
         loading={props.loading}
+        onRowDoubleClicked={props.onRowDoubleClicked}
       />
     </div>
   );
