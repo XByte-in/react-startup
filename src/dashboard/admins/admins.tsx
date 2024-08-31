@@ -1,28 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 
 import { Size, Type } from '../../common/const';
 import Button from '../../common/controls/button/button';
-import CheckBox from '../../common/controls/checkbox/checkBox';
 import DataGrid, {
   IColumnSchema,
 } from '../../common/controls/dataGrid/dataGrid';
+import { ModalMode } from '../../common/controls/modal/interface';
 import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
 import ApiService from '../apiService';
 import { RoutePermissionMap, UserPermissionMap } from '../routePermissionMap';
 import Admin from './admin/admin';
+
 import './admins.scss';
-import { ModalMode } from '../../common/controls/modal/interface';
 
 const Admins = () => {
   const credential = useSelector(
     (state: RootState) => state.googleUserInfo.credential
   );
+  const [gridApi, setGridApi] = useState<any>(null);
   const [columns, setColumns] = useState<Array<IColumnSchema>>([]);
   const [gridDataLoading, setGridDataLoading] = useState(false);
+  const [hasSelectedRows, setHasSelectedRows] = useState(false);
   const [admins, setAdmins] = useState<Array<any>>([]);
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
@@ -36,6 +37,8 @@ const Admins = () => {
     const cols: IColumnSchema[] = [];
     cols.push({
       field: 'email',
+      checkboxSelection: true,
+      headerCheckboxSelection: true,
       headerName: 'Email',
       sortable: true,
       filter: true,
@@ -82,68 +85,128 @@ const Admins = () => {
     setGridDataLoading(false);
   };
 
-  const updateAdminStatus = (rowData: any) => {
-    ApiService.Admins.update(credential, rowData)
-      .then((response: any) => {
-        if (response.success && response.data) {
-          let updatedAdmins = [];
-          const updateAdmin = parseAdmin(response.data);
-          updatedAdmins = admins.map(admin => {
-            if (admin.email == updateAdmin.email) return updateAdmin;
-            return admin;
-          });
-          setAdmins(updatedAdmins);
-        } else {
-          console.error('Could not update admin', response.message);
-        }
-      })
-      .catch(error => {
-        setupAddAdmin(true, false, [error.message]);
-      });
-  };
-
-  const updatedAdminStatusButton = (rowData: any) => {
-    return (
-      <CheckBox
-        checked={rowData.active}
-        onChange={checked => updateAdminStatus(rowData, checked)}
-      />
-    );
-  };
-
-  const deleteAdminButton = (rowData: any) => {
-    return (
-      <Button
-        textId="delete"
-        type={Type.secondary}
-        size={Size.small}
-        onClick={() => showRemoveModalDetail(rowData.email)}
-      />
-    );
-  };
-
-  const deleteAdmin = (email: string) => {
-    setupRemoveModal(email, true, true);
-    ApiService.Admins.delete(credential, email)
+  const deleteAdmin = (emails: string[]) => {
+    setAdminDeleteModal(emails, true, true);
+    ApiService.Admins.delete(credential, emails)
       .then((response: any) => {
         if (response.success) {
           let adminList = [];
           adminList = admins.filter(admin => {
-            return admin.email != email;
+            return emails.indexOf(admin.email) === -1;
           });
           setAdmins(adminList);
-          setupRemoveModal(email, false, false);
+          setAdminDeleteModal(emails, false, false);
         } else {
-          setupRemoveModal(email, true, false, [response.message]);
+          setAdminDeleteModal(emails, true, false, [response.message]);
         }
       })
       .catch(error => {
-        setupRemoveModal(email, true, false, [error.message]);
+        setAdminDeleteModal(emails, true, false, [error.message]);
       });
   };
 
+  const setAdminDeleteModal = (
+    emails: string[],
+    show: boolean,
+    isLoading: boolean,
+    errMsg?: Array<string>
+  ) => {
+    setModalReq({
+      show: show,
+      modalData: {
+        title: 'deleteAdmins',
+        size: Size.small,
+        onClose: () => setModalReq({ show: false }),
+        isLoading: isLoading,
+        errMsg: errMsg,
+        yesBtn: {
+          textId: 'yes',
+          onClick: () => deleteAdmin(emails),
+        },
+        children: (
+          <div className="deleteAdmin">
+            {emails.map((email: string) => {
+              return <div>{email}</div>;
+            })}
+          </div>
+        ),
+        noBtn: {
+          textId: 'no',
+          onClick: () => setAdminDeleteModal(emails, false, false),
+        },
+      },
+    });
+  };
+
+  const showDeleteAdminsModal = () => {
+    if (gridApi) {
+      const selectedData = gridApi.getSelectedRows();
+      const emails = selectedData.map((data: any) => data.email);
+      setAdminDeleteModal(emails, true, false, []);
+    }
+  };
+
+  const updateAdmin = (admin_data: { [key: string]: any }) => {
+    setAdminModal(ModalMode.Update, true, true, [], admin_data, onYesUpdate);
+    ApiService.Admins.update(credential, admin_data)
+      .then((response: any) => {
+        if (response.success && response.data) {
+          const admin = parseAdmin(response.data);
+          const updatedAdmins = [...admins];
+          updatedAdmins.push(admin);
+          setAdmins(updatedAdmins);
+          setAdminModal(ModalMode.Update, false);
+        } else {
+          setAdminModal(
+            ModalMode.Update,
+            true,
+            false,
+            [response.message],
+            admin_data,
+            onYesUpdate
+          );
+        }
+      })
+      .catch(error => {
+        setAdminModal(
+          ModalMode.Add,
+          true,
+          false,
+          ['Could not update Admin'],
+          admin_data,
+          onYesUpdate
+        );
+        console.error('Could not update Admin: ' + error);
+      });
+  };
+  const onYesUpdate = (modalCompData: any) => {
+    const errMsgs = adminModalRef.validate(modalCompData);
+    if (errMsgs.length > 0) {
+      setAdminModal(
+        ModalMode.Update,
+        true,
+        false,
+        errMsgs,
+        modalCompData,
+        onYesUpdate
+      );
+    } else {
+      updateAdmin(modalCompData);
+    }
+  };
+  const showUpdatedAdminModal = (rowData: any) => {
+    setAdminModal(
+      ModalMode.Update,
+      true,
+      false,
+      undefined,
+      rowData.data,
+      onYesUpdate
+    );
+  };
+
   const addAdmin = (admin_data: { [key: string]: any }) => {
-    setupAddAdmin(true, true);
+    setAdminModal(ModalMode.Add, true, true, [], admin_data, onYesAdd);
     ApiService.Admins.add(credential, admin_data)
       .then((response: any) => {
         if (response.success && response.data) {
@@ -151,39 +214,51 @@ const Admins = () => {
           const updatedAdmins = [...admins];
           updatedAdmins.push(admin);
           setAdmins(updatedAdmins);
-          setupAddAdmin(false, false);
+          setAdminModal(ModalMode.Add, false);
         } else {
-          setupAddAdmin(true, false, [response.message]);
+          setAdminModal(
+            ModalMode.Add,
+            true,
+            false,
+            [response.message],
+            admin_data,
+            onYesAdd
+          );
         }
       })
       .catch(error => {
-        setupAddAdmin(true, false, [error.message]);
+        setAdminModal(
+          ModalMode.Add,
+          true,
+          false,
+          ['Could not add Admin'],
+          admin_data,
+          onYesAdd
+        );
+        console.error('Could not add Admin: ' + error);
       });
   };
-
   const onYesAdd = (modalCompData: any) => {
     const errMsgs = adminModalRef.validate(modalCompData);
     if (errMsgs.length > 0) {
-      setAddAdmin(ModalMode.Add, true, false, errMsgs, modalCompData, onYesAdd);
+      setAdminModal(
+        ModalMode.Add,
+        true,
+        false,
+        errMsgs,
+        modalCompData,
+        onYesAdd
+      );
     } else {
       addAdmin(modalCompData);
     }
   };
-
   const showAddAdminModal = () => {
-    const adminData: { [key: string]: any } = {
-      email: 'pranshu.gupta@bluestacks.com',
-      admins: 2,
-      dockPromotions: 2,
-    };
-    setAddAdmin(ModalMode.Add, true, false, undefined, adminData, onYesAdd);
+    const adminData: { [key: string]: any } = {};
+    setAdminModal(ModalMode.Add, true, false, undefined, adminData, onYesAdd);
   };
 
-  const showRemoveModalDetail = (email: string) => {
-    setupRemoveModal(email, true, false);
-  };
-
-  const setAddAdmin = (
+  const setAdminModal = (
     mode: ModalMode,
     show: boolean,
     isLoading?: boolean,
@@ -194,7 +269,7 @@ const Admins = () => {
     setModalReq({
       show: show,
       modalData: {
-        title: (mode == ModalMode.Add ? 'add' : 'modify') + 'Admin',
+        title: (mode == ModalMode.Add ? 'add' : 'update') + 'Admin',
         size: Size.medium,
         onClose: () => setModalReq({ show: false }),
         isLoading: isLoading,
@@ -205,7 +280,7 @@ const Admins = () => {
         },
         noBtn: {
           textId: 'no',
-          onClick: () => setAddAdmin(mode, false),
+          onClick: () => setAdminModal(mode, false),
         },
         children: (
           <Admin
@@ -221,52 +296,20 @@ const Admins = () => {
     });
   };
 
-  const setupRemoveModal = (
-    email: string,
-    show: boolean,
-    isLoading: boolean,
-    errMsg?: Array<string>
-  ) => {
-    setModalReq({
-      show: show,
-      modalData: {
-        title: 'areYouSure',
-        size: Size.small,
-        onClose: () => setModalReq({ show: false }),
-        isLoading: isLoading,
-        errMsg: errMsg,
-        yesBtn: {
-          textId: 'yes',
-          onClick: () => deleteAdmin(email),
-        },
-        children: (
-          <div className="deleteAdmin">
-            <FormattedMessage id="deletingAdmin" />
-            <div>{email}</div>
-          </div>
-        ),
-        noBtn: {
-          textId: 'no',
-          onClick: () => setupRemoveModal(email, false, false),
-        },
-      },
-    });
-  };
-  const onModify = (rowData: any) => {
-    // const modalCompData: { [key: string]: any } =
-    //   getModifyModalCompData(rowData);
-    // setupAmazonCampaignModal(
-    //   ModalMode.Modify,
-    //   true,
-    //   false,
-    //   undefined,
-    //   modalCompData,
-    //   onYesModify
-    // );
+  const onSelectionChanged = (event: any) => {
+    const selectedRows = gridApi.getSelectedRows();
+    setHasSelectedRows(selectedRows.length > 0);
   };
   return (
     <div className="admins">
       <div className="btns">
+        <Button
+          className="btn"
+          size={Size.medium}
+          type={Type.secondary}
+          textId="refresh"
+          onClick={() => fetchAdmins()}
+        />
         <Button
           className="btn"
           size={Size.medium}
@@ -278,16 +321,21 @@ const Admins = () => {
           className="btn"
           size={Size.medium}
           type={Type.secondary}
-          textId="refresh"
-          onClick={() => fetchAdmins()}
+          textId="deleteAdmins"
+          disabled={!hasSelectedRows}
+          onClick={() => showDeleteAdminsModal()}
         />
       </div>
       <DataGrid
         rows={admins}
         columns={columns}
         loading={gridDataLoading}
+        supressRowClickSelection={true}
+        rowSelection={'multiple'}
         height="calc(100vh - 12rem)"
-        onRowDoubleClicked={rowData => onModify(rowData)}
+        onGridReady={params => setGridApi(params)}
+        onRowDoubleClicked={rowData => showUpdatedAdminModal(rowData)}
+        onSelectionChanged={event => onSelectionChanged(event)}
       />
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
     </div>

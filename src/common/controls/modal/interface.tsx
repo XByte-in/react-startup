@@ -1,4 +1,4 @@
-import { ISelectFieldOption } from '../selectField/selectField';
+import { ISelectFieldOption } from '../selectField/SelectField';
 
 export interface IModalComponentParams {
   modalData: {

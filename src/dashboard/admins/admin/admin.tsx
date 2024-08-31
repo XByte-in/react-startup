@@ -7,7 +7,7 @@ import Label from '../../../common/controls/label/label';
 import { IModalComponentParams } from '../../../common/controls/modal/interface';
 import SelectField, {
   ISelectFieldOption,
-} from '../../../common/controls/selectField/selectField';
+} from '../../../common/controls/selectField/SelectField';
 import { Typography } from '../../../common/theme/typography/typography';
 import { RequiredValidation, Validator } from '../../../common/validator';
 import { RoutePermissionMap } from '../../routePermissionMap';
@@ -17,9 +17,7 @@ import './admin.scss';
 type IAdminParams = IModalComponentParams;
 
 const Admin = (props: IAdminParams) => {
-  const [email, setEmail] = useState<string>(
-    props.modalData['email'].toString()
-  );
+  const [email, setEmail] = useState<string>('');
   const [dashboard_permissions, setDashboardPermissions] = useState<
     ISelectFieldOption[]
   >([]);
@@ -57,6 +55,7 @@ const Admin = (props: IAdminParams) => {
       setDashboardPermissions(default_dashboard_permissions);
     };
     setup_dashboard_default_permissions();
+    if (props.modalData['email']) setEmail(props.modalData['email'].toString());
     if (props.modalComponentRef)
       props.modalComponentRef.validate = validateData;
   }, []);

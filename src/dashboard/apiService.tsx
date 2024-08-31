@@ -86,12 +86,12 @@ export default class ApiService {
       );
     };
 
-    static delete = async (credential: string, email: string) => {
+    static delete = async (credential: string, emails: string[]) => {
       return ApiService.axiosCall(
-        `${this.host}/delete/${email}`,
+        `${this.host}/delete`,
         'DELETE',
         ApiService.getHeaders(credential),
-        {}
+        emails
       );
     };
   };
