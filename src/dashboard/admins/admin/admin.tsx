@@ -13,7 +13,7 @@ import SelectField, {
 } from '../../../common/controls/selectField/SelectField';
 import { Typography } from '../../../common/theme/typography/typography';
 import { RequiredValidation, Validator } from '../../../common/validator';
-import { RoutePermissionMap } from '../../routePermissionMap';
+import { NavigationJson } from '../../routePermissionMap';
 
 import './admin.scss';
 
@@ -46,11 +46,11 @@ const Admin = (props: IAdminParams) => {
   useEffect(() => {
     const setup_dashboard_default_permissions = () => {
       const default_dashboard_permissions: ISelectFieldOption[] = [];
-      Object.values(RoutePermissionMap).forEach(dashboard_id => {
-        if (props.modalData[dashboard_id])
+      NavigationJson.forEach(_navItem => {
+        if (props.modalData[_navItem.route])
           default_dashboard_permissions.push(
             permission_options.filter(
-              option => option.value === props.modalData[dashboard_id]
+              option => option.value === props.modalData[_navItem.route]
             )[0]
           );
         else default_dashboard_permissions.push({ ...default_permission });
@@ -84,32 +84,32 @@ const Admin = (props: IAdminParams) => {
     props.onModalDataChange?.(props.modalData);
   };
   const dashboard_permission_controls =
-    dashboard_permissions.length > 0
-      ? Object.values(RoutePermissionMap).map(
-          (dashboard_id: string, index: number) => {
-            return (
-              <div className="row" key={dashboard_id}>
-                <div className="col label">
-                  <Label
-                    textId={dashboard_id}
-                    typography={Typography.body_medium_regular}
-                    type={Type.default}
-                  ></Label>
-                </div>
-                <div className="col data">
-                  <SelectField
-                    options={permission_options}
-                    defaultValue={dashboard_permissions[index]}
-                    className={Typography.body_medium_regular}
-                    value={dashboard_permissions[index]}
-                    onChange={data => updateData(dashboard_id, data, index)}
-                  />
-                </div>
-              </div>
-            );
-          }
-        )
-      : null;
+    dashboard_permissions.length > 0 ? (
+      NavigationJson.map((navItem, index) => {
+        return (
+          <div className="row" key={navItem.route}>
+            <div className="col label">
+              <Label
+                textId={navItem.name}
+                typography={Typography.body_medium_regular}
+                type={Type.default}
+              ></Label>
+            </div>
+            <div className="col data">
+              <SelectField
+                options={permission_options}
+                defaultValue={dashboard_permissions[index]}
+                className={Typography.body_medium_regular}
+                value={dashboard_permissions[index]}
+                onChange={data => updateData(navItem.route, data, index)}
+              />
+            </div>
+          </div>
+        );
+      })
+    ) : (
+      <></>
+    );
   return (
     <div className="admin">
       <div className="row">

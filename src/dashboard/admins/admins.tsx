@@ -13,12 +13,16 @@ import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
 import { Typography } from '../../common/theme';
 import ApiService from '../apiService';
-import { RoutePermissionMap, UserPermissionMap } from '../routePermissionMap';
+import { NavigationJson, UserPermissionMap } from '../routePermissionMap';
 import Admin from './admin/admin';
 
 import './admins.scss';
 
-const Admins = () => {
+export interface IScreenProps {
+  name: string;
+}
+
+const Admins = (props: IScreenProps) => {
   const credential = useSelector(
     (state: RootState) => state.googleUserInfo.credential
   );
@@ -47,10 +51,10 @@ const Admins = () => {
       filter: true,
       floatingFilter: true,
     });
-    Object.values(RoutePermissionMap).forEach((permissionId: string) => {
+    NavigationJson.forEach(_navItem => {
       cols.push({
-        field: permissionId,
-        headerName: permissionId,
+        field: _navItem.route,
+        headerName: _navItem.name,
         sortable: true,
         filter: true,
         floatingFilter: true,
@@ -62,8 +66,8 @@ const Admins = () => {
   const parseAdmin = (adminData: any) => {
     const rowData: { [key: string]: any } = {};
     rowData['email'] = adminData['email'];
-    Object.values(RoutePermissionMap).forEach((permissionId: string) => {
-      rowData[permissionId] = adminData[permissionId] || 0;
+    NavigationJson.forEach(_navItem => {
+      rowData[_navItem.route] = adminData[_navItem.route] || 0;
     });
     return rowData;
   };
@@ -307,7 +311,7 @@ const Admins = () => {
       <div className="btns">
         <Label
           className="dashboard-id"
-          textId="admins"
+          textId={props.name}
           typography={Typography.title_header}
           type={Type.secondary}
         ></Label>
