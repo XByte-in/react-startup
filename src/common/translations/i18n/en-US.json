@@ -1,11 +1,5 @@
 {
   "yes": "Yes",
   "no": "No",
-  "expectedResolution": "Expected resolution: ",
-  "actualResolution": "Actual Resolution: ",
-  "maxFileSize": "Max File Size (KB): ",
-  "actualFileSize": "Actual File Size: ",
-  "selectImage": "Drag & Drop or Select Image",
-  "upload": "Upload",
-  "CompanyName": "Bluestacks by Now.gg"
+  "companyName": "Bluestacks by Now.gg"
 }

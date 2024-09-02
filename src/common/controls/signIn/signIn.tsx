@@ -68,7 +68,7 @@ const SignIn = () => {
           <div className="title-header">
             <span className="env">{Environment.ENV}</span>
             <span className="company-name">
-              <TranslatedText id="CompanyName" />
+              <TranslatedText id="companyName" />
             </span>
           </div>
           <GoogleSignIn

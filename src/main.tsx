@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom';
 
 import store from './common/store/store';
 import Translation from './common/translations/translation.tsx';
-import Dashboard from './dashboard/dashboard.tsx';
+import Home from './home/home.tsx';
 
 import './main.scss';
 
@@ -17,7 +17,7 @@ root.render(
     <Provider store={store}>
       <Translation>
         <HashRouter>
-          <Dashboard />
+          <Home />
         </HashRouter>
       </Translation>
     </Provider>

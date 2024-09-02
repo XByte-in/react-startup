@@ -8,18 +8,20 @@ export const NavigationJson = [
   {
     navigation: 'Admins',
     route: 'admins',
+    access_key: 'admins',
   },
   {
     navigation: 'Promotions',
-    route: 'promotions',
     navigations: [
       {
         navigation: 'Dock',
         route: 'dock',
+        access_key: 'dock',
       },
       {
         navigation: 'Boot',
-        route: 'dock',
+        route: 'boot',
+        access_key: 'boot',
       },
     ],
   },
@@ -29,11 +31,10 @@ export const UserPermissionMap = [
   {
     email: 'pranshu.gupta@bluestacks.com',
     admins: 2,
-    dockPromotions: 2,
+    dock: 2,
   },
   {
     email: 'pranshu.gupta@bluestacks.com1',
-    admins: 2,
-    dockPromotions: 2,
+    boot: 2,
   },
 ];
