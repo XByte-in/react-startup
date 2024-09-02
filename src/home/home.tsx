@@ -25,7 +25,7 @@ const Home = () => {
         }
       />
       <Route
-        path="*"
+        path="/*"
         element={
           <PrivateRoute>
             <Dashboard />

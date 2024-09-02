@@ -1,3 +1,5 @@
+import Admins from '../dashboard/admins/admins';
+
 export const RoutePermissionMap = {
   admins: 'admins',
   'promotions/dock': 'dockPromotions',
@@ -6,24 +8,14 @@ export const RoutePermissionMap = {
 
 export const NavigationJson = [
   {
-    navigation: 'Admins',
     route: 'admins',
-    access_key: 'admins',
+    name: 'Admins',
+    component: Admins,
   },
   {
-    navigation: 'Promotions',
-    navigations: [
-      {
-        navigation: 'Dock',
-        route: 'dock',
-        access_key: 'dock',
-      },
-      {
-        navigation: 'Boot',
-        route: 'boot',
-        access_key: 'boot',
-      },
-    ],
+    route: 'boots',
+    name: 'Boots',
+    component: Admins,
   },
 ];
 
@@ -31,10 +23,11 @@ export const UserPermissionMap = [
   {
     email: 'pranshu.gupta@bluestacks.com',
     admins: 2,
-    dock: 2,
+    boots: 2,
   },
   {
     email: 'pranshu.gupta@bluestacks.com1',
     boot: 2,
+    boots: 1,
   },
 ];

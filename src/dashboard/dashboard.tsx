@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import TestControls from '../__test__/testControls/_testControls';
 import PrivateRoute from '../common/controls/privateRoute/privateRoute';
-import Admins from './admins/admins';
 import Header from './header/header';
+import { NavigationJson } from './routePermissionMap';
 
 import './dashboard.scss';
 
@@ -14,14 +14,20 @@ const Dashboard = () => {
       <div className="content">
         <TestControls />
         <Routes>
-          <Route
-            path="/admins"
-            element={
-              <PrivateRoute>
-                <Admins />
-              </PrivateRoute>
-            }
-          />
+          {NavigationJson.map(navItem => {
+            const Component = navItem.component;
+            return (
+              <Route
+                key={navItem.route}
+                path={`/${navItem.route}`}
+                element={
+                  <PrivateRoute>
+                    <Component />
+                  </PrivateRoute>
+                }
+              />
+            );
+          })}
         </Routes>
       </div>
     </div>
