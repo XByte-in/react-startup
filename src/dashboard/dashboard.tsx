@@ -17,11 +17,13 @@ const Dashboard = () => {
       if (navItem.subNavigation) {
         const items = [];
         for (const subNavItem of navItem.subNavigation) {
-          items.push({
-            labelId: subNavItem.name,
-            route: subNavItem.route,
-          });
+          if (UserPermissionMap[0][subNavItem.route] > Permission.None)
+            items.push({
+              labelId: subNavItem.name,
+              route: subNavItem.route,
+            });
         }
+        if (items.length == 0) continue;
         sidebarItems.push({
           labelId: navItem.name,
           items: items,
@@ -29,11 +31,12 @@ const Dashboard = () => {
           icon: navItem.icon ? <navItem.icon /> : null,
         });
       } else {
-        sidebarItems.push({
-          labelId: navItem.name,
-          route: navItem.route,
-          icon: navItem.icon ? <navItem.icon /> : null,
-        });
+        if (UserPermissionMap[0][navItem.route] > Permission.None)
+          sidebarItems.push({
+            labelId: navItem.name,
+            route: navItem.route,
+            icon: navItem.icon ? <navItem.icon /> : null,
+          });
       }
     }
     return sidebarItems;
