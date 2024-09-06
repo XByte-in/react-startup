@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
+import PrivateRoute from '../common/controls/privateRoute/privateRoute';
 import SideBar from '../common/controls/sideBar/sideBar';
 import Header from './header/header';
 import {
@@ -52,7 +53,11 @@ const Dashboard = () => {
               <Route
                 key={subNavItem.route}
                 path={`${navItem.route}/${subNavItem.route}`}
-                element={<subNavItem.component name={subNavItem.name} />}
+                element={
+                  <PrivateRoute>
+                    <subNavItem.component name={subNavItem.name} />
+                  </PrivateRoute>
+                }
               />
             );
           }
@@ -62,7 +67,11 @@ const Dashboard = () => {
           <Route
             key={navItem.route}
             path={`/${navItem.route}`}
-            element={<navItem.component name={navItem.name} />}
+            element={
+              <PrivateRoute>
+                <navItem.component name={navItem.name} />
+              </PrivateRoute>
+            }
           />
         );
       }
