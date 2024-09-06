@@ -15,7 +15,7 @@ const Home = () => {
     <Routes>
       {/* <Route path="/signIn" element={<SignIn />} /> */}
       <Route path="/" element={<Dashboard />} />
-      <Route path="*" element={<Dashboard />} />
+      <Route path="/*" element={<Dashboard />} />
     </Routes>
   );
 };

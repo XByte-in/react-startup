@@ -31,21 +31,22 @@ export const NavigationJson = [
     icon: MagicIcon,
     component: Admins,
   },
-  // {
-  //   name: 'Docks',
-  //   routes: [
-  //     {
-  //       route: 'docks1',
-  //       name: 'Docks1',
-  //       component: Admins,
-  //     },
-  //     {
-  //       route: 'docks2',
-  //       name: 'Docks2',
-  //       component: Admins,
-  //     },
-  //   ],
-  // },
+  {
+    name: 'Docks',
+    route: 'docks',
+    routes: [
+      {
+        route: 'docks1',
+        name: 'Docks1',
+        component: Admins,
+      },
+      {
+        route: 'docks2',
+        name: 'Docks2',
+        component: Admins,
+      },
+    ],
+  },
 ];
 
 export const UserPermissionMap = [
