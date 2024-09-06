@@ -34,7 +34,7 @@ export const NavigationJson = [
   {
     name: 'Docks',
     route: 'docks',
-    routes: [
+    subNavigation: [
       {
         route: 'docks1',
         name: 'Docks1',

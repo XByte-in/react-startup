@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import SideBar from '../common/controls/sideBar/sideBar';
@@ -11,20 +12,39 @@ import {
 import './dashboard.scss';
 
 const Dashboard = () => {
-  const sideBarItems = NavigationJson.map(navItem => ({
-    labelId: navItem.name,
-    route: navItem.route,
-    icon: navItem.icon ? <navItem.icon /> : null,
-  }));
-  const get_routes = () => {
-    const routes = [];
+  const geneRateSidebarItems = () => {
+    const items = [];
     for (const navItem of NavigationJson) {
-      if (navItem.hasOwnProperty('routes')) {
-        for (const subNavItem of navItem.routes) {
-          if (
-            UserPermissionMap[0].hasOwnProperty(subNavItem.route) &&
-            UserPermissionMap[0][subNavItem.route] > Permission.None
-          )
+      if (navItem.subNavigation) {
+        const subItems = [];
+        for (const subNavItem of navItem.subNavigation) {
+          subItems.push({
+            labelId: subNavItem.name,
+            route: `${navItem.route}/${subNavItem.route}`,
+          });
+        }
+        items.push({
+          labelId: navItem.name,
+          route: navItem.route,
+          items: subItems,
+        });
+      } else {
+        items.push({
+          labelId: navItem.name,
+          route: navItem.route,
+          icon: navItem.icon ? <navItem.icon /> : null,
+        });
+      }
+    }
+    return items;
+  };
+  const generateRoutes = () => {
+    const routes = [];
+    const userPermission = UserPermissionMap[0];
+    for (const navItem of NavigationJson) {
+      if (navItem.subNavigation) {
+        for (const subNavItem of navItem.subNavigation) {
+          if (userPermission[subNavItem.route] > Permission.None) {
             routes.push(
               <Route
                 key={subNavItem.route}
@@ -32,11 +52,9 @@ const Dashboard = () => {
                 element={<subNavItem.component name={subNavItem.name} />}
               />
             );
+          }
         }
-      } else if (
-        UserPermissionMap[0].hasOwnProperty(navItem.route) &&
-        UserPermissionMap[0][navItem.route] > Permission.None
-      )
+      } else if (userPermission[navItem.route] > Permission.None) {
         routes.push(
           <Route
             key={navItem.route}
@@ -44,6 +62,7 @@ const Dashboard = () => {
             element={<navItem.component name={navItem.name} />}
           />
         );
+      }
     }
     return routes;
   };
@@ -51,8 +70,8 @@ const Dashboard = () => {
     <div className="dashboard">
       <Header />
       <div className="content">
-        <SideBar isOpen={true} items={sideBarItems}></SideBar>
-        <Routes>{get_routes()}</Routes>
+        <SideBar isOpen={true} items={geneRateSidebarItems()}></SideBar>
+        <Routes>{generateRoutes()}</Routes>
       </div>
     </div>
   );
