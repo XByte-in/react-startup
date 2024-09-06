@@ -3,7 +3,7 @@ import MagicIcon from '@rsuite/icons/legacy/Magic';
 import Admins from './admins/admins';
 
 const AdminIcon = () => {
-  return <span className="sidebar-icon">Ad</span>;
+  return <span className="sidebar-icon">*</span>;
 };
 
 export enum Permission {
