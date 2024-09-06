@@ -52,13 +52,24 @@ const Admins = (props: IScreenProps) => {
       floatingFilter: true,
     });
     NavigationJson.forEach(_navItem => {
-      cols.push({
-        field: _navItem.route,
-        headerName: _navItem.name,
-        sortable: true,
-        filter: true,
-        floatingFilter: true,
-      });
+      if (_navItem.subNavigation) {
+        _navItem.subNavigation.forEach(subNavItem => {
+          cols.push({
+            field: subNavItem.route,
+            headerName: subNavItem.name,
+            sortable: true,
+            filter: true,
+            floatingFilter: true,
+          });
+        });
+      } else
+        cols.push({
+          field: _navItem.route,
+          headerName: _navItem.name,
+          sortable: true,
+          filter: true,
+          floatingFilter: true,
+        });
     });
     setColumns(cols);
   };
@@ -67,7 +78,11 @@ const Admins = (props: IScreenProps) => {
     const rowData: { [key: string]: any } = {};
     rowData['email'] = adminData['email'];
     NavigationJson.forEach(_navItem => {
-      rowData[_navItem.route] = adminData[_navItem.route] || 0;
+      if (_navItem.subNavigation) {
+        _navItem.subNavigation.forEach(subNavItem => {
+          rowData[subNavItem.route] = adminData[subNavItem.route] || 0;
+        });
+      } else rowData[_navItem.route] = adminData[_navItem.route] || 0;
     });
     return rowData;
   };
@@ -200,6 +215,7 @@ const Admins = (props: IScreenProps) => {
     }
   };
   const showUpdatedAdminModal = (rowData: any) => {
+    console.log(rowData);
     setAdminModal(
       ModalMode.Update,
       true,

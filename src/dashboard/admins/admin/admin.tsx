@@ -47,7 +47,17 @@ const Admin = (props: IAdminParams) => {
     const setup_dashboard_default_permissions = () => {
       const default_dashboard_permissions: ISelectFieldOption[] = [];
       NavigationJson.forEach(_navItem => {
-        if (props.modalData[_navItem.route])
+        if (_navItem.subNavigation) {
+          _navItem.subNavigation.forEach(subNavItem => {
+            if (props.modalData[subNavItem.route])
+              default_dashboard_permissions.push(
+                permission_options.filter(
+                  option => option.value === props.modalData[subNavItem.route]
+                )[0]
+              );
+            else default_dashboard_permissions.push({ ...default_permission });
+          });
+        } else if (props.modalData[_navItem.route])
           default_dashboard_permissions.push(
             permission_options.filter(
               option => option.value === props.modalData[_navItem.route]
@@ -81,35 +91,45 @@ const Admin = (props: IAdminParams) => {
         props.modalData[prop] = value.value;
         break;
     }
+    console.log('modalData', props.modalData);
     props.onModalDataChange?.(props.modalData);
   };
-  const dashboard_permission_controls =
-    dashboard_permissions.length > 0 ? (
-      NavigationJson.map((navItem, index) => {
-        return (
-          <div className="row" key={navItem.route}>
-            <div className="col label">
-              <Label
-                textId={navItem.name}
-                typography={Typography.body_medium_regular}
-                type={Type.default}
-              ></Label>
-            </div>
-            <div className="col data">
-              <SelectField
-                options={permission_options}
-                defaultValue={dashboard_permissions[index]}
-                className={Typography.body_medium_regular}
-                value={dashboard_permissions[index]}
-                onChange={data => updateData(navItem.route, data, index)}
-              />
-            </div>
-          </div>
-        );
-      })
-    ) : (
-      <></>
+  const generate_permission_control = (navItem, index) => {
+    return (
+      <div className="row" key={navItem.route}>
+        <div className="col label">
+          <Label
+            textId={navItem.name}
+            typography={Typography.body_medium_regular}
+            type={Type.default}
+          ></Label>
+        </div>
+        <div className="col data">
+          <SelectField
+            options={permission_options}
+            defaultValue={dashboard_permissions[index]}
+            className={Typography.body_medium_regular}
+            value={dashboard_permissions[index]}
+            onChange={data => updateData(navItem.route, data, index)}
+          />
+        </div>
+      </div>
     );
+  };
+  const generate_controls = () => {
+    const controls = [];
+    let index = 0;
+    for (const navItem of NavigationJson) {
+      if (navItem.subNavigation) {
+        for (const subNavItem of navItem.subNavigation) {
+          controls.push(generate_permission_control(subNavItem, index++));
+        }
+      } else {
+        controls.push(generate_permission_control(navItem, index++));
+      }
+    }
+    return controls;
+  };
   return (
     <div className="admin">
       <div className="row">
@@ -130,7 +150,7 @@ const Admin = (props: IAdminParams) => {
           />
         </div>
       </div>
-      {dashboard_permission_controls}
+      {generate_controls()}
     </div>
   );
 };
