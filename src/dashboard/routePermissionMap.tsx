@@ -3,8 +3,14 @@ import MagicIcon from '@rsuite/icons/legacy/Magic';
 import Admins from './admins/admins';
 
 const AdminIcon = () => {
-  return <span className='si'>Ad</span>;
+  return <span className="si">Ad</span>;
 };
+
+export enum Permission {
+  None = 0,
+  View = 1,
+  Edit = 2,
+}
 
 export const NavigationJson = [
   {
@@ -46,7 +52,7 @@ export const UserPermissionMap = [
   {
     email: 'pranshu.gupta@bluestacks.com',
     admins: 2,
-    boots: 2,
+    boots: 1,
   },
   {
     email: 'pranshu.gupta@bluestacks.com1',

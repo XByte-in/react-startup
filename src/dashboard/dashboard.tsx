@@ -2,7 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 
 import SideBar from '../common/controls/sideBar/sideBar';
 import Header from './header/header';
-import { NavigationJson } from './routePermissionMap';
+import {
+  NavigationJson,
+  Permission,
+  UserPermissionMap,
+} from './routePermissionMap';
 
 import './dashboard.scss';
 
@@ -19,13 +23,18 @@ const Dashboard = () => {
         <SideBar isOpen={true} items={sideBarItems}></SideBar>
         <Routes>
           {NavigationJson.map(navItem => {
-            return (
-              <Route
-                key={navItem.route}
-                path={`/${navItem.route}`}
-                element={<navItem.component name={navItem.name} />}
-              />
-            );
+            if (
+              UserPermissionMap[0].hasOwnProperty(navItem.route) &&
+              UserPermissionMap[0][navItem.route] > Permission.None
+            )
+              return (
+                <Route
+                  key={navItem.route}
+                  path={`/${navItem.route}`}
+                  element={<navItem.component name={navItem.name} />}
+                />
+              );
+            return null;
           })}
         </Routes>
       </div>
