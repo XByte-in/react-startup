@@ -1,14 +1,28 @@
-import Admins from '../dashboard/admins/admins';
+import MagicIcon from '@rsuite/icons/legacy/Magic';
+
+import Admins from './admins/admins';
+
+const AdminIcon = () => {
+  return <span className='si'>Ad</span>;
+};
 
 export const NavigationJson = [
   {
     route: 'admins',
     name: 'Admins',
+    icon: AdminIcon,
     component: Admins,
   },
   {
     route: 'boots',
     name: 'Boots',
+    icon: MagicIcon,
+    component: Admins,
+  },
+  {
+    route: 'xyz',
+    name: 'XYZ',
+    icon: MagicIcon,
     component: Admins,
   },
   // {

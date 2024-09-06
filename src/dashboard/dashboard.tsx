@@ -10,6 +10,7 @@ const Dashboard = () => {
   const sideBarItems = NavigationJson.map(navItem => ({
     labelId: navItem.name,
     route: navItem.route,
+    icon: navItem.icon ? <navItem.icon /> : null,
   }));
   return (
     <div className="dashboard">
@@ -18,12 +19,11 @@ const Dashboard = () => {
         <SideBar isOpen={true} items={sideBarItems}></SideBar>
         <Routes>
           {NavigationJson.map(navItem => {
-            const Component = navItem.component;
             return (
               <Route
                 key={navItem.route}
                 path={`/${navItem.route}`}
-                element={<Component name={navItem.name} />}
+                element={<navItem.component name={navItem.name} />}
               />
             );
           })}
