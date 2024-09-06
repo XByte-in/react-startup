@@ -34,6 +34,7 @@ export const NavigationJson = [
   {
     name: 'Docks',
     route: 'docks',
+    icon: MagicIcon,
     subNavigation: [
       {
         route: 'docks1',

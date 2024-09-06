@@ -13,30 +13,31 @@ import './dashboard.scss';
 
 const Dashboard = () => {
   const geneRateSidebarItems = () => {
-    const items = [];
+    const sidebarItems = [];
     for (const navItem of NavigationJson) {
       if (navItem.subNavigation) {
-        const subItems = [];
+        const items = [];
         for (const subNavItem of navItem.subNavigation) {
-          subItems.push({
+          items.push({
             labelId: subNavItem.name,
-            route: `${navItem.route}/${subNavItem.route}`,
+            route: subNavItem.route,
           });
         }
-        items.push({
+        sidebarItems.push({
           labelId: navItem.name,
+          items: items,
           route: navItem.route,
-          items: subItems,
+          icon: navItem.icon ? <navItem.icon /> : null,
         });
       } else {
-        items.push({
+        sidebarItems.push({
           labelId: navItem.name,
           route: navItem.route,
           icon: navItem.icon ? <navItem.icon /> : null,
         });
       }
     }
-    return items;
+    return sidebarItems;
   };
   const generateRoutes = () => {
     const routes = [];
