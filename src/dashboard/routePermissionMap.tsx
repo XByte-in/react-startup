@@ -53,6 +53,7 @@ export const UserPermissionMap = [
     email: 'pranshu.gupta@bluestacks.com',
     admins: 2,
     boots: 1,
+    docks1: 1,
   },
   {
     email: 'pranshu.gupta@bluestacks.com1',
