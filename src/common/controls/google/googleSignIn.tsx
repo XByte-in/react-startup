@@ -33,6 +33,7 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
       family_name: decoded_credential.family_name,
       picture: decoded_credential.picture,
     };
+    Utils.setCookie('googleCredential', res.credential, 3600);
     props.onSignIn(credential);
     Utils.unloadScript(script_id);
   };
@@ -69,7 +70,23 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
       onScriptError
     );
   };
-  useEffect(() => signInInit());
+  useEffect(() => {
+    const googleCredential = Utils.getCookie('googleCredential');
+    if (googleCredential) {
+      const decoded_credential: any = jwt_decode(googleCredential);
+      const credential = {
+        credential: googleCredential,
+        email: decoded_credential.email,
+        name: decoded_credential.name,
+        given_name: decoded_credential.given_name,
+        family_name: decoded_credential.family_name,
+        picture: decoded_credential.picture,
+      };
+      props.onSignIn(credential);
+    } else {
+      signInInit();
+    }
+  }, []);
   return <div id="googleSignInDiv" />;
 };
 export default GoogleSignIn;
