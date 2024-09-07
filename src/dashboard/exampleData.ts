@@ -2,18 +2,17 @@ export const SampleAdmins = [
   {
     email: 'pranshu.gupta@bluestacks.com',
     permissions: {
-      admins: 2,
-      boots: 1,
-      xyz: 0,
-      docks1: 1,
-      docks2: 0,
+      admin: 2,
+      boot: 2,
+      dock: 1,
     },
   },
   {
-    email: 'pranshu.gupta@bluestacks.com1',
+    email: 'pranshu.gupta1@bluestacks.com',
     permissions: {
-      boots: 1,
-      admins: 1,
+      admin: 0,
+      boot: 1,
+      dock: 2,
     },
   },
 ];

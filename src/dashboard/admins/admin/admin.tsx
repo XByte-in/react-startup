@@ -13,7 +13,7 @@ import SelectField, {
 } from '../../../common/controls/selectField/SelectField';
 import { Typography } from '../../../common/theme/typography/typography';
 import { RequiredValidation, Validator } from '../../../common/validator';
-import { NavigationJson } from '../../routePermissionMap';
+import { NavigationRoutes } from '../../navigationRoutes';
 
 import './admin.scss';
 
@@ -46,7 +46,7 @@ const Admin = (props: IAdminParams) => {
   useEffect(() => {
     const setup_dashboard_default_permissions = () => {
       const default_dashboard_permissions: ISelectFieldOption[] = [];
-      NavigationJson.forEach(_navItem => {
+      NavigationRoutes.forEach(_navItem => {
         if (_navItem.subNavigation) {
           _navItem.subNavigation.forEach(subNavItem => {
             if (props.modalData[subNavItem.route])
@@ -119,7 +119,7 @@ const Admin = (props: IAdminParams) => {
   const generate_controls = () => {
     const controls = [];
     let index = 0;
-    for (const navItem of NavigationJson) {
+    for (const navItem of NavigationRoutes) {
       if (navItem.subNavigation) {
         for (const subNavItem of navItem.subNavigation) {
           controls.push(generate_permission_control(subNavItem, index++));

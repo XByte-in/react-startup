@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
+import { Permission } from '../common/const';
 import PrivateRoute from '../common/controls/privateRoute/privateRoute';
 import SideBar from '../common/controls/sideBar/sideBar';
 import { RootState } from '../common/store/store';
 import Header from './header/header';
-import { NavigationJson, Permission } from './routePermissionMap';
+import { NavigationRoutes } from './navigationRoutes';
 
 import './dashboard.scss';
 
@@ -15,15 +16,16 @@ const Dashboard = () => {
   );
   const geneRateSidebarItems = () => {
     const sidebarItems = [];
-    for (const navItem of NavigationJson) {
+    for (const navItem of NavigationRoutes) {
       if (navItem.subNavigation) {
         const items = [];
         for (const subNavItem of navItem.subNavigation) {
-          if (userPermission[subNavItem.route] > Permission.None)
+          if (userPermission[subNavItem.route] > Permission.None) {
             items.push({
               labelId: subNavItem.name,
               route: subNavItem.route,
             });
+          }
         }
         if (items.length == 0) continue;
         sidebarItems.push({
@@ -33,19 +35,21 @@ const Dashboard = () => {
           icon: navItem.icon ? <navItem.icon /> : null,
         });
       } else {
-        if (userPermission[navItem.route] > Permission.None)
+        console.log(console.log(navItem.route), userPermission);
+        if (userPermission[navItem.route] > Permission.None) {
           sidebarItems.push({
             labelId: navItem.name,
             route: navItem.route,
             icon: navItem.icon ? <navItem.icon /> : null,
           });
+}
       }
     }
     return sidebarItems;
   };
   const generateRoutes = () => {
     const routes = [];
-    for (const navItem of NavigationJson) {
+    for (const navItem of NavigationRoutes) {
       if (navItem.subNavigation) {
         for (const subNavItem of navItem.subNavigation) {
           if (userPermission[subNavItem.route] > Permission.None) {

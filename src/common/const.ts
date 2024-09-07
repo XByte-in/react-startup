@@ -20,3 +20,9 @@ export enum DateTimePickerType {
   month,
   year,
 }
+
+export enum Permission {
+  None = 0,
+  View = 1,
+  Edit = 2,
+}

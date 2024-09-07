@@ -13,6 +13,7 @@ import TranslatedText from '../translatedText/translatedText';
 import { setUserPermissionInfo } from './userPermissionInfoSlice';
 
 import './SignIn.scss';
+import { SampleAdmins } from '../../../dashboard/exampleData';
 
 const SignIn = () => {
   const domain_list = ['bluestacks.com', 'now.gg'];
@@ -58,15 +59,7 @@ const SignIn = () => {
       });
     } else {
       dispatch(setGoogleUserInfo(params));
-      dispatch(
-        setUserPermissionInfo({
-          admins: 2,
-          boots: 1,
-          xyz: 0,
-          docks1: 1,
-          docks2: 0,
-        })
-      );
+      dispatch(setUserPermissionInfo(SampleAdmins[0].permissions));
       navigate('/');
       // ApiService.Admins.verify()
       //   .then(response => {

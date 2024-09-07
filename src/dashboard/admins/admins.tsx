@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Size, Type } from '../../common/const';
+import { Permission, Size, Type } from '../../common/const';
 import Button from '../../common/controls/button/button';
 import DataGrid, {
   IColumnSchema,
@@ -14,7 +14,7 @@ import { RootState } from '../../common/store/store';
 import { Typography } from '../../common/theme';
 import ApiService from '../apiService';
 import { SampleAdmins } from '../exampleData';
-import { NavigationJson, Permission } from '../routePermissionMap';
+import { NavigationRoutes } from '../navigationRoutes';
 import Admin from './admin/admin';
 
 import './admins.scss';
@@ -53,7 +53,7 @@ const Admins = (props: IScreenProps) => {
       filter: true,
       floatingFilter: true,
     });
-    NavigationJson.forEach(_navItem => {
+    NavigationRoutes.forEach(_navItem => {
       if (_navItem.subNavigation) {
         _navItem.subNavigation.forEach(subNavItem => {
           cols.push({
@@ -79,7 +79,7 @@ const Admins = (props: IScreenProps) => {
   const parseAdmin = (adminData: any) => {
     const rowData: { [key: string]: any } = {};
     rowData['email'] = adminData['email'];
-    NavigationJson.forEach(_navItem => {
+    NavigationRoutes.forEach(_navItem => {
       if (_navItem.subNavigation) {
         _navItem.subNavigation.forEach(subNavItem => {
           rowData[subNavItem.route] =
