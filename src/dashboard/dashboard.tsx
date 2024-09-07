@@ -1,24 +1,25 @@
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import PrivateRoute from '../common/controls/privateRoute/privateRoute';
 import SideBar from '../common/controls/sideBar/sideBar';
+import { RootState } from '../common/store/store';
 import Header from './header/header';
-import {
-  NavigationJson,
-  Permission,
-  UserPermissionMap,
-} from './routePermissionMap';
+import { NavigationJson, Permission } from './routePermissionMap';
 
 import './dashboard.scss';
 
 const Dashboard = () => {
+  const userPermission = useSelector(
+    (state: RootState) => state.userPermissionInfo.permission
+  );
   const geneRateSidebarItems = () => {
     const sidebarItems = [];
     for (const navItem of NavigationJson) {
       if (navItem.subNavigation) {
         const items = [];
         for (const subNavItem of navItem.subNavigation) {
-          if (UserPermissionMap[0][subNavItem.route] > Permission.None)
+          if (userPermission[subNavItem.route] > Permission.None)
             items.push({
               labelId: subNavItem.name,
               route: subNavItem.route,
@@ -32,7 +33,7 @@ const Dashboard = () => {
           icon: navItem.icon ? <navItem.icon /> : null,
         });
       } else {
-        if (UserPermissionMap[0][navItem.route] > Permission.None)
+        if (userPermission[navItem.route] > Permission.None)
           sidebarItems.push({
             labelId: navItem.name,
             route: navItem.route,
@@ -44,7 +45,6 @@ const Dashboard = () => {
   };
   const generateRoutes = () => {
     const routes = [];
-    const userPermission = UserPermissionMap[0];
     for (const navItem of NavigationJson) {
       if (navItem.subNavigation) {
         for (const subNavItem of navItem.subNavigation) {

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import ApiService from '../../../dashboard/apiService';
 import Environment from '../../../environment';
 import { RootState } from '../../store/store';
 import GoogleSignIn from '../google/googleSignIn';
@@ -11,7 +10,7 @@ import {
   setGoogleUserInfo,
 } from '../google/googleUserInfoSlice';
 import TranslatedText from '../translatedText/translatedText';
-import { setUserPermissionsInfo } from './userPermissionInfoSlice';
+import { setUserPermissionInfo } from './userPermissionInfoSlice';
 
 import './SignIn.scss';
 
@@ -60,7 +59,7 @@ const SignIn = () => {
     } else {
       dispatch(setGoogleUserInfo(params));
       dispatch(
-        setUserPermissionsInfo({
+        setUserPermissionInfo({
           admins: 2,
           boots: 1,
           xyz: 0,

@@ -1,28 +1,28 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createSlice } from '@reduxjs/toolkit';
-export interface IUserPermissionsInfoState {
-  permissions: { [key: string]: number };
+export interface IUserPermissionInfoState {
+  permission: { [key: string]: number };
 }
-const initialState: IUserPermissionsInfoState = {
-  permissions: {},
+const initialState: IUserPermissionInfoState = {
+  permission: {},
 };
-export const userPermissionsInfoSlice = createSlice({
-  name: 'userPermissionsInfo',
+export const UserPermissionInfoSlice = createSlice({
+  name: 'userPermissionInfo',
   initialState,
   reducers: {
-    setUserPermissionsInfo: (state, action) => {
-      state.permissions = { ...action.payload.permissions };
+    setUserPermissionInfo: (state, action) => {
+      state.permission = { ...action.payload };
     },
-    removeUserPermissionsInfo: state => {
-      state.permissions = {};
+    removeUserPermissionInfo: state => {
+      state.permission = {};
     },
   },
 });
 
-export const { setUserPermissionsInfo, removeUserPermissionsInfo } =
-  userPermissionsInfoSlice.actions;
+export const { setUserPermissionInfo, removeUserPermissionInfo } =
+  UserPermissionInfoSlice.actions;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getUserPermissionsInfo = (state: any) => state.userPermissionsInfo;
+export const getUserPermissionInfo = (state: any) => state.userPermissionInfo;
 
-export default userPermissionsInfoSlice.reducer;
+export default UserPermissionInfoSlice.reducer;

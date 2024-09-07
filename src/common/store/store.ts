@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import googleUserInfoReducer from '../controls/google/googleUserInfoSlice';
 import privateRouteInfoReducer from '../controls/privateRoute/privateRouteInfoSlice';
 import userPermissionInfoReducer from '../controls/signIn/userPermissionInfoSlice';
+
 export const store = configureStore({
   reducer: {
     googleUserInfo: googleUserInfoReducer,
