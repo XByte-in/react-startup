@@ -1,4 +1,7 @@
 .sideBar {
   @import '../../scss';
   max-width: 25rem;
+  .rs-sidenav-body{
+    height: calc(100vh - 11rem);
+  }
 }
