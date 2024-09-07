@@ -6,10 +6,17 @@
   height: 6rem;
   background: var(--color-base);
   box-shadow: 0px 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
-  .logo {
+
+  .env-logo {
     display: flex;
-    align-items: center;
-    margin-left: 1rem;
-    width: auto;
+    .env{
+      width: 10rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+      width: auto;
+    }
   }
 }
