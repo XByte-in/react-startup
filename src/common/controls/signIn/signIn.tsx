@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
+import ApiService from '../../../dashboard/apiService';
 import Environment from '../../../environment';
+import { RootState } from '../../store/store';
 import GoogleSignIn from '../google/googleSignIn';
 import {
   removeGoogleUserInfo,
   setGoogleUserInfo,
 } from '../google/googleUserInfoSlice';
 import TranslatedText from '../translatedText/translatedText';
-import { RootState } from '../../store/store';
+import { setUserPermissionsInfo } from './userPermissionInfoSlice';
 
 import './SignIn.scss';
 
@@ -57,7 +59,50 @@ const SignIn = () => {
       });
     } else {
       dispatch(setGoogleUserInfo(params));
+      dispatch(
+        setUserPermissionsInfo({
+          admins: 2,
+          boots: 1,
+          xyz: 0,
+          docks1: 1,
+          docks2: 0,
+        })
+      );
       navigate('/');
+      // ApiService.Admins.verify(params.credential)
+      //   .then(response => {
+      //     if (
+      //       (response =
+      //         null ||
+      //         response.data == null ||
+      //         response.data.permissions == null)
+      //     ) {
+      //       dispatch(removeGoogleUserInfo());
+      //       setAccessDenied(true);
+      //       return;
+      //     }
+      //     const permissions = {
+      //       admins: 2,
+      //       boots: 1,
+      //       xyz: 0,
+      //       docks1: 1,
+      //       docks2: 0,
+      //     };
+      //     const hasPermission = Object.values(permissions).some(
+      //       permission => permission > 0
+      //     );
+      //     if (!hasPermission) {
+      //       dispatch(removeGoogleUserInfo());
+      //       setAccessDenied(true);
+      //       return;
+      //     }
+      //     dispatch(setGoogleUserInfo);
+      //     dispatch(setUserPermissionsInfo(permissions));
+      //     navigate('/');
+      //   })
+      //   .catch(e => {
+      //     console.log(e);
+      //   });
     }
   };
 
