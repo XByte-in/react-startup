@@ -89,9 +89,11 @@ const Admins = (props: IScreenProps) => {
     NavigationJson.forEach(_navItem => {
       if (_navItem.subNavigation) {
         _navItem.subNavigation.forEach(subNavItem => {
-          rowData[subNavItem.route] = adminData[subNavItem.route] || 0;
+          rowData[subNavItem.route] =
+            adminData.permissions[subNavItem.route] || 0;
         });
-      } else rowData[_navItem.route] = adminData[_navItem.route] || 0;
+      } else
+        rowData[_navItem.route] = adminData.permissions[_navItem.route] || 0;
     });
     return rowData;
   };
