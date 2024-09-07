@@ -13,11 +13,8 @@ import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
 import { Typography } from '../../common/theme';
 import ApiService from '../apiService';
-import {
-  NavigationJson,
-  Permission,
-  UserPermissionMap,
-} from '../routePermissionMap';
+import { SampleAdmins } from '../exampleData';
+import { NavigationJson, Permission } from '../routePermissionMap';
 import Admin from './admin/admin';
 
 import './admins.scss';
@@ -110,7 +107,7 @@ const Admins = (props: IScreenProps) => {
     //     setGridDataLoading(false);
     //     console.log(error);
     //   });
-    setAdmins(parseAdmins(UserPermissionMap));
+    setAdmins(parseAdmins(SampleAdmins));
     setGridDataLoading(false);
   };
 
