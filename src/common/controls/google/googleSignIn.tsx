@@ -32,7 +32,7 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
       family_name: decoded_credential.family_name,
       picture: decoded_credential.picture,
     };
-    Utils.setCookie('Authorization', res.credential, 3600 * 3);
+    Utils.setCookie('Authorization', res.credential, 3600);
     props.onSignIn(userProfileInfo);
     Utils.unloadScript(script_id);
   };
