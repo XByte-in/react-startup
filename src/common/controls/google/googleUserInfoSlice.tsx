@@ -1,7 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createSlice } from '@reduxjs/toolkit';
 export interface IGoogleUserInfoState {
-  credential: string;
   email: string;
   name: string;
   given_name: string;
@@ -9,7 +8,6 @@ export interface IGoogleUserInfoState {
   picture: string;
 }
 const initialState: IGoogleUserInfoState = {
-  credential: '',
   email: '',
   name: '',
   given_name: '',
@@ -21,7 +19,6 @@ export const GoogleUserInfoSlice = createSlice({
   initialState,
   reducers: {
     setGoogleUserInfo: (state, action) => {
-      state.credential = action.payload.credential;
       state.email = action.payload.email;
       state.name = action.payload.name;
       state.given_name = action.payload.name;
@@ -29,7 +26,6 @@ export const GoogleUserInfoSlice = createSlice({
       state.picture = action.payload.picture;
     },
     removeGoogleUserInfo: state => {
-      state.credential = '';
       state.email = '';
       state.name = '';
       state.given_name = '';

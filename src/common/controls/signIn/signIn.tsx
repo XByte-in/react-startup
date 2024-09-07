@@ -68,7 +68,7 @@ const SignIn = () => {
         })
       );
       navigate('/');
-      // ApiService.Admins.verify(params.credential)
+      // ApiService.Admins.verify()
       //   .then(response => {
       //     if (
       //       (response =

@@ -25,16 +25,15 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
     if (!res.clientId || !res.credential) return;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const decoded_credential: any = jwt_decode(res.credential);
-    const credential = {
-      credential: res.credential,
+    const userProfileInfo = {
       email: decoded_credential.email,
       name: decoded_credential.name,
       given_name: decoded_credential.given_name,
       family_name: decoded_credential.family_name,
       picture: decoded_credential.picture,
     };
-    Utils.setCookie('googleCredential', res.credential, 3600);
-    props.onSignIn(credential);
+    Utils.setCookie('Authorization', res.credential, 3600 * 3);
+    props.onSignIn(userProfileInfo);
     Utils.unloadScript(script_id);
   };
   const initializeGsi = () => {
@@ -71,18 +70,17 @@ const GoogleSignIn = (props: IGoogleSignInParam) => {
     );
   };
   useEffect(() => {
-    const googleCredential = Utils.getCookie('googleCredential');
+    const googleCredential = Utils.getCookie('Authorization');
     if (googleCredential) {
       const decoded_credential: any = jwt_decode(googleCredential);
-      const credential = {
-        credential: googleCredential,
+      const userProfileInfo = {
         email: decoded_credential.email,
         name: decoded_credential.name,
         given_name: decoded_credential.given_name,
         family_name: decoded_credential.family_name,
         picture: decoded_credential.picture,
       };
-      props.onSignIn(credential);
+      props.onSignIn(userProfileInfo);
     } else {
       signInInit();
     }

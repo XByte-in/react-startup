@@ -39,7 +39,9 @@ class Utils {
     let expires = '';
     if (seconds) {
       const date = new Date();
+      console.log(date);
       date.setTime(date.getTime() + seconds * 1000);
+      console.log(date);
       expires = '; expires=' + date.toUTCString();
     }
     document.cookie = name + '=' + (value || '') + expires + '; path=/';
@@ -55,8 +57,7 @@ class Utils {
     return null;
   };
   static deleteCookie = (name: string) => {
-    console.log('delete cookie');
-    document.cookie = name + '=; Max-Age=-99999999;';
+    document.cookie = name + '=; expires=' + new Date(0).toUTCString();
   };
 }
 export default Utils;

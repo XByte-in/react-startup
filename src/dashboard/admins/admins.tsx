@@ -31,10 +31,6 @@ const Admins = (props: IScreenProps) => {
   const userPermission: Permission = useSelector(
     (state: RootState) => state.userPermissionInfo.permission[props.route]
   );
-  console.log(userPermission);
-  const credential = useSelector(
-    (state: RootState) => state.googleUserInfo.credential
-  );
   const [gridApi, setGridApi] = useState<any>(null);
   const [columns, setColumns] = useState<Array<IColumnSchema>>([]);
   const [gridDataLoading, setGridDataLoading] = useState(false);
@@ -103,7 +99,7 @@ const Admins = (props: IScreenProps) => {
   const fetchAdmins = () => {
     setGridDataLoading(true);
     setAdmins([]);
-    // ApiService.Admins.get(credential)
+    // ApiService.Admins.get()
     //   .then((response: any) => {
     //     if (response.success && response.data)
     //       if (Array.isArray(response.data) && response.data.length > 0)
@@ -120,7 +116,7 @@ const Admins = (props: IScreenProps) => {
 
   const deleteAdmin = (emails: string[]) => {
     setAdminDeleteModal(emails, true, true);
-    ApiService.Admins.delete(credential, emails)
+    ApiService.Admins.delete(emails)
       .then((response: any) => {
         if (response.success) {
           let adminList = [];
@@ -179,7 +175,7 @@ const Admins = (props: IScreenProps) => {
 
   const updateAdmin = (admin_data: { [key: string]: any }) => {
     setAdminModal(ModalMode.Update, true, true, [], admin_data, onYesUpdate);
-    ApiService.Admins.update(credential, admin_data)
+    ApiService.Admins.update(admin_data)
       .then((response: any) => {
         if (response.success && response.data) {
           const admin = parseAdmin(response.data);
@@ -239,7 +235,7 @@ const Admins = (props: IScreenProps) => {
 
   const addAdmin = (admin_data: { [key: string]: any }) => {
     setAdminModal(ModalMode.Add, true, true, [], admin_data, onYesAdd);
-    ApiService.Admins.add(credential, admin_data)
+    ApiService.Admins.add(admin_data)
       .then((response: any) => {
         if (response.success && response.data) {
           const admin = parseAdmin(response.data);

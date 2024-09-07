@@ -8,6 +8,7 @@ import { removeGoogleUserInfo } from '../googleUserInfoSlice';
 import './googleProfile.scss';
 
 import type { RootState } from '../../../store/store';
+import Utils from '../../../utils';
 
 const GoogleProfile = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const GoogleProfile = () => {
       <GoogleSignOut
         className="profile-logout"
         onSignOut={() => {
+          Utils.deleteCookie('Authorization');
           dispatch(removeGoogleUserInfo());
           navigate('/signIn');
         }}
