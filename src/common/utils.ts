@@ -54,5 +54,9 @@ class Utils {
     }
     return null;
   };
+  static deleteCookie = (name: string) => {
+    console.log('delete cookie');
+    document.cookie = name + '=; Max-Age=-99999999;';
+  };
 }
 export default Utils;

@@ -53,15 +53,19 @@ export const NavigationJson = [
 export const UserPermissionMap = [
   {
     email: 'pranshu.gupta@bluestacks.com',
-    admins: 2,
-    boots: 1,
-    xyz: 0,
-    docks1: 1,
-    docks2: 0,
+    permissions: {
+      admins: 2,
+      boots: 1,
+      xyz: 0,
+      docks1: 1,
+      docks2: 0,
+    },
   },
   {
     email: 'pranshu.gupta@bluestacks.com1',
-    boots: 1,
-    admins: 1,
+    permissions: {
+      boots: 1,
+      admins: 1,
+    },
   },
 ];
