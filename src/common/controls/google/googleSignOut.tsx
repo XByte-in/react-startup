@@ -19,7 +19,10 @@ const GoogleSignOut = (props: IGoogleSignOutParams) => {
     });
   };
   return (
-    <div className="g_id_signout" onClick={() => revokeGsi()}>
+    <div
+      className={`${props.className} g_id_signout`}
+      onClick={() => revokeGsi()}
+    >
       <FontAwesomeIcon icon={faRightFromBracket} size="2xl" />
     </div>
   );
