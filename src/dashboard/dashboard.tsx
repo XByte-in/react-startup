@@ -55,7 +55,10 @@ const Dashboard = () => {
                 path={`${navItem.route}/${subNavItem.route}`}
                 element={
                   <PrivateRoute>
-                    <subNavItem.component name={subNavItem.name} />
+                    <subNavItem.component
+                      name={subNavItem.name}
+                      route={subNavItem.route}
+                    />
                   </PrivateRoute>
                 }
               />
@@ -69,7 +72,7 @@ const Dashboard = () => {
             path={`/${navItem.route}`}
             element={
               <PrivateRoute>
-                <navItem.component name={navItem.name} />
+                <navItem.component name={navItem.name} route={navItem.route} />
               </PrivateRoute>
             }
           />

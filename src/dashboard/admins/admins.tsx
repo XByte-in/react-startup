@@ -13,16 +13,25 @@ import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
 import { Typography } from '../../common/theme';
 import ApiService from '../apiService';
-import { NavigationJson, UserPermissionMap } from '../routePermissionMap';
+import {
+  NavigationJson,
+  Permission,
+  UserPermissionMap,
+} from '../routePermissionMap';
 import Admin from './admin/admin';
 
 import './admins.scss';
 
 export interface IScreenProps {
   name: string;
+  route: string;
 }
 
 const Admins = (props: IScreenProps) => {
+  const userPermission: Permission = useSelector(
+    (state: RootState) => state.userPermissionInfo.permission[props.route]
+  );
+  console.log(userPermission);
   const credential = useSelector(
     (state: RootState) => state.googleUserInfo.credential
   );
@@ -343,6 +352,7 @@ const Admins = (props: IScreenProps) => {
           size={Size.medium}
           type={Type.secondary}
           textId="add"
+          disabled={userPermission < Permission.Edit}
           onClick={() => showAddAdminModal()}
         />
         <Button
@@ -350,7 +360,7 @@ const Admins = (props: IScreenProps) => {
           size={Size.medium}
           type={Type.secondary}
           textId="delete"
-          disabled={!hasSelectedRows}
+          disabled={userPermission < Permission.Edit || !hasSelectedRows}
           onClick={() => showDeleteAdminsModal()}
         />
       </div>
@@ -362,7 +372,9 @@ const Admins = (props: IScreenProps) => {
         rowSelection={'multiple'}
         height="calc(100vh - 12rem)"
         onGridReady={params => setGridApi(params)}
-        onRowDoubleClicked={rowData => showUpdatedAdminModal(rowData)}
+        onRowDoubleClicked={rowData => {
+          if (userPermission == Permission.Edit) showUpdatedAdminModal(rowData);
+        }}
         onSelectionChanged={() => onSelectionChanged()}
       />
       <Modal show={modalReq.show} modalData={modalReq.modalData} />
