@@ -18,6 +18,8 @@ import { NavigationRoutes } from '../navigationRoutes';
 import Admin from './admin/admin';
 
 import './admins.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowsRotate, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export interface IScreenProps {
   name: string;
@@ -339,14 +341,14 @@ const Admins = (props: IScreenProps) => {
           className="btn"
           size={Size.medium}
           type={Type.secondary}
-          textId="refresh"
+          fontAwesomeIcon={faArrowsRotate}
           onClick={() => fetchAdmins()}
         />
         <Button
           className="btn"
           size={Size.medium}
           type={Type.secondary}
-          textId="add"
+          fontAwesomeIcon={faPlus}
           disabled={userPermission < Permission.Edit}
           onClick={() => showAddAdminModal()}
         />
@@ -354,7 +356,7 @@ const Admins = (props: IScreenProps) => {
           className="btn"
           size={Size.medium}
           type={Type.secondary}
-          textId="delete"
+          fontAwesomeIcon={faTrash}
           disabled={userPermission < Permission.Edit || !hasSelectedRows}
           onClick={() => showDeleteAdminsModal()}
         />

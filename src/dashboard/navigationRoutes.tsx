@@ -1,6 +1,10 @@
 import Admins from './admins/admins';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAtom, faUsers } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAtom,
+  faSackXmark,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
 
 export const NavigationRoutes = [
   {
@@ -10,6 +14,20 @@ export const NavigationRoutes = [
       return <FontAwesomeIcon className="sidebar-icon" icon={faUsers} />;
     },
     component: Admins,
+  },
+  {
+    name: 'NowBux',
+    route: 'nowbux',
+    icon: () => {
+      return <FontAwesomeIcon className="sidebar-icon" icon={faSackXmark} />;
+    },
+    subNavigation: [
+      {
+        name: 'SweepStake',
+        route: 'sweepstake',
+        component: Admins,
+      },
+    ],
   },
   {
     name: 'Promotion',

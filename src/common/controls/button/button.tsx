@@ -8,7 +8,7 @@ import TranslatedText from '../translatedText/translatedText';
 import './button.scss';
 
 interface IButtonParams extends IMouseEventParam {
-  textId: string;
+  textId?: string;
   type: Type;
   size: Size;
   fontAwesomeIcon?: IconProp;
@@ -36,7 +36,7 @@ const Button = (props: IButtonParams) => {
             className="btn-icon"
           />
         )}
-        <TranslatedText id={props.textId} />
+        {props.textId && <TranslatedText id={props.textId} />}
       </>
     </button>
   );
