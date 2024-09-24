@@ -61,7 +61,7 @@ const SignIn = () => {
       dispatch(setGoogleUserInfo(params));
       dispatch(setUserPermissionInfo(SampleAdmins[0].permissions));
       navigate('/');
-      // ApiService.Admins.verify()
+      // AdminApiService.verify()
       //   .then(response => {
       //     if (
       //       (response =

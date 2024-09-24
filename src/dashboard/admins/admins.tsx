@@ -1,4 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  faArrowsRotate,
+  faPlus,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -12,14 +17,12 @@ import { ModalMode } from '../../common/controls/modal/interface';
 import Modal, { IModalParams } from '../../common/controls/modal/modal';
 import { RootState } from '../../common/store/store';
 import { Typography } from '../../common/theme';
-import ApiService from '../apiService';
 import { SampleAdmins } from '../exampleData';
 import { NavigationRoutes } from '../navigationRoutes';
 import Admin from './admin/admin';
+import AdminApiService from './adminApiService';
 
 import './admins.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsRotate, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export interface IScreenProps {
   name: string;
@@ -37,6 +40,7 @@ const Admins = (props: IScreenProps) => {
   const [admins, setAdmins] = useState<Array<any>>([]);
 
   const [modalReq, setModalReq] = useState<IModalParams>({ show: false });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const adminModalRef = { validate: (modalData: any) => [] };
   useEffect(() => {
     generateColumns();
@@ -98,7 +102,7 @@ const Admins = (props: IScreenProps) => {
   const fetchAdmins = () => {
     setGridDataLoading(true);
     setAdmins([]);
-    // ApiService.Admins.get()
+    // AdminApiService.get()
     //   .then((response: any) => {
     //     if (response.success && response.data)
     //       if (Array.isArray(response.data) && response.data.length > 0)
@@ -115,7 +119,7 @@ const Admins = (props: IScreenProps) => {
 
   const deleteAdmin = (emails: string[]) => {
     setAdminDeleteModal(emails, true, true);
-    ApiService.Admins.delete(emails)
+    AdminApiService.delete(emails)
       .then((response: any) => {
         if (response.success) {
           let adminList = [];
@@ -174,7 +178,7 @@ const Admins = (props: IScreenProps) => {
 
   const updateAdmin = (admin_data: { [key: string]: any }) => {
     setAdminModal(ModalMode.Update, true, true, [], admin_data, onYesUpdate);
-    ApiService.Admins.update(admin_data)
+    AdminApiService.update(admin_data)
       .then((response: any) => {
         if (response.success && response.data) {
           const admin = parseAdmin(response.data);
@@ -234,7 +238,7 @@ const Admins = (props: IScreenProps) => {
 
   const addAdmin = (admin_data: { [key: string]: any }) => {
     setAdminModal(ModalMode.Add, true, true, [], admin_data, onYesAdd);
-    ApiService.Admins.add(admin_data)
+    AdminApiService.add(admin_data)
       .then((response: any) => {
         if (response.success && response.data) {
           const admin = parseAdmin(response.data);

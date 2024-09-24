@@ -42,7 +42,7 @@ const Dashboard = () => {
             route: navItem.route,
             icon: navItem.icon ? <navItem.icon /> : null,
           });
-}
+        }
       }
     }
     return sidebarItems;

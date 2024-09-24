@@ -19,4 +19,3 @@ export interface IModalComponentParams {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   modalComponentRef?: any;
 }
-
