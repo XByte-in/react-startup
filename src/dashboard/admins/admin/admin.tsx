@@ -12,7 +12,11 @@ import SelectField, {
   ISelectFieldOption,
 } from '../../../common/controls/selectField/SelectField';
 import { Typography } from '../../../common/theme/typography/typography';
-import { RequiredValidation, Validator } from '../../../common/validator';
+import {
+  RegExpValidation,
+  RequiredValidation,
+  Validator,
+} from '../../../common/validator';
 import { NavigationRoutes } from '../../navigationRoutes';
 
 import './admin.scss';
@@ -27,10 +31,10 @@ const Admin = (props: IAdminParams) => {
   const validator = new Validator({
     email: [
       new RequiredValidation('Email is required'),
-      // new RegExpValidation(
-      //   "/^[a-zA-Z0-9.]*@(bluestacks|now){1}.com$/",
-      //   "Email should be of bluestacks or now domain"
-      // ),
+      new RegExpValidation(
+        '^[a-zA-Z0-9._%+-]+@(bluestacks\\.com|now\\.gg)$',
+        'Email should be of bluestacks or now domain'
+      ),
     ],
   });
 
