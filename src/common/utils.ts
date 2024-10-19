@@ -1,3 +1,10 @@
+import {
+  ARRAY_CONSTRUCTOR,
+  JsonValueType,
+  OBJECT_CONSTRUCTOR,
+  STRING_CONSTRUCTOR,
+} from './const';
+
 class Utils {
   static convertBytes = (bytes: number) => {
     const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
@@ -58,6 +65,74 @@ class Utils {
   };
   static deleteCookie = (name: string) => {
     document.cookie = name + '=; expires=' + new Date(0).toUTCString();
+  };
+
+  static jsonValueType = (value: any): JsonValueType => {
+    if (value === null) return JsonValueType.null;
+    if (value === undefined) return JsonValueType.undefined;
+    if (value.constructor === Boolean) return JsonValueType.boolean;
+    if (value.constructor === Number) return JsonValueType.number;
+    if (value.constructor === STRING_CONSTRUCTOR) return JsonValueType.string;
+    if (value.constructor === ARRAY_CONSTRUCTOR) return JsonValueType.array;
+    if (value.constructor === OBJECT_CONSTRUCTOR) return JsonValueType.object;
+    if (value.constructor === Function) return JsonValueType.function;
+    return JsonValueType.none;
+  };
+
+  static isValidURL = (text: string) => {
+    const urlRegex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
+    return text.match(urlRegex);
+  };
+  static isValidEmail = (text: string) => {
+    const urlRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    return text.match(urlRegex);
+  };
+  static convertUrlInString = (stringData: string) => {
+    const words = stringData.split('\n').join(' ').split(' ');
+    const encodeHTML = (text: string) => {
+      return text
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#x27;');
+    };
+    return words
+      .map(word => {
+        const encodedWord = encodeHTML(word);
+        if (Utils.isValidURL(encodedWord)) {
+          return `<a href="${encodedWord}" target="_blank">${encodedWord}</a>`;
+        } else if (Utils.isValidEmail(word))
+          return `<a href="mailto:${word}">${word}</a>`;
+        return word;
+      })
+      .join(' ');
+  };
+
+  static reorderJsonObject = (
+    jsonObject: { [key: string]: any },
+    ignoreElements?: Array<string>,
+    topElements?: Array<string>,
+    bottomElements?: Array<string>
+  ) => {
+    ignoreElements?.forEach(key => {
+      delete jsonObject[key];
+    });
+    const orderedJsonObject: { [key: string]: any } = {};
+    topElements?.forEach(key => {
+      if (Object.prototype.hasOwnProperty.call(jsonObject, key))
+        orderedJsonObject[key] = jsonObject[key];
+    });
+    Object.keys(jsonObject).forEach(key => {
+      if (!topElements?.includes(key) && !bottomElements?.includes(key))
+        orderedJsonObject[key] = jsonObject[key];
+    });
+    bottomElements?.forEach(key => {
+      if (Object.prototype.hasOwnProperty.call(jsonObject, key))
+        orderedJsonObject[key] = jsonObject[key];
+    });
+    return orderedJsonObject;
   };
 }
 export default Utils;

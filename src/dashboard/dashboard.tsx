@@ -35,7 +35,6 @@ const Dashboard = () => {
           icon: navItem.icon ? <navItem.icon /> : null,
         });
       } else {
-        console.log(console.log(navItem.route), userPermission);
         if (userPermission[navItem.route] > Permission.None) {
           sidebarItems.push({
             labelId: navItem.name,

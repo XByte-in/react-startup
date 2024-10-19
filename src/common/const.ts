@@ -26,3 +26,19 @@ export enum Permission {
   View = 1,
   Edit = 2,
 }
+
+export enum JsonValueType {
+  none,
+  null,
+  undefined,
+  boolean,
+  number,
+  string,
+  array,
+  object,
+  function,
+}
+
+export const STRING_CONSTRUCTOR = ''.constructor;
+export const ARRAY_CONSTRUCTOR = [].constructor;
+export const OBJECT_CONSTRUCTOR = {}.constructor;

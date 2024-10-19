@@ -3,7 +3,7 @@
     "target": "ES2020",
     "typeRoots": ["./src/common/components/google/googleTypes"],
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
 
