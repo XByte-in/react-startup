@@ -1,4 +1,4 @@
-import TestSideBar from './testSideBar';
+import TestJsonView from './testJsonView';
 
 const TestControls = () => {
   return (
@@ -20,7 +20,8 @@ const TestControls = () => {
       {/* <TestSlider /> */}
       {/* <TestTextArea /> */}
       {/* <TestDataGrid /> */}
-      <TestSideBar />
+      {/* <TestSideBar /> */}
+      <TestJsonView />
     </div>
   );
 };

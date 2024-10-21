@@ -134,5 +134,16 @@ class Utils {
     });
     return orderedJsonObject;
   };
+  static jsToDateString = (jsDate: Date, showSeconds = false) => {
+    if (!jsDate) return '';
+    return jsDate.toLocaleString('en-IN', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: showSeconds ? 'numeric' : undefined,
+    });
+  };
 }
 export default Utils;

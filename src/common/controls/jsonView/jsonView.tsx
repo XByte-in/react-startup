@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import './jsonView.scss';
 import { JsonValueType } from '../../const';
@@ -105,11 +106,15 @@ const getFormattedData = (props: any, parentKey: string, data: any) => {
 };
 
 export const arrayToFormattedTable = (
-  customFormatterParam: ICustomFormatterParam
+  customFormatterParam: ICustomFormatterParam,
+  columns: Array<string> = []
 ) => {
   const { props, parentKey, data } = customFormatterParam;
   if (data.length === 0) return <></>;
-  const columns = Object.keys(data[0]);
+  if (columns.length === 0) {
+    columns = Object.keys(data[0]);
+  }
+  console.log(columns);
   if (columns.length === 0) return <></>;
 
   const tableColumns = columns.map(col => <th key={Math.random()}>{col}</th>);
