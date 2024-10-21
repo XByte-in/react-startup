@@ -43,7 +43,20 @@ const TestJsonView = () => {
     },
   };
 
-  return <JsonView jsonObject={jsonData} customFormatter={customFormatter} />;
+  return (
+    <JsonView
+      jsonObject={jsonData}
+      customFormatter={customFormatter}
+      topElements={['id', 'app_id', 'app_pkg_name', 'submission_state']}
+      bottomElements={[
+        'comments',
+        'created_by',
+        'created_at',
+        'last_updated_by',
+        'modified_at',
+      ]}
+    />
+  );
 };
 
 export default TestJsonView;
