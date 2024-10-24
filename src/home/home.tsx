@@ -7,12 +7,14 @@ import { loadColors, loadFonts } from '../common/theme';
 import defaultColors from '../common/theme/colors/colors.json';
 import defaultTypography from '../common/theme/typography/typography.json';
 import Dashboard from '../dashboard/dashboard';
+import TestControls from '../__test__/testControls/_testControls';
 
 const Home = () => {
   useEffect(() => {
     loadFonts(defaultTypography);
     loadColors(defaultColors);
   }, []);
+  return <TestControls />;
   return (
     <Routes>
       <Route path="/signIn" element={<SignIn />} />
