@@ -1,3 +1,4 @@
+import TestJsonDiff from './testJsonDiff';
 import TestJsonView from './testJsonView';
 
 const TestControls = () => {
@@ -21,7 +22,8 @@ const TestControls = () => {
       {/* <TestTextArea /> */}
       {/* <TestDataGrid /> */}
       {/* <TestSideBar /> */}
-      <TestJsonView />
+      {/* <TestJsonView /> */}
+      <TestJsonDiff></TestJsonDiff>
     </div>
   );
 };

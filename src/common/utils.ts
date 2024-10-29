@@ -6,6 +6,9 @@ import {
 } from './const';
 
 class Utils {
+  static onlyUnique(value: string, index: number, self: any) {
+    return self.indexOf(value) === index;
+  }
   static convertBytes = (bytes: number) => {
     const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     let i = 0;
@@ -67,7 +70,7 @@ class Utils {
     document.cookie = name + '=; expires=' + new Date(0).toUTCString();
   };
 
-  static jsonValueType = (value: any): JsonValueType => {
+  static getJsonValueType = (value: any): JsonValueType => {
     if (value === null) return JsonValueType.null;
     if (value === undefined) return JsonValueType.undefined;
     if (value.constructor === Boolean) return JsonValueType.boolean;

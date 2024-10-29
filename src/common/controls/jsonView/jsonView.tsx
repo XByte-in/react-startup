@@ -11,7 +11,7 @@ export interface ICustomFormatterParam {
 }
 
 export const getFormattedString = (parentKey: string, stringData: any) => {
-  const jsonValueType = Utils.jsonValueType(stringData);
+  const jsonValueType = Utils.getJsonValueType(stringData);
   if (
     jsonValueType === JsonValueType.null ||
     jsonValueType === JsonValueType.undefined
@@ -95,7 +95,7 @@ const getFormattedData = (props: any, parentKey: string, data: any) => {
     };
     return props.customFormatter[parentKey](customFormatterParam);
   }
-  const dataType = Utils.jsonValueType(data);
+  const dataType = Utils.getJsonValueType(data);
   let result;
   if (dataType === JsonValueType.object)
     result = getFormattedObject(props, parentKey, data);
