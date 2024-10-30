@@ -4,8 +4,14 @@ import rightJson from '../testData/jsonDiff/right.json';
 
 const TestJsonDiff = () => {
   const customArrayKeyComparator = {
-    comments: function (data: any) {
+    'comments.[*]': function (data: any) {
       return data['commented_at']['$date'];
+    },
+    'app_assets.[*]': function (data: any) {
+      return data['lang'];
+    },
+    'app_assets.[*].data.[*]': function (data: any) {
+      return data['asset_type'];
     },
   };
   return (

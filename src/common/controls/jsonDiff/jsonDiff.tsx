@@ -37,6 +37,7 @@ function JsonDiff(props: IJsonDiffParams) {
     compareObject(
       tableRows,
       '',
+      '',
       props.leftData.jsonData,
       props.rightData.jsonData,
       0
@@ -82,6 +83,7 @@ function JsonDiff(props: IJsonDiffParams) {
   function parseObject(
     tableRows: Array<IDiffData>,
     parentKey: string,
+    finderKey: string,
     jsonObj: any,
     col: string,
     className: ClassNames,
@@ -99,9 +101,25 @@ function JsonDiff(props: IJsonDiffParams) {
       const item = jsonObj[key];
       const itemType = Utils.getJsonValueType(item);
       if (itemType === JsonValueType.array) {
-        parseArray(tableRows, parentKey, item, col, className, childChildLevel);
+        parseArray(
+          tableRows,
+          parentKey,
+          `${finderKey}.${parentKey}`,
+          item,
+          col,
+          className,
+          childChildLevel
+        );
       } else if (itemType === JsonValueType.object) {
-        parseObject(tableRows, key, item, col, className, childChildLevel);
+        parseObject(
+          tableRows,
+          key,
+          `${finderKey}.${key}`,
+          item,
+          col,
+          className,
+          childChildLevel
+        );
       } else {
         const td: IDiffData = { level: childChildLevel, key: key };
         if (col === 'leftCol')
@@ -119,6 +137,7 @@ function JsonDiff(props: IJsonDiffParams) {
   function compareObject(
     tableRows: Array<IDiffData>,
     parentKey: string,
+    finderKey: string,
     leftJsonObj: any,
     rightJsonObj: any,
     level: number
@@ -132,6 +151,7 @@ function JsonDiff(props: IJsonDiffParams) {
       parseObject(
         tableRows,
         parentKey,
+        finderKey != '' ? `${finderKey}.${parentKey}` : parentKey,
         rightJsonObj,
         'rightCol',
         ClassNames.added,
@@ -141,6 +161,7 @@ function JsonDiff(props: IJsonDiffParams) {
       parseObject(
         tableRows,
         parentKey,
+        finderKey != '' ? `${finderKey}.${parentKey}` : parentKey,
         leftJsonObj,
         'leftCol',
         ClassNames.removed,
@@ -169,6 +190,7 @@ function JsonDiff(props: IJsonDiffParams) {
             parseArray(
               tableRows,
               key,
+              finderKey != '' ? `${finderKey}.${key}` : key,
               rightVal,
               'rightCol',
               ClassNames.added,
@@ -178,6 +200,7 @@ function JsonDiff(props: IJsonDiffParams) {
             parseObject(
               tableRows,
               key,
+              finderKey != '' ? `${finderKey}.${key}` : key,
               rightVal,
               'rightCol',
               ClassNames.added,
@@ -199,6 +222,7 @@ function JsonDiff(props: IJsonDiffParams) {
             parseArray(
               tableRows,
               key,
+              finderKey != '' ? `${finderKey}.${key}` : key,
               leftVal,
               'leftCol',
               ClassNames.removed,
@@ -208,6 +232,7 @@ function JsonDiff(props: IJsonDiffParams) {
             parseObject(
               tableRows,
               key,
+              finderKey != '' ? `${finderKey}.${key}` : key,
               leftVal,
               'leftCol',
               ClassNames.removed,
@@ -244,9 +269,23 @@ function JsonDiff(props: IJsonDiffParams) {
             else valType = JsonValueType.string;
           }
           if (valType === JsonValueType.array) {
-            compareArray(tableRows, key, leftVal, rightVal, childLevel);
+            compareArray(
+              tableRows,
+              key,
+              finderKey != '' ? `${finderKey}.${key}` : key,
+              leftVal,
+              rightVal,
+              childLevel
+            );
           } else if (valType === JsonValueType.object) {
-            compareObject(tableRows, key, leftVal, rightVal, childLevel);
+            compareObject(
+              tableRows,
+              key,
+              finderKey != '' ? `${finderKey}.${key}` : key,
+              leftVal,
+              rightVal,
+              childLevel
+            );
           } else {
             if (leftVal === rightVal) {
               const className = ClassNames.same;
@@ -291,6 +330,7 @@ function JsonDiff(props: IJsonDiffParams) {
   function parseArray(
     tableRows: Array<IDiffData>,
     parentKey: string,
+    finderKey: string,
     arr: Array<any>,
     col: string,
     className: ClassNames,
@@ -307,9 +347,25 @@ function JsonDiff(props: IJsonDiffParams) {
     arr.forEach(item => {
       const itemType = Utils.getJsonValueType(item);
       if (itemType === JsonValueType.array) {
-        parseArray(tableRows, '', item, col, className, childChildLevel);
+        parseArray(
+          tableRows,
+          '',
+          finderKey != '' ? `${finderKey}.${parentKey}` : parentKey,
+          item,
+          col,
+          className,
+          childChildLevel
+        );
       } else if (itemType === JsonValueType.object) {
-        parseObject(tableRows, '', item, col, className, childChildLevel);
+        parseObject(
+          tableRows,
+          '',
+          finderKey != '' ? `${finderKey}.${parentKey}` : parentKey,
+          item,
+          col,
+          className,
+          childChildLevel
+        );
       } else {
         const td: IDiffData = { level: childChildLevel };
         if (col === 'leftCol')
@@ -327,6 +383,7 @@ function JsonDiff(props: IJsonDiffParams) {
   function compareArray(
     tableRows: Array<IDiffData>,
     parentKey: string,
+    finderKey: string,
     leftArr: Array<any>,
     rightArr: Array<any>,
     level: number
@@ -342,6 +399,7 @@ function JsonDiff(props: IJsonDiffParams) {
       parseArray(
         tableRows,
         parentKey,
+        `${finderKey}.${parentKey}`,
         rightArr,
         'rightCol',
         ClassNames.added,
@@ -351,6 +409,7 @@ function JsonDiff(props: IJsonDiffParams) {
       parseArray(
         tableRows,
         parentKey,
+        `${finderKey}.${parentKey}`,
         leftArr,
         'leftCol',
         ClassNames.removed,
@@ -370,6 +429,7 @@ function JsonDiff(props: IJsonDiffParams) {
       const leftArrCopy = leftArr.slice();
       const rightArrCopy = rightArr.slice();
       const childChildLevel = childLevel + 1;
+      finderKey = finderKey != '' ? `${finderKey}.[*]` : `${parentKey}`;
       while (leftArrCopy.length > 0) {
         const leftItem = leftArrCopy[0];
         const leftItemType = Utils.getJsonValueType(leftItem);
@@ -377,6 +437,7 @@ function JsonDiff(props: IJsonDiffParams) {
           parseArray(
             tableRows,
             '',
+            finderKey,
             leftItem,
             'leftCol',
             ClassNames.removed,
@@ -386,20 +447,21 @@ function JsonDiff(props: IJsonDiffParams) {
         } else if (leftItemType === JsonValueType.object) {
           if (
             props.customArrayKeyComparator &&
-            props.customArrayKeyComparator[parentKey]
+            props.customArrayKeyComparator[finderKey]
           ) {
             const itemFilterValue =
-              props.customArrayKeyComparator[parentKey](leftItem);
+              props.customArrayKeyComparator[finderKey](leftItem);
             const rightItemIndex = rightArrCopy.findIndex(
               item =>
                 itemFilterValue ===
-                props.customArrayKeyComparator[parentKey](item)
+                props.customArrayKeyComparator[finderKey](item)
             );
             if (rightItemIndex !== -1) {
               const rightItem = rightArrCopy[rightItemIndex];
               compareObject(
                 tableRows,
                 '',
+                finderKey,
                 leftItem,
                 rightItem,
                 childChildLevel
@@ -410,6 +472,7 @@ function JsonDiff(props: IJsonDiffParams) {
               parseObject(
                 tableRows,
                 '',
+                finderKey,
                 leftItem,
                 'leftCol',
                 ClassNames.removed,
@@ -421,6 +484,7 @@ function JsonDiff(props: IJsonDiffParams) {
             parseObject(
               tableRows,
               '',
+              finderKey,
               leftItem,
               'leftCol',
               ClassNames.removed,
@@ -466,6 +530,7 @@ function JsonDiff(props: IJsonDiffParams) {
           parseArray(
             tableRows,
             '',
+            finderKey,
             rigthItem,
             'rightCol',
             className,
@@ -476,6 +541,7 @@ function JsonDiff(props: IJsonDiffParams) {
           parseObject(
             tableRows,
             '',
+            finderKey,
             rigthItem,
             'rightCol',
             className,
