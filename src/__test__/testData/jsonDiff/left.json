@@ -324,7 +324,7 @@
     {
       "comment_text": "Removed the launcher campaign, as Ambreesh sir requested not to promote the app anywhere.",
       "commented_at": {
-        "$date": 1659683677858
+        "$date": 1234
       },
       "commented_by": "tanvi.rawat@bluestacks.com",
       "from_state": "published",
@@ -394,7 +394,7 @@
       "to_state": "under_testing"
     },
     {
-      "comment_text": "QA: Sanchay ; Updating the assets for this app",
+      "comment_text": "QA: Sanchay ; Updating the assets for this app updated",
       "commented_at": {
         "$date": 1643266986960
       },

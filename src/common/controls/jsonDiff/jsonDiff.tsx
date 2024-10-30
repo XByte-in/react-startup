@@ -18,6 +18,7 @@ interface IJsonData {
 interface IJsonDiffParams {
   leftData: IJsonData;
   rightData: IJsonData;
+  customArrayKeyComparator?: any;
 }
 interface IDiffColData {
   className?: ClassNames;
@@ -383,15 +384,50 @@ function JsonDiff(props: IJsonDiffParams) {
           );
           leftArrCopy.splice(0, 1);
         } else if (leftItemType === JsonValueType.object) {
-          parseObject(
-            tableRows,
-            '',
-            leftItem,
-            'leftCol',
-            ClassNames.removed,
-            childChildLevel
-          );
-          leftArrCopy.splice(0, 1);
+          if (
+            props.customArrayKeyComparator &&
+            props.customArrayKeyComparator[parentKey]
+          ) {
+            const itemFilterValue =
+              props.customArrayKeyComparator[parentKey](leftItem);
+            const rightItemIndex = rightArrCopy.findIndex(
+              item =>
+                itemFilterValue ===
+                props.customArrayKeyComparator[parentKey](item)
+            );
+            if (rightItemIndex !== -1) {
+              const rightItem = rightArrCopy[rightItemIndex];
+              compareObject(
+                tableRows,
+                '',
+                leftItem,
+                rightItem,
+                childChildLevel
+              );
+              leftArrCopy.splice(0, 1);
+              rightArrCopy.splice(rightItemIndex, 1);
+            } else {
+              parseObject(
+                tableRows,
+                '',
+                leftItem,
+                'leftCol',
+                ClassNames.removed,
+                childLevel
+              );
+              leftArrCopy.splice(0, 1);
+            }
+          } else {
+            parseObject(
+              tableRows,
+              '',
+              leftItem,
+              'leftCol',
+              ClassNames.removed,
+              childChildLevel
+            );
+            leftArrCopy.splice(0, 1);
+          }
         } else {
           const rightItemIndex = rightArrCopy.indexOf(leftItem);
           if (rightItemIndex !== -1) {
@@ -443,7 +479,7 @@ function JsonDiff(props: IJsonDiffParams) {
             rigthItem,
             'rightCol',
             className,
-            childChildLevel
+            childLevel
           );
           rightArrCopy.splice(0, 1);
         } else {
