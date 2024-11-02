@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import './inputField.scss';
+import { IBaseControlParam } from '../iControl';
 import { InputFieldType } from './inputFieldType';
+import './inputField.scss';
 
-interface IInputFieldParams {
+interface IInputFieldParams extends IBaseControlParam {
   type: InputFieldType;
-  className?: string;
   placeholder?: string;
   value?: string;
   pattern?: string;
-  isDisabled?: boolean;
 
   onChange?: (e: any) => void;
   onFocus?: (e: any) => void;
@@ -18,9 +17,10 @@ interface IInputFieldParams {
 const InputField = (props: IInputFieldParams) => {
   return (
     <input
+      id={props.id}
       className={`inputField ${props.type} ${props.className}`}
-      disabled={props.isDisabled ? true : false}
-      placeholder=""
+      disabled={props.disabled ? true : false}
+      placeholder={props.placeholder}
       type={props.type}
       onChange={e => props.onChange && props.onChange(e.target.value)}
       onFocus={e => props.onFocus && props.onFocus(e)}

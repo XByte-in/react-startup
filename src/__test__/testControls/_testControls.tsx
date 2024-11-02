@@ -1,5 +1,4 @@
-import TestJsonDiff from './testJsonDiff';
-import TestJsonView from './testJsonView';
+import TestSearch from './testSearch';
 
 const TestControls = () => {
   return (
@@ -23,7 +22,8 @@ const TestControls = () => {
       {/* <TestDataGrid /> */}
       {/* <TestSideBar /> */}
       {/* <TestJsonView /> */}
-      <TestJsonDiff></TestJsonDiff>
+      {/* <TestJsonDiff></TestJsonDiff> */}
+      <TestSearch />
     </div>
   );
 };
