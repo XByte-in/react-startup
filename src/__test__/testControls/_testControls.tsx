@@ -1,4 +1,4 @@
-import TestSearch from './testSearch';
+import TestQuery from './testQuery';
 
 const TestControls = () => {
   return (
@@ -23,7 +23,7 @@ const TestControls = () => {
       {/* <TestSideBar /> */}
       {/* <TestJsonView /> */}
       {/* <TestJsonDiff></TestJsonDiff> */}
-      <TestSearch />
+      <TestQuery />
     </div>
   );
 };
