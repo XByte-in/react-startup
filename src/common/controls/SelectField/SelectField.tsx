@@ -4,21 +4,19 @@ import Select, { FormatOptionLabelMeta, StylesConfig } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
 import TranslatedText from '../translatedText/translatedText';
+import { IBaseControlParam } from '../iControl';
 
 export interface ISelectFieldOption {
   label: string;
   value: string | number;
-  isDisabled?: boolean;
+  disabled?: boolean;
 }
 
-interface ISelectFieldParams {
+interface ISelectFieldParams extends IBaseControlParam {
   isCreatable?: boolean;
   options: ISelectFieldOption[];
   placeholder?: string;
-  className?: string;
-  name?: string;
   classNamePrefix?: string;
-  isDisabled?: boolean;
   isLoading?: boolean;
   isClearable?: boolean;
   isRtl?: boolean;
@@ -120,12 +118,12 @@ const SelectField = (props: ISelectFieldParams) => {
         className={props.className}
         classNamePrefix={props.classNamePrefix ?? 'creatableSelect'}
         defaultValue={props.defaultValue}
-        isDisabled={props.isDisabled}
+        isDisabled={props.disabled}
         isLoading={props.isLoading}
         isClearable={props.isClearable}
         isRtl={props.isRtl}
         isSearchable={props.isSearchable}
-        name={props.name}
+        name={props.id}
         onChange={e => props.onChange?.(e)}
         isOptionDisabled={option => option.isDisabled}
         placeholder={
@@ -149,12 +147,12 @@ const SelectField = (props: ISelectFieldParams) => {
         className={props.className}
         classNamePrefix={props.classNamePrefix ?? 'select'}
         defaultValue={props.defaultValue}
-        isDisabled={props.isDisabled}
+        isDisabled={props.disabled}
         isLoading={props.isLoading}
         isClearable={props.isClearable}
         isRtl={props.isRtl}
         isSearchable={props.isSearchable}
-        name={props.name}
+        name={props.id}
         onChange={e => props.onChange?.(e)}
         isOptionDisabled={option => option.isDisabled}
         placeholder={
